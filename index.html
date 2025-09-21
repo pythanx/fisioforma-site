@@ -56,14 +56,61 @@
   .ig-frame{position:relative;width:100%;aspect-ratio:1 / 1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-/* === Carrossel anti-estouro === */
-.carousel{max-width:900px;overflow:hidden;border-radius:16px;background:#fff}
-.carousel ul{display:flex;list-style:none;margin:0;padding:0;width:600%;transition:transform .6s ease}
-.carousel li{width:100%;flex-shrink:0;display:grid;place-items:center;background:#f2f4f7}
-.carousel img{max-width:100%;max-height:clamp(220px,35vw,420px);width:auto;height:auto;object-fit:contain;object-position:center}
-.carousel .nav{display:flex;justify-content:center;gap:6px;margin-top:8px}
-.carousel .nav button{width:10px;height:10px;border-radius:50%;border:none;background:#bbb;cursor:pointer}
-.carousel .nav button.active{background:var(--brand)}
+  /* ===== Carrossel (compacto + anti-estouro) ===== */
+  #sobre .carousel{
+    max-width:640px;           /* menor para fotos de baixa resolução */
+    margin:24px auto 0;
+    overflow:hidden;
+    border-radius:16px;
+    background:#fff;
+    border:1px solid var(--line);
+  }
+  #sobre .carousel input{display:none}
+  #sobre .slides{
+    display:flex;
+    width:600%;
+    transition:transform .6s ease;
+    margin:0; padding:0; list-style:none;
+  }
+  #sobre .slides li{
+    width:100%;
+    flex-shrink:0;
+    display:grid;
+    place-items:center;
+    background:#f2f4f7;
+  }
+  #sobre .slides img{
+    max-width:100%;
+    max-height:clamp(180px,26vw,320px); /* limite menor para evitar blur */
+    width:auto; height:auto;
+    object-fit:contain; object-position:center;
+    image-rendering:auto;
+  }
+  /* movimentação por radios */
+  #slide1:checked ~ .slides{transform:translateX(0%)}
+  #slide2:checked ~ .slides{transform:translateX(-100%)}
+  #slide3:checked ~ .slides{transform:translateX(-200%)}
+  #slide4:checked ~ .slides{transform:translateX(-300%)}
+  #slide5:checked ~ .slides{transform:translateX(-400%)}
+  #slide6:checked ~ .slides{transform:translateX(-500%)}
+  /* bolinhas */
+  .nav-dots{text-align:center;margin:10px 0 14px}
+  .nav-dots label{
+    display:inline-block;width:10px;height:10px;margin:0 5px;
+    border-radius:50%;background:#bbb;cursor:pointer;
+    transition:transform .1s, background .2s;
+  }
+  .nav-dots label:hover{transform:scale(1.1)}
+  #slide1:checked ~ .nav-dots label[for="slide1"],
+  #slide2:checked ~ .nav-dots label[for="slide2"],
+  #slide3:checked ~ .nav-dots label[for="slide3"],
+  #slide4:checked ~ .nav-dots label[for="slide4"],
+  #slide5:checked ~ .nav-dots label[for="slide5"],
+  #slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
+
+  /* opcionais: ainda mais compacto em telas muito largas/estreitas */
+  @media (min-width:1200px){ #sobre .carousel{ max-width:600px; } }
+  @media (max-width:380px){ #sobre .slides img{ max-height:200px; } }
 </style>
 </head>
 <body>
@@ -104,7 +151,7 @@
     </div>
   </section>
 
-  <!-- SIDEBAR DO INSTAGRAM (voltou!) -->
+  <!-- SIDEBAR DO INSTAGRAM -->
   <section id="instagram" class="alt">
     <div class="wrap grid cols-2">
       <div>
@@ -116,7 +163,6 @@
           <div class="body" style="padding:12px 16px">
             <h3 style="margin:0 0 4px 0">@fisioforma.acad</h3>
             <div class="ig-frame">
-              <!-- TROQUE o src abaixo quando tiver o widget real do perfil -->
               <iframe src="https://snapwidget.com/embed/1024785" title="Feed do Instagram" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div style="text-align:center; margin-top:10px">
@@ -191,7 +237,7 @@
         <h2>Fale com a gente</h2>
         <p>📞 <a href="tel:+5598992223926">(98) 99222-3926</a></p>
         <p>✉️ <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a></p>
-        <p>📍 <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA" target="_blank">Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA</a></p>
+        <p>📍 <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Lu%C3%ADs,+MA" target="_blank">Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA</a></p>
         <p><a class="cta" href="https://wa.me/5598992223926" target="_blank">Chamar no WhatsApp</a></p>
       </div>
       <div><iframe class="map" title="Mapa FisioForma" src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Lu%C3%ADs,+MA&output=embed" loading="lazy"></iframe></div>
