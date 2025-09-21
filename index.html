@@ -6,13 +6,13 @@
 <title>Academia FisioForma</title>
 <meta name="description" content="FisioForma — Comunidade, acolhimento e resultados reais. Anjo da Guarda, São Luís — MA.">
 
-<!-- ===== Favicon ===== -->
+<!-- ===== Favicon robusto ===== -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=3">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=3">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%233a80b4"/><text x="50%" y="58%" text-anchor="middle" font-family="Arial" font-size="34" fill="white">FF</text></svg>'>
 <meta name="theme-color" content="#3a80b4">
 
-<!-- ===== SEO / compartilhamento ===== -->
+<!-- ===== SEO / social ===== -->
 <meta property="og:title" content="FisioForma — Anjo da Guarda">
 <meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA.">
 <meta property="og:type" content="website">
@@ -20,20 +20,15 @@
 
 <style>
   :root{
-    --bg:#ffffff;
-    --ink:#222;
-    --muted:#5a5a5a;
-    --card:#f5f7fa;
-    --line:#d9d9d9;
-    --brand:#3a80b4;
-    --brand-ink:#2d5e7e;
+    --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
+    --card:#f5f7fa; --line:#d9d9d9;
+    --brand:#3a80b4; --brand-ink:#2d5e7e;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
-  a{color:var(--brand);text-decoration:none}
-  a:hover{text-decoration:underline}
+  a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
   .wrap{max-width:1100px;margin:auto;padding:0 16px}
-  header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10}
+  header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10;backdrop-filter:saturate(120%) blur(6px)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
   .logo img{height:56px}
   .links{display:none;gap:18px}
@@ -42,30 +37,31 @@
   .cta:hover{background:var(--brand-ink);color:#fff}
   @media (min-width:760px){.links{display:flex}}
 
-  .hero{padding:64px 0}
-  .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0}
-  .hero p{color:var(--muted);max-width:62ch}
-  .hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-
   section{padding:56px 0}
   section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
   .muted{color:var(--muted)}
 
   .grid{display:grid;gap:18px}
-  @media(min-width:760px){
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-  }
+  @media(min-width:760px){.grid.cols-2{grid-template-columns:repeat(2,1fr)} .grid.cols-3{grid-template-columns:repeat(3,1fr)}}
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
   .card .body{padding:16px 18px}
 
-  /* ===== Carrossel ===== */
+  .hero{padding:64px 0}
+  .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0}
+  .hero p{color:var(--muted);max-width:62ch}
+  .hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+  /* ===== Instagram sidebar ===== */
+  .ig-frame{position:relative;width:100%;aspect-ratio:1 / 1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* ===== Carrossel (Sobre) ===== */
   .carousel{position:relative;width:100%;max-width:900px;margin:24px auto 0;border-radius:16px;border:1px solid var(--line);overflow:hidden}
   .carousel input{display:none}
   .slides{display:flex;width:600%;transition:transform .6s ease;margin:0;padding:0;list-style:none}
   .slides li{width:100%;flex-shrink:0}
-  .slides img{width:100%;height:clamp(220px,45vw,480px);object-fit:cover}
+  .slides img{width:100%;height:clamp(220px,35vw,420px);object-fit:cover;object-position:center center;display:block;image-rendering:auto}
   #slide1:checked ~ .slides{transform:translateX(0%)}
   #slide2:checked ~ .slides{transform:translateX(-100%)}
   #slide3:checked ~ .slides{transform:translateX(-200%)}
@@ -73,7 +69,7 @@
   #slide5:checked ~ .slides{transform:translateX(-400%)}
   #slide6:checked ~ .slides{transform:translateX(-500%)}
   .nav-dots{text-align:center;margin:10px 0 14px}
-  .nav-dots label{display:inline-block;width:12px;height:12px;margin:0 5px;border-radius:50%;background:#cfd7de;cursor:pointer;transition:background .25s}
+  .nav-dots label{display:inline-block;width:12px;height:12px;margin:0 5px;border-radius:50%;background:#cfd7de;cursor:pointer;transition:background .25s, transform .1s}
   .nav-dots label:hover{transform:scale(1.08)}
   #slide1:checked ~ .nav-dots label[for="slide1"],
   #slide2:checked ~ .nav-dots label[for="slide2"],
@@ -81,6 +77,9 @@
   #slide4:checked ~ .nav-dots label[for="slide4"],
   #slide5:checked ~ .nav-dots label[for="slide5"],
   #slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
+
+  iframe.map{width:100%;height:360px;border:0}
+  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
@@ -94,7 +93,7 @@
       <a href="#faq">FAQ</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a class="cta" href="https://wa.me/559892223926" target="_blank">Fale no WhatsApp</a>
+    <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noreferrer">Fale no WhatsApp</a>
   </div>
 </header>
 
@@ -121,6 +120,30 @@
     </div>
   </section>
 
+  <!-- SIDEBAR DO INSTAGRAM (voltou!) -->
+  <section id="instagram" class="alt">
+    <div class="wrap grid cols-2">
+      <div>
+        <h2>Novidades da FisioForma</h2>
+        <p class="muted">Acompanhe treinos, eventos e promoções no nosso Instagram.</p>
+      </div>
+      <aside style="border-left:1px solid var(--line); padding-left:16px;">
+        <div class="card" style="border-radius:18px; overflow:hidden;">
+          <div class="body" style="padding:12px 16px">
+            <h3 style="margin:0 0 4px 0">@fisioforma.acad</h3>
+            <div class="ig-frame">
+              <!-- TROQUE o src abaixo quando tiver o widget real do perfil -->
+              <iframe src="https://snapwidget.com/embed/1024785" title="Feed do Instagram" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div style="text-align:center; margin-top:10px">
+              <a href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener" class="cta" style="display:inline-block; padding:10px 14px; border-radius:10px;">👉 Ver no Instagram</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
   <!-- SOBRE + CARROSSEL -->
   <section id="sobre" class="alt">
     <div class="wrap">
@@ -136,7 +159,7 @@
         O foco é simples: <strong>saúde, autoestima e qualidade de vida</strong> para todas as idades.
       </p>
 
-      <div class="carousel">
+      <div class="carousel" aria-label="Galeria de fotos da academia">
         <input type="radio" name="slides" id="slide1" checked>
         <input type="radio" name="slides" id="slide2">
         <input type="radio" name="slides" id="slide3">
@@ -149,7 +172,7 @@
           <li><img src="foto2.avif" alt="Máquinas de treino"></li>
           <li><img src="foto3.avif" alt="Espaço para aulas coletivas"></li>
           <li><img src="foto4.avif" alt="Ambiente amplo e climatizado"></li>
-          <li><img src="foto5.avif" alt="Área de cardio com esteiras"></li>
+          <li><img src="foto5.avif" alt="Área de cardio com esteiras e bicicletas"></li>
           <li><img src="foto6.avif" alt="Vista geral da academia"></li>
         </ul>
 
@@ -184,23 +207,51 @@
         <h2>Fale com a gente</h2>
         <p>📞 <a href="tel:+5598992223926">(98) 99222-3926</a></p>
         <p>✉️ <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a></p>
-        <p>📍 <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA" target="_blank">
-          Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA</a></p>
-        <p><a class="cta" href="https://wa.me/559892223926" target="_blank">Chamar no WhatsApp</a></p>
+        <p>📍 <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA" target="_blank">Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA</a></p>
+        <p><a class="cta" href="https://wa.me/5598992223926" target="_blank">Chamar no WhatsApp</a></p>
       </div>
-      <div><iframe class="map" src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA&output=embed"></iframe></div>
+      <div><iframe class="map" title="Mapa FisioForma" src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Lu%C3%ADs,+MA&output=embed" loading="lazy"></iframe></div>
     </div>
   </section>
 
-  <!-- FAQ (resumido) -->
+  <!-- ESTRUTURA -->
+  <section id="estrutura" class="alt">
+    <div class="wrap">
+      <h2>Estrutura</h2>
+      <p class="muted">Ambiente completo para treinos de musculação, cardio e aulas coletivas, com suporte e comodidades para o dia a dia.</p>
+      <div class="grid cols-3" style="margin-top:12px">
+        <div class="card"><div class="body"><h3>Musculação</h3><p class="muted">Máquinas guiadas, racks e halteres — organização por grupos musculares.</p></div></div>
+        <div class="card"><div class="body"><h3>Cardio</h3><p class="muted">Esteiras, elípticos e bikes para aquecimento, condicionamento e emagrecimento.</p></div></div>
+        <div class="card"><div class="body"><h3>Aulas coletivas</h3><p class="muted">Ritbox, dança e funcional — turmas dinâmicas e motivadoras.</p></div></div>
+        <div class="card"><div class="body"><h3>Avaliação física</h3><p class="muted">Check-up inicial e reavaliações periódicas para acompanhar sua evolução.</p></div></div>
+        <div class="card"><div class="body"><h3>Vestiários</h3><p class="muted">Chuveiros, armários e bebedouros — ambiente limpo e organizado.</p></div></div>
+        <div class="card"><div class="body"><h3>Acessibilidade e segurança</h3><p class="muted">Acesso facilitado e equipe atenta para corrigir e orientar movimentos.</p></div></div>
+      </div>
+      <p class="muted" style="margin-top:12px">
+        <strong>Horários</strong><br>
+        Seg–Sex: 06h–22h<br>
+        Sáb: 08h–12h e 14h30–17h30<br>
+        Dom: 08h–12h<br>
+        <em>Feriados podem ter horários especiais.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ (ampliado) -->
   <section id="faq">
     <div class="wrap">
       <h2>Perguntas frequentes</h2>
       <div class="grid cols-2" style="margin-top:12px">
-        <div class="card"><div class="body"><h3>Fazem avaliação física?</h3><p class="muted">Sim, inicial e reavaliações periódicas com agendamento.</p></div></div>
-        <div class="card"><div class="body"><h3>Idade mínima?</h3><p class="muted">A partir de 14 anos com autorização do responsável.</p></div></div>
-        <div class="card"><div class="body"><h3>Posso pausar o plano?</h3><p class="muted">Planos com fidelidade permitem pausa em casos justificados.</p></div></div>
-        <div class="card"><div class="body"><h3>Horários?</h3><p class="muted">Seg–Sex 06h–22h<br>Sáb 08h–12h / 14h30–17h30<br>Dom 08h–12h</p></div></div>
+        <div class="card"><div class="body"><h3>A FisioForma é para iniciantes?</h3><p class="muted">Sim! Plano progressivo, respeitando seu ritmo e possíveis limitações.</p></div></div>
+        <div class="card"><div class="body"><h3>Vocês fazem avaliação física?</h3><p class="muted">Fazemos avaliação inicial e reavaliações periódicas com agendamento.</p></div></div>
+        <div class="card"><div class="body"><h3>Quais são os planos e formas de pagamento?</h3><p class="muted">Mensal, fidelidade e promoções sazonais. Cartão, PIX e boleto.</p></div></div>
+        <div class="card"><div class="body"><h3>Posso fazer um treino experimental?</h3><p class="muted">Oferecemos visita guiada e opções de diária (Day Use) em horários definidos.</p></div></div>
+        <div class="card"><div class="body"><h3>Há acompanhamento no salão?</h3><p class="muted">Sim. Equipe orienta postura, execução e ajustes de carga. Personal à parte.</p></div></div>
+        <div class="card"><div class="body"><h3>Como funcionam as aulas coletivas?</h3><p class="muted">Vagas limitadas; chegue com antecedência. Grade pode variar.</p></div></div>
+        <div class="card"><div class="body"><h3>Tem vestiário, chuveiro e armário?</h3><p class="muted">Sim. Recomenda-se cadeado próprio para os armários.</p></div></div>
+        <div class="card"><div class="body"><h3>Idade mínima para treinar?</h3><p class="muted">A partir de 14 anos com autorização do responsável.</p></div></div>
+        <div class="card"><div class="body"><h3>Posso pausar o plano?</h3><p class="muted">Planos com fidelidade permitem pausa por viagem/saúde mediante comprovação.</p></div></div>
+        <div class="card"><div class="body"><h3>Quais os horários de funcionamento?</h3><p class="muted" style="line-height:1.4">Seg–Sex: 06h–22h<br>Sáb: 08h–12h e 14h30–17h30<br>Dom: 08h–12h<br><em>Em feriados, os horários podem ser reduzidos; acompanhe nossos avisos no Instagram ou chame no WhatsApp.</em></p></div></div>
       </div>
     </div>
   </section>
@@ -212,14 +263,15 @@
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 <script>
+/* Auto-slide do carrossel + pausa no hover */
 (function(){
-  const carousel=document.querySelector('.carousel');
+  const carousel=document.querySelector('#sobre .carousel');
   const radios=[...carousel.querySelectorAll('input[name="slides"]')];
-  let i=0,hold=false;
-  function tick(){if(!hold){i=(i+1)%radios.length;radios[i].checked=true}}
-  setInterval(tick,4000);
-  carousel.addEventListener('mouseenter',()=>hold=true);
-  carousel.addEventListener('mouseleave',()=>hold=false);
+  let i=0, hold=false;
+  function tick(){ if(!hold){ i=(i+1)%radios.length; radios[i].checked=true; } }
+  setInterval(tick, 4000);
+  carousel.addEventListener('mouseenter', ()=>hold=true);
+  carousel.addEventListener('mouseleave', ()=>hold=false);
 })();
 </script>
 </body>
