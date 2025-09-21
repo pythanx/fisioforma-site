@@ -13,14 +13,13 @@
 <meta name="theme-color" content="#3a80b4">
 
 <!-- ===== SEO / social ===== -->
-<meta property="og:title" content="FisioForma — Anjo da Guarda">
+<meta property="og:title" content="FisioForma Academia">
 <meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="logo-fisioforma.png">
-  <link rel="preload" as="image" href="foto1.png?v=1">
-<link rel="preload" as="image" href="foto2.png?v=1">
-<link rel="preload" as="image" href="foto3.png?v=1">
-<link rel="preload" as="image" href="foto4.png?v=1">
+
+<link rel="preload" as="image" href="foto1.png?v=1">
+<link rel="preload" as="image" href="foto2.png?v=1"
 <link rel="preload" as="image" href="foto5.png?v=1">
 <link rel="preload" as="image" href="foto6.png?v=1">
 
@@ -121,8 +120,6 @@
 /* estados (mostra 1 slide por vez) */
 #slide1:checked ~ .viewport .slides li:nth-child(1){opacity:1}
 #slide2:checked ~ .viewport .slides li:nth-child(2){opacity:1}
-#slide3:checked ~ .viewport .slides li:nth-child(3){opacity:1}
-#slide4:checked ~ .viewport .slides li:nth-child(4){opacity:1}
 #slide5:checked ~ .viewport .slides li:nth-child(5){opacity:1}
 #slide6:checked ~ .viewport .slides li:nth-child(6){opacity:1}
 
@@ -136,8 +133,6 @@
 #sobre .carousel .nav-dots label:hover{transform:scale(1.1)}
 #slide1:checked ~ .nav-dots label[for="slide1"],
 #slide2:checked ~ .nav-dots label[for="slide2"],
-#slide3:checked ~ .nav-dots label[for="slide3"],
-#slide4:checked ~ .nav-dots label[for="slide4"],
 #slide5:checked ~ .nav-dots label[for="slide5"],
 #slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
 
@@ -201,12 +196,79 @@ section .grid > * { align-self: start; }
           Seg–Sex 06h–22h<br>
           Sáb 08h–12h e 14h30–17h30<br>
           Dom 08h–12h<br>
-          <em>Feriados podem ter horários especiais.</em>
+          <em>Feriados podem ter horários especiais. Acompanhe os avisos no Instagram</em>
         </p>
       </div>
       <div class="card"><div class="body muted">🏋️ Ambiente amplo e acolhedor, com musculação, cardio e apoio para você treinar com tranquilidade.</div></div>
     </div>
   </section>
+  <section id="depoimentos" class="alt">
+  <div class="wrap">
+    <h2>O que nossos alunos dizem</h2>
+    <div class="grid cols-2" style="gap:24px; margin-top:24px;">
+
+      <!-- Google (até 2 anos) -->
+      <div class="card">
+        <div class="body">
+          <p>“Ambiente legal, equipe atenciosa.”</p>
+          <p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p>
+          <p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <p>“Ameiiiiiiii tudo.”</p>
+          <p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <p>“Academia boa e com excelente atendimento.”</p>
+          <p><strong>— Wesley (Google · 2 anos)</strong></p>
+        </div>
+      </div>
+
+      <!-- Instagram -->
+      <div class="card">
+        <div class="body">
+          <p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p>
+          <p><strong>— Aluna no Instagram</strong></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p>
+          <p><strong>— Comentário no Instagram</strong></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p>
+          <p><strong>— Seguidora no Instagram</strong></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p>
+          <p><strong>— Feedback no Instagram</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
   <!-- SIDEBAR DO INSTAGRAM -->
   <section id="instagram" class="alt">
@@ -234,7 +296,7 @@ section .grid > * { align-self: start; }
   <!-- SOBRE + CARROSSEL -->
   <section id="sobre" class="alt">
     <div class="wrap">
-      <h2>Sobre a FisioForma — Anjo da Guarda</h2>
+      <h2>Sobre a FisioForma</h2>
       <p class="muted">
         A <strong>FisioForma Academia</strong> é referência no bairro Anjo da Guarda, em São Luís – MA.
         Aqui, a gente combina <strong>acolhimento</strong>, <strong>orientação profissional</strong> e
@@ -250,8 +312,6 @@ section .grid > * { align-self: start; }
   <!-- radios -->
   <input type="radio" name="slides" id="slide1" checked>
   <input type="radio" name="slides" id="slide2">
-  <input type="radio" name="slides" id="slide3">
-  <input type="radio" name="slides" id="slide4">
   <input type="radio" name="slides" id="slide5">
   <input type="radio" name="slides" id="slide6">
 
@@ -260,8 +320,6 @@ section .grid > * { align-self: start; }
     <ul class="slides">
       <li><img src="foto1.png?v=1" alt="Área de musculação" decoding="async"></li>
       <li><img src="foto2.png?v=1" alt="Máquinas de treino" decoding="async"></li>
-      <li><img src="foto3.png?v=1" alt="Espaço para aulas coletivas" decoding="async"></li>
-      <li><img src="foto4.png?v=1" alt="Ambiente amplo e climatizado" decoding="async"></li>
       <li><img src="foto5.png?v=1" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
       <li><img src="foto6.png?v=1" alt="Vista geral da academia" decoding="async"></li>
 
@@ -271,8 +329,6 @@ section .grid > * { align-self: start; }
   <div class="nav-dots">
     <label for="slide1"></label>
     <label for="slide2"></label>
-    <label for="slide3"></label>
-    <label for="slide4"></label>
     <label for="slide5"></label>
     <label for="slide6"></label>
   </div>
@@ -338,13 +394,13 @@ section .grid > * { align-self: start; }
       <div class="grid cols-2" style="margin-top:12px">
         <div class="card"><div class="body"><h3>A FisioForma é para iniciantes?</h3><p class="muted">Sim! Plano progressivo, respeitando seu ritmo e possíveis limitações.</p></div></div>
         <div class="card"><div class="body"><h3>Vocês fazem avaliação física?</h3><p class="muted">Fazemos avaliação inicial e reavaliações periódicas com agendamento.</p></div></div>
-        <div class="card"><div class="body"><h3>Quais são os planos e formas de pagamento?</h3><p class="muted">Mensal, fidelidade e promoções sazonais. Cartão, PIX e boleto.</p></div></div>
-        <div class="card"><div class="body"><h3>Posso fazer um treino experimental?</h3><p class="muted">Oferecemos visita guiada e opções de diária (Day Use) em horários definidos.</p></div></div>
+        <div class="card"><div class="body"><h3>Quais são os planos e formas de pagamento?</h3><p class="muted">Mensal, fidelidade e promoções sazonais. Cartão, PIX e dinheiro</p></div></div>
+        <div class="card"><div class="body"><h3>Posso fazer um treino experimental?</h3><p class="muted">Olá! Na Fisioforma, não temos treino experimental gratuito. Preferimos focar na experiência completa dos nossos alunos. Mas você pode agendar um tour guiado para conhecer a estrutura e nossas modalidades, ou comprar um Day Use na recepção para testar um treino. Venha nos visitar e sinta a diferença de ser um aluno Fisioforma!</p></div></div>
         <div class="card"><div class="body"><h3>Há acompanhamento no salão?</h3><p class="muted">Sim. Equipe orienta postura, execução e ajustes de carga. Personal à parte.</p></div></div>
-        <div class="card"><div class="body"><h3>Como funcionam as aulas coletivas?</h3><p class="muted">Vagas limitadas; chegue com antecedência. Grade pode variar.</p></div></div>
-        <div class="card"><div class="body"><h3>Tem vestiário, chuveiro e armário?</h3><p class="muted">Sim. Recomenda-se cadeado próprio para os armários.</p></div></div>
+        <div class="card"><div class="body"><h3>Como funcionam as aulas coletivas?</h3><p class="muted">Aulas de ritbox, dança e funcional.</p></div></div>
+        <div class="card"><div class="body"><h3>Tem vestiário, chuveiro e armário?</h3><p class="muted">Sim. Recomenda-se cadeado próprio para os armários. Verificar com a recepção a disponibilidade de horários para a alocação das vagas.</p></div></div>
         <div class="card"><div class="body"><h3>Idade mínima para treinar?</h3><p class="muted">A partir de 14 anos com autorização do responsável.</p></div></div>
-        <div class="card"><div class="body"><h3>Posso pausar o plano?</h3><p class="muted">Planos com fidelidade permitem pausa por viagem/saúde mediante comprovação.</p></div></div>
+        <div class="card"><div class="body"><h3>Posso pausar o plano?</h3><p class="muted">Planos com fidelidade permitem pausa por viagem/saúde mediante justificativa.</p></div></div>
         <div class="card"><div class="body"><h3>Quais os horários de funcionamento?</h3><p class="muted" style="line-height:1.4">Seg–Sex: 06h–22h<br>Sáb: 08h–12h e 14h30–17h30<br>Dom: 08h–12h<br><em>Em feriados, os horários podem ser reduzidos; acompanhe nossos avisos no Instagram ou chame no WhatsApp.</em></p></div></div>
       </div>
     </div>
