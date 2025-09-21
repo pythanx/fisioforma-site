@@ -19,7 +19,9 @@
 <meta property="og:image" content="logo-fisioforma.png">
 
 <link rel="preload" as="image" href="foto1.png?v=1">
-<link rel="preload" as="image" href="foto2.png?v=1"
+<link rel="preload" as="image" href="foto2.png?v=1">
+<link rel="preload" as="image" href="foto3.png?v=1">
+<link rel="preload" as="image" href="foto4.png?v=1">
 <link rel="preload" as="image" href="foto5.png?v=1">
 <link rel="preload" as="image" href="foto6.png?v=1">
 
@@ -69,74 +71,121 @@
 
   /* ===== CARROSSEL (estável e sem flicker) ===== */
   /* ===== Carrossel FADE (estável, sem flicker) ===== */
-#sobre .carousel{
-  --h: clamp(220px, 26vw, 360px);
-  max-width:640px;
-  margin:24px auto 0;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:#fff;
-  position:relative;
-  overflow:hidden;
-}
+<style>
+  :root{
+    --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
+    --card:#f5f7fa; --line:#d9d9d9;
+    --brand:#3a80b4; --brand-ink:#2d5e7e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
+  a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:1100px;margin:auto;padding:0 16px}
 
-#sobre .carousel input{display:none}
+  /* HEADER / NAV */
+  header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10;backdrop-filter:saturate(120%) blur(6px)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  .logo img{height:56px}
+  .links{display:none;gap:18px}
+  .cta{display:inline-block;background:var(--brand);color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;border:1px solid transparent}
+  .cta.outline{background:#fff;color:var(--brand);border-color:var(--brand)}
+  .cta:hover{background:var(--brand-ink);color:#fff}
+  @media (min-width:760px){.links{display:flex}}
 
-/* área visível fixa */
-#sobre .carousel .viewport{
-  height:var(--h);
-  background:#f2f4f7;
-  position:relative;
-}
+  /* SEÇÕES / CARDS / GRID */
+  section{padding:56px 0}
+  section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
+  .muted{color:var(--muted)}
+  .grid{display:grid;gap:18px}
+  @media(min-width:760px){
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  }
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .card .body{padding:16px 18px}
 
-/* pilha de slides um sobre o outro */
-#sobre .slides{
-  position:relative;
-  height:var(--h);
-  margin:0; padding:0; list-style:none;
-}
+  /* HERO */
+  .hero{padding:64px 0}
+  .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0}
+  .hero p{color:var(--muted);max-width:62ch}
+  .hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 
-/* cada slide ocupa toda a área, posicionado absoluto */
-#sobre .slides li{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  transition:opacity .45s ease;   /* fade suave */
-  will-change: opacity;
-}
+  /* INSTAGRAM SIDEBAR */
+  .ig-frame{position:relative;width:100%;aspect-ratio:1 / 1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-/* imagem contida */
-#sobre .slides img{
-  display:block;
-  max-width:100%;
-  max-height:100%;
-  width:auto; height:auto;
-  object-fit:contain; object-position:center;
-}
+  /* ===== CARROSSEL (estável e sem flicker) ===== */
+  #sobre .carousel{
+    --h: clamp(220px, 26vw, 360px);
+    max-width:640px;
+    margin:24px auto 0;
+    overflow:hidden;
+    border-radius:16px;
+    background:#fff;
+    border:1px solid var(--line);
+    position:relative;
+  }
+  #sobre .carousel input{display:none}
 
-/* estados (mostra 1 slide por vez) */
-#slide1:checked ~ .viewport .slides li:nth-child(1){opacity:1}
-#slide2:checked ~ .viewport .slides li:nth-child(2){opacity:1}
-#slide3:checked ~ .viewport .slides li:nth-child(3){opacity:1}
-#slide4:checked ~ .viewport .slides li:nth-child(4){opacity:1}
+  /* viewport fixa */
+  #sobre .carousel .viewport{
+    height:var(--h);
+    overflow:hidden;
+    background:#f2f4f7;
+    contain:content;                 /* isola pintura → evita “piscar” */
+  }
 
-/* bolinhas */
-#sobre .carousel .nav-dots{text-align:center;margin:10px 0 14px}
-#sobre .carousel .nav-dots label{
-  display:inline-block;width:10px;height:10px;margin:0 5px;
-  border-radius:50%;background:#bbb;cursor:pointer;
-  transition:transform .1s, background .2s;
-}
-#sobre .carousel .nav-dots label:hover{transform:scale(1.1)}
-#slide1:checked ~ .nav-dots label[for="slide1"],
-#slide2:checked ~ .nav-dots label[for="slide2"],
-#slide5:checked ~ .nav-dots label[for="slide3"],
-#slide6:checked ~ .nav-dots label[for="slide4"]{background:var(--brand)}
+  /* trilho */
+  #sobre .slides{
+    display:flex;
+    width:600%;                      /* 6 slides */
+    height:var(--h);
+    margin:0; padding:0; list-style:none;
+    transition:transform .5s ease;
+    will-change:transform;
+    backface-visibility:hidden;
+    transform:translate3d(0,0,0);
+  }
 
-  /* ===== Ajustes de layout extras ===== */
+  /* slide */
+  #sobre .slides li{
+    flex:0 0 100%;
+    height:var(--h);
+    display:flex;align-items:center;justify-content:center;
+    background:#f2f4f7;
+  }
+  #sobre .slides img{
+    display:block;
+    max-width:100%;
+    max-height:100%;
+    width:auto;height:auto;
+    object-fit:contain;object-position:center;
+  }
+
+  /* navegação por radios */
+  #slide1:checked ~ .viewport .slides{transform:translate3d(0%,0,0)}
+  #slide2:checked ~ .viewport .slides{transform:translate3d(-100%,0,0)}
+  #slide3:checked ~ .viewport .slides{transform:translate3d(-200%,0,0)}
+  #slide4:checked ~ .viewport .slides{transform:translate3d(-300%,0,0)}
+  #slide5:checked ~ .viewport .slides{transform:translate3d(-400%,0,0)}
+  #slide6:checked ~ .viewport .slides{transform:translate3d(-500%,0,0)}
+
+  /* bolinhas */
+  #sobre .carousel .nav-dots{text-align:center;margin:10px 0 14px}
+  #sobre .carousel .nav-dots label{
+    display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;
+    background:#bbb;cursor:pointer;transition:transform .1s,background .2s;
+  }
+  #sobre .carousel .nav-dots label:hover{transform:scale(1.1)}
+  #slide1:checked ~ .nav-dots label[for="slide1"],
+  #slide2:checked ~ .nav-dots label[for="slide2"],
+  #slide3:checked ~ .nav-dots label[for="slide3"],
+  #slide4:checked ~ .nav-dots label[for="slide4"],
+  #slide5:checked ~ .nav-dots label[for="slide5"],
+  #slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
+
+ /* ===== Ajustes de layout extras ===== */
 
 /* 1) Mapa grande e responsivo */
 iframe.map{
@@ -163,6 +212,7 @@ iframe.map{
 /* (Opcional) deixa qualquer item dentro de grids encostar no topo */
 section .grid > * { align-self: start; }
 
+  
 </style>
 </head>
 <body>
@@ -314,14 +364,18 @@ section .grid > * { align-self: start; }
   <input type="radio" name="slides" id="slide2">
   <input type="radio" name="slides" id="slide3">
   <input type="radio" name="slides" id="slide4">
+  <input type="radio" name="slides" id="slide5">
+  <input type="radio" name="slides" id="slide6">
 
   <!-- viewport com altura estável -->
   <div class="viewport">
     <ul class="slides">
       <li><img src="foto1.png?v=1" alt="Área de musculação" decoding="async"></li>
       <li><img src="foto2.png?v=1" alt="Máquinas de treino" decoding="async"></li>
-      <li><img src="foto3.png?v=1" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
-      <li><img src="foto4.png?v=1" alt="Vista geral da academia" decoding="async"></li>
+      <li><img src="foto3.png?v=1" alt="Espaço para aulas coletivas" decoding="async"></li>
+      <li><img src="foto4.png?v=1" alt="Ambiente amplo e climatizado" decoding="async"></li>
+      <li><img src="foto5.png?v=1" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
+      <li><img src="foto6.png?v=1" alt="Vista geral da academia" decoding="async"></li>
 
     </ul>
   </div>
@@ -329,6 +383,8 @@ section .grid > * { align-self: start; }
   <div class="nav-dots">
     <label for="slide1"></label>
     <label for="slide2"></label>
+    <label for="slide3"></label>
+    <label for="slide4"></label>
     <label for="slide5"></label>
     <label for="slide6"></label>
   </div>
