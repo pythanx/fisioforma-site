@@ -58,43 +58,63 @@
   .ig-frame{position:relative;width:100%;aspect-ratio:1 / 1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-  /* ===== Carrossel corrigido ===== */
+  /* ===== Carrossel (com viewport e altura estável) ===== */
   #sobre .carousel{
+    --h: clamp(220px, 26vw, 360px);    /* altura visível do slider */
     max-width:640px;
     margin:24px auto 0;
     overflow:hidden;
     border-radius:16px;
     background:#fff;
     border:1px solid var(--line);
+    position:relative;
   }
   #sobre .carousel input{display:none}
+
+  /* viewport com altura fixa */
+  #sobre .carousel .viewport{
+    height: var(--h);
+    overflow: hidden;
+    background: #f2f4f7;
+  }
+
+  /* trilho dos slides */
   #sobre .slides{
     display:flex;
     width:600%; /* 6 slides */
+    height: var(--h);
     transition:transform .6s ease;
     margin:0; padding:0; list-style:none;
+    will-change: transform;
   }
+
+  /* cada slide ocupa 100% */
   #sobre .slides li{
-    flex:0 0 100%;            /* largura fixa */
+    flex:0 0 100%;
+    height: var(--h);
     display:flex;
     align-items:center;
     justify-content:center;
     background:#f2f4f7;
-    min-height:220px;         /* altura mínima estável */
   }
+
+  /* imagem contida dentro da viewport */
   #sobre .slides img{
     max-width:100%;
-    max-height:clamp(180px,26vw,320px);
+    max-height:100%;
     width:auto; height:auto;
     object-fit:contain; object-position:center;
+    display:block;
   }
-  /* movimentação por radios */
-  #slide1:checked ~ .slides{transform:translateX(0%)}
-  #slide2:checked ~ .slides{transform:translateX(-100%)}
-  #slide3:checked ~ .slides{transform:translateX(-200%)}
-  #slide4:checked ~ .slides{transform:translateX(-300%)}
-  #slide5:checked ~ .slides{transform:translateX(-400%)}
-  #slide6:checked ~ .slides{transform:translateX(-500%)}
+
+  /* movimentação por radios (agora seleciona .viewport .slides) */
+  #slide1:checked ~ .viewport .slides{transform:translateX(0%)}
+  #slide2:checked ~ .viewport .slides{transform:translateX(-100%)}
+  #slide3:checked ~ .viewport .slides{transform:translateX(-200%)}
+  #slide4:checked ~ .viewport .slides{transform:translateX(-300%)}
+  #slide5:checked ~ .viewport .slides{transform:translateX(-400%)}
+  #slide6:checked ~ .viewport .slides{transform:translateX(-500%)}
+
   /* bolinhas */
   .nav-dots{text-align:center;margin:10px 0 14px}
   .nav-dots label{
