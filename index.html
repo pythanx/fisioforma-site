@@ -98,10 +98,10 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 /* === Carrossel de DEPOIMENTOS (slide) === */
 #depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}
 #depoimentos .t-carousel input{display:none}
-#depoimentos .viewport{overflow:hidden;background:#fff;contain:content}
+#depoimentos .viewport{overflow:hidden;background:#fff;contain:content;min-height:180px;}
 #depoimentos .slides{display:flex;width:800%;transition:transform .5s ease;will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)}
 #depoimentos .slide{flex:0 0 100%;display:flex;align-items:center;justify-content:center;padding:28px 26px}
-#depoimentos .bubble{max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px}
+#depoimentos .bubble{color:var(--ink);max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px}
 #depoimentos .bubble p{margin:0 0 10px 0}
 #depoimentos .bubble strong{color:var(--brand-ink)}
 #depoimentos .nav-dots{text-align:center;margin:12px 0 16px}
@@ -461,6 +461,15 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   });
 })();
 </script>
+
+  <script>
+  // garante que o primeiro esteja marcado
+  (function(){
+    const first = document.querySelector('#depoimentos input[name="t"]');
+    if (first) first.checked = true;
+  })();
+</script>
+
 
 <!-- Autoplay depoimentos -->
 <script>
