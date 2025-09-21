@@ -150,6 +150,13 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 
 /* Pequenos toques */
 section .grid > *{align-self:start}
+
+footer{border-top:1px solid var(--line);margin-top:28px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:18px 16px;color:var(--muted);font-size:14px}
+footer .credit{opacity:.9}
+footer .credit a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+footer .credit a:hover{opacity:1;text-decoration:underline}
+
 </style>
 </head>
 <body>
@@ -254,18 +261,25 @@ section .grid > *{align-self:start}
   </section>
 
   <!-- SOBRE (histórico, missão, visão) + CARROSSEL FOTOS -->
-<section id="sobre" class="alt">
-  <div class="wrap">
-    <h2>Sobre a FisioForma</h2>
-    <p class="muted">
-      A <strong>FisioForma Academia</strong> foi fundada em 2014 e hoje conta com mais de <strong>11 anos de experiência</strong> no mercado fitness de São Luís – MA. 
-      Desde o início, a missão sempre foi unir <strong>saúde, acolhimento e resultados reais</strong>, transformando a prática de exercícios em uma experiência acessível e motivadora.
-    </p>
-    <p class="muted">
-      <strong>Missão:</strong> Promover saúde, autoestima e qualidade de vida através da atividade física orientada, em um ambiente seguro e acolhedor.  
-      <br><strong>Visão:</strong> Ser reconhecida como a principal academia da comunidade do Anjo da Guarda, referência em atendimento humanizado e resultados sustentáveis.  
-      <br><strong>Valores:</strong> Respeito, proximidade, evolução contínua e compromisso com cada aluno.
-    </p>
+  <!-- SOBRE (histórico, missão, visão) + CARROSSEL FOTOS -->
+  <section id="sobre" class="alt">
+    <div class="wrap">
+      <h2>Sobre a FisioForma</h2>
+
+      <div class="grid cols-2">
+        <div>
+          <h3>Nosso histórico</h3>
+          <p class="muted">
+            A <strong>FisioForma Academia</strong> foi fundada em 2014 e hoje conta com mais de <strong>11 anos de experiência</strong> no mercado fitness do Anjo da Guarda.
+            Desde o início, a missão sempre foi unir <strong>saúde, acolhimento e resultados reais</strong>, transformando a prática de exercícios em uma experiência acessível e motivadora.
+          </p>
+          <h3>Missão</h3>
+          <p class="muted">Promover saúde e bem-estar por meio de treinos acessíveis, orientação profissional e um ambiente que acolhe todas as idades.</p>
+          <h3>Visão</h3>
+          <p class="muted">Ser referência na área Itaqui-Bacanga pela qualidade do atendimento, resultados consistentes e impacto positivo na vida dos alunos.</p>
+          <h3>Valores</h3>
+          <p classe="muted">Respeito, proximidade, evolução contínua e compromisso com cada aluno.
+        </div>
 
           <div class="ff-fade" aria-label="Galeria de fotos da academia">
             <!-- radios -->
@@ -304,7 +318,7 @@ section .grid > *{align-self:start}
       <div class="grid cols-3" style="margin-top:16px">
         <div class="card plan-card" tabindex="0">
           <div class="body">
-            <h3>Plano Individual <span class="badge">Popular</span></h3>
+            <h3>Plano Individual</h3>
             <div class="plan-price">R$ 90/mês</div>
             <ul class="features">
               <li>Acesso livre ao salão</li>
@@ -317,7 +331,7 @@ section .grid > *{align-self:start}
 
         <div class="card plan-card" tabindex="0">
           <div class="body">
-            <h3>Plano Casadinha</h3>
+            <h3>Plano Casadinha <span class="badge">Popular</span></h3>
             <div class="plan-price">R$ 80/mês</div>
             <ul class="features">
               <li>Para treinar em dupla</li>
@@ -424,10 +438,13 @@ section .grid > *{align-self:start}
 
 <footer>
   <div class="wrap">
-    © <span id="y"></span> FisioForma — Unidade Anjo da Guarda. Todos os direitos reservados.
-    · <a href="normas.html">Normas da academia</a>
+    <div>© <span id="y"></span> FisioForma — Unidade Anjo da Guarda. Todos os direitos reservados.</div>
+    <div class="credit">Developed by <strong>Giselle Oliveira</strong></div>
   </div>
 </footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 
