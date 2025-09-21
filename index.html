@@ -2,23 +2,23 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Academia FisioForma</title>
 <meta name="description" content="FisioForma — Comunidade, acolhimento e resultados reais. Anjo da Guarda, São Luís — MA.">
 
-<!-- ===== Favicon robusto ===== -->
+<!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=3">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=3">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%233a80b4"/><text x="50%" y="58%" text-anchor="middle" font-family="Arial" font-size="34" fill="white">FF</text></svg>'>
 <meta name="theme-color" content="#3a80b4">
 
-<!-- ===== SEO / social ===== -->
+<!-- Social -->
 <meta property="og:title" content="FisioForma Academia">
 <meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="logo-fisioforma.png">
 
-<!-- Preload das imagens do carrossel -->
+<!-- Preload imagens do carrossel -->
 <link rel="preload" as="image" href="foto1.png?v=2">
 <link rel="preload" as="image" href="foto2.png?v=2">
 <link rel="preload" as="image" href="foto3.png?v=2">
@@ -27,179 +27,129 @@
 <link rel="preload" as="image" href="foto6.png?v=2">
 
 <style>
-  :root{
-    --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
-    --card:#f5f7fa; --line:#d9d9d9;
-    --brand:#3a80b4; --brand-ink:#2d5e7e;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
-  a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
-  .wrap{max-width:1100px;margin:auto;padding:0 16px}
+:root{
+  --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
+  --card:#f5f7fa; --line:#d9d9d9;
+  --brand:#3a80b4; --brand-ink:#2d5e7e;
+  --ok:#0ea5e9;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:auto;padding:0 16px}
 
-  /* HEADER / NAV */
-  header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10;backdrop-filter:saturate(120%) blur(6px)}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-  .logo img{height:56px}
-  .links{display:none;gap:18px}
-  .cta{display:inline-block;background:var(--brand);color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;border:1px solid transparent}
-  .cta.outline{background:#fff;color:var(--brand);border-color:var(--brand)}
-  .cta:hover{background:var(--brand-ink);color:#fff}
-  @media (min-width:760px){.links{display:flex}}
+/* Header/Nav */
+header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10;backdrop-filter:saturate(120%) blur(6px)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.logo img{height:56px}
+.links{display:none;gap:18px}
+.cta{display:inline-block;background:var(--brand);color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;border:1px solid transparent}
+.cta.outline{background:#fff;color:var(--brand);border-color:var(--brand)}
+.cta:hover{background:var(--brand-ink);color:#fff}
+@media (min-width:760px){.links{display:flex}}
 
-  /* SEÇÕES / CARDS / GRID */
-  section{padding:56px 0}
-  section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
-  .muted{color:var(--muted)}
-  .grid{display:grid;gap:18px}
-  @media(min-width:760px){
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-  }
-  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
-  .card .body{padding:16px 18px}
+/* Layout utilitários */
+section{padding:56px 0}
+section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:22px}
+@media(min-width:760px){.grid.cols-2{grid-template-columns:repeat(2,1fr)} .grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease,border-color .2s ease}
+.card .body{padding:18px 20px}
+.card:focus-within,.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:#bcd7ea;outline:none}
 
-  /* HERO */
-  .hero{padding:64px 0}
-  .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0}
-  .hero p{color:var(--muted);max-width:62ch}
-  .hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+/* Hero */
+.hero{padding:64px 0}
+.hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0}
+.hero p{color:var(--muted);max-width:62ch}
+.hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.hero .card{align-self:start;max-width:560px}
+.hero .card .body{font-size:18px;line-height:1.5}
 
-  /* INSTAGRAM SIDEBAR */
-  .ig-frame{position:relative;width:100%;aspect-ratio:1 / 1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-  .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* Instagram sidebar */
+.ig-frame{position:relative;width:100%;aspect-ratio:1/1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
+/* === Carrossel de FOTOS (FADE) — sem flicker === */
+#sobre .ff-fade{--h: clamp(220px,26vw,360px);max-width:640px;margin:24px auto 0;border:1px solid var(--line);border-radius:16px;background:#fff;position:relative;overflow:hidden}
+#sobre .ff-fade input{display:none}
+#sobre .ff-fade .viewport{position:relative;height:var(--h);background:#f2f4f7;isolation:isolate}
+#sobre .ff-fade .slides{list-style:none;margin:0;padding:0;position:relative;height:100%}
+#sobre .ff-fade .slides li{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .6s ease;will-change:opacity}
+#sobre .ff-fade .slides img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center}
+#fff1:checked ~ .viewport .slides li:nth-child(1){opacity:1}
+#fff2:checked ~ .viewport .slides li:nth-child(2){opacity:1}
+#fff3:checked ~ .viewport .slides li:nth-child(3){opacity:1}
+#fff4:checked ~ .viewport .slides li:nth-child(4){opacity:1}
+#fff5:checked ~ .viewport .slides li:nth-child(5){opacity:1}
+#fff6:checked ~ .viewport .slides li:nth-child(6){opacity:1}
+#sobre .ff-fade .nav-dots{text-align:center;margin:10px 0 14px}
+#sobre .ff-fade .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
+#sobre .ff-fade .nav-dots label:hover{transform:scale(1.1)}
+#fff1:checked ~ .nav-dots label[for="fff1"],
+#fff2:checked ~ .nav-dots label[for="fff2"],
+#fff3:checked ~ .nav-dots label[for="fff3"],
+#fff4:checked ~ .nav-dots label[for="fff4"],
+#fff5:checked ~ .nav-dots label[for="fff5"],
+#fff6:checked ~ .nav-dots label[for="fff6"]{background:var(--brand)}
 
-    /* === CARROSSEL FADE (sem flicker) === */
-    .ff-fade{
-    --h: clamp(220px, 26vw, 360px);
-    max-width:640px; margin:24px auto 0; border:1px solid var(--line);
-    border-radius:16px; background:#fff; position:relative; overflow:hidden;
-  }
-  .ff-fade input{ display:none; }
-  
-  .ff-fade .viewport{
-    position:relative; height:var(--h); background:#f2f4f7;
-    isolation:isolate;
-  }
-  
-  /* pilha sobreposta */
-  .ff-fade .slides{
-    list-style:none; margin:0; padding:0;
-    position:relative;  /* ESSENCIAL */
-    height:100%;
-  }
-  .ff-fade .slides li{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    opacity:0; transition:opacity .6s ease; will-change:opacity;
-  }
-  .ff-fade .slides img{
-    display:block; max-width:100%; max-height:100%; width:auto; height:auto;
-    object-fit:contain; object-position:center;
-  }
-  
-  /* slide ativo pelos radios */
-  #fff1:checked ~ .viewport .slides li:nth-child(1){ opacity:1; }
-  #fff2:checked ~ .viewport .slides li:nth-child(2){ opacity:1; }
-  #fff3:checked ~ .viewport .slides li:nth-child(3){ opacity:1; }
-  #fff4:checked ~ .viewport .slides li:nth-child(4){ opacity:1; }
-  #fff5:checked ~ .viewport .slides li:nth-child(5){ opacity:1; }
-  #fff6:checked ~ .viewport .slides li:nth-child(6){ opacity:1; }
-  
-  /* bolinhas */
-  .ff-fade .nav-dots{ text-align:center; margin:10px 0 14px; }
-  .ff-fade .nav-dots label{
-    display:inline-block; width:10px; height:10px; margin:0 5px; border-radius:50%;
-    background:#bbb; cursor:pointer; transition:transform .1s, background .2s;
-  }
-  .ff-fade .nav-dots label:hover{ transform:scale(1.1); }
-  #fff1:checked ~ .nav-dots label[for="fff1"],
-  #fff2:checked ~ .nav-dots label[for="fff2"],
-  #fff3:checked ~ .nav-dots label[for="fff3"],
-  #fff4:checked ~ .nav-dots label[for="fff4"],
-  #fff5:checked ~ .nav-dots label[for="fff5"],
-  #fff6:checked ~ .nav-dots label[for="fff6"]{ background:var(--brand); }
+/* === Carrossel de DEPOIMENTOS (slide) === */
+#depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}
+#depoimentos .t-carousel input{display:none}
+#depoimentos .viewport{overflow:hidden;background:#fff;contain:content}
+#depoimentos .slides{display:flex;width:800%;transition:transform .5s ease;will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)}
+#depoimentos .slide{flex:0 0 100%;display:flex;align-items:center;justify-content:center;padding:28px 26px}
+#depoimentos .bubble{max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px}
+#depoimentos .bubble p{margin:0 0 10px 0}
+#depoimentos .bubble strong{color:var(--brand-ink)}
+#depoimentos .nav-dots{text-align:center;margin:12px 0 16px}
+#depoimentos .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
+#depoimentos .nav-dots label:hover{transform:scale(1.1)}
+#t1:checked ~ .viewport .slides{transform:translate3d(0%,0,0)}
+#t2:checked ~ .viewport .slides{transform:translate3d(-100%,0,0)}
+#t3:checked ~ .viewport .slides{transform:translate3d(-200%,0,0)}
+#t4:checked ~ .viewport .slides{transform:translate3d(-300%,0,0)}
+#t5:checked ~ .viewport .slides{transform:translate3d(-400%,0,0)}
+#t6:checked ~ .viewport .slides{transform:translate3d(-500%,0,0)}
+#t7:checked ~ .viewport .slides{transform:translate3d(-600%,0,0)}
+#t8:checked ~ .viewport .slides{transform:translate3d(-700%,0,0)}
+#t1:checked ~ .nav-dots label[for="t1"],
+#t2:checked ~ .nav-dots label[for="t2"],
+#t3:checked ~ .nav-dots label[for="t3"],
+#t4:checked ~ .nav-dots label[for="t4"],
+#t5:checked ~ .nav-dots label[for="t5"],
+#t6:checked ~ .nav-dots label[for="t6"],
+#t7:checked ~ .nav-dots label[for="t7"],
+#t8:checked ~ .nav-dots label[for="t8"]{background:var(--brand)}
 
+/* === MAPA === */
+iframe.map{width:100%;height:360px;border:0;border-radius:12px}
+@media (max-width:560px){iframe.map{height:260px}}
 
-    /* ===== DEPOIMENTOS (carrossel fade, estável) ===== */
-  #depoimentos .t-fade{
-    --h: clamp(160px, 18vw, 240px); /* altura estável */
-    max-width:880px;
-    margin:24px auto 0;
-    border:1px solid var(--line);
-    background:#fff;
-    border-radius:16px;
-    overflow:hidden;
-    position:relative;
-  }
-  #depoimentos .t-fade input{ display:none; }
-  
-  #depoimentos .t-fade .viewport{
-    position:relative;
-    height:var(--h);
-    background:#fff;
-    isolation:isolate;          /* evita interferência de pintura */
-    display:block;
-  }
-  
-  /* pilha de slides sobrepostos */
-  #depoimentos .t-fade .slides{
-    list-style:none; margin:0; padding:0;
-    position:relative; height:100%;
-  }
-  #depoimentos .t-fade .slides li{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    opacity:0; transition:opacity .5s ease;
-    will-change:opacity;
-  }
-  
-  /* bolha do depoimento */
-  #depoimentos .bubble{
-    max-width:680px;
-    background:#f7fafc;
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:18px 18px 14px;
-  }
-  #depoimentos .bubble p{ margin:0 0 10px 0 }
-  #depoimentos .bubble strong{ color:var(--brand-ink) }
-  
-  /* qual slide mostrar */
-  #td1:checked ~ .viewport .slides li:nth-child(1){ opacity:1; }
-  #td2:checked ~ .viewport .slides li:nth-child(2){ opacity:1; }
-  #td3:checked ~ .viewport .slides li:nth-child(3){ opacity:1; }
-  #td4:checked ~ .viewport .slides li:nth-child(4){ opacity:1; }
-  #td5:checked ~ .viewport .slides li:nth-child(5){ opacity:1; }
-  #td6:checked ~ .viewport .slides li:nth-child(6){ opacity:1; }
-  #td7:checked ~ .viewport .slides li:nth-child(7){ opacity:1; }
-  #td8:checked ~ .viewport .slides li:nth-child(8){ opacity:1; }
-  
-  /* bolinhas */
-  #depoimentos .nav-dots{ text-align:center; margin:12px 0 16px; }
-  #depoimentos .nav-dots label{
-    display:inline-block; width:10px; height:10px; margin:0 5px;
-    border-radius:50%; background:#bbb; cursor:pointer;
-    transition:transform .1s, background .2s;
-  }
-  #depoimentos .nav-dots label:hover{ transform:scale(1.1) }
-  #td1:checked ~ .nav-dots label[for="td1"],
-  #td2:checked ~ .nav-dots label[for="td2"],
-  #td3:checked ~ .nav-dots label[for="td3"],
-  #td4:checked ~ .nav-dots label[for="td4"],
-  #td5:checked ~ .nav-dots label[for="td5"],
-  #td6:checked ~ .nav-dots label[for="td6"],
-  #td7:checked ~ .nav-dots label[for="td7"],
-  #td8:checked ~ .nav-dots label[for="td8"]{ background:var(--brand) }
+/* === PLANOS (preço com borda azul grossa + hover) === */
+.plan-price{
+  font-size:28px;font-weight:900;margin:10px 0 4px 0;
+  display:inline-block;padding:8px 14px;border:3px solid var(--brand);
+  border-radius:12px;background:#fff;
+}
+.plan-card .body{display:grid;gap:8px}
+.plan-card .features{margin:6px 0 2px 0;padding-left:18px}
+.plan-card .features li{margin:2px 0}
+.plan-card:hover .plan-price{border-color:var(--brand-ink)}
+.plan-card:focus-within .plan-price{border-color:var(--brand-ink)}
 
+/* === Tabela comparativa === */
+.compare{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.compare th,.compare td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:center}
+.compare thead th{background:#eef5fb;font-weight:800}
+.compare tbody tr:hover{background:#f9fbfe}
+.compare td:first-child,.compare th:first-child{text-align:left;font-weight:700}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:#e6f2fb;color:#1b4e70;border:1px solid #cfe6f6}
 
-  /* ===== Ajustes extras ===== */
-  iframe.map{width:100%;height:360px;border:0;border-radius:12px}
-  @media (max-width:560px){iframe.map{height:260px}}
-  .hero .card{align-self:start;max-width:560px}
-  .hero .card .body{font-size:18px;line-height:1.5}
-  section .grid > * { align-self:start }
+/* Pequenos toques */
+section .grid > *{align-self:start}
 </style>
 </head>
 <body>
@@ -211,6 +161,7 @@
       <a href="#planos">Planos</a>
       <a href="#estrutura">Estrutura</a>
       <a href="#faq">FAQ</a>
+      <a href="normas.html">Normas</a>
       <a href="#contato">Contato</a>
     </nav>
     <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noreferrer">Fale no WhatsApp</a>
@@ -233,56 +184,53 @@
           Seg–Sex 06h–22h<br>
           Sáb 08h–12h e 14h30–17h30<br>
           Dom 08h–12h<br>
-          <em>Feriados podem ter horários especiais. Acompanhe os avisos no Instagram</em>
+          <em>Feriados podem ter horários especiais. Acompanhe os avisos no Instagram.</em>
         </p>
       </div>
       <div class="card"><div class="body muted">🏋️ Ambiente amplo e acolhedor, com musculação, cardio e apoio para você treinar com tranquilidade.</div></div>
     </div>
   </section>
 
-  <!-- DEPOIMENTOS (carrossel) -->
+  <!-- DEPOIMENTOS -->
   <section id="depoimentos" class="alt" aria-label="Depoimentos de alunos">
     <div class="wrap">
       <h2>O que nossos alunos dizem</h2>
 
-      <div class="t-fade" aria-live="polite">
-    <!-- radios -->
-    <input type="radio" name="td" id="td1" checked>
-    <input type="radio" name="td" id="td2">
-    <input type="radio" name="td" id="td3">
-    <input type="radio" name="td" id="td4">
-    <input type="radio" name="td" id="td5">
-    <input type="radio" name="td" id="td6">
-    <input type="radio" name="td" id="td7">
-    <input type="radio" name="td" id="td8">
-  
-    <div class="viewport">
-      <ul class="slides">
-        <!-- Google (até 2 anos) -->
-        <li><div class="bubble"><p>“Ambiente legal, equipe atenciosa.”</p><p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p></div></li>
-        <li><div class="bubble"><p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p><p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p></div></li>
-        <li><div class="bubble"><p>“Ameiiiiiiii tudo.”</p><p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p></div></li>
-        <li><div class="bubble"><p>“Academia boa e com excelente atendimento.”</p><p><strong>— Wesley (Google · 2 anos)</strong></p></div></li>
-        <!-- Instagram -->
-        <li><div class="bubble"><p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p><p><strong>— Aluna no Instagram</strong></p></div></li>
-        <li><div class="bubble"><p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p><p><strong>— Comentário no Instagram</strong></p></div></li>
-        <li><div class="bubble"><p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p><p><strong>— Seguidora no Instagram</strong></p></div></li>
-        <li><div class="bubble"><p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p><p><strong>— Feedback no Instagram</strong></p></div></li>
-      </ul>
-    </div>
-  
-    <div class="nav-dots" aria-hidden="true">
-      <label for="td1"></label><label for="td2"></label><label for="td3"></label><label for="td4"></label>
-      <label for="td5"></label><label for="td6"></label><label for="td7"></label><label for="td8"></label>
-    </div>
-  </div>
-      <p class="muted" style="text-align:center;margin-top:6px">
-        <small>Fontes: Google e comentários no <a href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Instagram</a>.</small>
-      </p>
+      <div class="t-carousel" aria-live="polite">
+        <!-- radios -->
+        <input type="radio" name="t" id="t1" checked>
+        <input type="radio" name="t" id="t2">
+        <input type="radio" name="t" id="t3">
+        <input type="radio" name="t" id="t4">
+        <input type="radio" name="t" id="t5">
+        <input type="radio" name="t" id="t6">
+        <input type="radio" name="t" id="t7">
+        <input type="radio" name="t" id="t8">
+
+        <div class="viewport">
+          <div class="slides">
+            <!-- Google (até 2 anos) -->
+            <article class="slide"><div class="bubble"><p>“Ambiente legal, equipe atenciosa.”</p><p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p><p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Ameiiiiiiii tudo.”</p><p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Academia boa e com excelente atendimento.”</p><p><strong>— Wesley (Google · 2 anos)</strong></p></div></article>
+            <!-- Instagram -->
+            <article class="slide"><div class="bubble"><p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p><p><strong>— Aluna no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p><p><strong>— Comentário no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p><p><strong>— Seguidora no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p><p><strong>— Feedback no Instagram</strong></p></div></article>
+          </div>
+        </div>
+
+        <div class="nav-dots" aria-hidden="true">
+          <label for="t1"></label><label for="t2"></label><label for="t3"></label><label for="t4"></label>
+          <label for="t5"></label><label for="t6"></label><label for="t7"></label><label for="t8"></label>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- SIDEBAR DO INSTAGRAM -->
+  <!-- INSTAGRAM SIDEBAR -->
   <section id="instagram" class="alt">
     <div class="wrap grid cols-2">
       <div>
@@ -305,60 +253,120 @@
     </div>
   </section>
 
-    <!-- SOBRE + CARROSSEL -->
-<section id="sobre" class="alt" aria-label="Sobre a FisioForma">
-  <div class="wrap">
-    <h2>Sobre a FisioForma</h2>
-    <p class="muted">
-      A <strong>FisioForma Academia</strong> é referência no bairro Anjo da Guarda, em São Luís – MA.
-      Aqui, a gente combina <strong>acolhimento</strong>, <strong>orientação profissional</strong> e
-      <strong>estrutura completa</strong> para que você treine com segurança, constância e prazer —
-      seja para começar do zero, voltar à rotina ou evoluir seus resultados.
-    </p>
-    <p class="muted">
-      Nosso espaço conta com musculação, área de cardio, aulas coletivas, avaliação física e acompanhamento individual.
-      O foco é simples: <strong>saúde, autoestima e qualidade de vida</strong> para todas as idades.
-    </p>
+  <!-- SOBRE (histórico, missão, visão) + CARROSSEL FOTOS -->
+  <section id="sobre" class="alt">
+    <div class="wrap">
+      <h2>Sobre a FisioForma</h2>
 
-    <!-- CARROSSEL FADE (dentro do #sobre) -->
-    <div class="ff-fade" aria-label="Galeria de fotos da academia">
-      <!-- radios com IDs únicos -->
-      <input type="radio" name="fff" id="fff1" checked>
-      <input type="radio" name="fff" id="fff2">
-      <input type="radio" name="fff" id="fff3">
-      <input type="radio" name="fff" id="fff4">
-      <input type="radio" name="fff" id="fff5">
-      <input type="radio" name="fff" id="fff6">
+      <div class="grid cols-2">
+        <div>
+          <h3>Nosso histórico</h3>
+          <p class="muted">
+            A FisioForma nasceu no bairro Anjo da Guarda com um propósito claro: aproximar pessoas do exercício físico de forma simples,
+            segura e acolhedora. Em nossa trajetória, ampliamos a estrutura, trouxemos mais aulas coletivas e fortalecemos a cultura
+            de comunidade — porque treinar junto é mais leve e constante.
+          </p>
+          <h3>Missão</h3>
+          <p class="muted">Promover saúde e bem-estar por meio de treinos acessíveis, orientação profissional e um ambiente que acolhe todas as idades.</p>
+          <h3>Visão</h3>
+          <p class="muted">Ser referência na área Itaqui-Bacanga pela qualidade do atendimento, resultados consistentes e impacto positivo na vida dos alunos.</p>
+        </div>
 
-      <div class="viewport">
-        <ul class="slides">
-          <li><img src="foto1.png?v=2" alt="Área de musculação" decoding="async"></li>
-          <li><img src="foto2.png?v=2" alt="Máquinas de treino" decoding="async"></li>
-          <li><img src="foto3.png?v=2" alt="Espaço para aulas coletivas" decoding="async"></li>
-          <li><img src="foto4.png?v=2" alt="Ambiente amplo e climatizado" decoding="async"></li>
-          <li><img src="foto5.png?v=2" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
-          <li><img src="foto6.png?v=2" alt="Vista geral da academia" decoding="async"></li>
-        </ul>
+        <div>
+          <div class="ff-fade" aria-label="Galeria de fotos da academia">
+            <!-- radios -->
+            <input type="radio" name="fff" id="fff1" checked>
+            <input type="radio" name="fff" id="fff2">
+            <input type="radio" name="fff" id="fff3">
+            <input type="radio" name="fff" id="fff4">
+            <input type="radio" name="fff" id="fff5">
+            <input type="radio" name="fff" id="fff6">
+            <div class="viewport">
+              <ul class="slides">
+                <li><img src="foto1.png?v=2" alt="Área de musculação" decoding="async"></li>
+                <li><img src="foto2.png?v=2" alt="Máquinas de treino" decoding="async"></li>
+                <li><img src="foto3.png?v=2" alt="Espaço para aulas coletivas" decoding="async"></li>
+                <li><img src="foto4.png?v=2" alt="Ambiente amplo e climatizado" decoding="async"></li>
+                <li><img src="foto5.png?v=2" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
+                <li><img src="foto6.png?v=2" alt="Vista geral da academia" decoding="async"></li>
+              </ul>
+            </div>
+            <div class="nav-dots">
+              <label for="fff1"></label><label for="fff2"></label><label for="fff3"></label>
+              <label for="fff4"></label><label for="fff5"></label><label for="fff6"></label>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="nav-dots">
-        <label for="fff1"></label><label for="fff2"></label><label for="fff3"></label>
-        <label for="fff4"></label><label for="fff5"></label><label for="fff6"></label>
-      </div>
     </div>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- PLANOS -->
   <section id="planos">
     <div class="wrap">
       <h2>Planos e valores</h2>
-      <div class="grid cols-3" style="margin-top:12px">
-        <div class="card"><div class="body"><h3>Plano Individual</h3><p class="muted">Acesso livre</p><div class="plan-price">R$ 90/mês</div></div></div>
-        <div class="card"><div class="body"><h3>Plano Casadinha</h3><p class="muted">Treine em dupla</p><div class="plan-price">R$ 80/mês</div></div></div>
-        <div class="card"><div class="body"><h3>Plano Executivo</h3><p class="muted">Horários especiais</p><div class="plan-price">R$ 60/mês</div></div></div>
+
+      <div class="grid cols-3" style="margin-top:16px">
+        <div class="card plan-card" tabindex="0">
+          <div class="body">
+            <h3>Plano Individual <span class="badge">Popular</span></h3>
+            <div class="plan-price">R$ 90/mês</div>
+            <ul class="features">
+              <li>Acesso livre ao salão</li>
+              <li>Orientação da equipe</li>
+              <li>Reavaliação periódica</li>
+            </ul>
+            <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noreferrer">Escolher</a>
+          </div>
+        </div>
+
+        <div class="card plan-card" tabindex="0">
+          <div class="body">
+            <h3>Plano Casadinha</h3>
+            <div class="plan-price">R$ 80/mês</div>
+            <ul class="features">
+              <li>Para treinar em dupla</li>
+              <li>Acesso salão + aulas</li>
+              <li>Descontos sazonais</li>
+            </ul>
+            <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noreferrer">Escolher</a>
+          </div>
+        </div>
+
+        <div class="card plan-card" tabindex="0">
+          <div class="body">
+            <h3>Plano Executivo</h3>
+            <div class="plan-price">R$ 60/mês</div>
+            <ul class="features">
+              <li>Horários especiais</li>
+              <li>Entrada rápida</li>
+              <li>Ideal para rotina corrida</li>
+            </ul>
+            <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noreferrer">Escolher</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela comparativa -->
+      <div style="margin-top:24px;overflow:auto">
+        <table class="compare" aria-label="Comparação de planos">
+          <thead>
+            <tr>
+              <th>Benefícios</th>
+              <th>Individual</th>
+              <th>Casadinha</th>
+              <th>Executivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Acesso ao salão</td><td>✔</td><td>✔</td><td>✔</td></tr>
+            <tr><td>Aulas coletivas</td><td>Opcional</td><td>Incluídas</td><td>Opcional</td></tr>
+            <tr><td>Reavaliação física</td><td>✔</td><td>✔</td><td>✔</td></tr>
+            <tr><td>Horários diferenciados</td><td>—</td><td>—</td><td>✔</td></tr>
+            <tr><td>Descontos</td><td>Campanhas</td><td>Melhor custo p/ 2</td><td>Campanhas</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -370,7 +378,7 @@
         <h2>Fale com a gente</h2>
         <p>📞 <a href="tel:+5598992223926">(98) 99222-3926</a></p>
         <p>✉️ <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a></p>
-        <p>📍 <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Lu%C3%ADs,+MA" target="_blank">Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA</a></p>
+        <p>📍 <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA" target="_blank">Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA</a></p>
         <p><a class="cta" href="https://wa.me/5598992223926" target="_blank">Chamar no WhatsApp</a></p>
       </div>
       <div><iframe class="map" title="Mapa FisioForma" src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Lu%C3%ADs,+MA&output=embed" loading="lazy"></iframe></div>
@@ -407,34 +415,36 @@
       <div class="grid cols-2" style="margin-top:12px">
         <div class="card"><div class="body"><h3>A FisioForma é para iniciantes?</h3><p class="muted">Sim! Plano progressivo, respeitando seu ritmo e possíveis limitações.</p></div></div>
         <div class="card"><div class="body"><h3>Vocês fazem avaliação física?</h3><p class="muted">Fazemos avaliação inicial e reavaliações periódicas com agendamento.</p></div></div>
-        <div class="card"><div class="body"><h3>Quais são os planos e formas de pagamento?</h3><p class="muted">Mensal, fidelidade e promoções sazonais. Cartão, PIX e dinheiro</p></div></div>
-        <div class="card"><div class="body"><h3>Posso fazer um treino experimental?</h3><p class="muted">Na FisioForma, não temos treino experimental gratuito. Você pode agendar um tour guiado para conhecer a estrutura e modalidades, ou comprar um Day Use na recepção para testar um treino.</p></div></div>
+        <div class="card"><div class="body"><h3>Quais são os planos e formas de pagamento?</h3><p class="muted">Mensal, fidelidade e promoções sazonais. Cartão, PIX e dinheiro.</p></div></div>
+        <div class="card"><div class="body"><h3>Posso fazer um treino experimental?</h3><p class="muted">Não oferecemos treino experimental gratuito. Você pode agendar um tour guiado ou comprar um Day Use na recepção.</p></div></div>
         <div class="card"><div class="body"><h3>Há acompanhamento no salão?</h3><p class="muted">Sim. Equipe orienta postura, execução e ajustes de carga. Personal à parte.</p></div></div>
-        <div class="card"><div class="body"><h3>Como funcionam as aulas coletivas?</h3><p class="muted">Aulas de ritbox, dança e funcional.</p></div></div>
-        <div class="card"><div class="body"><h3>Tem vestiário, chuveiro e armário?</h3><p class="muted">Sim. Recomenda-se cadeado próprio para os armários. Verificar com a recepção a disponibilidade de horários para a alocação das vagas.</p></div></div>
+        <div class="card"><div class="body"><h3>Como funcionam as aulas coletivas?</h3><p class="muted">Ritbox, dança e funcional.</p></div></div>
+        <div class="card"><div class="body"><h3>Tem vestiário, chuveiro e armário?</h3><p class="muted">Sim. Recomenda-se cadeado próprio; verifique a disponibilidade na recepção.</p></div></div>
         <div class="card"><div class="body"><h3>Idade mínima para treinar?</h3><p class="muted">A partir de 14 anos com autorização do responsável.</p></div></div>
-        <div class="card"><div class="body"><h3>Posso pausar o plano?</h3><p class="muted">Planos com fidelidade permitem pausa por viagem/saúde mediante justificativa.</p></div></div>
-        <div class="card"><div class="body"><h3>Quais os horários de funcionamento?</h3><p class="muted" style="line-height:1.4">Seg–Sex: 06h–22h<br>Sáb: 08h–12h e 14h30–17h30<br>Dom: 08h–12h<br><em>Em feriados, os horários podem ser reduzidos; acompanhe nossos avisos no Instagram ou chame no WhatsApp.</em></p></div></div>
+        <div class="card"><div class="body"><h3>Posso pausar o plano?</h3><p class="muted">Planos com fidelidade podem ter pausa mediante justificativa.</p></div></div>
+        <div class="card"><div class="body"><h3>Quais os horários?</h3><p class="muted" style="line-height:1.4">Seg–Sex: 06h–22h<br>Sáb: 08h–12h e 14h30–17h30<br>Dom: 08h–12h</p></div></div>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">© <span id="y"></span> FisioForma — Unidade Anjo da Guarda. Todos os direitos reservados.</div>
+  <div class="wrap">
+    © <span id="y"></span> FisioForma — Unidade Anjo da Guarda. Todos os direitos reservados.
+    · <a href="normas.html">Normas da academia</a>
+  </div>
 </footer>
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 
+<!-- Autoplay fotos (FADE) -->
 <script>
-/* Autoplay suave + pausa no hover (para o carrossel FADE) */
 (function(){
   const box = document.querySelector('#sobre .ff-fade');
   if(!box) return;
   const radios = [...box.querySelectorAll('input[name="fff"]')];
   const imgs = [...box.querySelectorAll('.slides img')];
   let i = 0, hold = false, loaded = 0;
-
   function start(){
     setInterval(()=>{ if(!hold){ i = (i+1) % radios.length; radios[i].checked = true; } }, 4200);
     box.addEventListener('mouseenter', ()=> hold = true);
@@ -450,32 +460,18 @@
 })();
 </script>
 
-
-<!-- JS: carrossel de depoimentos (autoplay + pausa) -->
+<!-- Autoplay depoimentos -->
 <script>
-/* Autoplay suave + pausa no hover (depoimentos) */
 (function(){
-  const box = document.querySelector('#depoimentos .t-fade');
+  const box = document.querySelector('#depoimentos .t-carousel');
   if(!box) return;
-
-  const radios = [...box.querySelectorAll('input[name="td"]')];
+  const radios = [...box.querySelectorAll('input[name="t"]')];
   let i = 0, hold = false;
-
-  function tick(){
-    if(!hold){
-      i = (i + 1) % radios.length;
-      radios[i].checked = true;
-    }
-  }
-
-  const id = setInterval(tick, 4500);
+  const tick = () => { if(!hold){ i = (i+1)%radios.length; radios[i].checked = true; } };
+  setInterval(tick, 4500);
   box.addEventListener('mouseenter', ()=> hold = true);
   box.addEventListener('mouseleave', ()=> hold = false);
-
-  // clique nas bolinhas posiciona o índice atual (mantém ciclo “em sincronia”)
-  box.querySelectorAll('.nav-dots label').forEach((lab, idx)=>{
-    lab.addEventListener('click', ()=> { i = idx; });
-  });
+  box.querySelectorAll('.nav-dots label').forEach((lab, idx)=> lab.addEventListener('click', ()=> { i = idx; }));
 })();
 </script>
 </body>
