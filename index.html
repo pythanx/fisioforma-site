@@ -105,10 +105,12 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 /* viewport com altura estável */
 #depoimentos .viewport{
   position:relative;
-  height: clamp(200px, 24vw, 260px);   /* fixa a altura */
+  height: clamp(200px, 24vw, 260px);
+  min-height: 220px;       /* adição opcional */
   background:#fff;
   isolation:isolate;
 }
+
 
 /* pilha de slides sobrepostos */
 #depoimentos .slides{
