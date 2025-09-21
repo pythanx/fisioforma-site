@@ -111,6 +111,34 @@
   /* opcionais: ainda mais compacto em telas muito largas/estreitas */
   @media (min-width:1200px){ #sobre .carousel{ max-width:600px; } }
   @media (max-width:380px){ #sobre .slides img{ max-height:200px; } }
+
+  /* Altura/área estáveis + exibição confiável */
+#sobre .carousel{ max-width:640px; margin:24px auto 0; overflow:hidden; border-radius:16px; background:#fff; border:1px solid var(--line); }
+#sobre .slides{ display:flex; width:600%; transition:transform .6s ease; margin:0; padding:0; list-style:none; }
+#sobre .slides li{ width:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:#f2f4f7; min-height:220px; } /* <= garante altura */
+#sobre .slides picture, 
+#sobre .slides img{ display:block; max-width:100%; }
+#sobre .slides img{ width:auto; height:auto; max-height:clamp(180px,26vw,320px); object-fit:contain; object-position:center; }
+
+/* Movimento por radios (garante que pare na posição) */
+#slide1:checked ~ .slides{transform:translateX(0%)}
+#slide2:checked ~ .slides{transform:translateX(-100%)}
+#slide3:checked ~ .slides{transform:translateX(-200%)}
+#slide4:checked ~ .slides{transform:translateX(-300%)}
+#slide5:checked ~ .slides{transform:translateX(-400%)}
+#slide6:checked ~ .slides{transform:translateX(-500%)}
+
+/* Bolinhas */
+.nav-dots{text-align:center;margin:10px 0 14px}
+.nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
+.nav-dots label:hover{transform:scale(1.1)}
+#slide1:checked ~ .nav-dots label[for="slide1"],
+#slide2:checked ~ .nav-dots label[for="slide2"],
+#slide3:checked ~ .nav-dots label[for="slide3"],
+#slide4:checked ~ .nav-dots label[for="slide4"],
+#slide5:checked ~ .nav-dots label[for="slide5"],
+#slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
+
 </style>
 </head>
 <body>
