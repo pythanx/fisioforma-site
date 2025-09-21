@@ -17,6 +17,13 @@
 <meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="logo-fisioforma.png">
+  <link rel="preload" as="image" href="foto1.png?v=1">
+<link rel="preload" as="image" href="foto2.png?v=1">
+<link rel="preload" as="image" href="foto3.png?v=1">
+<link rel="preload" as="image" href="foto4.png?v=1">
+<link rel="preload" as="image" href="foto5.png?v=1">
+<link rel="preload" as="image" href="foto6.png?v=1">
+
 <style>
   :root{
     --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
@@ -59,61 +66,43 @@
   .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
   /* ===== Carrossel (com viewport e altura estável) ===== */
-  #sobre .carousel{
-    --h: clamp(220px, 26vw, 360px);    /* altura visível do slider */
-    max-width:640px;
-    margin:24px auto 0;
-    overflow:hidden;
-    border-radius:16px;
-    background:#fff;
-    border:1px solid var(--line);
-    position:relative;
-  }
-  #sobre .carousel input{display:none}
+  /* viewport fixa + trilho otimizado */
+#sobre .carousel{
+  --h: clamp(220px, 26vw, 360px);
+  max-width:640px; margin:24px auto 0;
+  overflow:hidden; border-radius:16px; background:#fff; border:1px solid var(--line);
+  position:relative;
+}
+#sobre .carousel .viewport{
+  height:var(--h); overflow:hidden; background:#f2f4f7;
+  contain: content;                  /* isola pintura/layout (anti flicker) */
+}
+#sobre .slides{
+  display:flex; width:600%; height:var(--h);
+  transition:transform .6s ease;
+  margin:0; padding:0; list-style:none;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);     /* ativa GPU */
+}
+#sobre .slides li{
+  flex:0 0 100%; height:var(--h);
+  display:flex; align-items:center; justify-content:center;
+  background:#f2f4f7;
+}
+#sobre .slides img{
+  display:block; max-width:100%; max-height:100%;
+  width:auto; height:auto; object-fit:contain; object-position:center;
+}
 
-  /* viewport com altura fixa */
-  #sobre .carousel .viewport{
-    height: var(--h);
-    overflow: hidden;
-    background: #f2f4f7;
-  }
+/* use translate3d nos estados */
+#slide1:checked ~ .viewport .slides{transform:translate3d(0%,0,0)}
+#slide2:checked ~ .viewport .slides{transform:translate3d(-100%,0,0)}
+#slide3:checked ~ .viewport .slides{transform:translate3d(-200%,0,0)}
+#slide4:checked ~ .viewport .slides{transform:translate3d(-300%,0,0)}
+#slide5:checked ~ .viewport .slides{transform:translate3d(-400%,0,0)}
+#slide6:checked ~ .viewport .slides{transform:translate3d(-500%,0,0)}
 
-  /* trilho dos slides */
-  #sobre .slides{
-    display:flex;
-    width:600%; /* 6 slides */
-    height: var(--h);
-    transition:transform .6s ease;
-    margin:0; padding:0; list-style:none;
-    will-change: transform;
-  }
-
-  /* cada slide ocupa 100% */
-  #sobre .slides li{
-    flex:0 0 100%;
-    height: var(--h);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f2f4f7;
-  }
-
-  /* imagem contida dentro da viewport */
-  #sobre .slides img{
-    max-width:100%;
-    max-height:100%;
-    width:auto; height:auto;
-    object-fit:contain; object-position:center;
-    display:block;
-  }
-
-  /* movimentação por radios (agora seleciona .viewport .slides) */
-  #slide1:checked ~ .viewport .slides{transform:translateX(0%)}
-  #slide2:checked ~ .viewport .slides{transform:translateX(-100%)}
-  #slide3:checked ~ .viewport .slides{transform:translateX(-200%)}
-  #slide4:checked ~ .viewport .slides{transform:translateX(-300%)}
-  #slide5:checked ~ .viewport .slides{transform:translateX(-400%)}
-  #slide6:checked ~ .viewport .slides{transform:translateX(-500%)}
 
   /* bolinhas */
   .nav-dots{text-align:center;margin:10px 0 14px}
@@ -221,12 +210,12 @@
   <!-- viewport com altura estável -->
   <div class="viewport">
     <ul class="slides">
-      <li><img src="foto1.png?v=1" alt="Área de musculação" loading="eager" decoding="async"></li>
-      <li><img src="foto2.png?v=1" alt="Máquinas de treino" loading="lazy" decoding="async"></li>
-      <li><img src="foto3.png?v=1" alt="Espaço para aulas coletivas" loading="lazy" decoding="async"></li>
-      <li><img src="foto4.png?v=1" alt="Ambiente amplo e climatizado" loading="lazy" decoding="async"></li>
-      <li><img src="foto5.png?v=1" alt="Área de cardio com esteiras e bicicletas" loading="lazy" decoding="async"></li>
-      <li><img src="foto6.png?v=1" alt="Vista geral da academia" loading="lazy" decoding="async"></li>
+      <li><img src="foto1.png?v=1" alt="Área de musculação" decoding="async"></li>
+      <li><img src="foto2.png?v=1" alt="Máquinas de treino" decoding="async"></li>
+      <li><img src="foto3.png?v=1" alt="Espaço para aulas coletivas" decoding="async"></li>
+      <li><img src="foto4.png?v=1" alt="Ambiente amplo e climatizado" decoding="async"></li>
+      <li><img src="foto5.png?v=1" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
+      <li><img src="foto6.png?v=1" alt="Vista geral da academia" decoding="async"></li>
     </ul>
   </div>
 
@@ -319,15 +308,29 @@
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 <script>
-/* Auto-slide do carrossel + pausa no hover */
 (function(){
-  const carousel=document.querySelector('#sobre .carousel');
-  const radios=[...carousel.querySelectorAll('input[name="slides"]')];
-  let i=0, hold=false;
-  function tick(){ if(!hold){ i=(i+1)%radios.length; radios[i].checked=true; } }
-  setInterval(tick, 4000);
-  carousel.addEventListener('mouseenter', ()=>hold=true);
-  carousel.addEventListener('mouseleave', ()=>hold=false);
+  const carousel = document.querySelector('#sobre .carousel');
+  if (!carousel) return;
+  const radios = [...carousel.querySelectorAll('input[name="slides"]')];
+  const imgs = [...carousel.querySelectorAll('.slides img')];
+
+  // preloader simples
+  let loaded = 0;
+  const start = () => {
+    let i = 0, hold = false;
+    function tick(){ if(!hold){ i=(i+1)%radios.length; radios[i].checked = true; } }
+    setInterval(tick, 4000);
+    carousel.addEventListener('mouseenter', ()=>hold=true);
+    carousel.addEventListener('mouseleave', ()=>hold=false);
+  };
+
+  imgs.forEach(img=>{
+    if (img.complete) { loaded++; if (loaded===imgs.length) start(); }
+    else {
+      img.addEventListener('load', ()=>{ loaded++; if (loaded===imgs.length) start(); }, {once:true});
+      img.addEventListener('error', ()=>{ loaded++; if (loaded===imgs.length) start(); }, {once:true});
+    }
+  });
 })();
 </script>
 </body>
