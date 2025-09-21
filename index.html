@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FisioForma — Unidade Anjo da Guarda</title>
+<meta name="description" content="FisioForma — Comunidade, acolhimento e resultados reais. Unidade Anjo da Guarda, São Luís — MA.">
+
+<link rel="icon" href="logo-fisioforma.jpg">
+
+<style>
+  :root{
+    /* Paleta alinhada ao logo (azul/cinza) */
+    --bg:#ffffff;
+    --ink:#222222;
+    --muted:#5a5a5a;
+    --card:#f5f7fa;
+    --line:#d9d9d9;
+    --brand:#3a80b4;      /* azul do logo */
+    --brand-ink:#2d5e7e;  /* azul escuro p/ hover */
+  }
+  *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial}
+  a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:1100px;margin:auto;padding:0 16px}
+  header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800}
+  .logo img{height:42px}
+  .links{display:none;gap:18px}
+  .cta{display:inline-block;background:var(--brand);color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;border:1px solid transparent}
+  .cta.outline{background:#fff;color:var(--brand);border-color:var(--brand)}
+  .cta:hover{background:var(--brand-ink);color:#fff;border-color:var(--brand-ink)}
+  @media (min-width: 760px){.links{display:flex}}
+
+  .hero{padding:64px 0}
+  .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0}
+  .hero p{color:var(--muted);max-width:62ch}
+  .hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+  .grid{display:grid;gap:18px}
+  @media (min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .card .body{padding:16px 16px 18px}
+  .card h3{margin:0 0 6px 0}
+  .chip{display:inline-grid;place-content:center;background:var(--brand);color:#fff;width:40px;height:40px;border-radius:12px;font-weight:800;margin:16px}
+  section{padding:56px 0}
+  section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
+  .muted{color:var(--muted)}
+  ul.clean{list-style:none;margin:0;padding:0} ul.clean li{display:flex;gap:8px}
+  .plan-price{font-size:28px;font-weight:900;margin:6px 0}
+  iframe.map{width:100%;height:360px;border:0}
+  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <img src="logo-fisioforma.jpg" alt="Logo FisioForma">
+      <div>
+        <div>FisioForma</div>
+        <div style="font-size:12px;color:var(--muted)">Unidade Anjo da Guarda</div>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="#sobre">Sobre</a>
+      <a href="#planos">Planos</a>
+      <a href="#estrutura">Estrutura</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="cta" href="https://wa.me/5598981930522" target="_blank" rel="noreferrer">Fale no WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap grid cols-2">
+      <div>
+        <h1>FisioForma: <span style="color:var(--brand-ink)">treino que cabe na sua vida</span></h1>
+        <p class="muted">Comunidade, acolhimento e resultados reais. Aqui você encontra atendimento humanizado, orientação segura e uma comunidade que puxa você pra frente.</p>
+        <div class="btns">
+          <a class="cta" href="#planos">Ver planos</a>
+          <a class="cta outline" href="#contato">Agendar visita</a>
+        </div>
+        <p class="muted" style="margin-top:8px">Seg–Sex: 5h–22h • Sáb: 6h–12h</p>
+      </div>
+      <div class="card">
+        <div class="chip">🏋️</div>
+        <div class="body muted">Ambiente amplo e acolhedor, com musculação, cardio e apoio para você treinar com tranquilidade.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="alt">
+    <div class="wrap">
+      <h2>Sobre a FisioForma — Anjo da Guarda</h2>
+      <p class="muted">Academia localizada no bairro Anjo da Guarda em São Luís, MA. Nosso propósito é tornar o exercício físico acessível, seguro e prazeroso para pessoas de todas as idades.</p>
+    </div>
+  </section>
+
+  <section id="planos">
+    <div class="wrap">
+      <h2>Planos e valores</h2>
+      <div class="grid cols-3" style="margin-top:12px">
+        <div class="card"><div class="body"><h3>Plano Essencial</h3><div class="plan-price">R$ 99/mês</div></div></div>
+        <div class="card"><div class="body"><h3>Plano Plus</h3><div class="plan-price">R$ 129/mês</div></div></div>
+        <div class="card"><div class="body"><h3>Plano Premium</h3><div class="plan-price">R$ 169/mês</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="alt">
+    <div class="wrap grid cols-2">
+      <div>
+        <h2>Fale com a gente</h2>
+        <div class="contact-list">
+          <p>📞 (98) 98193-0522</p>
+          <p>✉️ contato@fisioforma.com.br</p>
+          <p>📍 Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA, CEP 65085‑255</p>
+        </div>
+        <p style="margin-top:10px"><a class="cta" href="https://wa.me/5598981930522" target="_blank" rel="noreferrer">Chamar no WhatsApp</a></p>
+      </div>
+      <div>
+        <iframe class="map" title="Mapa FisioForma" src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> FisioForma — Unidade Anjo da Guarda. Todos os direitos reservados.
+  </div>
+</footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
