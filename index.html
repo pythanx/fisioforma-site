@@ -191,41 +191,6 @@ footer .credit{opacity:.9}
 footer .credit a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
 footer .credit a:hover{opacity:1;text-decoration:underline}
 
-  /* --- FIX DEFINITIVO: depoimentos sempre visíveis --- */
-#depoimentos .viewport{
-  overflow: hidden;
-  background: #fff;
-  contain: content;
-  min-height: 220px;           /* garante altura antes do JS */
-}
-
-#depoimentos .slides{
-  display: flex;
-  width: 800%;
-  transform: translate3d(0,0,0);
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-#depoimentos .slide{
-  flex: 0 0 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 26px;
-  position: relative !important;  /* anula qualquer position:absolute herdado */
-  opacity: 1 !important;          /* anula qualquer opacity:0 herdado */
-}
-
-#depoimentos .bubble{
-  max-width: 680px;
-  background: #f7fafc;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 18px 18px 14px;
-  color: var(--ink);
-  line-height: 1.5;
-}
 
 </style>
 </head>
