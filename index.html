@@ -122,35 +122,77 @@
   #fff6:checked ~ .nav-dots label[for="fff6"]{ background:var(--brand); }
 
 
-  /* ===== CARROSSEL DE DEPOIMENTOS (isolado do de fotos) ===== */
-  #depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}
-  #depoimentos .t-carousel input{display:none}
-  #depoimentos .viewport{overflow:hidden;background:#fff;contain:content}
-  #depoimentos .slides{display:flex;width:800%;transition:transform .5s ease;will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)}
-  #depoimentos .slide{flex:0 0 100%;display:flex;align-items:center;justify-content:center;padding:28px 26px}
-  #depoimentos .bubble{max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px}
-  #depoimentos .bubble p{margin:0 0 10px 0}
-  #depoimentos .bubble strong{color:var(--brand-ink)}
-  #depoimentos .nav-dots{text-align:center;margin:12px 0 16px}
-  #depoimentos .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
-  #depoimentos .nav-dots label:hover{transform:scale(1.1)}
-  /* movimentos (8 radios) */
-  #t1:checked ~ .viewport .slides{transform:translate3d(0%,0,0)}
-  #t2:checked ~ .viewport .slides{transform:translate3d(-100%,0,0)}
-  #t3:checked ~ .viewport .slides{transform:translate3d(-200%,0,0)}
-  #t4:checked ~ .viewport .slides{transform:translate3d(-300%,0,0)}
-  #t5:checked ~ .viewport .slides{transform:translate3d(-400%,0,0)}
-  #t6:checked ~ .viewport .slides{transform:translate3d(-500%,0,0)}
-  #t7:checked ~ .viewport .slides{transform:translate3d(-600%,0,0)}
-  #t8:checked ~ .viewport .slides{transform:translate3d(-700%,0,0)}
-  #t1:checked ~ .nav-dots label[for="t1"],
-  #t2:checked ~ .nav-dots label[for="t2"],
-  #t3:checked ~ .nav-dots label[for="t3"],
-  #t4:checked ~ .nav-dots label[for="t4"],
-  #t5:checked ~ .nav-dots label[for="t5"],
-  #t6:checked ~ .nav-dots label[for="t6"],
-  #t7:checked ~ .nav-dots label[for="t7"],
-  #t8:checked ~ .nav-dots label[for="t8"]{background:var(--brand)}
+    /* ===== DEPOIMENTOS (carrossel fade, estável) ===== */
+  #depoimentos .t-fade{
+    --h: clamp(160px, 18vw, 240px); /* altura estável */
+    max-width:880px;
+    margin:24px auto 0;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    position:relative;
+  }
+  #depoimentos .t-fade input{ display:none; }
+  
+  #depoimentos .t-fade .viewport{
+    position:relative;
+    height:var(--h);
+    background:#fff;
+    isolation:isolate;          /* evita interferência de pintura */
+    display:block;
+  }
+  
+  /* pilha de slides sobrepostos */
+  #depoimentos .t-fade .slides{
+    list-style:none; margin:0; padding:0;
+    position:relative; height:100%;
+  }
+  #depoimentos .t-fade .slides li{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; transition:opacity .5s ease;
+    will-change:opacity;
+  }
+  
+  /* bolha do depoimento */
+  #depoimentos .bubble{
+    max-width:680px;
+    background:#f7fafc;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 18px 14px;
+  }
+  #depoimentos .bubble p{ margin:0 0 10px 0 }
+  #depoimentos .bubble strong{ color:var(--brand-ink) }
+  
+  /* qual slide mostrar */
+  #td1:checked ~ .viewport .slides li:nth-child(1){ opacity:1; }
+  #td2:checked ~ .viewport .slides li:nth-child(2){ opacity:1; }
+  #td3:checked ~ .viewport .slides li:nth-child(3){ opacity:1; }
+  #td4:checked ~ .viewport .slides li:nth-child(4){ opacity:1; }
+  #td5:checked ~ .viewport .slides li:nth-child(5){ opacity:1; }
+  #td6:checked ~ .viewport .slides li:nth-child(6){ opacity:1; }
+  #td7:checked ~ .viewport .slides li:nth-child(7){ opacity:1; }
+  #td8:checked ~ .viewport .slides li:nth-child(8){ opacity:1; }
+  
+  /* bolinhas */
+  #depoimentos .nav-dots{ text-align:center; margin:12px 0 16px; }
+  #depoimentos .nav-dots label{
+    display:inline-block; width:10px; height:10px; margin:0 5px;
+    border-radius:50%; background:#bbb; cursor:pointer;
+    transition:transform .1s, background .2s;
+  }
+  #depoimentos .nav-dots label:hover{ transform:scale(1.1) }
+  #td1:checked ~ .nav-dots label[for="td1"],
+  #td2:checked ~ .nav-dots label[for="td2"],
+  #td3:checked ~ .nav-dots label[for="td3"],
+  #td4:checked ~ .nav-dots label[for="td4"],
+  #td5:checked ~ .nav-dots label[for="td5"],
+  #td6:checked ~ .nav-dots label[for="td6"],
+  #td7:checked ~ .nav-dots label[for="td7"],
+  #td8:checked ~ .nav-dots label[for="td8"]{ background:var(--brand) }
+
 
   /* ===== Ajustes extras ===== */
   iframe.map{width:100%;height:360px;border:0;border-radius:12px}
@@ -203,38 +245,37 @@
     <div class="wrap">
       <h2>O que nossos alunos dizem</h2>
 
-      <div class="t-carousel" aria-live="polite">
-        <!-- radios -->
-        <input type="radio" name="t" id="t1" checked>
-        <input type="radio" name="t" id="t2">
-        <input type="radio" name="t" id="t3">
-        <input type="radio" name="t" id="t4">
-        <input type="radio" name="t" id="t5">
-        <input type="radio" name="t" id="t6">
-        <input type="radio" name="t" id="t7">
-        <input type="radio" name="t" id="t8">
-
-        <div class="viewport">
-          <div class="slides">
-            <!-- Google (até 2 anos) -->
-            <article class="slide"><div class="bubble"><p>“Ambiente legal, equipe atenciosa.”</p><p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p></div></article>
-            <article class="slide"><div class="bubble"><p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p><p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p></div></article>
-            <article class="slide"><div class="bubble"><p>“Ameiiiiiiii tudo.”</p><p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p></div></article>
-            <article class="slide"><div class="bubble"><p>“Academia boa e com excelente atendimento.”</p><p><strong>— Wesley (Google · 2 anos)</strong></p></div></article>
-            <!-- Instagram -->
-            <article class="slide"><div class="bubble"><p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p><p><strong>— Aluna no Instagram</strong></p></div></article>
-            <article class="slide"><div class="bubble"><p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p><p><strong>— Comentário no Instagram</strong></p></div></article>
-            <article class="slide"><div class="bubble"><p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p><p><strong>— Seguidora no Instagram</strong></p></div></article>
-            <article class="slide"><div class="bubble"><p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p><p><strong>— Feedback no Instagram</strong></p></div></article>
-          </div>
-        </div>
-
-        <div class="nav-dots" aria-hidden="true">
-          <label for="t1"></label><label for="t2"></label><label for="t3"></label><label for="t4"></label>
-          <label for="t5"></label><label for="t6"></label><label for="t7"></label><label for="t8"></label>
-        </div>
-      </div>
-
+      <div class="t-fade" aria-live="polite">
+    <!-- radios -->
+    <input type="radio" name="td" id="td1" checked>
+    <input type="radio" name="td" id="td2">
+    <input type="radio" name="td" id="td3">
+    <input type="radio" name="td" id="td4">
+    <input type="radio" name="td" id="td5">
+    <input type="radio" name="td" id="td6">
+    <input type="radio" name="td" id="td7">
+    <input type="radio" name="td" id="td8">
+  
+    <div class="viewport">
+      <ul class="slides">
+        <!-- Google (até 2 anos) -->
+        <li><div class="bubble"><p>“Ambiente legal, equipe atenciosa.”</p><p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p></div></li>
+        <li><div class="bubble"><p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p><p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p></div></li>
+        <li><div class="bubble"><p>“Ameiiiiiiii tudo.”</p><p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p></div></li>
+        <li><div class="bubble"><p>“Academia boa e com excelente atendimento.”</p><p><strong>— Wesley (Google · 2 anos)</strong></p></div></li>
+        <!-- Instagram -->
+        <li><div class="bubble"><p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p><p><strong>— Aluna no Instagram</strong></p></div></li>
+        <li><div class="bubble"><p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p><p><strong>— Comentário no Instagram</strong></p></div></li>
+        <li><div class="bubble"><p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p><p><strong>— Seguidora no Instagram</strong></p></div></li>
+        <li><div class="bubble"><p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p><p><strong>— Feedback no Instagram</strong></p></div></li>
+      </ul>
+    </div>
+  
+    <div class="nav-dots" aria-hidden="true">
+      <label for="td1"></label><label for="td2"></label><label for="td3"></label><label for="td4"></label>
+      <label for="td5"></label><label for="td6"></label><label for="td7"></label><label for="td8"></label>
+    </div>
+  </div>
       <p class="muted" style="text-align:center;margin-top:6px">
         <small>Fontes: Google e comentários no <a href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Instagram</a>.</small>
       </p>
@@ -412,15 +453,26 @@
 
 <!-- JS: carrossel de depoimentos (autoplay + pausa) -->
 <script>
+/* Autoplay suave + pausa no hover (depoimentos) */
 (function(){
-  const box = document.querySelector('#depoimentos .t-carousel');
+  const box = document.querySelector('#depoimentos .t-fade');
   if(!box) return;
-  const radios = [...box.querySelectorAll('input[name="t"]')];
+
+  const radios = [...box.querySelectorAll('input[name="td"]')];
   let i = 0, hold = false;
-  const tick = () => { if(!hold){ i = (i+1)%radios.length; radios[i].checked = true; } };
+
+  function tick(){
+    if(!hold){
+      i = (i + 1) % radios.length;
+      radios[i].checked = true;
+    }
+  }
+
   const id = setInterval(tick, 4500);
   box.addEventListener('mouseenter', ()=> hold = true);
   box.addEventListener('mouseleave', ()=> hold = false);
+
+  // clique nas bolinhas posiciona o índice atual (mantém ciclo “em sincronia”)
   box.querySelectorAll('.nav-dots label').forEach((lab, idx)=>{
     lab.addEventListener('click', ()=> { i = idx; });
   });
