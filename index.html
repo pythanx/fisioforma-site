@@ -70,36 +70,107 @@
   .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
   /* ===== CARROSSEL (estável e sem flicker) ===== */
-  /* ===== Carrossel FADE (estável, sem flicker) ===== */
+  #sobre .carousel{
+    --h: clamp(220px, 26vw, 360px);
+    max-width:640px;
+    margin:24px auto 0;
+    overflow:hidden;
+    border-radius:16px;
+    background:#fff;
+    border:1px solid var(--line);
+    position:relative;
+  }
+  #sobre .carousel input{display:none}
 
- /* ===== Ajustes de layout extras ===== */
+  /* viewport fixa */
+  #sobre .carousel .viewport{
+    height:var(--h);
+    overflow:hidden;
+    background:#f2f4f7;
+    contain:content;                 /* isola pintura → evita “piscar” */
+  }
 
-/* 1) Mapa grande e responsivo */
-iframe.map{
-  width: 100%;
-  height: 360px;
-  border: 0;
-  border-radius: 12px;
-}
-@media (max-width: 560px){
-  iframe.map{ height: 260px; }
-}
+  /* trilho */
+  #sobre .slides{
+    display:flex;
+    width:600%;                      /* 6 slides */
+    height:var(--h);
+    margin:0; padding:0; list-style:none;
+    transition:transform .5s ease;
+    will-change:transform;
+    backface-visibility:hidden;
+    transform:translate3d(0,0,0);
+  }
 
-/* 2) Cartão “nota” da direita no herói sem esticar
-      (fica só do tamanho do conteúdo) */
-.hero .card{
-  align-self: start;        /* não estica pra acompanhar a coluna ao lado */
-  max-width: 560px;         /* opcional: deixa ele mais compacto */
-}
-.hero .card .body{
-  font-size: 18px;          /* deixa o texto maior e mais legível */
-  line-height: 1.5;
-}
+  /* slide */
+  #sobre .slides li{
+    flex:0 0 100%;
+    height:var(--h);
+    display:flex;align-items:center;justify-content:center;
+    background:#f2f4f7;
+  }
+  #sobre .slides img{
+    display:block;
+    max-width:100%;
+    max-height:100%;
+    width:auto;height:auto;
+    object-fit:contain;object-position:center;
+  }
 
-/* (Opcional) deixa qualquer item dentro de grids encostar no topo */
-section .grid > * { align-self: start; }
+  /* navegação por radios */
+  #slide1:checked ~ .viewport .slides{transform:translate3d(0%,0,0)}
+  #slide2:checked ~ .viewport .slides{transform:translate3d(-100%,0,0)}
+  #slide3:checked ~ .viewport .slides{transform:translate3d(-200%,0,0)}
+  #slide4:checked ~ .viewport .slides{transform:translate3d(-300%,0,0)}
+  #slide5:checked ~ .viewport .slides{transform:translate3d(-400%,0,0)}
+  #slide6:checked ~ .viewport .slides{transform:translate3d(-500%,0,0)}
 
+  /* bolinhas */
+  #sobre .carousel .nav-dots{text-align:center;margin:10px 0 14px}
+  #sobre .carousel .nav-dots label{
+    display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;
+    background:#bbb;cursor:pointer;transition:transform .1s,background .2s;
+  }
+  #sobre .carousel .nav-dots label:hover{transform:scale(1.1)}
+  #slide1:checked ~ .nav-dots label[for="slide1"],
+  #slide2:checked ~ .nav-dots label[for="slide2"],
+  #slide3:checked ~ .nav-dots label[for="slide3"],
+  #slide4:checked ~ .nav-dots label[for="slide4"],
+  #slide5:checked ~ .nav-dots label[for="slide5"],
+  #slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
+</style>
+
+
+    /* ===== CARROSSEL (estável e sem flicker) ===== */
+    /* ===== Carrossel FADE (estável, sem flicker) ===== */
   
+   /* ===== Ajustes de layout extras ===== */
+  
+  /* 1) Mapa grande e responsivo */
+  iframe.map{
+    width: 100%;
+    height: 360px;
+    border: 0;
+    border-radius: 12px;
+  }
+  @media (max-width: 560px){
+    iframe.map{ height: 260px; }
+  }
+  
+  /* 2) Cartão “nota” da direita no herói sem esticar
+        (fica só do tamanho do conteúdo) */
+  .hero .card{
+    align-self: start;        /* não estica pra acompanhar a coluna ao lado */
+    max-width: 560px;         /* opcional: deixa ele mais compacto */
+  }
+  .hero .card .body{
+    font-size: 18px;          /* deixa o texto maior e mais legível */
+    line-height: 1.5;
+  }
+  
+  /* (Opcional) deixa qualquer item dentro de grids encostar no topo */
+  section .grid > * { align-self: start; }
+
 </style>
 </head>
 <body>
