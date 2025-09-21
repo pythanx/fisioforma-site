@@ -18,6 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="logo-fisioforma.png">
 
+<!-- Preload das imagens do carrossel -->
 <link rel="preload" as="image" href="foto1.png?v=1">
 <link rel="preload" as="image" href="foto2.png?v=1">
 <link rel="preload" as="image" href="foto3.png?v=1">
@@ -58,6 +59,7 @@
   }
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
   .card .body{padding:16px 18px}
+  .plan-price{font-weight:800;font-size:22px;margin-top:6px;color:var(--brand-ink)}
 
   /* HERO */
   .hero{padding:64px 0}
@@ -69,67 +71,35 @@
   .ig-frame{position:relative;width:100%;aspect-ratio:1 / 1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-  /* ===== CARROSSEL (estável e sem flicker) ===== */
+  /* ===== CARROSSEL DE FOTOS (estável e sem flicker) ===== */
   #sobre .carousel{
     --h: clamp(220px, 26vw, 360px);
     max-width:640px;
     margin:24px auto 0;
-    overflow:hidden;
-    border-radius:16px;
-    background:#fff;
-    border:1px solid var(--line);
+    overflow:hidden;border-radius:16px;background:#fff;border:1px solid var(--line);
     position:relative;
   }
   #sobre .carousel input{display:none}
-
-  /* viewport fixa */
-  #sobre .carousel .viewport{
-    height:var(--h);
-    overflow:hidden;
-    background:#f2f4f7;
-    contain:content;                 /* isola pintura → evita “piscar” */
-  }
-
-  /* trilho */
+  #sobre .carousel .viewport{height:var(--h);overflow:hidden;background:#f2f4f7;contain:content}
   #sobre .slides{
-    display:flex;
-    width:600%;                      /* 6 slides */
-    height:var(--h);
-    margin:0; padding:0; list-style:none;
-    transition:transform .5s ease;
-    will-change:transform;
-    backface-visibility:hidden;
-    transform:translate3d(0,0,0);
+    display:flex;width:600%;height:var(--h);margin:0;padding:0;list-style:none;
+    transition:transform .5s ease;will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)
   }
-
-  /* slide */
   #sobre .slides li{
-    flex:0 0 100%;
-    height:var(--h);
-    display:flex;align-items:center;justify-content:center;
-    background:#f2f4f7;
+    flex:0 0 100%;height:var(--h);display:flex;align-items:center;justify-content:center;background:#f2f4f7
   }
-  #sobre .slides img{
-    display:block;
-    max-width:100%;
-    max-height:100%;
-    width:auto;height:auto;
-    object-fit:contain;object-position:center;
-  }
+  #sobre .slides img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center}
 
-  /* navegação por radios */
+  /* navegação por radios (fotos) */
   #slide1:checked ~ .viewport .slides{transform:translate3d(0%,0,0)}
   #slide2:checked ~ .viewport .slides{transform:translate3d(-100%,0,0)}
   #slide3:checked ~ .viewport .slides{transform:translate3d(-200%,0,0)}
   #slide4:checked ~ .viewport .slides{transform:translate3d(-300%,0,0)}
   #slide5:checked ~ .viewport .slides{transform:translate3d(-400%,0,0)}
   #slide6:checked ~ .viewport .slides{transform:translate3d(-500%,0,0)}
-
-  /* bolinhas */
   #sobre .carousel .nav-dots{text-align:center;margin:10px 0 14px}
   #sobre .carousel .nav-dots label{
-    display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;
-    background:#bbb;cursor:pointer;transition:transform .1s,background .2s;
+    display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s
   }
   #sobre .carousel .nav-dots label:hover{transform:scale(1.1)}
   #slide1:checked ~ .nav-dots label[for="slide1"],
@@ -139,36 +109,42 @@
   #slide5:checked ~ .nav-dots label[for="slide5"],
   #slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
 
-     /* ===== CARROSSEL (estável e sem flicker) ===== */
-    /* ===== Carrossel FADE (estável, sem flicker) ===== */
-  
-   /* ===== Ajustes de layout extras ===== */
-  
-  /* 1) Mapa grande e responsivo */
-  iframe.map{
-    width: 100%;
-    height: 360px;
-    border: 0;
-    border-radius: 12px;
-  }
-  @media (max-width: 560px){
-    iframe.map{ height: 260px; }
-  }
-  
-  /* 2) Cartão “nota” da direita no herói sem esticar
-        (fica só do tamanho do conteúdo) */
-  .hero .card{
-    align-self: start;        /* não estica pra acompanhar a coluna ao lado */
-    max-width: 560px;         /* opcional: deixa ele mais compacto */
-  }
-  .hero .card .body{
-    font-size: 18px;          /* deixa o texto maior e mais legível */
-    line-height: 1.5;
-  }
-  
-  /* (Opcional) deixa qualquer item dentro de grids encostar no topo */
-  section .grid > * { align-self: start; }
+  /* ===== CARROSSEL DE DEPOIMENTOS (isolado do de fotos) ===== */
+  #depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}
+  #depoimentos .t-carousel input{display:none}
+  #depoimentos .viewport{overflow:hidden;background:#fff;contain:content}
+  #depoimentos .slides{display:flex;width:800%;transition:transform .5s ease;will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)}
+  #depoimentos .slide{flex:0 0 100%;display:flex;align-items:center;justify-content:center;padding:28px 26px}
+  #depoimentos .bubble{max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px}
+  #depoimentos .bubble p{margin:0 0 10px 0}
+  #depoimentos .bubble strong{color:var(--brand-ink)}
+  #depoimentos .nav-dots{text-align:center;margin:12px 0 16px}
+  #depoimentos .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
+  #depoimentos .nav-dots label:hover{transform:scale(1.1)}
+  /* movimentos (8 radios) */
+  #t1:checked ~ .viewport .slides{transform:translate3d(0%,0,0)}
+  #t2:checked ~ .viewport .slides{transform:translate3d(-100%,0,0)}
+  #t3:checked ~ .viewport .slides{transform:translate3d(-200%,0,0)}
+  #t4:checked ~ .viewport .slides{transform:translate3d(-300%,0,0)}
+  #t5:checked ~ .viewport .slides{transform:translate3d(-400%,0,0)}
+  #t6:checked ~ .viewport .slides{transform:translate3d(-500%,0,0)}
+  #t7:checked ~ .viewport .slides{transform:translate3d(-600%,0,0)}
+  #t8:checked ~ .viewport .slides{transform:translate3d(-700%,0,0)}
+  #t1:checked ~ .nav-dots label[for="t1"],
+  #t2:checked ~ .nav-dots label[for="t2"],
+  #t3:checked ~ .nav-dots label[for="t3"],
+  #t4:checked ~ .nav-dots label[for="t4"],
+  #t5:checked ~ .nav-dots label[for="t5"],
+  #t6:checked ~ .nav-dots label[for="t6"],
+  #t7:checked ~ .nav-dots label[for="t7"],
+  #t8:checked ~ .nav-dots label[for="t8"]{background:var(--brand)}
 
+  /* ===== Ajustes extras ===== */
+  iframe.map{width:100%;height:360px;border:0;border-radius:12px}
+  @media (max-width:560px){iframe.map{height:260px}}
+  .hero .card{align-self:start;max-width:560px}
+  .hero .card .body{font-size:18px;line-height:1.5}
+  section .grid > * { align-self:start }
 </style>
 </head>
 <body>
@@ -208,73 +184,49 @@
       <div class="card"><div class="body muted">🏋️ Ambiente amplo e acolhedor, com musculação, cardio e apoio para você treinar com tranquilidade.</div></div>
     </div>
   </section>
-  <section id="depoimentos" class="alt">
-  <div class="wrap">
-    <h2>O que nossos alunos dizem</h2>
-    <div class="grid cols-2" style="gap:24px; margin-top:24px;">
 
-      <!-- Google (até 2 anos) -->
-      <div class="card">
-        <div class="body">
-          <p>“Ambiente legal, equipe atenciosa.”</p>
-          <p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p>
+  <!-- DEPOIMENTOS (carrossel) -->
+  <section id="depoimentos" class="alt" aria-label="Depoimentos de alunos">
+    <div class="wrap">
+      <h2>O que nossos alunos dizem</h2>
+
+      <div class="t-carousel" aria-live="polite">
+        <!-- radios -->
+        <input type="radio" name="t" id="t1" checked>
+        <input type="radio" name="t" id="t2">
+        <input type="radio" name="t" id="t3">
+        <input type="radio" name="t" id="t4">
+        <input type="radio" name="t" id="t5">
+        <input type="radio" name="t" id="t6">
+        <input type="radio" name="t" id="t7">
+        <input type="radio" name="t" id="t8">
+
+        <div class="viewport">
+          <div class="slides">
+            <!-- Google (até 2 anos) -->
+            <article class="slide"><div class="bubble"><p>“Ambiente legal, equipe atenciosa.”</p><p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p><p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Ameiiiiiiii tudo.”</p><p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Academia boa e com excelente atendimento.”</p><p><strong>— Wesley (Google · 2 anos)</strong></p></div></article>
+            <!-- Instagram -->
+            <article class="slide"><div class="bubble"><p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p><p><strong>— Aluna no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p><p><strong>— Comentário no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p><p><strong>— Seguidora no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p><p><strong>— Feedback no Instagram</strong></p></div></article>
+          </div>
+        </div>
+
+        <div class="nav-dots" aria-hidden="true">
+          <label for="t1"></label><label for="t2"></label><label for="t3"></label><label for="t4"></label>
+          <label for="t5"></label><label for="t6"></label><label for="t7"></label><label for="t8"></label>
         </div>
       </div>
 
-      <div class="card">
-        <div class="body">
-          <p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p>
-          <p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="body">
-          <p>“Ameiiiiiiii tudo.”</p>
-          <p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="body">
-          <p>“Academia boa e com excelente atendimento.”</p>
-          <p><strong>— Wesley (Google · 2 anos)</strong></p>
-        </div>
-      </div>
-
-      <!-- Instagram -->
-      <div class="card">
-        <div class="body">
-          <p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p>
-          <p><strong>— Aluna no Instagram</strong></p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="body">
-          <p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p>
-          <p><strong>— Comentário no Instagram</strong></p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="body">
-          <p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p>
-          <p><strong>— Seguidora no Instagram</strong></p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="body">
-          <p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p>
-          <p><strong>— Feedback no Instagram</strong></p>
-        </div>
-      </div>
-
+      <p class="muted" style="text-align:center;margin-top:6px">
+        <small>Fontes: Google e comentários no <a href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Instagram</a>.</small>
+      </p>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- SIDEBAR DO INSTAGRAM -->
   <section id="instagram" class="alt">
@@ -299,7 +251,7 @@
     </div>
   </section>
 
-  <!-- SOBRE + CARROSSEL -->
+  <!-- SOBRE + CARROSSEL DE FOTOS -->
   <section id="sobre" class="alt">
     <div class="wrap">
       <h2>Sobre a FisioForma</h2>
@@ -313,39 +265,30 @@
         Nosso espaço conta com musculação, área de cardio, aulas coletivas, avaliação física e acompanhamento individual.
         O foco é simples: <strong>saúde, autoestima e qualidade de vida</strong> para todas as idades.
       </p>
-      
-    <div class="carousel" aria-label="Galeria de fotos da academia">
-  <!-- radios -->
-  <input type="radio" name="slides" id="slide1" checked>
-  <input type="radio" name="slides" id="slide2">
-  <input type="radio" name="slides" id="slide3">
-  <input type="radio" name="slides" id="slide4">
-  <input type="radio" name="slides" id="slide5">
-  <input type="radio" name="slides" id="slide6">
 
-  <!-- viewport com altura estável -->
-  <div class="viewport">
-    <ul class="slides">
-      <li><img src="foto1.png?v=1" alt="Área de musculação" decoding="async"></li>
-      <li><img src="foto2.png?v=1" alt="Máquinas de treino" decoding="async"></li>
-      <li><img src="foto3.png?v=1" alt="Espaço para aulas coletivas" decoding="async"></li>
-      <li><img src="foto4.png?v=1" alt="Ambiente amplo e climatizado" decoding="async"></li>
-      <li><img src="foto5.png?v=1" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
-      <li><img src="foto6.png?v=1" alt="Vista geral da academia" decoding="async"></li>
+      <div class="carousel" aria-label="Galeria de fotos da academia">
+        <input type="radio" name="slides" id="slide1" checked>
+        <input type="radio" name="slides" id="slide2">
+        <input type="radio" name="slides" id="slide3">
+        <input type="radio" name="slides" id="slide4">
+        <input type="radio" name="slides" id="slide5">
+        <input type="radio" name="slides" id="slide6">
 
-    </ul>
-  </div>
+        <div class="viewport">
+          <ul class="slides">
+            <li><img src="foto1.png?v=1" alt="Área de musculação" decoding="async"></li>
+            <li><img src="foto2.png?v=1" alt="Máquinas de treino" decoding="async"></li>
+            <li><img src="foto3.png?v=1" alt="Espaço para aulas coletivas" decoding="async"></li>
+            <li><img src="foto4.png?v=1" alt="Ambiente amplo e climatizado" decoding="async"></li>
+            <li><img src="foto5.png?v=1" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
+            <li><img src="foto6.png?v=1" alt="Vista geral da academia" decoding="async"></li>
+          </ul>
+        </div>
 
-  <div class="nav-dots">
-    <label for="slide1"></label>
-    <label for="slide2"></label>
-    <label for="slide3"></label>
-    <label for="slide4"></label>
-    <label for="slide5"></label>
-    <label for="slide6"></label>
-  </div>
-</div>
-
+        <div class="nav-dots">
+          <label for="slide1"></label><label for="slide2"></label><label for="slide3"></label>
+          <label for="slide4"></label><label for="slide5"></label><label for="slide6"></label>
+        </div>
       </div>
     </div>
   </section>
@@ -399,7 +342,7 @@
     </div>
   </section>
 
-  <!-- FAQ (ampliado) -->
+  <!-- FAQ -->
   <section id="faq">
     <div class="wrap">
       <h2>Perguntas frequentes</h2>
@@ -407,7 +350,7 @@
         <div class="card"><div class="body"><h3>A FisioForma é para iniciantes?</h3><p class="muted">Sim! Plano progressivo, respeitando seu ritmo e possíveis limitações.</p></div></div>
         <div class="card"><div class="body"><h3>Vocês fazem avaliação física?</h3><p class="muted">Fazemos avaliação inicial e reavaliações periódicas com agendamento.</p></div></div>
         <div class="card"><div class="body"><h3>Quais são os planos e formas de pagamento?</h3><p class="muted">Mensal, fidelidade e promoções sazonais. Cartão, PIX e dinheiro</p></div></div>
-        <div class="card"><div class="body"><h3>Posso fazer um treino experimental?</h3><p class="muted">Olá! Na Fisioforma, não temos treino experimental gratuito. Preferimos focar na experiência completa dos nossos alunos. Mas você pode agendar um tour guiado para conhecer a estrutura e nossas modalidades, ou comprar um Day Use na recepção para testar um treino. Venha nos visitar e sinta a diferença de ser um aluno Fisioforma!</p></div></div>
+        <div class="card"><div class="body"><h3>Posso fazer um treino experimental?</h3><p class="muted">Na FisioForma, não temos treino experimental gratuito. Você pode agendar um tour guiado para conhecer a estrutura e modalidades, ou comprar um Day Use na recepção para testar um treino.</p></div></div>
         <div class="card"><div class="body"><h3>Há acompanhamento no salão?</h3><p class="muted">Sim. Equipe orienta postura, execução e ajustes de carga. Personal à parte.</p></div></div>
         <div class="card"><div class="body"><h3>Como funcionam as aulas coletivas?</h3><p class="muted">Aulas de ritbox, dança e funcional.</p></div></div>
         <div class="card"><div class="body"><h3>Tem vestiário, chuveiro e armário?</h3><p class="muted">Sim. Recomenda-se cadeado próprio para os armários. Verificar com a recepção a disponibilidade de horários para a alocação das vagas.</p></div></div>
@@ -424,14 +367,14 @@
 </footer>
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+<!-- JS: carrossel de fotos (espera imagens para evitar “piscar”) -->
 <script>
 (function(){
   const carousel = document.querySelector('#sobre .carousel');
   if (!carousel) return;
-
   const radios = [...carousel.querySelectorAll('input[name="slides"]')];
   const imgs = [...carousel.querySelectorAll('.slides img')];
-
   let loaded = 0;
   function start(){
     let i = 0, hold = false;
@@ -440,8 +383,6 @@
     carousel.addEventListener('mouseenter', ()=>hold=true);
     carousel.addEventListener('mouseleave', ()=>hold=false);
   }
-
-  // espera todas as imagens (evita primeiro “flash”)
   imgs.forEach(img=>{
     if (img.complete) { loaded++; if (loaded===imgs.length) start(); }
     else {
@@ -451,5 +392,23 @@
   });
 })();
 </script>
+
+<!-- JS: carrossel de depoimentos (autoplay + pausa) -->
+<script>
+(function(){
+  const box = document.querySelector('#depoimentos .t-carousel');
+  if(!box) return;
+  const radios = [...box.querySelectorAll('input[name="t"]')];
+  let i = 0, hold = false;
+  const tick = () => { if(!hold){ i = (i+1)%radios.length; radios[i].checked = true; } };
+  const id = setInterval(tick, 4500);
+  box.addEventListener('mouseenter', ()=> hold = true);
+  box.addEventListener('mouseleave', ()=> hold = false);
+  box.querySelectorAll('.nav-dots label').forEach((lab, idx)=>{
+    lab.addEventListener('click', ()=> { i = idx; });
+  });
+})();
+</script>
 </body>
 </html>
+
