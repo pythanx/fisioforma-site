@@ -225,60 +225,37 @@
         <input type="radio" name="slides" id="slide5">
         <input type="radio" name="slides" id="slide6">
 
-      <ul class="slides">
-        <li>
-          <picture>
-            <source srcset="foto1.avif" type="image/avif">
-            <img src="foto1.jpg" alt="Área de musculação" loading="eager"
-                 onerror="this.onerror=null;this.src='placeholder.jpg'">
-          </picture>
-        </li>
-        <li>
-          <picture>
-            <source srcset="foto2.avif" type="image/avif">
-            <img src="foto2.jpg" alt="Máquinas de treino" loading="lazy"
-                 onerror="this.onerror=null;this.src='placeholder.jpg'">
-          </picture>
-        </li>
-        <li>
-          <picture>
-            <source srcset="foto3.avif" type="image/avif">
-            <img src="foto3.jpg" alt="Espaço para aulas coletivas" loading="lazy"
-                 onerror="this.onerror=null;this.src='placeholder.jpg'">
-          </picture>
-        </li>
-        <li>
-          <picture>
-            <source srcset="foto4.avif" type="image/avif">
-            <img src="foto4.jpg" alt="Ambiente amplo e climatizado" loading="lazy"
-                 onerror="this.onerror=null;this.src='placeholder.jpg'">
-          </picture>
-        </li>
-        <li>
-          <picture>
-            <source srcset="foto5.avif" type="image/avif">
-            <img src="foto5.jpg" alt="Área de cardio com esteiras e bicicletas" loading="lazy"
-                 onerror="this.onerror=null;this.src='placeholder.jpg'">
-          </picture>
-        </li>
-        <li>
-          <picture>
-            <source srcset="foto6.avif" type="image/avif">
-            <img src="foto6.jpg" alt="Vista geral da academia" loading="lazy"
-                 onerror="this.onerror=null;this.src='placeholder.jpg'">
-          </picture>
-        </li>
-    </ul>
-
-        
-        <div class="nav-dots">
-          <label for="slide1"></label>
-          <label for="slide2"></label>
-          <label for="slide3"></label>
-          <label for="slide4"></label>
-          <label for="slide5"></label>
-          <label for="slide6"></label>
+      <div class="carousel" aria-label="Galeria de fotos da academia">
+        <!-- radios -->
+        <input type="radio" name="slides" id="slide1" checked>
+        <input type="radio" name="slides" id="slide2">
+        <input type="radio" name="slides" id="slide3">
+        <input type="radio" name="slides" id="slide4">
+        <input type="radio" name="slides" id="slide5">
+        <input type="radio" name="slides" id="slide6">
+      
+        <!-- viewport com altura estável -->
+        <div class="viewport">
+          <ul class="slides">
+            <li><img src="foto1.png?v=1" alt="Área de musculação" loading="eager" decoding="async"></li>
+            <li><img src="foto2.png?v=1" alt="Máquinas de treino" loading="lazy" decoding="async"></li>
+            <li><img src="foto3.png?v=1" alt="Espaço para aulas coletivas" loading="lazy" decoding="async"></li>
+            <li><img src="foto4.png?v=1" alt="Ambiente amplo e climatizado" loading="lazy" decoding="async"></li>
+            <li><img src="foto5.png?v=1" alt="Área de cardio com esteiras e bicicletas" loading="lazy" decoding="async"></li>
+            <li><img src="foto6.png?v=1" alt="Vista geral da academia" loading="lazy" decoding="async"></li>
+          </ul>
         </div>
+
+  <div class="nav-dots">
+    <label for="slide1"></label>
+    <label for="slide2"></label>
+    <label for="slide3"></label>
+    <label for="slide4"></label>
+    <label for="slide5"></label>
+    <label for="slide6"></label>
+  </div>
+</div>
+
       </div>
     </div>
   </section>
