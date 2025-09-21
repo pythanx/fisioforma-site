@@ -1,4 +1,4 @@
-c<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -6,65 +6,87 @@ c<!DOCTYPE html>
 <title>Academia FisioForma</title>
 <meta name="description" content="FisioForma — Comunidade, acolhimento e resultados reais. Anjo da Guarda, São Luís — MA.">
 
-  <!-- Favicon robusto: PNG + fallback SVG + iOS -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=2">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=2">
-<!-- Fallback inline (não depende de arquivo) -->
+<!-- ===== Favicon ===== -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=3">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=3">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%233a80b4"/><text x="50%" y="58%" text-anchor="middle" font-family="Arial" font-size="34" fill="white">FF</text></svg>'>
 <meta name="theme-color" content="#3a80b4">
 
+<!-- ===== SEO / compartilhamento ===== -->
+<meta property="og:title" content="FisioForma — Anjo da Guarda">
+<meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="logo-fisioforma.png">
 
 <style>
   :root{
-    /* Paleta alinhada ao logo (azul/cinza) */
     --bg:#ffffff;
-    --ink:#222222;
+    --ink:#222;
     --muted:#5a5a5a;
     --card:#f5f7fa;
     --line:#d9d9d9;
-    --brand:#3a80b4;      /* azul do logo */
-    --brand-ink:#2d5e7e;  /* azul escuro p/ hover */
+    --brand:#3a80b4;
+    --brand-ink:#2d5e7e;
   }
-  *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial}
-  a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
+  a{color:var(--brand);text-decoration:none}
+  a:hover{text-decoration:underline}
   .wrap{max-width:1100px;margin:auto;padding:0 16px}
-  header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--line);z-index:10}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:800}
-  .logo img{height:60px}
+  header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  .logo img{height:56px}
   .links{display:none;gap:18px}
   .cta{display:inline-block;background:var(--brand);color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;border:1px solid transparent}
   .cta.outline{background:#fff;color:var(--brand);border-color:var(--brand)}
-  .cta:hover{background:var(--brand-ink);color:#fff;border-color:var(--brand-ink)}
-  @media (min-width: 760px){.links{display:flex}}
+  .cta:hover{background:var(--brand-ink);color:#fff}
+  @media (min-width:760px){.links{display:flex}}
 
   .hero{padding:64px 0}
   .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0}
   .hero p{color:var(--muted);max-width:62ch}
   .hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 
-  .grid{display:grid;gap:18px}
-  @media (min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-2{grid-template-columns:repeat(2,1fr)}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
-  .card .body{padding:16px 16px 18px}
-  .card h3{margin:0 0 6px 0}
-  .chip{display:inline-grid;place-content:center;background:var(--brand);color:#fff;width:40px;height:40px;border-radius:12px;font-weight:800;margin:16px}
   section{padding:56px 0}
   section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
   .muted{color:var(--muted)}
-  ul.clean{list-style:none;margin:0;padding:0} ul.clean li{display:flex;gap:8px}
-  .plan-price{font-size:28px;font-weight:900;margin:6px 0}
-  iframe.map{width:100%;height:360px;border:0}
-  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:14px}
+
+  .grid{display:grid;gap:18px}
+  @media(min-width:760px){
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  }
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .card .body{padding:16px 18px}
+
+  /* ===== Carrossel ===== */
+  .carousel{position:relative;width:100%;max-width:900px;margin:24px auto 0;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+  .carousel input{display:none}
+  .slides{display:flex;width:600%;transition:transform .6s ease;margin:0;padding:0;list-style:none}
+  .slides li{width:100%;flex-shrink:0}
+  .slides img{width:100%;height:clamp(220px,45vw,480px);object-fit:cover}
+  #slide1:checked ~ .slides{transform:translateX(0%)}
+  #slide2:checked ~ .slides{transform:translateX(-100%)}
+  #slide3:checked ~ .slides{transform:translateX(-200%)}
+  #slide4:checked ~ .slides{transform:translateX(-300%)}
+  #slide5:checked ~ .slides{transform:translateX(-400%)}
+  #slide6:checked ~ .slides{transform:translateX(-500%)}
+  .nav-dots{text-align:center;margin:10px 0 14px}
+  .nav-dots label{display:inline-block;width:12px;height:12px;margin:0 5px;border-radius:50%;background:#cfd7de;cursor:pointer;transition:background .25s}
+  .nav-dots label:hover{transform:scale(1.08)}
+  #slide1:checked ~ .nav-dots label[for="slide1"],
+  #slide2:checked ~ .nav-dots label[for="slide2"],
+  #slide3:checked ~ .nav-dots label[for="slide3"],
+  #slide4:checked ~ .nav-dots label[for="slide4"],
+  #slide5:checked ~ .nav-dots label[for="slide5"],
+  #slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="logo">
-      <img src="logo-fisioforma.png" alt="Academia FisioForma" style="height:80px">
-    </div>
+    <div class="logo"><img src="logo-fisioforma.png" alt="Logo FisioForma"></div>
     <nav class="links">
       <a href="#sobre">Sobre</a>
       <a href="#planos">Planos</a>
@@ -72,210 +94,133 @@ c<!DOCTYPE html>
       <a href="#faq">FAQ</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a class="cta" href="https://wa.me/559892223926" target="_blank" rel="noreferrer">Fale no WhatsApp</a>
+    <a class="cta" href="https://wa.me/559892223926" target="_blank">Fale no WhatsApp</a>
   </div>
 </header>
 
 <main>
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap grid cols-2">
       <div>
         <h1>FisioForma: <span style="color:var(--brand-ink)">treino que cabe na sua vida</span></h1>
-        <p class="muted">Comunidade, acolhimento e resultados reais. Aqui você encontra atendimento humanizado, orientação segura e uma comunidade que puxa você pra frente.</p>
+        <p class="muted">Comunidade, acolhimento e resultados reais. Atendimento humanizado e orientação segura para você conquistar seus objetivos.</p>
         <div class="btns">
           <a class="cta" href="#planos">Ver planos</a>
           <a class="cta outline" href="#contato">Agendar visita</a>
         </div>
-        <p class="muted" style="margin-top:8px">Seg–Sex 06h–22h<br>Sáb 08h–12h 14h30-17h30</br><br>Dom 08h–12h</br></p>
+        <p class="muted" style="margin-top:12px">
+          <strong>Horários:</strong><br>
+          Seg–Sex 06h–22h<br>
+          Sáb 08h–12h e 14h30–17h30<br>
+          Dom 08h–12h<br>
+          <em>Feriados podem ter horários especiais.</em>
+        </p>
       </div>
-      <div class="card">
-        <div class="chip">🏋️</div>
-        <div class="body muted">Ambiente amplo e acolhedor, com musculação, cardio e apoio para você treinar com tranquilidade.</div>
-      </div>
+      <div class="card"><div class="body muted">🏋️ Ambiente amplo e acolhedor, com musculação, cardio e apoio para você treinar com tranquilidade.</div></div>
     </div>
   </section>
-  <section id="instagram-sidebar" class="alt">
-  <div class="wrap grid cols-2">
-    
-    <!-- Coluna principal (vazia ou com texto) -->
-    <div>
-      <h2>Novidades da FisioForma</h2>
-      <p class="muted">Fique por dentro das promoções, treinos e eventos especiais acompanhando nosso perfil.</p>
-    </div>
-    
-    <!-- Sidebar Instagram -->
-    <aside style="border-left:1px solid var(--line); padding-left:16px;">
-      <h3>@fisioforma.acad</h3>
-      <iframe src="https://snapwidget.com/embed/1024785" 
-              class="snapwidget-widget" 
-              allowtransparency="true" frameborder="0" scrolling="no" 
-              style="border:none; overflow:hidden; width:100%; height:400px">
-      </iframe>
-      <p style="margin-top:10px; text-align:center;">
-        <a href="https://instagram.com/instagram" target="_blank" style="color:#E4405F; font-weight:bold;">
-          👉 Ver no Instagram
-        </a>
-      </p>
-    </aside>
 
-  </div>
-</section>
-
-
+  <!-- SOBRE + CARROSSEL -->
   <section id="sobre" class="alt">
     <div class="wrap">
       <h2>Sobre a FisioForma — Anjo da Guarda</h2>
-      <p class="muted">Academia localizada no bairro Anjo da Guarda em São Luís, MA. Nosso propósito é tornar o exercício físico acessível, seguro e prazeroso para pessoas de todas as idades.</p>
+      <p class="muted">
+        A <strong>FisioForma Academia</strong> é referência no bairro Anjo da Guarda, em São Luís – MA.
+        Aqui, a gente combina <strong>acolhimento</strong>, <strong>orientação profissional</strong> e
+        <strong>estrutura completa</strong> para que você treine com segurança, constância e prazer —
+        seja para começar do zero, voltar à rotina ou evoluir seus resultados.
+      </p>
+      <p class="muted">
+        Nosso espaço conta com musculação, área de cardio, aulas coletivas, avaliação física e acompanhamento individual.
+        O foco é simples: <strong>saúde, autoestima e qualidade de vida</strong> para todas as idades.
+      </p>
+
+      <div class="carousel">
+        <input type="radio" name="slides" id="slide1" checked>
+        <input type="radio" name="slides" id="slide2">
+        <input type="radio" name="slides" id="slide3">
+        <input type="radio" name="slides" id="slide4">
+        <input type="radio" name="slides" id="slide5">
+        <input type="radio" name="slides" id="slide6">
+
+        <ul class="slides">
+          <li><img src="foto1.avif" alt="Área de musculação"></li>
+          <li><img src="foto2.avif" alt="Máquinas de treino"></li>
+          <li><img src="foto3.avif" alt="Espaço para aulas coletivas"></li>
+          <li><img src="foto4.avif" alt="Ambiente amplo e climatizado"></li>
+          <li><img src="foto5.avif" alt="Área de cardio com esteiras"></li>
+          <li><img src="foto6.avif" alt="Vista geral da academia"></li>
+        </ul>
+
+        <div class="nav-dots">
+          <label for="slide1"></label>
+          <label for="slide2"></label>
+          <label for="slide3"></label>
+          <label for="slide4"></label>
+          <label for="slide5"></label>
+          <label for="slide6"></label>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- PLANOS -->
   <section id="planos">
     <div class="wrap">
       <h2>Planos e valores</h2>
       <div class="grid cols-3" style="margin-top:12px">
-        <div class="card"><div class="body"><h3>Plano Individual</h3><div class="plan-price">R$ 90/mês</div></div></div>
-        <div class="card"><div class="body"><h3>Plano Casadinha</h3><div class="plan-price">R$ 80/mês</div></div></div>
-        <div class="card"><div class="body"><h3>Plano Executivo</h3><div class="plan-price">R$ 60/mês</div></div></div>
+        <div class="card"><div class="body"><h3>Plano Individual</h3><p class="muted">Acesso livre</p><div class="plan-price">R$ 90/mês</div></div></div>
+        <div class="card"><div class="body"><h3>Plano Casadinha</h3><p class="muted">Treine em dupla</p><div class="plan-price">R$ 80/mês</div></div></div>
+        <div class="card"><div class="body"><h3>Plano Executivo</h3><p class="muted">Horários especiais</p><div class="plan-price">R$ 60/mês</div></div></div>
       </div>
     </div>
   </section>
 
+  <!-- CONTATO -->
   <section id="contato" class="alt">
     <div class="wrap grid cols-2">
       <div>
         <h2>Fale com a gente</h2>
-        <div class="contact-list">
-          <p>📞 (98) 99222-3926</p>
-          <p>✉️ academiafisioformaag@gmail.com</p>
-          <p>📍 Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA, CEP 65085‑255</p>
-        </div>
-        <p style="margin-top:10px"><a class="cta" href="https://wa.me/559892223926" target="_blank" rel="noreferrer">Chamar no WhatsApp</a></p>
+        <p>📞 <a href="tel:+5598992223926">(98) 99222-3926</a></p>
+        <p>✉️ <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a></p>
+        <p>📍 <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA" target="_blank">
+          Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA</a></p>
+        <p><a class="cta" href="https://wa.me/559892223926" target="_blank">Chamar no WhatsApp</a></p>
       </div>
-      <div>
-        <iframe class="map" title="Mapa FisioForma" src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA&output=embed" loading="lazy"></iframe>
+      <div><iframe class="map" src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA&output=embed"></iframe></div>
+    </div>
+  </section>
+
+  <!-- FAQ (resumido) -->
+  <section id="faq">
+    <div class="wrap">
+      <h2>Perguntas frequentes</h2>
+      <div class="grid cols-2" style="margin-top:12px">
+        <div class="card"><div class="body"><h3>Fazem avaliação física?</h3><p class="muted">Sim, inicial e reavaliações periódicas com agendamento.</p></div></div>
+        <div class="card"><div class="body"><h3>Idade mínima?</h3><p class="muted">A partir de 14 anos com autorização do responsável.</p></div></div>
+        <div class="card"><div class="body"><h3>Posso pausar o plano?</h3><p class="muted">Planos com fidelidade permitem pausa em casos justificados.</p></div></div>
+        <div class="card"><div class="body"><h3>Horários?</h3><p class="muted">Seg–Sex 06h–22h<br>Sáb 08h–12h / 14h30–17h30<br>Dom 08h–12h</p></div></div>
       </div>
     </div>
   </section>
-  <section id="estrutura" class="alt">
-  <div class="wrap">
-    <h2>Estrutura</h2>
-    <p class="muted">Ambiente completo para treinos de musculação, cardio e aulas coletivas, com suporte e comodidades para o dia a dia.</p>
-
-    <div class="grid cols-3" style="margin-top:12px">
-      <div class="card"><div class="body">
-        <h3>Musculação</h3>
-        <p class="muted">Área ampla com máquinas guiadas, racks e halteres variados. Organização por grupos musculares e manutenção preventiva frequente.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Cardio</h3>
-        <p class="muted">Esteiras, elípticos e bicicletas para aquecimento, emagrecimento e condicionamento. Orientação para iniciantes.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Aulas coletivas</h3>
-        <p class="muted"> Treinos coletivos (Ritbox, dança, funcional). Turmas dinâmicas para motivação e evolução constante.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Avaliação física</h3>
-        <p class="muted">Check-up inicial e reavaliações periódicas para acompanhar medidas, composição corporal e metas com segurança.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Vestiários</h3>
-        <p class="muted">Banheiros e chuveiros, armários individuais e bebedouros. Ambiente limpo e organizado durante todo o dia.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Acessibilidade e segurança</h3>
-        <p class="muted">Acesso facilitado e equipe atenta para auxiliar e corrigir movimentos.</p>
-      </div></div>
-    </div>
-    <p class="muted" style="margin-top:12px">
-      <strong>Horários:</strong>Seg–Sex 06h–22h • Sáb 08h–12h  14h30-17h30 • Dom 08h–12h <em>Feriados podem ter horários especiais.</em>
-    </p>
-  </div>
-</section>
-<section id="faq">
-  <div class="wrap">
-    <h2>Perguntas frequentes</h2>
-    <div class="grid cols-2" style="margin-top:12px">
-
-      <div class="card"><div class="body">
-        <h3>A FisioForma é para iniciantes?</h3>
-        <p class="muted">Sim! Recebemos quem está começando ou voltando. A equipe monta um plano progressivo, respeitando seu ritmo e possíveis limitações.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Vocês fazem avaliação física?</h3>
-        <p class="muted">Fazemos avaliação inicial e reavaliações periódicas com agendamento. Isso orienta o treino e mede sua evolução com segurança.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Quais são os planos e formas de pagamento?</h3>
-        <p class="muted">Temos planos mensal, fidelidade e promoções sazonais. Pagamento por cartão, PIX e boleto (consulte condições na recepção).</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Posso fazer um treino experimental?</h3>
-        <p class="muted">Para quem deseja conhecer nossa estrutura e serviço antes de se matricular, oferecemos a opção de adquirir um 'Day Use' ou diária avulsa. O pagamento pode ser feito na recepção. No entanto, ficamos à disposição para fazer um tour completo pela academia. Você pode vir sem compromisso, conhecer nossos equipamentos, salas de aula e conversar com a equipe. Assim, você entende melhor como é a nossa rotina e os benefícios de ser um aluno Fisioforma.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Há acompanhamento profissional no salão?</h3>
-        <p class="muted">Sim. Nossa equipe orienta postura, execução e ajustes de carga. Para personal exclusivo, consulte valores e horários.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Como funcionam as aulas coletivas?</h3>
-        <p class="muted">As turmas têm vagas limitadas e exigem presença antecipada. A grade pode variar; confira com a recepção ou pelo WhatsApp.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Tem vestiário, chuveiro e armário?</h3>
-        <p class="muted">Sim. Disponibilizamos vestiários com chuveiros e armários individuais. Recomenda-se cadeado próprio e procurar a recepção.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Qual a idade mínima para treinar?</h3>
-        <p class="muted">A partir de 14 anos com autorização do responsável. Menores devem seguir orientação e horários indicados pela equipe.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Posso pausar o plano?</h3>
-        <p class="muted">Planos com fidelidade podem ter regras de pausa por viagem ou saúde mediante comprovação. Consulte as condições vigentes.</p>
-      </div></div>
-
-      <div class="card"><div class="body">
-        <h3>Quais os horários de funcionamento?</h3>
-        <p class="muted" style="margin:6px 0 10px 0">
-          <span style="display:inline-block;background:#eaf2f8;color:#2d5e7e;border:1px solid #d1e3ef;padding:3px 8px;border-radius:8px;margin-right:6px">Seg–Sex</span>
-          06h–22h
-        </p>
-        <p class="muted" style="margin:0 0 10px 0">
-          <span style="display:inline-block;background:#eaf2f8;color:#2d5e7e;border:1px solid #d1e3ef;padding:3px 8px;border-radius:8px;margin-right:6px">Sáb</span>
-          08h–12h &nbsp;•&nbsp; 14h30–17h30
-        </p>
-        <p class="muted" style="margin:0 0 12px 0">
-          <span style="display:inline-block;background:#eaf2f8;color:#2d5e7e;border:1px solid #d1e3ef;padding:3px 8px;border-radius:8px;margin-right:6px">Dom</span>
-          08h–12h
-        </p>
-        <p class="muted"><em>Em feriados, os horários podem ser reduzidos; acompanhe nossos avisos no Instagram ou chame no WhatsApp.</em></p>
-      </div></div>
-
-
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer>
-  <div class="wrap">
-    © <span id="y"></span> FisioForma — Unidade Anjo da Guarda. Todos os direitos reservados.
-  </div>
+  <div class="wrap">© <span id="y"></span> FisioForma — Unidade Anjo da Guarda. Todos os direitos reservados.</div>
 </footer>
-<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script>
+(function(){
+  const carousel=document.querySelector('.carousel');
+  const radios=[...carousel.querySelectorAll('input[name="slides"]')];
+  let i=0,hold=false;
+  function tick(){if(!hold){i=(i+1)%radios.length;radios[i].checked=true}}
+  setInterval(tick,4000);
+  carousel.addEventListener('mouseenter',()=>hold=true);
+  carousel.addEventListener('mouseleave',()=>hold=false);
+})();
+</script>
 </body>
 </html>
