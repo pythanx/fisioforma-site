@@ -96,25 +96,54 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #fff6:checked ~ .nav-dots label[for="fff6"]{background:var(--brand)}
 
 /* === Carrossel de DEPOIMENTOS (slide) === */
-#depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}
+/* === Depoimentos — FADE (estável, sem flicker) === */
+#depoimentos .t-carousel{
+  max-width:880px;margin:24px auto 0;border:1px solid var(--line);
+  background:#fff;border-radius:16px;overflow:hidden
+}
 #depoimentos .t-carousel input{display:none}
-#depoimentos .viewport{overflow:hidden;background:#fff;contain:content;min-height:180px;}
-#depoimentos .slides{display:flex;width:800%;transition:transform .5s ease;will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)}
-#depoimentos .slide{flex:0 0 100%;display:flex;align-items:center;justify-content:center;padding:28px 26px}
-#depoimentos .bubble{color:var(--ink);max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px}
-#depoimentos .bubble p{margin:0 0 10px 0}
-#depoimentos .bubble strong{color:var(--brand-ink)}
+
+/* viewport com altura estável */
+#depoimentos .viewport{
+  position:relative; height: clamp(200px, 24vw, 260px);
+  background:#fff; isolation:isolate;
+}
+
+/* pilha de slides sobrepostos */
+#depoimentos .slides{
+  list-style:none; margin:0; padding:0; position:relative; height:100%;
+}
+#depoimentos .slide{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:opacity .45s ease; will-change:opacity;
+  pointer-events:none;   /* evita focar itens invisíveis */
+}
+
+/* conteúdo do balão */
+#depoimentos .bubble{
+  max-width:680px; background:#f7fafc; border:1px solid var(--line);
+  border-radius:14px; padding:18px 18px 14px; color:var(--ink); line-height:1.5;
+}
+
+/* ativa o slide correspondente */
+#t1:checked ~ .viewport .slides .slide:nth-child(1),
+#t2:checked ~ .viewport .slides .slide:nth-child(2),
+#t3:checked ~ .viewport .slides .slide:nth-child(3),
+#t4:checked ~ .viewport .slides .slide:nth-child(4),
+#t5:checked ~ .viewport .slides .slide:nth-child(5),
+#t6:checked ~ .viewport .slides .slide:nth-child(6),
+#t7:checked ~ .viewport .slides .slide:nth-child(7),
+#t8:checked ~ .viewport .slides .slide:nth-child(8){
+  opacity:1; pointer-events:auto;
+}
+
+/* bolinhas */
 #depoimentos .nav-dots{text-align:center;margin:12px 0 16px}
-#depoimentos .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
+#depoimentos .nav-dots label{
+  display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;
+  background:#bbb;cursor:pointer;transition:transform .1s,background .2s
+}
 #depoimentos .nav-dots label:hover{transform:scale(1.1)}
-#t1:checked ~ .viewport .slides{transform:translate3d(0%,0,0)}
-#t2:checked ~ .viewport .slides{transform:translate3d(-100%,0,0)}
-#t3:checked ~ .viewport .slides{transform:translate3d(-200%,0,0)}
-#t4:checked ~ .viewport .slides{transform:translate3d(-300%,0,0)}
-#t5:checked ~ .viewport .slides{transform:translate3d(-400%,0,0)}
-#t6:checked ~ .viewport .slides{transform:translate3d(-500%,0,0)}
-#t7:checked ~ .viewport .slides{transform:translate3d(-600%,0,0)}
-#t8:checked ~ .viewport .slides{transform:translate3d(-700%,0,0)}
 #t1:checked ~ .nav-dots label[for="t1"],
 #t2:checked ~ .nav-dots label[for="t2"],
 #t3:checked ~ .nav-dots label[for="t3"],
@@ -122,7 +151,8 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #t5:checked ~ .nav-dots label[for="t5"],
 #t6:checked ~ .nav-dots label[for="t6"],
 #t7:checked ~ .nav-dots label[for="t7"],
-#t8:checked ~ .nav-dots label[for="t8"]{background:var(--brand)}
+#t8:checked ~ .nav-dots label[for="t8"]{ background:var(--brand) }
+
 
 /* === MAPA === */
 iframe.map{width:100%;height:360px;border:0;border-radius:12px}
