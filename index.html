@@ -120,8 +120,8 @@
 /* estados (mostra 1 slide por vez) */
 #slide1:checked ~ .viewport .slides li:nth-child(1){opacity:1}
 #slide2:checked ~ .viewport .slides li:nth-child(2){opacity:1}
-#slide5:checked ~ .viewport .slides li:nth-child(5){opacity:1}
-#slide6:checked ~ .viewport .slides li:nth-child(6){opacity:1}
+#slide3:checked ~ .viewport .slides li:nth-child(3){opacity:1}
+#slide4:checked ~ .viewport .slides li:nth-child(4){opacity:1}
 
 /* bolinhas */
 #sobre .carousel .nav-dots{text-align:center;margin:10px 0 14px}
@@ -133,8 +133,8 @@
 #sobre .carousel .nav-dots label:hover{transform:scale(1.1)}
 #slide1:checked ~ .nav-dots label[for="slide1"],
 #slide2:checked ~ .nav-dots label[for="slide2"],
-#slide5:checked ~ .nav-dots label[for="slide5"],
-#slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
+#slide5:checked ~ .nav-dots label[for="slide3"],
+#slide6:checked ~ .nav-dots label[for="slide4"]{background:var(--brand)}
 
   /* ===== Ajustes de layout extras ===== */
 
@@ -312,16 +312,16 @@ section .grid > * { align-self: start; }
   <!-- radios -->
   <input type="radio" name="slides" id="slide1" checked>
   <input type="radio" name="slides" id="slide2">
-  <input type="radio" name="slides" id="slide5">
-  <input type="radio" name="slides" id="slide6">
+  <input type="radio" name="slides" id="slide3">
+  <input type="radio" name="slides" id="slide4">
 
   <!-- viewport com altura estável -->
   <div class="viewport">
     <ul class="slides">
       <li><img src="foto1.png?v=1" alt="Área de musculação" decoding="async"></li>
       <li><img src="foto2.png?v=1" alt="Máquinas de treino" decoding="async"></li>
-      <li><img src="foto5.png?v=1" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
-      <li><img src="foto6.png?v=1" alt="Vista geral da academia" decoding="async"></li>
+      <li><img src="foto3.png?v=1" alt="Área de cardio com esteiras e bicicletas" decoding="async"></li>
+      <li><img src="foto4.png?v=1" alt="Vista geral da academia" decoding="async"></li>
 
     </ul>
   </div>
