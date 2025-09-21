@@ -27,7 +27,6 @@
 <link rel="preload" as="image" href="foto6.png?v=1">
 
 <style>
-  <style>
   :root{
     --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
     --card:#f5f7fa; --line:#d9d9d9;
@@ -140,7 +139,6 @@
   #slide4:checked ~ .nav-dots label[for="slide4"],
   #slide5:checked ~ .nav-dots label[for="slide5"],
   #slide6:checked ~ .nav-dots label[for="slide6"]{background:var(--brand)}
-
 
   /* ===== CARROSSEL DE DEPOIMENTOS (isolado do de fotos) ===== */
   #depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}
@@ -406,8 +404,10 @@
 (function(){
   const carousel = document.querySelector('#sobre .carousel');
   if (!carousel) return;
+
   const radios = [...carousel.querySelectorAll('input[name="slides"]')];
   const imgs = [...carousel.querySelectorAll('.slides img')];
+
   let loaded = 0;
   function start(){
     let i = 0, hold = false;
@@ -416,6 +416,8 @@
     carousel.addEventListener('mouseenter', ()=>hold=true);
     carousel.addEventListener('mouseleave', ()=>hold=false);
   }
+
+  // espera todas as imagens (evita primeiro “flash”)
   imgs.forEach(img=>{
     if (img.complete) { loaded++; if (loaded===imgs.length) start(); }
     else {
@@ -425,6 +427,7 @@
   });
 })();
 </script>
+
 
 <!-- JS: carrossel de depoimentos (autoplay + pausa) -->
 <script>
@@ -444,4 +447,3 @@
 </script>
 </body>
 </html>
-
