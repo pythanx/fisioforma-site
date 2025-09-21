@@ -225,15 +225,52 @@
         <input type="radio" name="slides" id="slide5">
         <input type="radio" name="slides" id="slide6">
 
-        <ul class="slides">
-          <li><img src="foto1.avif" alt="Área de musculação"></li>
-          <li><img src="foto2.avif" alt="Máquinas de treino"></li>
-          <li><img src="foto3.avif" alt="Espaço para aulas coletivas"></li>
-          <li><img src="foto4.avif" alt="Ambiente amplo e climatizado"></li>
-          <li><img src="foto5.avif" alt="Área de cardio com esteiras e bicicletas"></li>
-          <li><img src="foto6.avif" alt="Vista geral da academia"></li>
-        </ul>
+      <ul class="slides">
+        <li>
+          <picture>
+            <source srcset="foto1.avif" type="image/avif">
+            <img src="foto1.jpg" alt="Área de musculação" loading="eager"
+                 onerror="this.onerror=null;this.src='placeholder.jpg'">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source srcset="foto2.avif" type="image/avif">
+            <img src="foto2.jpg" alt="Máquinas de treino" loading="lazy"
+                 onerror="this.onerror=null;this.src='placeholder.jpg'">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source srcset="foto3.avif" type="image/avif">
+            <img src="foto3.jpg" alt="Espaço para aulas coletivas" loading="lazy"
+                 onerror="this.onerror=null;this.src='placeholder.jpg'">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source srcset="foto4.avif" type="image/avif">
+            <img src="foto4.jpg" alt="Ambiente amplo e climatizado" loading="lazy"
+                 onerror="this.onerror=null;this.src='placeholder.jpg'">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source srcset="foto5.avif" type="image/avif">
+            <img src="foto5.jpg" alt="Área de cardio com esteiras e bicicletas" loading="lazy"
+                 onerror="this.onerror=null;this.src='placeholder.jpg'">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source srcset="foto6.avif" type="image/avif">
+            <img src="foto6.jpg" alt="Vista geral da academia" loading="lazy"
+                 onerror="this.onerror=null;this.src='placeholder.jpg'">
+          </picture>
+        </li>
+    </ul>
 
+        
         <div class="nav-dots">
           <label for="slide1"></label>
           <label for="slide2"></label>
