@@ -95,7 +95,6 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #fff5:checked ~ .nav-dots label[for="fff5"],
 #fff6:checked ~ .nav-dots label[for="fff6"]{background:var(--brand)}
 
-/* === Carrossel de DEPOIMENTOS (slide) === */
 /* === Depoimentos — FADE (estável, sem flicker) === */
 #depoimentos .t-carousel{
   max-width:880px;margin:24px auto 0;border:1px solid var(--line);
@@ -105,24 +104,28 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 /* viewport com altura estável */
 #depoimentos .viewport{
-  position:relative; height: clamp(200px, 24vw, 260px);
-  background:#fff; isolation:isolate;
+  position:relative;
+  height: clamp(200px, 24vw, 260px);   /* fixa a altura */
+  background:#fff;
+  isolation:isolate;
 }
 
 /* pilha de slides sobrepostos */
 #depoimentos .slides{
-  list-style:none; margin:0; padding:0; position:relative; height:100%;
+  list-style:none;margin:0;padding:0;
+  position:relative;height:100%;
 }
 #depoimentos .slide{
-  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-  opacity:0; transition:opacity .45s ease; will-change:opacity;
-  pointer-events:none;   /* evita focar itens invisíveis */
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .45s ease;
+  will-change:opacity;pointer-events:none;
 }
 
 /* conteúdo do balão */
 #depoimentos .bubble{
-  max-width:680px; background:#f7fafc; border:1px solid var(--line);
-  border-radius:14px; padding:18px 18px 14px; color:var(--ink); line-height:1.5;
+  max-width:680px;background:#f7fafc;border:1px solid var(--line);
+  border-radius:14px;padding:18px 18px 14px;line-height:1.5;color:var(--ink);
 }
 
 /* ativa o slide correspondente */
@@ -134,7 +137,7 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #t6:checked ~ .viewport .slides .slide:nth-child(6),
 #t7:checked ~ .viewport .slides .slide:nth-child(7),
 #t8:checked ~ .viewport .slides .slide:nth-child(8){
-  opacity:1; pointer-events:auto;
+  opacity:1;pointer-events:auto;
 }
 
 /* bolinhas */
@@ -151,7 +154,8 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #t5:checked ~ .nav-dots label[for="t5"],
 #t6:checked ~ .nav-dots label[for="t6"],
 #t7:checked ~ .nav-dots label[for="t7"],
-#t8:checked ~ .nav-dots label[for="t8"]{ background:var(--brand) }
+#t8:checked ~ .nav-dots label[for="t8"]{background:var(--brand)}
+
 
 
 /* === MAPA === */
@@ -543,13 +547,15 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   const box = document.querySelector('#depoimentos .t-carousel');
   if(!box) return;
   const radios = [...box.querySelectorAll('input[name="t"]')];
-  let i = 0, hold = false;
+  let i = radios.findIndex(r => r.checked);
+  if (i < 0) { radios[0].checked = true; i = 0; }
+  let hold = false;
   const tick = () => { if(!hold){ i = (i+1)%radios.length; radios[i].checked = true; } };
   setInterval(tick, 4500);
   box.addEventListener('mouseenter', ()=> hold = true);
   box.addEventListener('mouseleave', ()=> hold = false);
-  box.querySelectorAll('.nav-dots label').forEach((lab, idx)=> lab.addEventListener('click', ()=> { i = idx; }));
 })();
 </script>
+
 </body>
 </html>
