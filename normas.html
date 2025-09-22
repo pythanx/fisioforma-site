@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Normas • FisioForma Academia</title>
-<meta name="description" content="Normas de convivência, etiqueta e segurança da FisioForma Academia.">
+<meta name="description" content="Normas de convivência, etiqueta, segurança e uso da FisioForma Academia. Regras para um ambiente saudável, limpo e acolhedor em São Luís – MA.">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=3">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=3">
 <meta name="theme-color" content="#3a80b4">
@@ -37,10 +37,58 @@ h3{margin:18px 0 8px}
 section{padding:42px 0}
 section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
+/* Normas
 .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;background:#e6f2fb;border:1px solid #cfe6f6;color:#1b4e70}
 .note{background:#fffbeb;border:1px solid #fde68a;color:#854d0e}
 .ok{background:#ecfeff;border:1px solid #a5f3fc;color:#065f46}
 .danger{background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}
+*/
+/* ===== Badges para Normas ===== */
+.badge {
+  display: inline-block;
+  margin: 10px 0 0;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Azul claro (informação) */
+.badge.info {
+  background: #e6f4ff;
+  color: #084298;
+  border: 1px solid #b6e0fe;
+}
+
+/* Vermelho (alerta/perigo) */
+.badge.danger {
+  background: #fdecea;
+  color: #b71c1c;
+  border: 1px solid #f5c2c7;
+}
+
+/* Amarelo (dica/nota) */
+.badge.note {
+  background: #fff8e1;
+  color: #7f6000;
+  border: 1px solid #ffe599;
+}
+
+/* Laranja (aviso) */
+.badge.warn {
+  background: #fff4e5;
+  color: #8a4500;
+  border: 1px solid #ffb86b;
+}
+
+/* Verde (positivo/curiosidade, boas práticas extras) */
+.badge.success {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+}
+
 
 .grid{display:grid;gap:22px}
 @media(min-width:860px){.grid.cols-2{grid-template-columns:1.1fr .9fr}}
@@ -129,6 +177,7 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
         <li><strong>Roupas e calçados adequados</strong>: tênis fechado; evite treinar sem camisa em áreas comuns.</li>
         <li><strong>Hidratação</strong>: garrafas com tampa; evite derramar líquidos no piso.</li>
       </ul>
+      <p class="badge success">Boas práticas: pequenas atitudes melhoram o convívio e mantêm o salão organizado.</p>
     </div>
   </section>
 
@@ -143,7 +192,7 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
         <li><strong>Toalha pessoal</strong> sobre assentos/encostos é recomendada.</li>
         <li><strong>Orientação técnica</strong>: em dúvida, chame a equipe. Execução segura vem primeiro.</li>
       </ul>
-      <p class="badge ok">Dica: séries curtas? Avise que está revezando — isso acelera o rodízio e melhora a convivência.</p>
+      <p class="badge note">Dica: séries curtas? Avise que está revezando — isso acelera o rodízio e melhora a convivência.</p>
     </div>
   </section>
 
@@ -157,6 +206,7 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
         <li><strong>Barulho excessivo</strong>: evite gritos, batidas propositais de anilhas/halteres e quedas de barra. Use borrachas/tapetes quando indicado.</li>
         <li><strong>Ligações de voz</strong> nas áreas de treino devem ser breves e em tom baixo; para conversas longas, utilize a área externa/recepção.</li>
       </ul>
+      <p class="badge warn">Aviso: barulho excessivo atrapalha a concentração e o ambiente coletivo.</p>
     </div>
   </section>
 
@@ -167,10 +217,12 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
       <ul class="rule-list">
         <li><strong>Higiene</strong>: jogue papéis no lixo; avise a recepção em caso de necessidade de limpeza.</li>
         <li><strong>Chuveiros</strong>: uso consciente de água; limite recomendado de até 10 minutos em horários de pico.</li>
+        <li><strong>Uso correto dos sanitários:</strong> não jogar papéis, absorventes ou objetos no vaso sanitário. Utilize os coletores disponíveis para evitar entupimentos e manter a higiene do espaço.</li>
         <li><strong>Armários</strong>: uso rotativo. Traga seu cadeado; pertences não devem permanecer após o expediente.</li>
         <li><strong>Objetos esquecidos</strong>: vão para “Achados e Perdidos” por 30 dias.</li>
         <li><strong>Privacidade</strong>: é proibido fotografar/filmar outras pessoas nos vestiários e banheiros.</li>
       </ul>
+      <p class="badge danger">Atenção: descartar materiais no vaso sanitário pode causar entupimentos e prejuízos.</p>
     </div>
   </section>
 
@@ -185,6 +237,7 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
         <li><strong>Emergências</strong>: siga instruções dos colaboradores; conheça rotas e extintores sinalizados.</li>
         <li><strong>Substâncias proibidas</strong>: é vedado o uso/porte de álcool ou drogas no interior da academia.</li>
       </ul>
+      <p class="badge danger">Medida preventiva: a segurança é prioridade. Em caso de emergência, procure imediatamente a equipe.</p>
     </div>
   </section>
 
@@ -194,10 +247,14 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
       <h2>6. Convivência e privacidade</h2>
       <ul class="rule-list">
         <li><strong>Respeito</strong> em primeiro lugar: linguagem e atitudes cordiais com alunos e equipe.</li>
+        <li><strong>Respeito aos mais velhos:</strong> tenha paciência e, sempre que possível, dê prioridade a eles no uso dos equipamentos e no atendimento.</li>
+        <li><strong>Empatia com iniciantes:</strong> lembre-se de que todos já foram iniciantes um dia. Cada pessoa aprende no seu tempo — evite críticas, incentive e colabore para que todos se sintam bem-vindos.</li>
+        <li><strong>Ambiente acolhedor:</strong> trate todos com cordialidade, mantendo a harmonia e a motivação coletiva.</li>
         <li><strong>Conteúdo audiovisual</strong>: ao gravar treinos, evite enquadrar terceiros sem autorização.</li>
         <li><strong>Alimentação</strong>: lanches leves liberados; evite alimentos fortes/odor intenso no salão.</li>
         <li><strong>Animais</strong>: por segurança e higiene, não são permitidos (exceto cão-guia).</li>
       </ul>
+      <p class="badge info">Informação: convivência saudável torna o treino mais agradável para todos.</p>
     </div>
   </section>
 
@@ -208,9 +265,13 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
       <ul class="rule-list">
         <li><strong>A partir de 14 anos</strong>, com autorização do responsável e avaliação prévia.</li>
         <li><strong>Acompanhamento</strong> da equipe é obrigatório nas primeiras semanas e em exercícios complexos.</li>
+        <li><strong>Não é permitida</strong> a permanência de crianças no salão de musculação ou áreas de treino sem autorização formal, para evitar riscos de acidentes.</li>
+        <li><strong>Crianças acompanhantes</strong> devem permanecer em áreas comuns autorizadas (recepção/espera), sempre sob responsabilidade do responsável legal.</li>
       </ul>
+     <p class="badge warn">Aviso: o ambiente de treino contém pesos livres, cabos e máquinas que podem causar acidentes graves.</p>
     </div>
   </section>
+
 
   <!-- Financeiro -->
   <section id="financeiro" class="alt">
