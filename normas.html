@@ -123,25 +123,43 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
 }
 
 .toc ol{
+  counter-reset: toc;
+  list-style:none;
   margin:0;
-  padding-left:20px;
+  padding:0;
 }
-
 .toc li{
-  margin:6px 0;
-  font-size:14px;
+  counter-increment: toc;
+  margin:8px 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.toc li::before{
+  content: counter(toc);
+  background: var(--brand);
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+  width:22px;height:22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
 }
 
-.toc a{
-  color:var(--brand-ink);
-  text-decoration:none;
-  transition:color .2s ease;
-}
 
-.toc a:hover{
+.toc li a{
+  flex:1;
+  padding:4px 6px;
+  border-radius:6px;
+  transition:.2s;
+}
+.toc li a:hover{
+  background:#eef6fb;
   color:var(--brand);
-  text-decoration:underline;
 }
+
 
 
 .footer-meta{
