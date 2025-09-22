@@ -195,6 +195,26 @@ footer .credit a{color:inherit;text-decoration:none;border-bottom:1px dotted cur
 footer .credit a:hover{opacity:1;text-decoration:underline}
 
 
+  .mensagens {
+  display: flex;
+  flex-direction: column; /* todas empilhadas uma embaixo da outra */
+  gap: 1rem;
+  margin-top: 1rem;
+  max-width: 600px; /* limite opcional para não esticar demais */
+}
+
+.msg {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+
 </style>
 </head>
 <body>
@@ -232,12 +252,13 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
           <em>Feriados podem ter horários especiais. Acompanhe os avisos no Instagram.</em>
         </p>
       </div>
-      <div class="card"><div class="body muted">💙 Ambiente amplo e acolhedor, com musculação, cardio e apoio para você treinar com tranquilidade.</div></div>
-      <div class="card"><div class="body muted">💙 Na Fisioforma, o espaço é amplo, o clima é leve e a motivação é contagiante. Treine com tranquilidade em um ambiente que abraça você.</div></div>
-      <div class="card"><div class="body muted">💙 Seja qual for seu objetivo, temos o ambiente e o apoio. Mais do que aparelhos, oferecemos um espaço completo para a sua evolução.</div></div>
-      <div class="card"><div class="body muted">💙 Um ambiente acolhedor e uma jornada inesquecível. Na Fisioforma, você não só treina, você se conecta com a sua melhor versão.</div></div>
-      <div class="card"><div class="body muted">💙 Tranquilidade para treinar, apoio para evoluir. Nosso espaço é completo, nosso suporte é constante. Chegue e sinta-se em casa.</div></div>
-      <div class="card"><div class="body muted">💙 Mais que uma academia, um refúgio para sua saúde. Espaço amplo, tranquilo e com toda a estrutura para você se superar a cada dia.</div></div>
+      <!-- Bloco de mensagens -->
+      <div class="mensagens"><div class="msg">💙 Ambiente amplo e acolhedor, com musculação, cardio e apoio para você treinar com tranquilidade.</div></div>
+      <div class="mensagens"><div class="msg">💙 Na Fisioforma, o espaço é amplo, o clima é leve e a motivação é contagiante. Treine com tranquilidade em um ambiente que abraça você.</div></div>
+      <div class="mensagens"><div class="msg">💙 Seja qual for seu objetivo, temos o ambiente e o apoio. Mais do que aparelhos, oferecemos um espaço completo para a sua evolução.</div></div>
+      <div class="mensagens"><div class="msg">💙 Um ambiente acolhedor e uma jornada inesquecível. Na Fisioforma, você não só treina, você se conecta com a sua melhor versão.</div></div>
+      <div class="mensagens"><div class="msg">💙 Tranquilidade para treinar, apoio para evoluir. Nosso espaço é completo, nosso suporte é constante. Chegue e sinta-se em casa.</div></div>
+      <div class="mensagens"><div class="msg">💙 Mais que uma academia, um refúgio para sua saúde. Espaço amplo, tranquilo e com toda a estrutura para você se superar a cada dia.</div></div>
     </div>
   </section>
 
@@ -490,6 +511,8 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 </footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 
+
+  
 <!-- Autoplay fotos (FADE) -->
 <script>
 (function(){
