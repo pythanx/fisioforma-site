@@ -3,68 +3,261 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Normas da Academia — FisioForma</title>
-<meta name="description" content="Normas e boas práticas de convivência na Academia FisioForma.">
+<title>Normas • FisioForma Academia</title>
+<meta name="description" content="Normas de convivência, etiqueta e segurança da FisioForma Academia.">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=3">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=3">
+<meta name="theme-color" content="#3a80b4">
 <style>
-  :root{--ink:#222;--muted:#666;--line:#d9d9d9;--brand:#3a80b4}
-  body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI}
-  .wrap{max-width:900px;margin:auto;padding:28px 16px}
-  a{color:var(--brand)}
-  h1{margin:0 0 8px 0}
-  h2{margin:22px 0 8px 0}
-  .note{color:var(--muted)}
-  ul{margin:0 0 16px 20px}
-  li+li{margin-top:6px}
-  header{border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:12px}
-  footer{border-top:1px solid var(--line);padding:18px 0;margin-top:24px;color:var(--muted);font-size:14px}
+:root{
+  --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
+  --card:#f5f7fa; --line:#d9d9d9;
+  --brand:#3a80b4; --brand-ink:#2d5e7e; --ok:#0ea5e9; --bad:#e11d48; --warn:#f59e0b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:auto;padding:0 16px}
+
+/* Header/Nav (mesmo estilo) */
+header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10;backdrop-filter:saturate(120%) blur(6px)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.logo img{height:56px}
+.links{display:none;gap:18px}
+.cta{display:inline-block;background:var(--brand);color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;border:1px solid transparent}
+.cta.outline{background:#fff;color:var(--brand);border-color:var(--brand)}
+.cta:hover{background:var(--brand-ink);color:#fff}
+@media (min-width:760px){.links{display:flex}}
+
+h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0 0 8px}
+h2{font-size:clamp(22px,3vw,30px);margin:0 0 8px}
+h3{margin:18px 0 8px}
+.muted{color:var(--muted)}
+section{padding:42px 0}
+section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;background:#e6f2fb;border:1px solid #cfe6f6;color:#1b4e70}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#854d0e}
+.ok{background:#ecfeff;border:1px solid #a5f3fc;color:#065f46}
+.danger{background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}
+
+.grid{display:grid;gap:22px}
+@media(min-width:860px){.grid.cols-2{grid-template-columns:1.1fr .9fr}}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.card .body{padding:18px 20px}
+.card h3{margin-top:0}
+
+.toc{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff}
+.toc ol{margin:6px 0 0 18px;padding:0}
+.toc li{margin:4px 0}
+.rule-list{margin:10px 0 0 0;padding:0 0 0 18px}
+.rule-list li{margin:8px 0}
+
+.kv{display:grid;grid-template-columns:140px 1fr;gap:6px 14px}
+.kv div:nth-child(odd){color:var(--muted)}
+
+.footer-meta{font-size:14px;color:var(--muted)}
 </style>
 </head>
 <body>
+
 <header>
-  <div class="wrap">
-    <a href="index.html" aria-label="Voltar para o site">← Voltar</a>
+  <div class="wrap nav">
+    <div class="logo"><img src="logo-fisioforma.png" alt="Logo FisioForma"></div>
+    <nav class="links">
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#planos">Planos</a>
+      <a href="index.html#estrutura">Estrutura</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="normas.html" aria-current="page">Normas</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+    <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noreferrer">Fale no WhatsApp</a>
   </div>
 </header>
 
-<main class="wrap">
-  <h1>Normas da Academia</h1>
-  <p class="note">Estas regras garantem segurança, higiene e boa convivência. Em caso de dúvidas, procure a recepção.</p>
+<main>
+  <!-- Hero -->
+  <section class="alt">
+    <div class="wrap">
+      <h1>Normas de convivência e uso do espaço</h1>
+      <p class="muted">Regras simples para manter a FisioForma segura, organizada e agradável para todos. Ao acessar a academia, você concorda com estas normas.</p>
 
-  <h2>Higiene e equipamentos</h2>
-  <ul>
-    <li>Use toalha pessoal sobre bancos e máquinas.</li>
-    <li>Higienize os equipamentos após o uso (álcool disponível na recepção).</li>
-    <li>Guarde anilhas, halteres e acessórios no lugar.</li>
-  </ul>
+      <div class="grid cols-2" style="margin-top:16px">
+        <div class="toc">
+          <strong>Sumário</strong>
+          <ol>
+            <li><a href="#etiqueta">Etiqueta e boas práticas</a></li>
+            <li><a href="#equipamentos">Uso de equipamentos</a></li>
+            <li><a href="#som">Música, som e barulho</a></li>
+            <li><a href="#banheiros">Banheiros e vestiários</a></li>
+            <li><a href="#seguranca">Segurança e saúde</a></li>
+            <li><a href="#convivencia">Convivência e privacidade</a></li>
+            <li><a href="#menores">Menores de idade</a></li>
+            <li><a href="#financeiro">Financeiro e acesso</a></li>
+            <li><a href="#sancoes">Sanções e encaminhamentos</a></li>
+          </ol>
+        </div>
 
-  <h2>Vestuário e segurança</h2>
-  <ul>
-    <li>Use roupas e calçados adequados para prática esportiva.</li>
-    <li>Evite treinar com chinelos/sandálias.</li>
-    <li>Informe à equipe qualquer desconforto ou mal-estar.</li>
-  </ul>
+        <div class="card">
+          <div class="body">
+            <h3 style="margin:0 0 6px 0">Informações rápidas</h3>
+            <div class="kv">
+              <div>Unidade</div><div>Anjo da Guarda — São Luís/MA</div>
+              <div>Horário</div><div>Seg–Sex 06h–22h • Sáb 08h–12h/14h30–17h30 • Dom 08h–12h</div>
+              <div>Contato</div><div><a href="tel:+5598992223926">(98) 99222-3926</a> • <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a></div>
+              <div>Redes</div><div><a href="https://instagram.com/fisioforma.acad" target="_blank">@fisioforma.acad</a></div>
+            </div>
+            <p class="badge note" style="margin-top:10px">Em feriados, podem existir horários especiais — acompanhe nossos avisos no Instagram.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <h2>Convivência</h2>
-  <ul>
-    <li>Respeite o tempo nos aparelhos em horários de pico.</li>
-    <li>Evite linguagem ofensiva e mantenha o ambiente cordial.</li>
-    <li>Fones de ouvido para músicas pessoais.</li>
-  </ul>
+  <!-- Etiqueta -->
+  <section id="etiqueta">
+    <div class="wrap">
+      <h2>1. Etiqueta e boas práticas</h2>
+      <ul class="rule-list">
+        <li><strong>Higienize</strong> os aparelhos após o uso (spray e pano disponíveis).</li>
+        <li><strong>Guarde</strong> anilhas, barras e halteres nos suportes correspondentes.</li>
+        <li><strong>Revezamento é bem-vindo</strong>: permita que outros alunos usem a máquina entre suas séries.</li>
+        <li><strong>Sem ocupação indevida</strong>: evite “reservar” equipamentos deixando toalha/garrafa.</li>
+        <li><strong>Roupas e calçados adequados</strong>: tênis fechado; evite treinar sem camisa em áreas comuns.</li>
+        <li><strong>Hidratação</strong>: garrafas com tampa; evite derramar líquidos no piso.</li>
+      </ul>
+    </div>
+  </section>
 
-  <h2>Planos e acesso</h2>
-  <ul>
-    <li>Entrada mediante plano ativo e identificação.</li>
-    <li>Planos com fidelidade podem ter pausa mediante justificativa.</li>
-    <li>Consulte condições de Day Use e aulas coletivas na recepção.</li>
-  </ul>
+  <!-- Equipamentos -->
+  <section id="equipamentos" class="alt">
+    <div class="wrap">
+      <h2>2. Uso de equipamentos</h2>
+      <ul class="rule-list">
+        <li><strong>Montagem segura</strong>: confira travas e presilhas antes de iniciar o exercício.</li>
+        <li><strong>Sem arremesso</strong>: não arremesse/solte pesos ao final das séries. Apoie com controle.</li>
+        <li><strong>Ordem de carga</strong>: anilhas por diâmetro/peso; devolva a barra “zerada”.</li>
+        <li><strong>Toalha pessoal</strong> sobre assentos/encostos é recomendada.</li>
+        <li><strong>Orientação técnica</strong>: em dúvida, chame a equipe. Execução segura vem primeiro.</li>
+      </ul>
+      <p class="badge ok">Dica: séries curtas? Avise que está revezando — isso acelera o rodízio e melhora a convivência.</p>
+    </div>
+  </section>
 
-  <p class="note">Obrigado por treinar com a gente! 💙</p>
+  <!-- Som e barulho -->
+  <section id="som">
+    <div class="wrap">
+      <h2>3. Música, som e barulho</h2>
+      <ul class="rule-list">
+        <li><strong>Fone de ouvido</strong> para músicas pessoais. Caixas portáteis não são permitidas.</li>
+        <li><strong>Ambiente sonoro</strong> da academia: playlist neutra, com volume confortável (padrão interno ≈ <em>até 70 dB</em> junto aos alto-falantes). Ajustes podem ser feitos pela equipe conforme o movimento.</li>
+        <li><strong>Barulho excessivo</strong>: evite gritos, batidas propositais de anilhas/halteres e quedas de barra. Use borrachas/tapetes quando indicado.</li>
+        <li><strong>Ligações de voz</strong> nas áreas de treino devem ser breves e em tom baixo; para conversas longas, utilize a área externa/recepção.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Banheiros / vestiários -->
+  <section id="banheiros" class="alt">
+    <div class="wrap">
+      <h2>4. Banheiros e vestiários</h2>
+      <ul class="rule-list">
+        <li><strong>Higiene</strong>: jogue papéis no lixo; avise a recepção em caso de necessidade de limpeza.</li>
+        <li><strong>Chuveiros</strong>: uso consciente de água; limite recomendado de até 10 minutos em horários de pico.</li>
+        <li><strong>Armários</strong>: uso rotativo. Traga seu cadeado; pertences não devem permanecer após o expediente.</li>
+        <li><strong>Objetos esquecidos</strong>: vão para “Achados e Perdidos” por 30 dias.</li>
+        <li><strong>Privacidade</strong>: é proibido fotografar/filmar outras pessoas nos vestiários e banheiros.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Segurança -->
+  <section id="seguranca">
+    <div class="wrap">
+      <h2>5. Segurança e saúde</h2>
+      <ul class="rule-list">
+        <li><strong>Condições de saúde</strong>: informe limitações, dores ou mal-estar à equipe imediatamente.</li>
+        <li><strong>EPI e ajustes</strong>: use cintos, straps e presilhas quando aplicável.</li>
+        <li><strong>Calçados</strong> fechados obrigatórios nas áreas de peso livre e máquinas.</li>
+        <li><strong>Emergências</strong>: siga instruções dos colaboradores; conheça rotas e extintores sinalizados.</li>
+        <li><strong>Substâncias proibidas</strong>: é vedado o uso/porte de álcool ou drogas no interior da academia.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Convivência -->
+  <section id="convivencia" class="alt">
+    <div class="wrap">
+      <h2>6. Convivência e privacidade</h2>
+      <ul class="rule-list">
+        <li><strong>Respeito</strong> em primeiro lugar: linguagem e atitudes cordiais com alunos e equipe.</li>
+        <li><strong>Conteúdo audiovisual</strong>: ao gravar treinos, evite enquadrar terceiros sem autorização.</li>
+        <li><strong>Alimentação</strong>: lanches leves liberados; evite alimentos fortes/odor intenso no salão.</li>
+        <li><strong>Animais</strong>: por segurança e higiene, não são permitidos (exceto cão-guia).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Menores -->
+  <section id="menores">
+    <div class="wrap">
+      <h2>7. Menores de idade</h2>
+      <ul class="rule-list">
+        <li><strong>A partir de 14 anos</strong>, com autorização do responsável e avaliação prévia.</li>
+        <li><strong>Acompanhamento</strong> da equipe é obrigatório nas primeiras semanas e em exercícios complexos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Financeiro -->
+  <section id="financeiro" class="alt">
+    <div class="wrap">
+      <h2>8. Financeiro, acesso e contratos</h2>
+      <ul class="rule-list">
+        <li><strong>Acesso</strong> mediante plano ativo e identificação na recepção.</li>
+        <li><strong>Pagamentos</strong> conforme contrato do plano escolhido (cartão/PIX/dinheiro). Atrasos podem suspender o acesso até a regularização.</li>
+        <li><strong>Cancelamentos/pausas</strong> seguem as condições do contrato e devem ser solicitados oficialmente na recepção/WhatsApp.</li>
+      </ul>
+      <p class="badge note">Alguns itens podem variar por campanhas sazonais — confirme na recepção.</p>
+    </div>
+  </section>
+
+  <!-- Sanções -->
+  <section id="sancoes">
+    <div class="wrap">
+      <h2>9. Sanções e encaminhamentos</h2>
+      <div class="card">
+        <div class="body">
+          <p class="muted" style="margin-top:0">Nosso objetivo é orientar e manter o ambiente seguro. Em caso de descumprimento das normas:</p>
+          <ol class="rule-list" style="margin-left:18px">
+            <li><strong>Orientação verbal</strong> (ajuste imediato do comportamento).</li>
+            <li><strong>Advertência formal</strong> (registro interno).</li>
+            <li><strong>Suspensão temporária</strong> do acesso, conforme gravidade/recorrência.</li>
+            <li><strong>Cancelamento</strong> do contrato em casos graves (risco à integridade, assédio, danos intencionais, etc.).</li>
+          </ol>
+          <p class="badge danger">Assédio moral/sexual, discriminação, violência ou dano proposital a pessoas/equipamentos serão tratados com <strong>tolerância zero</strong> e podem gerar medidas legais.</p>
+        </div>
+      </div>
+      <p class="footer-meta" style="margin-top:10px">Última atualização: <span id="dt"></span> • FisioForma Academia — Anjo da Guarda</p>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="wrap">© <span id="y"></span> FisioForma Academia</div>
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:18px 0;border-top:1px solid var(--line);margin-top:12px">
+    <div>© <span id="y"></span> FisioForma Academia. Todos os direitos reservados.</div>
+    <div class="muted">Dúvidas? <a href="https://wa.me/5598992223926" target="_blank">Chame no WhatsApp</a></div>
+  </div>
 </footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+const d=new Date();document.getElementById('dt').textContent=
+  d.toLocaleDateString('pt-BR',{year:'numeric',month:'long',day:'2-digit'});
+</script>
 </body>
 </html>
+
