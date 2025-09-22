@@ -543,71 +543,53 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 <section id="normas-resumo" class="alt">
   <div class="wrap">
     <h2>Normas principais</h2>
-    <p class="muted">Regras essenciais para manter a FisioForma segura, organizada e acolhedora. Confira abaixo os principais pontos:</p>
+    <p class="muted">Regras essenciais para manter a FisioForma segura, organizada e acolhedora.</p>
 
     <div class="grid cols-2" style="margin-top:16px">
-      <div class="card resumo">
-        <div class="body">
-          <h3>🧼 Etiqueta</h3>
-          <p class="badge success">Higienize aparelhos após o uso, guarde pesos no lugar e use roupas/calçados adequados.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>🧼 Etiqueta</h3>
+        <p class="badge info">Higienize os aparelhos, guarde os pesos no lugar e use roupas/calçados adequados.</p>
+      </div></div>
 
-      <div class="card resumo">
-        <div class="body">
-          <h3>🏋️ Equipamentos</h3>
-          <p class="badge note">Use presilhas e travas, não arremesse pesos e devolva anilhas organizadas.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>🏋️ Equipamentos</h3>
+        <p class="badge note">Use travas/presilhas, não arremesse pesos e devolva anilhas organizadas.</p>
+      </div></div>
 
-      <div class="card resumo">
-        <div class="body">
-          <h3>🎵 Som</h3>
-          <p class="badge warn">Use fones para música pessoal. Evite gritos e barulho excessivo.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>🎵 Som</h3>
+        <p class="badge warn">Use fones para músicas pessoais. Evite gritos e barulho excessivo.</p>
+      </div></div>
 
-      <div class="card resumo">
-        <div class="body">
-          <h3>🚻 Banheiros</h3>
-          <p class="badge danger">Use os coletores para papéis/absorventes e respeite o tempo de chuveiro em horários de pico.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>🚻 Banheiros</h3>
+        <p class="badge danger">Papéis/absorventes no coletor, não no vaso. Respeite o tempo de chuveiro.</p>
+      </div></div>
 
-      <div class="card resumo">
-        <div class="body">
-          <h3>⚠️ Segurança</h3>
-          <p class="badge danger">Informe limitações à equipe, use tênis fechado e siga protocolos em emergências.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>⚠️ Segurança</h3>
+        <p class="badge danger">Informe limitações à equipe, use tênis fechado e siga os protocolos.</p>
+      </div></div>
 
-      <div class="card resumo">
-        <div class="body">
-          <h3>🤝 Convivência</h3>
-          <p class="badge info">Respeite colegas, tenha paciência com idosos e empatia com iniciantes.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>🤝 Convivência</h3>
+        <p class="badge success">Respeite idosos e iniciantes. Empatia e cordialidade sempre.</p>
+      </div></div>
 
-      <div class="card resumo">
-        <div class="body">
-          <h3>👶 Menores</h3>
-          <p class="badge warn">Acesso a partir de 14 anos com autorização. Crianças não podem permanecer no salão.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>👶 Menores</h3>
+        <p class="badge warn">Acesso a partir de 14 anos (autorização). Crianças não permanecem no salão.</p>
+      </div></div>
 
-      <div class="card resumo">
-        <div class="body">
-          <h3>💳 Financeiro</h3>
-          <p class="badge note">Acesso somente com plano ativo. Pagamentos devem estar em dia.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>💳 Financeiro</h3>
+        <p class="badge note">Acesso com plano ativo e pagamentos em dia.</p>
+      </div></div>
 
-      <div class="card resumo">
-        <div class="body">
-          <h3>🚫 Sanções</h3>
-          <p class="badge danger">Descumprimento pode gerar advertência, suspensão ou cancelamento do contrato.</p>
-        </div>
-      </div>
+      <div class="card resumo"><div class="body">
+        <h3>🚫 Sanções</h3>
+        <p class="badge danger">Descumprimentos podem gerar advertência, suspensão ou cancelamento.</p>
+      </div></div>
     </div>
 
     <div style="margin-top:22px; text-align:center">
@@ -615,6 +597,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
     </div>
   </div>
 </section>
+
 
 <style>
 /* Estilo de destaque nos cards */
@@ -626,6 +609,29 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+
+/* RESUMO DAS NORMAS – escopo local */
+#normas-resumo .card.resumo{
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+#normas-resumo .card.resumo:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Badges do resumo (não conflitam com o restante) */
+#normas-resumo .badge{
+  display:inline-block;margin:8px 0 0;padding:6px 10px;border-radius:6px;
+  font-size:14px;line-height:1.4;font-weight:600;border:1px solid transparent;
+}
+#normas-resumo .badge.info{background:#e6f4ff;color:#084298;border-color:#b6e0fe}
+#normas-resumo .badge.warn{background:#fff4e5;color:#8a4500;border-color:#ffb86b}
+#normas-resumo .badge.danger{background:#fdecea;color:#b71c1c;border-color:#f5c2c7}
+#normas-resumo .badge.note{background:#fff8e1;color:#7f6000;border-color:#ffe599}
+#normas-resumo .badge.success{background:#e8f5e9;color:#1b5e20;border-color:#a5d6a7}
+
+
 </style>
 
 
