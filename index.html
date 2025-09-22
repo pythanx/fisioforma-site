@@ -230,20 +230,29 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 .hero .info-box li{margin:6px 0}
 .hero .info-box li strong{font-weight:700}
 
-.hero .socials{
-  margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
 }
-.hero .socials span{font-weight:600;color:var(--muted);margin-right:6px}
-.hero .socials a{
-  display:inline-flex;align-items:center;gap:6px;
-  border:1px solid var(--line);border-radius:999px;
-  padding:6px 10px;text-decoration:none;color:var(--ink);
-  transition:.15s ease;
+
+.socials a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  transition: 0.3s;
 }
-.hero .socials a:hover{background:#f5faff;border-color:#bcd7ea;transform:translateY(-1px)}
-.hero .socials svg{width:16px;height:16px}
-.hero .socials .wa svg{fill:#25D366}
-.hero .socials .ig svg{fill:#E1306C}
+
+.socials a.wa { border-color: #25D366; color: #25D366; }
+.socials a.wa:hover { background: #25D36622; }
+
+.socials a.ig { border-color: #E1306C; color: #E1306C; }
+.socials a.ig:hover { background: #E1306C22; }
 
   /* Socials – toques de cor e responsivo */
 @media (max-width:560px){
@@ -284,27 +293,22 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
           <a class="cta" href="#planos">Ver planos</a>
           <a class="cta outline" href="#contato">Agendar visita</a>
         </div>
-        <div class="info-box">
-  <h3>
-    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 .001-16.001A8 8 0 0 1 12 20Zm.75-13h-1.5v5l4.25 2.55.75-1.23-3.5-2.07V7Z"/></svg>
-    Horário de funcionamento
-  </h3>
-  <ul>
-    <li><strong>Segunda a sexta:</strong> 06:00 às 22:00</li>
-    <li><strong>Sábado:</strong> 08:00 às 12:00 | 14:30 às 17:30</li>
-    <li><strong>Domingo:</strong> 08:00 às 12:00</li>
-    <li><strong>Feriados: Horário reduzido, consultar os avisos no Instagram.</strong></li>
-  </ul>
-
-  <div class="socials">
-    <span>Acompanhe nossas redes:</span>
-    <a class="wa" href="https://wa.me/5598992223926"
-       target="_blank" rel="noopener"
-       aria-label="Abrir conversa no WhatsApp da FisioForma">…</a>
-
-    <a class="ig" href="https://instagram.com/fisioforma.acad"
-       target="_blank" rel="noopener"
-       aria-label="Abrir Instagram da FisioForma">@fisioforma.acad</a>
+       <div class="info-box">
+          <h3>🕒 Horário de funcionamento</h3>
+          <p><strong>Segunda a sexta:</strong> 06:00 às 22:00</p>
+          <p><strong>Sábado:</strong> 08:00 às 12:00 | 14:30 às 17:30</p>
+          <p><strong>Domingo:</strong> 08:00 às 12:00</p>
+          <p><strong>Feriados:</strong> Horário reduzido, consultar os avisos no Instagram.</p>
+        
+          <p><strong>Acompanhe nossas redes:</strong></p>
+          <div class="socials">
+            <a href="https://wa.me/5598992223926" target="_blank" class="wa">
+              <img src="https://img.icons8.com/color/24/whatsapp--v1.png" alt="WhatsApp"> WhatsApp
+            </a>
+            <a href="https://instagram.com/fisioforma.acad" target="_blank" class="ig">
+              <img src="https://img.icons8.com/fluency/24/instagram-new.png" alt="Instagram"> Instagram
+              </a>
+    </div>
   </div>
 </div>
       </div>
