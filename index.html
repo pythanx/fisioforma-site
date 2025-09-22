@@ -71,6 +71,8 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 /* Instagram sidebar */
 .ig-frame{position:relative;width:100%;aspect-ratio:1/1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+<a class="ig" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener"
+   aria-label="Ver a FisioForma no Instagram">
 
 /* === Carrossel de FOTOS (FADE) — sem flicker === */
 #sobre .ff-fade{--h: clamp(220px,26vw,360px);max-width:640px;margin:24px auto 0;border:1px solid var(--line);border-radius:16px;background:#fff;position:relative;overflow:hidden}
@@ -299,11 +301,13 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
           Redes sociais:
         </h3>
         <div class="socials">
-          <a class="wa" href="https://wa.me/5598992223926" target="_blank" rel="noopener">
+          <a class="wa" href="https://wa.me/5598992223926" target="_blank" rel="noopener"
+   aria-label="Falar com a FisioForma no WhatsApp">
             <svg viewBox="0 0 24 24"><path d="M12.04 2C6.57 2 2.16 6.4 2.16 11.87c0 2.09.57 4.03 1.63 5.7L2 22l4.57-1.74a9.9 9.9 0 0 0 5.47 1.6h.01c5.47 0 9.88-4.4 9.88-9.87C22 6.4 17.5 2 12.04 2Zm5.72 13.96c-.24.68-1.39 1.29-1.92 1.32-.53.03-1.23.05-1.99-.12-.45-.1-1.04-.34-1.81-.67-3.18-1.38-5.24-4.6-5.4-4.81-.16-.21-1.29-1.72-1.29-3.28 0-1.56.82-2.33 1.11-2.66.29-.33.63-.41.84-.41h.61c.19 0 .46-.08.72.54.27.65.92 2.24 1 2.4.08.16.13.35.02.56-.11.21-.17.35-.34.54-.17.19-.36.43-.52.58-.17.17-.35.36-.15.71.2.35.9 1.49 1.93 2.42 1.32 1.18 2.43 1.55 2.79 1.72.36.17.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.8-.18.33.12 2.09.98 2.45 1.16.36.18.6.26.69.41.09.15.09.87-.14 1.55Z"/></svg>
             WhatsApp
           </a>
-          <a class="ig" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">
+          <a class="ig" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener"
+   aria-label="Ver a FisioForma no Instagram">
             <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm6.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18.25 6.5Z"/></svg>
             Instagram
           </a>
@@ -765,6 +769,8 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 <!-- Autoplay fotos (FADE) -->
 <script>
 (function(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
   const box = document.querySelector('#sobre .ff-fade');
   if(!box) return;
   const radios = [...box.querySelectorAll('input[name="fff"]')];
@@ -797,6 +803,8 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 <!-- Autoplay depoimentos -->
 <script>
 (function(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
   const box = document.querySelector('#depoimentos .t-carousel');
   if(!box) return;
   const radios = [...box.querySelectorAll('input[name="t"]')];
@@ -822,6 +830,24 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
     if(Math.abs(dx)>40) go(i + (dx<0?1:-1));
   },{passive:true});
 })();
+  <script>
+(function(){
+  const box = document.querySelector('#depoimentos .t-carousel');
+  if(!box) return;
+  const radios = [...box.querySelectorAll('input[name="t"]')];
+  let i = radios.findIndex(r => r.checked); if(i<0){i=0;radios[0].checked=true}
+  let hold=false, timer=null;
+  const tick=()=>{ if(!hold){ i=(i+1)%radios.length; radios[i].checked=true; } };
+  const start=()=> timer=setInterval(tick,4500);
+  const stop =()=> { if(timer){clearInterval(timer);timer=null;} };
+
+  box.addEventListener('mouseenter',()=>hold=true);
+  box.addEventListener('mouseleave',()=>hold=false);
+  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+  start();
+})();
+</script>
+
 </script>
 
   <script>
