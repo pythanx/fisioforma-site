@@ -708,15 +708,33 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* RESUMO DAS NORMAS – escopo local */
-#normas-resumo .card.resumo{
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-#normas-resumo .card.resumo:hover{
-  transform:translateY(-4px) scale(1.02);
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
-}
+/* === Resumo das Normas (index) === */
+#normas-resumo .grid {display:grid;gap:18px}
+@media(min-width:600px){#normas-resumo .grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){#normas-resumo .grid{grid-template-columns:repeat(3,1fr)}}
+
+.normas-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  display:flex;flex-direction:column;min-height:170px}
+.normas-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.06);border-color:#bcd7ea}
+.normas-card .body{padding:16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.normas-card h3{margin:0;font-size:16px;display:flex;align-items:center;gap:8px}
+.normas-card p{margin:0;color:var(--muted)}
+.normas-card .mini-badge{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid transparent}
+.mini-badge.info{background:#e6f4ff;border-color:#b6e0fe;color:#084298}
+.mini-badge.warn{background:#fff4e5;border-color:#ffb86b;color:#8a4500}
+.mini-badge.danger{background:#fdecea;border-color:#f5c2c7;color:#b71c1c}
+.mini-badge.success{background:#e8f5e9;border-color:#a5d6a7;color:#1b5e20}
+.mini-badge.note{background:#fff8e1;border-color:#ffe599;color:#7f6000}
+
+/* botão "ver todas" */
+#normas-resumo .actions{margin-top:14px;display:flex;justify-content:center}
+#normas-resumo .actions .cta.outline{border-radius:10px;padding:10px 14px}
+
+/* Fade-in ao entrar na tela */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+
 </style>
 
 
