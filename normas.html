@@ -106,7 +106,28 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
 .kv{display:grid;grid-template-columns:140px 1fr;gap:6px 14px}
 .kv div:nth-child(odd){color:var(--muted)}
 
-.footer-meta{font-size:14px;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:28px}
+footer .wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 16px;
+  color:var(--muted);
+  font-size:14px
+}
+footer .credit{opacity:.9}
+footer .credit a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px dotted currentColor
+}
+footer .credit a:hover{
+  opacity:1;
+  text-decoration:underline
+}
+
 </style>
 </head>
 <body>
@@ -302,17 +323,20 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
           <p class="badge danger">Assédio moral/sexual, discriminação, violência ou dano proposital a pessoas/equipamentos serão tratados com <strong>tolerância zero</strong> e podem gerar medidas legais.</p>
         </div>
       </div>
-      <p class="footer-meta" style="margin-top:10px">Última atualização: <span id="dt"></span> • FisioForma Academia — Anjo da Guarda</p>
+      <p class="footer-meta" style="margin-top:10px">Última atualização: <span id="dt"></span> • FisioForma Academia</p>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:18px 0;border-top:1px solid var(--line);margin-top:12px">
-    <div>© <span id="y"></span> FisioForma Academia. Todos os direitos reservados.</div>
-    <div class="muted">Dúvidas? <a href="https://wa.me/5598992223926" target="_blank">Chame no WhatsApp</a></div>
+  <div class="wrap">
+    <div>© <span id="y"></span> FisioForma Academia. Todos os direitos reservados. 
+      <span class="muted">• Dúvidas? <a href="https://wa.me/5598992223926" target="_blank">Chame no WhatsApp</a></span>
+    </div>
+    <div class="credit">Developed by <strong>Giselle Oliveira</strong></div>
   </div>
 </footer>
+
 
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
