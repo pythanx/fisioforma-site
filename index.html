@@ -82,6 +82,13 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 .hero-visual .cta{padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 8px 20px rgba(58,128,180,.25)}
 .hero-visual .cta:hover{transform:translateY(-1px)}
 
+/* HERO: garante 2 colunas no desktop e ordem correta */
+.hero .wrap{ display:grid; gap:22px; grid-template-columns:1fr; }
+@media (min-width:760px){
+  .hero .wrap{ grid-template-columns: minmax(0,1fr) minmax(0,560px); align-items:start; }
+  .hero .wrap > :first-child{ order:1; }   /* texto à esquerda */
+  .hero .wrap > aside{ order:2; }          /* DM à direita */
+}
 
 /* Ícones Estrutura */
 .ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;margin-right:8px;background:#eaf4fb;border:1px solid #d7e9f7;font-size:14px}
