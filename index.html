@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+chat, me manda o index corrigido <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -17,25 +17,18 @@
 <meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fisioforma-site.vercel.app/">
-<meta property="og:image" content="https://fisioforma-site.vercel.app/logo-fisioforma.png">
-<meta property="og:image:alt" content="Logo da FisioForma">
-<meta name="twitter:image" content="https://fisioforma-site.vercel.app/logo-fisioforma.png">
+<meta property="og:image" content="logo-fisioforma-icon.png">
 <meta name="twitter:card" content="summary_large_image">
-
 
 <!-- Performance -->
 <link rel="preconnect" href="https://snapwidget.com" crossorigin>
-<link rel="preload" as="image" href="assets/hero-fisioforma.jpg" fetchpriority="high">
-
+<link rel="preload" as="image" href="foto1.png?v=2" imagesrcset="foto1.png?v=2" fetchpriority="high">
 
 <style>
 :root{
   --bg:#ffffff; --ink:#222; --muted:#5a5a5a; --card:#f5f7fa; --line:#d9d9d9;
-  --brand:#2b6b8a;        /* azul principal (novo) */
-  --brand-ink:#1f4e63;    /* hover/destaque (novo) */
-  --ok:#0ea5e9;
+  --brand:#3a80b4; --brand-ink:#2d5e7e; --ok:#0ea5e9;
 }
-
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
 html {scroll-behavior: smooth;}
@@ -82,30 +75,7 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 .hero-visual .cta{padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 8px 20px rgba(58,128,180,.25)}
 .hero-visual .cta:hover{transform:translateY(-1px)}
 
-/* === HERO no topo: título à esquerda + DM à direita === */
-.hero .wrap{
-  display:grid; 
-  gap:22px; 
-  grid-template-columns: 1fr;            /* mobile: 1 coluna */
-  align-items:start;
-}
-@media (min-width:760px){
-  .hero .wrap{
-    grid-template-columns: minmax(0,1fr) minmax(0,560px); /* desktop: 2 colunas */
-  }
-  .hero .wrap > :first-child{ order:1; }  /* bloco do título fica à esquerda */
-  .hero .wrap > aside{ 
-    order:2;                               /* DM à direita */
-    align-self:start;                      /* alinha no topo */
-    justify-self:end;                      /* encosta à direita */
-    max-width:560px;                       /* largura confortável pro card */
-    width:100%;
-  }
-}
-/* opcional: tira qualquer margem extra do aside no hero */
-.hero aside.card{ margin:0; }
 
-  
 /* Ícones Estrutura */
 .ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;margin-right:8px;background:#eaf4fb;border:1px solid #d7e9f7;font-size:14px}
 
@@ -185,7 +155,26 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .plano-card li.no{ color:#d32f2f; }     /* ❌ */
 .plano-card li.opt{ color:#6b7280; }    /* ➖ */
 
+.plans-table td,
+.plans-table th {
+  text-align: center;
+  padding: 10px;
+}
 
+.nao-incluso {
+  color: #2c3e50; /* azul escuro puxado para o preto */
+  font-weight: 600;
+}
+
+.opcional {
+  color: #6c757d; /* cinza neutro */
+  font-style: italic;
+}
+
+.plans-table a {
+  text-decoration: none; /* remove sublinhado */
+  color: #2c3e50; /* azul escuro */
+}
 
 
 .btn-escolher{
@@ -239,8 +228,14 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .no  { color:#2c3e50; font-weight:700; }
 .compare .opt { color:#6b7280; }
 
+/* Links sem sublinhado (somente onde interessa) */
+#planos a, .compare a {
+  text-decoration: none;
+  color: #2c3e50;         /* azul escuro */
+}
+#planos a:hover, .compare a:hover { text-decoration: none; }
 
-.plano-card li.no,
+  .plano-card li.no,
 .compare .no,
 .nao-incluso { color:#2c3e50; font-weight:700; }
 
@@ -248,7 +243,11 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .opt,
 .opcional { color:#6b7280; }
 
-
+/* === Azul FisioForma (coeso com o título e botões iniciais) === */
+:root {
+  --brand:    #2b6b8a;   /* azul principal */
+  --brand-ink:#1f4e63;   /* azul mais escuro (hover/destaque) */
+}
 
 /* Preços e botões */
 .planos-container .plano-card .preco {
@@ -280,7 +279,14 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
   font-weight:600;
 }
 
-
+/* Links sem sublinhado */
+#planos a, .compare a {
+  text-decoration:none !important;
+  color: var(--brand-ink) !important;
+}
+#planos a:hover, .compare a:hover {
+  text-decoration:none !important;
+}
 
 /* Destaque plano Casadinha */
 .plano-card.destaque {
@@ -288,8 +294,6 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
   box-shadow:0 8px 18px rgba(43,107,138,.20) !important;
 }
 
-#planos a, .compare a { text-decoration:none !important; color: var(--brand-ink) !important; }
-#planos a:hover, .compare a:hover { text-decoration:none !important; }
 
 
 /* Pequenos toques */
@@ -321,7 +325,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 #normas-resumo .grid{display:grid;gap:18px}
 @media(min-width:600px){#normas-resumo .grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:980px){#normas-resumo .grid{grid-template-columns:repeat(3,1fr)}}
-.normas-card{   background:#fff;   border:1px solid var(--line);   border-radius:14px;   overflow:hidden;   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;   display:flex;flex-direction:column;min-height:auto; }
+.normas-card{background:#fff;border:1px solid #e0e0e0; var(--line);border-radius:14px;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;display:flex;flex-direction:column;min-height:auto}
 .normas-card:hover{transform:translateY(-4px);box-shadow: 0 6px 18px rgba(0,0,0,.06);;border-color:#bcd7ea}
 .normas-card .body{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .normas-card h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px}
@@ -344,14 +348,13 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   height: auto;
 }
 #normas-resumo .normas-card p{
-  text-align: justify;
-  margin-top: .5rem;
-  overflow: visible;
-  white-space: normal;
-  text-overflow: clip;
-  display: block;
+  overflow: visible !important;   /* remove clamp/ellipsis herdado */
+  white-space: normal !important; 
+  text-overflow: clip !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
 }
-
 #normas-resumo .normas-card{
   overflow: clip;  /* conserva o border-radius sem cortar o texto interno */
 }
@@ -371,6 +374,12 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   height: 100%;          /* ocupa toda a altura da linha */
   padding: 1rem;
   box-sizing: border-box;
+}
+
+/* Texto justificado */
+#normas-resumo .normas-card p {
+  text-align: justify;
+  margin-top: 0.5rem;
 }
 
 
@@ -400,38 +409,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
 /* ===== IG DM — Dark (como o Instagram) ===== */
-/* --- IGDM: cabeçalho e metadados --- */
-.igdm-head{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 14px; border-bottom:1px solid #182028; background:#0b0b0b;
-}
-.igdm-head .left{display:flex; align-items:center; gap:10px}
-.igdm-head .avatar{width:40px; height:40px; border-radius:999px; display:block}
-.igdm-head .meta .name{font-weight:700; line-height:1.1}
-.igdm-head .meta .handle{font-size:12px; color:#9aa4ad}
-
-/* --- IGDM: story/thumb & meta-line --- */
-.igdm-body .meta-line{font-size:12px; color:#9aa4ad; margin-bottom:8px}
-.story{display:flex; align-items:flex-end; gap:10px; margin:8px 0 12px}
-.story .thumb{width:120px; height:214px; border-radius:14px; overflow:hidden; background:#111}
-.reaction-pill{border:1px solid #2a2f35; background:#1c1f23; border-radius:999px; padding:4px 8px}
-
-/* --- IGDM: bolhas --- */
-.msg.them .bubble{background:#111417; border-color:#2a2f35; color:#e5e7eb}
-.msg.me   .bubble{background:#1c2730; border-color:#2a2f35; color:#e5e7eb; margin-left:auto}
-.msg.me{display:flex; justify-content:flex-end}
-
-/* --- IGDM: timestamp e typing --- */
-.time-stamp{font-size:12px; color:#9aa4ad; text-align:center; margin:6px 0}
-.typing{display:flex; gap:4px; margin-top:6px}
-.typing .dot{width:6px; height:6px; border-radius:50%; background:#9aa4ad; opacity:.6; animation:blink 1.2s infinite}
-.typing .dot:nth-child(2){animation-delay:.2s}
-.typing .dot:nth-child(3){animation-delay:.4s}
-@keyframes blink{0%,80%,100%{opacity:.2} 40%{opacity:1}}
-
 .igdm{padding:8px}
-
-
 
 /* container do DM – escuro, sem cortar nada dentro */
 /* container do DM – escuro */
@@ -441,7 +419,6 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   background:#0b0b0b;box-shadow:0 10px 28px rgba(0,0,0,.35);color:#e5e7eb;
   overflow:hidden;                    /* ++ clipa o scroll ao raio */
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
-  display: block !important; /* força coluna única */
 }
 
 /* área rolável */
@@ -461,11 +438,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
 /* story */
-.story .thumb img{
-  width:100%; height:100%;
-  object-fit:cover; border-radius:inherit; display:block;
-}
-
+.story .thumb{width:120px;height:214px;border-radius:14px; /* ++ */ }
 
 /* reação da bolha (dentro do clip) */
 .react{
@@ -546,24 +519,6 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 #contato svg {
   flex-shrink: 0;
 }
-/* Força coluna única em Depoimentos e Instagram */
-#depoimentos .wrap,
-#instagram .wrap{
-  display:block !important;
-}
-
-/* Dentro do Instagram, força cada filho a ocupar 100% e quebrar linha */
-#instagram .wrap > *{
-  display:block !important;
-  width:100% !important;
-}
-
-/* Tira a “linha” lateral (era pra layout lado-a-lado) e dá respiro embaixo do título */
-#instagram aside{
-  border-left:0 !important;
-  padding-left:0 !important;
-  margin-top:14px !important;
-}
 
 
 
@@ -642,13 +597,29 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         </div>
       </div>
 
-    <!-- Coluna DIREITA (mensagens) -->
-<aside class="card" style="overflow:visible">
-  <section class="igdm" aria-label="Conversa no Instagram (dark)">
-    <div class="igdm-wrap" role="region">
+      <!-- Coluna DIREITA (mensagens) -->
+    <aside class="card" style="overflow:visible"> <!-- evita corte no contêiner do card -->
+    <section class="igdm">
+      <div class="igdm-wrap" role="region" aria-label="Conversa no Instagram (dark)">
+        <!-- Header -->
+        <header class="igdm-head">
+          <div class="left">
+            <img class="avatar" src="logo-fisioforma.png" alt="FisioForma" width="40" height="40">
+            <div class="meta">
+              <div class="name">Academia FisioForma 💪</div>
+              <div class="handle">fisioforma.acad</div>
+            </div>
+          </div>
+          <div aria-hidden="true">📞 🎥 ℹ️</div>
+        </header>
+  
+        <!-- Corpo -->
+        <section class="igdm">
+    <div class="igdm-wrap" role="region" aria-label="Conversa no Instagram (dark)">
+      <!-- Header -->
       <header class="igdm-head">
         <div class="left">
-          <img class="avatar" src="logo-fisioforma.png" alt="FisioForma" width="40" height="40">
+          <img class="avatar" src="logo-fisioforma.png?v=5" alt="FisioForma" width="40" height="40">
           <div class="meta">
             <div class="name">Academia FisioForma 💪</div>
             <div class="handle">fisioforma.acad</div>
@@ -656,17 +627,18 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         </div>
         <div aria-hidden="true">📞 🎥 ℹ️</div>
       </header>
-
+  
+      <!-- Corpo -->
       <div class="igdm-body">
         <div class="meta-line">Reagiu ao story de @Giselle Oliveira</div>
-
+  
         <div class="story">
-          <div class="thumb"><img src="story-img.png?v=5" alt="Story da FisioForma" width="120" height="214" loading="lazy"></div>
-          <div class="reaction-pill" aria-hidden="true">❤️</div>
+          <div class="thumb"><img src="story-img.png?v=5" alt="Story da FisioForma"></div>
+          <div class="reaction-pill">❤️</div>
         </div>
-
+  
         <div class="msg them"><div class="bubble">Oi, tudo bem? Quanto é a mensalidade?</div></div>
-
+  
         <div class="msg me">
           <div class="bubble">
             Oi! Tudo ótimo e você? 💙 Nossos planos começam em <strong>R$ 90</strong>.
@@ -675,24 +647,24 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
           </div>
           <div class="react" aria-hidden="true">👍</div>
         </div>
-
-        <div class="time-stamp" aria-label="Enviado em 2 de setembro de 2025 às 08:53">2 de set de 2025 08:53</div>
-
+  
+        <div class="time-stamp">2 de set de 2025 08:53</div>
+  
         <div class="msg them"><div class="bubble">E a avaliação física, quanto fica?</div></div>
         <div class="msg me"><div class="bubble">Para alunos matriculados é <strong>R$ 60</strong>. Para externos e usuários <strong>Wellhub (antigo Gympass)</strong>, <strong>R$ 80</strong>.</div></div>
-
+  
         <div class="msg them"><div class="bubble">Vocês aceitam Wellhub?</div></div>
         <div class="msg me"><div class="bubble">Aceitamos sim — pode treinar normalmente com seu acesso Wellhub. 💙</div><div class="react" aria-hidden="true">❤️</div></div>
-
+  
         <div class="msg them"><div class="bubble">Quais são os horários de pico?</div></div>
         <div class="msg me"><div class="bubble">Geralmente <strong>07:30–10:00</strong> e <strong>18:00–20:00</strong>. Fora desses horários o salão fica mais tranquilo.</div></div>
-
+  
         <div class="msg them"><div class="bubble">Tem avaliador homem ou mulher?</div></div>
         <div class="msg me"><div class="bubble">Temos avaliadores <strong>homens e mulheres</strong>. A disponibilidade depende do horário — todos atendem com respeito e profissionalismo.</div></div>
-
+  
         <div class="msg them"><div class="bubble">Tem dança aí?</div></div>
         <div class="msg me"><div class="bubble">Temos sim! <strong>Ritbox/Dança</strong> e <strong>Funcional</strong> (turmas variam por período). Podemos te enviar a grade no WhatsApp. 💃🕺</div></div>
-
+  
         <div class="msg them"><div class="bubble">E o ambiente, como é?</div></div>
         <div class="msg me">
           <div class="bubble ending">
@@ -701,22 +673,20 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
           </div>
           <div class="react" aria-hidden="true">💙</div>
         </div>
-
+  
         <div class="typing" aria-hidden="true">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
       </div>
-
+  
+      <!-- barra de input (fora da área rolável) -->
       <div class="igdm-input">
         <div class="btns" aria-hidden="true"><span>😊</span></div>
-        <div class="field" aria-label="Mensagem">Mensagem…</div>
+        <div class="field">Mensagem…</div>
         <div class="btns" aria-hidden="true"><span>🎤</span><span>📷</span><span>❤️</span></div>
       </div>
     </div>
   </section>
-</aside>
-
-
 
 
     
@@ -759,7 +729,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
   <!-- INSTAGRAM SIDEBAR -->
   <section id="instagram" class="alt">
-    <div class="wrap">
+    <div class="wrap grid cols-2">
       <div>
         <h2>Novidades da FisioForma</h2>
         <p class="muted">Acompanhe avisos, eventos e promoções no nosso Instagram.</p>
