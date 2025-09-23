@@ -243,17 +243,17 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .opt,
 .opcional { color:#6b7280; }
 
-/* === FisioForma: azul escuro + neutros (override) === */
+/* === FisioForma: azul vibrante + neutros === */
 
-/* 1) Azul da marca mais escuro */
+/* 1) Azul vibrante anterior */
 :root{
-  --brand:    #1e3a5f;   /* azul escuro */
-  --brand-ink:#132a44;   /* azul ainda mais escuro */
+  --brand:    #2563eb;   /* azul vibrante usado antes */
+  --brand-ink:#1d4ed8;   /* variação mais escura para hover */
 }
 
 /* 2) Preço e botão dos cards de plano */
 .planos-container .plano-card .preco{
-  color: var(--brand-ink) !important;
+  color: var(--brand) !important;
 }
 .planos-container .btn-escolher{
   background: var(--brand) !important;
@@ -272,7 +272,7 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 }
 .planos-container .plano-card li.no,
 .compare tbody .no{
-  color:#2c3e50 !important;      /* mantém azul escuro para “não incluso” */
+  color:#2c3e50 !important;      /* azul escuro/preto para “não incluso” */
   font-weight:700;
 }
 .planos-container .plano-card li.opt,
@@ -281,7 +281,7 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
   font-weight:600;
 }
 
-/* 4) Remover sublinhado e manter paleta nos links dessas áreas */
+/* 4) Links sem sublinhado */
 #planos a, .compare a{
   text-decoration:none !important;
   color:#2c3e50 !important;
@@ -290,11 +290,12 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
   text-decoration:none !important;
 }
 
-/* 5) Borda/destaque do plano recomendado um pouco mais sóbrio */
+/* 5) Destaque do plano do meio */
 .plano-card.destaque{
   border:2px solid var(--brand) !important;
-  box-shadow:0 8px 18px rgba(19,42,68,.20) !important;
+  box-shadow:0 8px 18px rgba(37,99,235,.20) !important;
 }
+
 
 
 /* Pequenos toques */
