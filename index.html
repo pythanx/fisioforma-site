@@ -505,69 +505,37 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
   /* DM Instagram — visual completo */
-/* ===== IG DM — tema claro fiel ===== */
-.igdm-lite{padding:8px}
 .igdm-card{
-  max-width: 880px; margin:0 auto; background:#fff; border:1px solid #e5e7eb;
-  border-radius:18px; overflow:hidden; box-shadow:0 10px 24px rgba(0,0,0,.06);
+  max-width:880px;margin:0 auto;background:#f0f6fb;
+  border:1px solid #dbeafe;border-radius:18px;overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
   font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
   color:#111827;
 }
-
-/* header */
 .igdm-top{display:flex;align-items:center;justify-content:space-between;
-  padding:10px 14px;border-bottom:1px solid #eef2f7;background:#fff}
-.igdm-top .left{display:flex;align-items:center;gap:10px}
-.igdm-top .avatar{width:40px;height:40px;border-radius:999px;border:1px solid #e5e7eb;object-fit:cover;background:#fff}
-.igdm-top .meta{display:flex;flex-direction:column}
-.igdm-top .meta strong{font-weight:800}
-.igdm-top .meta .handle{font-size:12px;color:#6b7280}
-.igdm-top .actions{display:flex;gap:10px;opacity:.7}
-
-/* timeline */
-.igdm-thread{padding:14px 12px;background:#fafafa;max-height:520px;overflow:auto}
-.stamp{display:inline-block;margin:8px auto 12px auto;padding:6px 10px;border-radius:999px;
-  background:#f1f5f9;color:#64748b;font-size:12px}
-
-.bubble{
-  position:relative; max-width:78%; padding:10px 12px; border-radius:18px;
-  background:#f1f5f9; color:#111827; margin:8px 0; box-shadow:0 1px 0 rgba(0,0,0,.03);
-}
-.bubble.them{align-self:flex-start;border-top-left-radius:6px}
-.bubble.me{align-self:flex-end;background:#1da1ff;color:#fff;border-top-right-radius:6px}
+  padding:10px 14px;border-bottom:1px solid #dbeafe;background:#f8fbff}
+.igdm-top .avatar{border-radius:999px;border:1px solid #dbeafe}
+.igdm-thread{padding:14px 12px;max-height:520px;overflow:auto}
+.stamp{display:inline-block;margin:8px auto;padding:6px 12px;border-radius:999px;
+  background:#e0f2fe;color:#2563eb;font-size:12px}
+.bubble{position:relative;max-width:78%;padding:10px 12px;border-radius:18px;
+  margin:8px 0;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.bubble.them{align-self:flex-start;background:#fff;border:1px solid #e5e7eb;color:#111}
+.bubble.me{align-self:flex-end;background:#2563eb;color:#fff;border-top-right-radius:6px}
 .bubble.me strong{color:#fff}
-.bubble.closing{background:#0f8bdc}
-
-/* reações (bolinhas sob a bolha, como no IG) */
-.reacts{
-  position:absolute;left:14px;bottom:-14px;display:flex;gap:4px;background:#fff;
-  border:1px solid #e5e7eb;border-radius:999px;padding:2px 6px;box-shadow:0 4px 10px rgba(0,0,0,.06)
-}
+.bubble.story{background:#fff;padding:6px;border:1px solid #e5e7eb}
+.story-img{width:220px;border-radius:14px;display:block}
+.reacts{position:absolute;left:14px;bottom:-16px;display:flex;gap:4px;background:#fff;
+  border:1px solid #e5e7eb;border-radius:999px;padding:2px 6px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
 .bubble.me .reacts{left:auto;right:14px}
-.reacts span{font-size:14px;line-height:1;display:inline-block}
-
-/* digitando */
 .typing{display:flex;align-items:center;gap:6px;margin:6px 0}
-.typing.them{align-self:flex-start;background:#f1f5f9;border-radius:14px;padding:8px 10px}
-.dot{width:6px;height:6px;border-radius:999px;background:#9ca3af;opacity:.4;animation:blink 1.2s infinite}
+.typing.them{align-self:flex-start;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:8px 10px}
+.dot{width:6px;height:6px;border-radius:999px;background:#2563eb;opacity:.5;animation:blink 1.2s infinite}
 .dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
-
-/* input fake */
-.igdm-input{display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid #eef2f7;background:#fff}
-.igdm-input input{flex:1;padding:10px 12px;border:1px solid #e5e7eb;border-radius:24px;background:#fafafa}
+.igdm-input{display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid #dbeafe;background:#f8fbff}
+.igdm-input input{flex:1;padding:10px 12px;border:1px solid #dbeafe;border-radius:24px;background:#fff}
 .igdm-input .tools{display:flex;gap:10px}
-
-/* scrollbar sutil */
-.igdm-thread::-webkit-scrollbar{height:8px;width:8px}
-.igdm-thread::-webkit-scrollbar-thumb{background:#e1e5ea;border-radius:999px}
-.igdm-thread::-webkit-scrollbar-track{background:transparent}
-
-@media (max-width:640px){
-  .igdm-card{border-radius:14px}
-  .igdm-thread{max-height:460px}
-  .bubble{max-width:86%}
-}
 
 /* Extras */
 .pill{display:inline-block;padding:6px 10px;font-size:12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-ink);margin:6px 0 12px 0}
@@ -646,7 +614,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
       <!-- Coluna DIREITA (mensagens) -->
     <aside class="card">
-      <!-- ===== DM Instagram (tema claro) — FisioForma ===== -->
+      <!-- ===== DM Instagram (tema claro + tema FisioForma) ===== -->
 <section class="igdm-lite" aria-label="Conversa no Instagram">
   <div class="igdm-card">
     <!-- Header -->
@@ -665,6 +633,14 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
     <!-- Timeline -->
     <div class="igdm-thread" role="log" aria-live="polite">
+      <div class="stamp">Ontem • 19:40</div>
+
+      <!-- story + reação -->
+      <div class="bubble story">
+        <img src="foto-academia.jpg" alt="Story da FisioForma" class="story-img">
+        <div class="reacts"><span>❤️</span></div>
+      </div>
+
       <div class="stamp">Hoje • 09:12</div>
 
       <!-- aluno -->
@@ -704,30 +680,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
       <!-- aluno -->
       <div class="bubble them">
-        Tem alguém no salão para instruir durante o treino?
-      </div>
-
-      <!-- fisioforma -->
-      <div class="bubble me">
-        Tem sim! Nossa equipe fica no salão para orientar, ajustar cargas e corrigir movimentos.
-        Você não treina sozinho(a).
-      </div>
-
-      <!-- aluno -->
-      <div class="bubble them">
-        Tem avaliador homem ou mulher?
-      </div>
-
-      <!-- fisioforma -->
-      <div class="bubble me">
-        Temos avaliadores <strong>homens e mulheres</strong>. A disponibilidade depende do horário,
-        e todos atendem com respeito e profissionalismo.
-        <div class="reacts"><span>❤️</span><span>😮</span></div>
-      </div>
-
-      <!-- aluno -->
-      <div class="bubble them">
-        Quais são os horários de pico?
+        Quais os horários de pico?
       </div>
 
       <!-- fisioforma -->
@@ -737,18 +690,40 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
       <!-- aluno -->
       <div class="bubble them">
+        Tem avaliador homem ou mulher?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Temos avaliadores homens e mulheres. A disponibilidade depende do horário,
+        mas todos atendem com respeito e profissionalismo. 🙂
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        Tem alguém no salão para instruir durante o treino?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Tem sim! Nossa equipe fica no salão para orientar, ajustar cargas e corrigir movimentos.
+        Você nunca treina sozinho(a).
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
         Tem dança? Quais modalidades?
       </div>
 
       <!-- fisioforma -->
       <div class="bubble me">
-        Temos <strong>Ritbox/Dança</strong> e <strong>Funcional</strong> (a grade varia por período). 
-        A gente te passa a programação atual pelo WhatsApp ou na recepção. 💃🕺
+        Temos <strong>Ritbox/Dança</strong> e <strong>Funcional</strong>. 
+        A programação varia por período — a gente te passa a grade completa na recepção ou no WhatsApp. 💃🕺
       </div>
 
       <!-- aluno -->
       <div class="bubble them">
-        E a vibe do lugar, como é?
+        E a vibe do lugar?
       </div>
 
       <!-- fisioforma -->
@@ -1314,6 +1289,13 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   "hasMap": "https://www.google.com/maps/search/Av.+Vaticano,+4+-+Anjo+da+Guarda,+S%C3%A3o+Lu%C3%ADs+-+MA,+65085-255",
   "potentialAction": {"@type":"ReserveAction","target":"https://wa.me/5598992223926","result":{"@type":"Thing","name":"Atendimento via WhatsApp"}}
 }
+</script>
+  <script>
+(function(){
+  const t=document.querySelector('.igdm-lite .typing');
+  if(!t) return;
+  setTimeout(()=>t.style.display='none',2800);
+})();
 </script>
 
 </body>
