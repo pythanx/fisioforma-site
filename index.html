@@ -481,6 +481,44 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   .igdm-body{max-height:460px}
   .msg{max-width:86%}
 }
+
+/* linha acima do story */
+.igdm-body .meta-line{
+  color:#94a3b8; font-size:12px; margin:2px 0 6px 6px;
+}
+
+/* timestamp centralizado */
+.time-stamp{
+  color:#94a3b8; font-size:12px; text-align:center; margin:12px 0;
+}
+
+/* barra inferior de mensagem (fake) */
+.igdm-input{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-top:1px solid #182028; background:#0b0b0b;
+}
+.igdm-input .field{
+  flex:1; background:#1c1f23; border:1px solid #2a2f35; color:#e5e7eb;
+  border-radius:24px; padding:10px 14px; font-size:14px;
+}
+.igdm-input .btns{display:flex; gap:10px; font-size:18px; color:#cbd5e1}
+.igdm-input .btns span{display:inline-flex; align-items:center}
+
++/* linha “meta” e timestamp */
++.igdm-body .meta-line{color:#94a3b8;font-size:12px;margin:2px 0 6px 6px}
++.time-stamp{color:#94a3b8;font-size:12px;text-align:center;margin:12px 0}
++
++/* barra de input fake do IG */
++.igdm-input{
++  display:flex;align-items:center;gap:10px;
++  padding:10px 12px;border-top:1px solid #182028;background:#0b0b0b;
++}
++.igdm-input .field{
++  flex:1;background:#1c1f23;border:1px solid #2a2f35;color:#e5e7eb;
++  border-radius:24px;padding:10px 14px;font-size:14px;
++}
++.igdm-input .btns{display:flex;gap:10px;font-size:18px;color:#cbd5e1}
++.igdm-input .btns span{display:inline-flex;align-items:center}
   
 
   
@@ -635,80 +673,89 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
       <!-- Corpo -->
       <div class="igdm-body">
-        <!-- Reagiu ao story -->
-        <div class="story">
-          <div class="thumb"><img src="story-img.png" alt="Story da FisioForma"></div>
-          <div class="reaction-pill">❤️</div>
-        </div>
-
-        <!-- Perguntas & respostas (com reações de exemplo) -->
-        <div class="msg them">
-          <div class="bubble">Oi, tudo bem? Quanto é a mensalidade?</div>
-        </div>
-
-        <div class="msg me">
-          <div class="bubble">
-            Oi! Tudo ótimo e você? 💙 Nossos planos começam em <strong>R$ 90</strong>.
-            Temos também o <strong>Casadinha (R$ 80 por pessoa)</strong> e o
-            <strong>Executivo (R$ 70)</strong> para quem treina fora do pico.
+        <div class="igdm-body">
+            <!-- meta “reagiu...” acima do story -->
+            <div class="meta-line">Reagiu ao story de @Giselle Oliveira</div>
+          
+            <!-- story + reação -->
+            <div class="story">
+              <div class="thumb"><img src="story-img.png?v=4" alt="Story da FisioForma"></div>
+              <div class="reaction-pill">❤️</div>
+            </div>
+          
+            <!-- conversa -->
+            <div class="msg them"><div class="bubble">Oi, tudo bem? Quanto é a mensalidade?</div></div>
+          
+            <div class="msg me">
+              <div class="bubble">
+                Oi! Tudo ótimo e você? 💙 Nossos planos começam em <strong>R$ 90</strong>.
+                Temos também o <strong>Casadinha (R$ 80 por pessoa)</strong> e o
+                <strong>Executivo (R$ 70)</strong> para quem treina fora do pico.
+              </div>
+              <div class="react" aria-hidden="true">👍</div>
+            </div>
+          
+            <div class="time-stamp">2 de set de 2025 08:53</div>
+          
+            <div class="msg them"><div class="bubble">E a avaliação física, quanto fica?</div></div>
+            <div class="msg me">
+              <div class="bubble">
+                Para alunos matriculados é <strong>R$ 60</strong>. Para externos e usuários
+                <strong>Wellhub (antigo Gympass)</strong>, <strong>R$ 80</strong>.
+              </div>
+            </div>
+          
+            <div class="msg them"><div class="bubble">Vocês aceitam Wellhub?</div></div>
+            <div class="msg me">
+              <div class="bubble">Aceitamos sim — pode treinar normalmente com seu acesso Wellhub. 💙</div>
+              <div class="react" aria-hidden="true">❤️</div>
+            </div>
+          
+            <div class="msg them"><div class="bubble">Quais são os horários de pico?</div></div>
+            <div class="msg me">
+              <div class="bubble">
+                Geralmente <strong>07:30–10:00</strong> e <strong>18:00–20:00</strong>.
+                Fora desses horários o salão fica mais tranquilo.
+              </div>
+            </div>
+          
+            <div class="msg them"><div class="bubble">Tem avaliador homem ou mulher?</div></div>
+            <div class="msg me">
+              <div class="bubble">
+                Temos avaliadores <strong>homens e mulheres</strong>. A disponibilidade depende do horário — todos atendem com respeito e profissionalismo.
+              </div>
+            </div>
+          
+            <div class="msg them"><div class="bubble">Tem dança aí?</div></div>
+            <div class="msg me">
+              <div class="bubble">
+                Temos sim! <strong>Ritbox/Dança</strong> e <strong>Funcional</strong> (turmas variam por período).
+                Podemos te enviar a grade atual no WhatsApp. 💃🕺
+              </div>
+            </div>
+          
+            <div class="msg them"><div class="bubble">E o ambiente, como é?</div></div>
+            <div class="msg me">
+              <div class="bubble ending">
+                Acolhedor, leve e motivador. Mais do que aparelhos, oferecemos apoio pra você evoluir no seu ritmo.
+                <strong>Estamos te esperando</strong> 💙
+              </div>
+              <div class="react" aria-hidden="true">💙</div>
+            </div>
+          
+            <!-- “digitando…” -->
+            <div class="typing" aria-hidden="true">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
           </div>
-          <div class="react" aria-hidden="true">👍</div>
-        </div>
-
-        <div class="msg them">
-          <div class="bubble">E a avaliação física, quanto fica?</div>
-        </div>
-        <div class="msg me">
-          <div class="bubble">
-            Para alunos matriculados é <strong>R$ 60</strong>. Para externos e usuários
-            <strong>Wellhub (antigo Gympass)</strong>, <strong>R$ 80</strong>.
+          
+          <!-- barra de input (fake), logo depois da .igdm-body -->
+          <div class="igdm-input">
+            <div class="btns" aria-hidden="true"><span>😊</span></div>
+            <div class="field">Mensagem…</div>
+            <div class="btns" aria-hidden="true"><span>🎤</span><span>📷</span><span>❤️</span></div>
           </div>
-        </div>
-
-        <div class="msg them"><div class="bubble">Vocês aceitam Wellhub?</div></div>
-        <div class="msg me">
-          <div class="bubble">Aceitamos sim — pode treinar normalmente com seu acesso Wellhub. 💙</div>
-          <div class="react" aria-hidden="true">❤️</div>
-        </div>
-
-        <div class="msg them"><div class="bubble">Quais são os horários de pico?</div></div>
-        <div class="msg me">
-          <div class="bubble">
-            Geralmente <strong>07:30–10:00</strong> e <strong>18:00–20:00</strong>.
-            Fora desses horários o salão fica mais tranquilo.
-          </div>
-        </div>
-
-        <div class="msg them"><div class="bubble">Tem avaliador homem ou mulher?</div></div>
-        <div class="msg me">
-          <div class="bubble">
-            Temos avaliadores <strong>homens e mulheres</strong>. A disponibilidade depende do horário — todos atendem com respeito e profissionalismo.
-          </div>
-        </div>
-
-        <div class="msg them"><div class="bubble">Tem dança aí?</div></div>
-        <div class="msg me">
-          <div class="bubble">
-            Temos sim! <strong>Ritbox/Dança</strong> e <strong>Funcional</strong> (turmas variam por período).
-            Podemos te enviar a grade atual no WhatsApp. 💃🕺
-          </div>
-        </div>
-
-        <div class="msg them"><div class="bubble">E o ambiente, como é?</div></div>
-        <div class="msg me">
-          <div class="bubble ending">
-            Acolhedor, leve e motivador. Mais do que aparelhos, oferecemos apoio pra você evoluir no seu ritmo.
-            <strong>Estamos te esperando</strong> 💙
-          </div>
-          <div class="react" aria-hidden="true">💙</div>
-        </div>
-
-        <!-- digitando… -->
-        <div class="typing" aria-hidden="true">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </div>
       </div>
-    </div>
   </section>
 </aside>
 
@@ -1252,11 +1299,13 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 }
 </script>
       <script>
-      (function () {
-        const t = document.querySelector('.igdm .typing');
-        if (!t) return;
-        setTimeout(()=> t.style.display='none', 3200);
-      })();
-    </script>
+<script>
+  (function () {
+    const t = document.querySelector('.igdm .typing');
+    if (!t) return;
+    setTimeout(()=> t.style.display='none', 3200);
+  })();
+</script>
+
 </body>
 </html>
