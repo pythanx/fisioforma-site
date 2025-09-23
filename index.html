@@ -523,6 +523,24 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 #contato svg {
   flex-shrink: 0;
 }
+/* Força coluna única em Depoimentos e Instagram */
+#depoimentos .wrap,
+#instagram .wrap{
+  display:block !important;
+}
+
+/* Dentro do Instagram, força cada filho a ocupar 100% e quebrar linha */
+#instagram .wrap > *{
+  display:block !important;
+  width:100% !important;
+}
+
+/* Tira a “linha” lateral (era pra layout lado-a-lado) e dá respiro embaixo do título */
+#instagram aside{
+  border-left:0 !important;
+  padding-left:0 !important;
+  margin-top:14px !important;
+}
 
 
 
