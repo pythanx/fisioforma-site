@@ -505,98 +505,87 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
   /* DM Instagram — visual completo */
-/* ====== IG DM — estilos isolados ====== */
-.igdm{padding:8px}
-.igdm-wrap{
+<style>
+/* ===== IG DM fiel (dark) — estilos isolados ===== */
+.igdm-true{padding:8px}
+.igdm-true .igdm-wrap{
   max-width: 880px;
   margin: 0 auto;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #0b0b0b;            /* vibe instagram dark */
-  color: #e5e7eb;
-  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  background:#0b0b0b;           /* dark IG */
+  color:#e5e7eb;
+  border:1px solid #1f2733;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
 }
 
 /* Header */
-.igdm-head{
+.igdm-true .igdm-head{
   display:flex;align-items:center;justify-content:space-between;
-  padding:12px 14px;border-bottom:1px solid #1f2937;background:#111214
+  padding:12px 14px;border-bottom:1px solid #1f2733;background:#111214
 }
-.igdm-head .left{display:flex;align-items:center;gap:10px}
-.igdm-head .avatar{width:40px;height:40px;border-radius:999px;background:#fff;object-fit:cover}
-.igdm-head .meta{line-height:1.1}
-.igdm-head .name{font-weight:800;color:#f3f4f6}
-.igdm-head .handle{font-size:12px;color:#9ca3af}
-.igdm-head .emoji{filter:saturate(1.2)}
-.igdm-head .actions{display:flex;gap:10px;font-size:16px;opacity:.7}
+.igdm-true .left{display:flex;align-items:center;gap:10px}
+.igdm-true .avatar{
+  width:40px;height:40px;border-radius:999px;object-fit:cover;background:#222
+}
+.igdm-true .meta{line-height:1.1}
+.igdm-true .name{font-weight:800;color:#f3f4f6}
+.igdm-true .handle{font-size:12px;color:#9ca3af;margin-top:2px}
+.igdm-true .badge{filter:saturate(1.1)}
+.igdm-true .actions{display:flex;gap:12px}
+.igdm-true .ico{width:18px;height:18px;fill:#9aa3ad;opacity:.85}
 
-/* Body */
-.igdm-body{
-  height: 520px;                   /* ajuste a altura conforme o layout */
-  overflow:auto;
-  padding:16px 12px 18px;
-  background: #0b0b0b;
+/* Thread */
+.igdm-true .thread{
+  height:520px;overflow:auto;padding:16px 12px 22px;background:#0b0b0b
 }
-
-/* Mensagens */
-.msg{max-width: 75%; margin:10px 0; padding:0}
-.msg p{margin:0}
-.msg.user{
-  align-self:flex-start;
-  background:#1c1f23;
-  color:#e5e7eb;
-  border:1px solid #2a2f35;
-  padding:10px 12px;
-  border-radius:14px 14px 14px 4px;
-  display:inline-block;
-}
-.msg.me {
-  align-self: flex-end;
-  background: var(--brand);   /* azul institucional */
-  color: #fff;
-  padding: 10px 12px;
-  border-radius: 14px 14px 4px 14px;
-  display: inline-block;
-  margin-left: auto;
-}
-.msg.me strong{color:#fff}
-.msg.user strong{color:#f3f4f6}
-/* Mensagem final */
-.msg.me.closing {
-  background: var(--brand-ink);  /* azul mais escuro */
-  color: #fff;
+.igdm-true .timestamp{
+  font-size:12px;color:#8b96a3;text-align:center;margin:6px 0 10px
 }
 
-/* “digitando…” */
-.typing{
-  display:flex;gap:6px;align-items:center;margin:8px 0 0 0;
-  background:#1c1f23;border:1px solid #2a2f35;padding:8px 10px;border-radius:14px 14px 14px 4px; width:max-content
+/* Bubbles (IG dark) */
+.igdm-true .bubble{
+  max-width:78%;
+  font-size:15px; line-height:1.45;
+  padding:10px 12px; margin:8px 0;
+  border-radius:16px; word-wrap:break-word;
 }
-.typing .dot{
+.igdm-true .bubble.them{
+  align-self:flex-start; background:#1c1f21; color:#dfe3e7;
+  border:1px solid #232a33; border-top-left-radius:6px;
+}
+.igdm-true .bubble.me{
+  align-self:flex-end; background:#3797f0; color:#fff;   /* azul IG */
+  border:1px solid #2f6fbd; border-top-right-radius:6px;
+}
+.igdm-true .bubble.me.closing{background:#2d7fe0;border-color:#2569bb}
+
+/* typing ... */
+.igdm-true .typing{
+  display:inline-flex;gap:6px;align-items:center;
+  background:#1c1f21;border:1px solid #232a33;color:#9ca3af;
+  padding:8px 10px;border-radius:16px 16px 16px 6px;margin-top:6px
+}
+.igdm-true .typing .dot{
   width:6px;height:6px;border-radius:999px;background:#9ca3af;opacity:.6;
-  animation: blink 1.2s infinite ease-in-out;
+  animation:igblink 1.2s infinite ease-in-out
 }
-.typing .dot:nth-child(2){animation-delay:.15s}
-.typing .dot:nth-child(3){animation-delay:.3s}
-@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.igdm-true .typing .dot:nth-child(2){animation-delay:.15s}
+.igdm-true .typing .dot:nth-child(3){animation-delay:.3s}
+@keyframes igblink{0%,80%,100%{opacity:.3}40%{opacity:1}}
 
-/* Scrollbar discreto (webkit) */
-.igdm-body::-webkit-scrollbar{height:8px;width:8px}
-.igdm-body::-webkit-scrollbar-thumb{background:#1f2937;border-radius:999px}
-.igdm-body::-webkit-scrollbar-track{background:transparent}
+/* Scrollbar discreto */
+.igdm-true .thread::-webkit-scrollbar{width:8px;height:8px}
+.igdm-true .thread::-webkit-scrollbar-thumb{background:#1f2733;border-radius:999px}
+.igdm-true .thread::-webkit-scrollbar-track{background:transparent}
 
 /* Responsivo */
-@media (max-width: 640px){
-  .igdm-wrap{border-radius:14px}
-  .igdm-body{height: 460px}
-  .msg{max-width: 86%}
+@media (max-width:640px){
+  .igdm-true .igdm-wrap{border-radius:14px}
+  .igdm-true .thread{height:460px}
+  .igdm-true .bubble{max-width:86%}
 }
-
-/* neutraliza o “card” branco do aside no hero */
-.hero aside.card{background:transparent;border:0;box-shadow:none}
-.hero aside.card .body{padding:0}
-
+</style>
 
 /* Extras */
 .pill{display:inline-block;padding:6px 10px;font-size:12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-ink);margin:6px 0 12px 0}
