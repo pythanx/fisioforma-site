@@ -504,23 +504,23 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   flex-shrink: 0;
 }
 
-  /* DM Instagram — visual completo */
+ /* ===== IG DM — Tema claro ===== */
 .igdm-card{
-  max-width:880px;margin:0 auto;background:#f0f6fb;
-  border:1px solid #dbeafe;border-radius:18px;overflow:hidden;
-  box-shadow:0 10px 24px rgba(0,0,0,.06);
+  max-width:880px;margin:0 auto;background:#fff;
+  border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
   font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
   color:#111827;
 }
 .igdm-top{display:flex;align-items:center;justify-content:space-between;
-  padding:10px 14px;border-bottom:1px solid #dbeafe;background:#f8fbff}
-.igdm-top .avatar{border-radius:999px;border:1px solid #dbeafe}
-.igdm-thread{padding:14px 12px;max-height:520px;overflow:auto}
+  padding:10px 14px;border-bottom:1px solid #e5e7eb;background:#fafafa}
+.igdm-top .avatar{border-radius:999px;border:1px solid #e5e7eb}
+.igdm-thread{padding:14px 12px;max-height:520px;overflow:auto;background:#fff}
 .stamp{display:inline-block;margin:8px auto;padding:6px 12px;border-radius:999px;
-  background:#e0f2fe;color:#2563eb;font-size:12px}
+  background:#f3f4f6;color:#374151;font-size:12px}
 .bubble{position:relative;max-width:78%;padding:10px 12px;border-radius:18px;
   margin:8px 0;box-shadow:0 1px 0 rgba(0,0,0,.03)}
-.bubble.them{align-self:flex-start;background:#fff;border:1px solid #e5e7eb;color:#111}
+.bubble.them{align-self:flex-start;background:#f3f4f6;color:#111}
 .bubble.me{align-self:flex-end;background:#2563eb;color:#fff;border-top-right-radius:6px}
 .bubble.me strong{color:#fff}
 .bubble.story{background:#fff;padding:6px;border:1px solid #e5e7eb}
@@ -529,13 +529,14 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   border:1px solid #e5e7eb;border-radius:999px;padding:2px 6px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
 .bubble.me .reacts{left:auto;right:14px}
 .typing{display:flex;align-items:center;gap:6px;margin:6px 0}
-.typing.them{align-self:flex-start;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:8px 10px}
+.typing.them{align-self:flex-start;background:#f3f4f6;border-radius:14px;padding:8px 10px}
 .dot{width:6px;height:6px;border-radius:999px;background:#2563eb;opacity:.5;animation:blink 1.2s infinite}
 .dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
-.igdm-input{display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid #dbeafe;background:#f8fbff}
-.igdm-input input{flex:1;padding:10px 12px;border:1px solid #dbeafe;border-radius:24px;background:#fff}
+.igdm-input{display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid #e5e7eb;background:#fafafa}
+.igdm-input input{flex:1;padding:10px 12px;border:1px solid #e5e7eb;border-radius:24px;background:#fff}
 .igdm-input .tools{display:flex;gap:10px}
+
 
 /* Extras */
 .pill{display:inline-block;padding:6px 10px;font-size:12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-ink);margin:6px 0 12px 0}
@@ -615,6 +616,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
       <!-- Coluna DIREITA (mensagens) -->
     <aside class="card">
      <!-- ===== DM Instagram (tema claro + tema FisioForma) ===== -->
+      <!-- ===== DM Instagram (claro, com story real) ===== -->
       <section class="igdm-lite" aria-label="Conversa no Instagram">
         <div class="igdm-card">
           <!-- Header -->
@@ -637,7 +639,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
       
             <!-- story + reação -->
             <div class="bubble story">
-              <img src="foto-academia.jpg" alt="Story da FisioForma" class="story-img">
+              <img src="story-img.png" alt="Story da FisioForma" class="story-img">
               <div class="reacts"><span>❤️</span></div>
             </div>
       
@@ -1290,7 +1292,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   "potentialAction": {"@type":"ReserveAction","target":"https://wa.me/5598992223926","result":{"@type":"Thing","name":"Atendimento via WhatsApp"}}
 }
 </script>
-  <script>
+<script>
 (function(){
   const t=document.querySelector('.igdm-lite .typing');
   if(!t) return;
