@@ -409,7 +409,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
 
-/* FAQ grid */
+/* FAQ grid 
 #faq .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -417,7 +417,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   align-items: stretch;
 }
 
-/* FAQ cards */
+/* FAQ cards *
 #faq .faq-card {
   display: flex;
   height: 100%;
@@ -430,18 +430,18 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   height: 100%;
 }
 
-/* FAQ ícones (círculo vazio estilizado) */
+/* FAQ ícones (círculo vazio estilizado) 
 #faq .ico.faq {
   display: inline-block;
   width: 18px;
   height: 18px;
   margin-right: 6px;
   border-radius: 50%;
-  background: #3a80b4; /* cor do tema */
+  background: #3a80b4; /* cor do tema *
   vertical-align: middle;
 }
 
-/* Justificar texto das respostas do FAQ */
+/* Justificar texto das respostas do FAQ 
 #faq .faq-card p {
   text-align: justify;
   margin-top: .5rem;
@@ -505,87 +505,69 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
   /* DM Instagram — visual completo */
-<style>
-/* ===== IG DM fiel (dark) — estilos isolados ===== */
-.igdm-true{padding:8px}
-.igdm-true .igdm-wrap{
-  max-width: 880px;
-  margin: 0 auto;
-  background:#0b0b0b;           /* dark IG */
-  color:#e5e7eb;
-  border:1px solid #1f2733;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.18);
+/* ===== IG DM — tema claro fiel ===== */
+.igdm-lite{padding:8px}
+.igdm-card{
+  max-width: 880px; margin:0 auto; background:#fff; border:1px solid #e5e7eb;
+  border-radius:18px; overflow:hidden; box-shadow:0 10px 24px rgba(0,0,0,.06);
+  font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+  color:#111827;
 }
 
-/* Header */
-.igdm-true .igdm-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:12px 14px;border-bottom:1px solid #1f2733;background:#111214
-}
-.igdm-true .left{display:flex;align-items:center;gap:10px}
-.igdm-true .avatar{
-  width:40px;height:40px;border-radius:999px;object-fit:cover;background:#222
-}
-.igdm-true .meta{line-height:1.1}
-.igdm-true .name{font-weight:800;color:#f3f4f6}
-.igdm-true .handle{font-size:12px;color:#9ca3af;margin-top:2px}
-.igdm-true .badge{filter:saturate(1.1)}
-.igdm-true .actions{display:flex;gap:12px}
-.igdm-true .ico{width:18px;height:18px;fill:#9aa3ad;opacity:.85}
+/* header */
+.igdm-top{display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-bottom:1px solid #eef2f7;background:#fff}
+.igdm-top .left{display:flex;align-items:center;gap:10px}
+.igdm-top .avatar{width:40px;height:40px;border-radius:999px;border:1px solid #e5e7eb;object-fit:cover;background:#fff}
+.igdm-top .meta{display:flex;flex-direction:column}
+.igdm-top .meta strong{font-weight:800}
+.igdm-top .meta .handle{font-size:12px;color:#6b7280}
+.igdm-top .actions{display:flex;gap:10px;opacity:.7}
 
-/* Thread */
-.igdm-true .thread{
-  height:520px;overflow:auto;padding:16px 12px 22px;background:#0b0b0b
-}
-.igdm-true .timestamp{
-  font-size:12px;color:#8b96a3;text-align:center;margin:6px 0 10px
-}
+/* timeline */
+.igdm-thread{padding:14px 12px;background:#fafafa;max-height:520px;overflow:auto}
+.stamp{display:inline-block;margin:8px auto 12px auto;padding:6px 10px;border-radius:999px;
+  background:#f1f5f9;color:#64748b;font-size:12px}
 
-/* Bubbles (IG dark) */
-.igdm-true .bubble{
-  max-width:78%;
-  font-size:15px; line-height:1.45;
-  padding:10px 12px; margin:8px 0;
-  border-radius:16px; word-wrap:break-word;
+.bubble{
+  position:relative; max-width:78%; padding:10px 12px; border-radius:18px;
+  background:#f1f5f9; color:#111827; margin:8px 0; box-shadow:0 1px 0 rgba(0,0,0,.03);
 }
-.igdm-true .bubble.them{
-  align-self:flex-start; background:#1c1f21; color:#dfe3e7;
-  border:1px solid #232a33; border-top-left-radius:6px;
-}
-.igdm-true .bubble.me{
-  align-self:flex-end; background:#3797f0; color:#fff;   /* azul IG */
-  border:1px solid #2f6fbd; border-top-right-radius:6px;
-}
-.igdm-true .bubble.me.closing{background:#2d7fe0;border-color:#2569bb}
+.bubble.them{align-self:flex-start;border-top-left-radius:6px}
+.bubble.me{align-self:flex-end;background:#1da1ff;color:#fff;border-top-right-radius:6px}
+.bubble.me strong{color:#fff}
+.bubble.closing{background:#0f8bdc}
 
-/* typing ... */
-.igdm-true .typing{
-  display:inline-flex;gap:6px;align-items:center;
-  background:#1c1f21;border:1px solid #232a33;color:#9ca3af;
-  padding:8px 10px;border-radius:16px 16px 16px 6px;margin-top:6px
+/* reações (bolinhas sob a bolha, como no IG) */
+.reacts{
+  position:absolute;left:14px;bottom:-14px;display:flex;gap:4px;background:#fff;
+  border:1px solid #e5e7eb;border-radius:999px;padding:2px 6px;box-shadow:0 4px 10px rgba(0,0,0,.06)
 }
-.igdm-true .typing .dot{
-  width:6px;height:6px;border-radius:999px;background:#9ca3af;opacity:.6;
-  animation:igblink 1.2s infinite ease-in-out
-}
-.igdm-true .typing .dot:nth-child(2){animation-delay:.15s}
-.igdm-true .typing .dot:nth-child(3){animation-delay:.3s}
-@keyframes igblink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.bubble.me .reacts{left:auto;right:14px}
+.reacts span{font-size:14px;line-height:1;display:inline-block}
 
-/* Scrollbar discreto */
-.igdm-true .thread::-webkit-scrollbar{width:8px;height:8px}
-.igdm-true .thread::-webkit-scrollbar-thumb{background:#1f2733;border-radius:999px}
-.igdm-true .thread::-webkit-scrollbar-track{background:transparent}
+/* digitando */
+.typing{display:flex;align-items:center;gap:6px;margin:6px 0}
+.typing.them{align-self:flex-start;background:#f1f5f9;border-radius:14px;padding:8px 10px}
+.dot{width:6px;height:6px;border-radius:999px;background:#9ca3af;opacity:.4;animation:blink 1.2s infinite}
+.dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
 
-/* Responsivo */
+/* input fake */
+.igdm-input{display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid #eef2f7;background:#fff}
+.igdm-input input{flex:1;padding:10px 12px;border:1px solid #e5e7eb;border-radius:24px;background:#fafafa}
+.igdm-input .tools{display:flex;gap:10px}
+
+/* scrollbar sutil */
+.igdm-thread::-webkit-scrollbar{height:8px;width:8px}
+.igdm-thread::-webkit-scrollbar-thumb{background:#e1e5ea;border-radius:999px}
+.igdm-thread::-webkit-scrollbar-track{background:transparent}
+
 @media (max-width:640px){
-  .igdm-true .igdm-wrap{border-radius:14px}
-  .igdm-true .thread{height:460px}
-  .igdm-true .bubble{max-width:86%}
+  .igdm-card{border-radius:14px}
+  .igdm-thread{max-height:460px}
+  .bubble{max-width:86%}
 }
-
 
 /* Extras */
 .pill{display:inline-block;padding:6px 10px;font-size:12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-ink);margin:6px 0 12px 0}
@@ -611,7 +593,6 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
       <a href="#sobre">Sobre</a>
       <a href="#planos">Planos</a>
       <a href="#estrutura">Estrutura</a>
-      <a href="#faq">FAQ</a>
       <a href="normas.html">Normas</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -665,63 +646,135 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
       <!-- Coluna DIREITA (mensagens) -->
     <aside class="card">
-     <!-- ===== IG DM fiel (dark) — FisioForma Q&A ===== -->
-        <section class="igdm-true">
-          <div class="igdm-wrap">
-            <!-- Header -->
-            <header class="igdm-head">
-              <div class="left">
-                <img class="avatar" src="logo-fisioforma.png" alt="FisioForma" />
-                <div class="meta">
-                  <div class="name">Academia FisioForma <span class="badge">💪</span></div>
-                  <div class="handle">fisioforma.acad</div>
-                </div>
-              </div>
-              <div class="actions" aria-hidden="true">
-                <!-- ícones minimalistas (SVG) no estilo IG -->
-                <svg viewBox="0 0 24 24" class="ico"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58.11.34.03.72-.24 1.01l-2.21 2.2Z"/></svg>
-                <svg viewBox="0 0 24 24" class="ico"><path d="M6 8.5A2.5 2.5 0 0 1 8.5 6h7A2.5 2.5 0 0 1 18 8.5v7A2.5 2.5 0 0 1 15.5 18h-7A2.5 2.5 0 0 1 6 15.5v-7Zm5.75 1.25h-1.5v3.5l3 1.75.75-1.3-2.25-1.3V9.75Z"/></svg>
-                <svg viewBox="0 0 24 24" class="ico"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm1 14h-2v-2h2v2Zm0-4h-2V7h2v5Z"/></svg>
-              </div>
-            </header>
-        
-            <!-- Thread -->
-            <div class="thread" role="log" aria-live="polite">
-              <div class="timestamp">Hoje • 09:12</div>
-        
-              <!-- aluno -->
-              <div class="bubble them">Oi, tudo bem? Quanto é a mensalidade?</div>
-              <!-- academia -->
-              <div class="bubble me">Oi! Tudo ótimo e você? 💙 Nossos planos começam em <strong>R$ 90</strong>. Temos também o <strong>Casadinha (R$ 80 por pessoa)</strong> e o <strong>Executivo (R$ 70)</strong> (fora do pico).</div>
-        
-              <div class="bubble them">E a avaliação física, quanto fica?</div>
-              <div class="bubble me">Para alunos matriculados é <strong>R$ 60</strong>. Para externos e usuários <strong>Wellhub</strong> (antigo Gympass), <strong>R$ 80</strong>.</div>
-        
-              <div class="bubble them">Vocês aceitam Wellhub?</div>
-              <div class="bubble me">Aceitamos sim, pode treinar normalmente com seu acesso Wellhub. 💙</div>
-        
-              <div class="bubble them">Quais os horários de pico?</div>
-              <div class="bubble me">Geralmente <strong>07:30–10:00</strong> e <strong>18:00–20:00</strong>. Fora desses horários o salão fica mais tranquilo.</div>
-        
-              <div class="bubble them">Tem avaliador homem ou mulher?</div>
-              <div class="bubble me">Temos avaliadores homens e mulheres. A disponibilidade depende do horário — todos atendem com respeito e profissionalismo. 🙂</div>
-        
-              <div class="bubble them">Tem alguém para instruir durante o treino?</div>
-              <div class="bubble me">Tem sim! A equipe está sempre no salão para orientar postura, ajustar cargas e garantir sua segurança.</div>
-        
-              <div class="bubble them">E tem dança?</div>
-              <div class="bubble me">Temos! A grade costuma incluir <strong>Ritbox/Dança</strong> e <strong>Funcional</strong> (varia por período). Podemos te passar a programação atual no WhatsApp. 💃🕺</div>
-        
-              <div class="timestamp">Hoje • 09:18</div>
-              <div class="bubble me closing">Qualquer dúvida, chama a gente. <strong>Estamos te esperando</strong> 💙</div>
-        
-              <!-- “digitando…” visual -->
-              <div class="typing">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              </div>
-            </div>
-          </div>
-        </section>
+      <!-- ===== DM Instagram (tema claro) — FisioForma ===== -->
+<section class="igdm-lite" aria-label="Conversa no Instagram">
+  <div class="igdm-card">
+    <!-- Header -->
+    <header class="igdm-top">
+      <div class="left">
+        <img class="avatar" src="logo-fisioforma.png" alt="Academia FisioForma" width="40" height="40">
+        <div class="meta">
+          <strong>Academia FisioForma <span class="hi">💪</span></strong>
+          <span class="handle">fisioforma.acad</span>
+        </div>
+      </div>
+      <div class="actions" aria-hidden="true">
+        <span>📞</span><span>🎥</span><span>ℹ️</span>
+      </div>
+    </header>
+
+    <!-- Timeline -->
+    <div class="igdm-thread" role="log" aria-live="polite">
+      <div class="stamp">Hoje • 09:12</div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        Oi, tudo bem? Quanto é a mensalidade?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Oi! Tudo ótimo e você? 💙 Nossos planos começam em <strong>R$ 90</strong>. 
+        Temos também o <strong>Casadinha (R$ 80 por pessoa)</strong> e o 
+        <strong>Executivo (R$ 70)</strong> pra quem treina fora do pico.
+        <div class="reacts"><span>❤️</span></div>
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        E a avaliação física, quanto fica?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Para alunos matriculados é <strong>R$ 60</strong>. Para externos e usuários 
+        <strong>Wellhub</strong> (antigo Gympass), <strong>R$ 80</strong>.
+        <div class="reacts"><span>👍</span></div>
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        Vocês aceitam Wellhub?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Aceitamos sim, pode treinar normalmente com seu acesso Wellhub. 💙
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        Tem alguém no salão para instruir durante o treino?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Tem sim! Nossa equipe fica no salão para orientar, ajustar cargas e corrigir movimentos.
+        Você não treina sozinho(a).
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        Tem avaliador homem ou mulher?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Temos avaliadores <strong>homens e mulheres</strong>. A disponibilidade depende do horário,
+        e todos atendem com respeito e profissionalismo.
+        <div class="reacts"><span>❤️</span><span>😮</span></div>
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        Quais são os horários de pico?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Geralmente <strong>07:30–10:00</strong> e <strong>18:00–20:00</strong>. Fora desses períodos o salão fica mais tranquilo.
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        Tem dança? Quais modalidades?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me">
+        Temos <strong>Ritbox/Dança</strong> e <strong>Funcional</strong> (a grade varia por período). 
+        A gente te passa a programação atual pelo WhatsApp ou na recepção. 💃🕺
+      </div>
+
+      <!-- aluno -->
+      <div class="bubble them">
+        E a vibe do lugar, como é?
+      </div>
+
+      <!-- fisioforma -->
+      <div class="bubble me closing">
+        O clima é <strong>acolhedor</strong>, leve e motivador. Mais que aparelhos, oferecemos um espaço de 
+        <strong>apoio</strong> e evolução pra você se conectar com a sua melhor versão. 
+        <br><br><strong>Estamos te esperando</strong> 💙
+        <div class="reacts"><span>❤️</span></div>
+      </div>
+
+      <!-- digitando... -->
+      <div class="typing them" aria-hidden="true">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+
+      <div class="stamp">Agora mesmo</div>
+    </div>
+
+    <!-- footer fake -->
+    <footer class="igdm-input" aria-hidden="true">
+      <span>😊</span>
+      <input type="text" placeholder="Mensagem...">
+      <div class="tools"><span>📷</span><span>🖼️</span><span>🎤</span></div>
+    </footer>
+  </div>
+</section>
     </aside>
     </div>
   </section>
@@ -1088,7 +1141,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 </section>
 
 
-  <!-- FAQ -->
+  <!-- FAQ 
 <section id="faq" class="alt">
   <div class="wrap">
     <h2>Perguntas frequentes</h2>
@@ -1097,7 +1150,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
     </p>
 
     <div class="grid">
-      <!-- 1 -->
+      <!-- 1 --
       <article class="card faq-card">
         <div class="body">
           <h3><span class="ico faq"></span> A FisioForma é indicada para iniciantes?</h3>
@@ -1105,7 +1158,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         </div>
       </article>
 
-      <!-- 2 -->
+      <!-- 2 --
       <article class="card faq-card">
         <div class="body">
           <h3><span class="ico faq"></span> Vocês realizam avaliação física?</h3>
@@ -1113,7 +1166,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         </div>
       </article>
 
-      <!-- 3 -->
+      <!-- 3 --
       <article class="card faq-card">
         <div class="body">
           <h3><span class="ico faq"></span> Quais são os planos e formas de pagamento?</h3>
@@ -1121,7 +1174,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         </div>
       </article>
 
-      <!-- 4 -->
+      <!-- 4 --
       <article class="card faq-card">
         <div class="body">
           <h3><span class="ico faq"></span> Posso fazer um treino experimental?</h3>
@@ -1129,7 +1182,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         </div>
       </article>
 
-      <!-- 5 -->
+      <!-- 5 --
       <article class="card faq-card">
         <div class="body">
           <h3><span class="ico faq"></span> Há acompanhamento no salão?</h3>
@@ -1137,7 +1190,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         </div>
       </article>
 
-      <!-- 6 -->
+      <!-- 6 --
       <article class="card faq-card">
         <div class="body">
           <h3><span class="ico faq"></span> Como funcionam as aulas coletivas?</h3>
@@ -1147,7 +1200,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
     </div>
   </div>
 </section>
-
+-->
 </main>
 
 <footer>
@@ -1155,7 +1208,6 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
     <a href="#sobre">Sobre</a>
     <a href="#planos">Planos</a>
     <a href="#estrutura">Estrutura</a>
-    <a href="#faq">FAQ</a>
     <a href="#contato">Contato</a>
   </div>
 
