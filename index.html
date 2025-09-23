@@ -243,57 +243,55 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .opt,
 .opcional { color:#6b7280; }
 
-/* === FisioForma: azul vibrante + neutros === */
-
-/* 1) Azul vibrante anterior */
-:root{
-  --brand:    #2563eb;   /* azul vibrante usado antes */
-  --brand-ink:#1d4ed8;   /* variação mais escura para hover */
+/* === Azul FisioForma (coeso com o título e botões iniciais) === */
+:root {
+  --brand:    #2b6b8a;   /* azul principal */
+  --brand-ink:#1f4e63;   /* azul mais escuro (hover/destaque) */
 }
 
-/* 2) Preço e botão dos cards de plano */
-.planos-container .plano-card .preco{
+/* Preços e botões */
+.planos-container .plano-card .preco {
   color: var(--brand) !important;
 }
-.planos-container .btn-escolher{
+.planos-container .btn-escolher {
   background: var(--brand) !important;
   color:#fff !important;
   border:0 !important;
 }
-.planos-container .btn-escolher:hover{
+.planos-container .btn-escolher:hover {
   background: var(--brand-ink) !important;
 }
 
-/* 3) Cores dos itens (tirar verde) */
+/* Ícones/textos dos planos */
 .planos-container .plano-card li.ok,
-.compare tbody .ok{
-  color:#2c3e50 !important;      /* azul escuro puxando pro preto */
+.compare tbody .ok {
+  color:#2c3e50 !important;   /* azul escuro/preto */
   font-weight:700;
 }
 .planos-container .plano-card li.no,
-.compare tbody .no{
-  color:#2c3e50 !important;      /* azul escuro/preto para “não incluso” */
+.compare tbody .no {
+  color:#2c3e50 !important;   /* azul escuro/preto */
   font-weight:700;
 }
 .planos-container .plano-card li.opt,
-.compare tbody .opt{
-  color:#6b7280 !important;      /* cinza neutro para “opcional” */
+.compare tbody .opt {
+  color:#6b7280 !important;   /* cinza neutro */
   font-weight:600;
 }
 
-/* 4) Links sem sublinhado */
-#planos a, .compare a{
+/* Links sem sublinhado */
+#planos a, .compare a {
   text-decoration:none !important;
-  color:#2c3e50 !important;
+  color: var(--brand-ink) !important;
 }
-#planos a:hover, .compare a:hover{
+#planos a:hover, .compare a:hover {
   text-decoration:none !important;
 }
 
-/* 5) Destaque do plano do meio */
-.plano-card.destaque{
+/* Destaque plano Casadinha */
+.plano-card.destaque {
   border:2px solid var(--brand) !important;
-  box-shadow:0 8px 18px rgba(37,99,235,.20) !important;
+  box-shadow:0 8px 18px rgba(43,107,138,.20) !important;
 }
 
 
