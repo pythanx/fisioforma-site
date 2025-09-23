@@ -136,19 +136,135 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 @media (max-width:560px){iframe.map{height:260px}}
 
 /* PLANOS */
-.plan-price{font-size:28px;font-weight:900;margin:10px 0 4px 0;display:inline-block;padding:8px 14px;border:3px solid var(--brand);border-radius:12px;background:#fff}
-.plan-card .body{display:grid;gap:8px}
-.plan-card .features{margin:6px 0 2px 0;padding-left:18px}
-.plan-card .features li{margin:2px 0}
-.plan-card:hover .plan-price,.plan-card:focus-within .plan-price{border-color:var(--brand-ink)}
+/* === PLANOS: grid responsivo e cards nivelados === */
+.plano-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.plano-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.plano-card .preco {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.plano-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.plano-card ul li {
+  margin: 6px 0;
+  font-size: 0.95rem;
+}
+
+.btn-escolher {
+  background: #1d72b8;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-escolher:hover {
+  background: #155a8a;
+}
+
+/* Cores de status */
+.plano-card li {
+  font-weight: 500;
+}
+
+.plano-card li:contains("✔") {
+  color: #28a745; /* verde */
+}
+
+.plano-card li:contains("❌") {
+  color: #d9534f; /* vermelho */
+}
+
+.plano-card li:contains("➖") {
+  color: #6c757d; /* cinza */
+}
+
+/* Destaque para o plano Casadinha */
+.plano-card.destaque {
+  border: 2px solid #1d72b8;
+  transform: scale(1.05);
+}
+
+
 
 /* Tabela comparativa */
-.compare{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.compare th,.compare td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:center}
-.compare thead th{background:#eef5fb;font-weight:800}
-.compare tbody tr:hover{background:#f9fbfe}
-.compare td:first-child,.compare th:first-child{text-align:left;font-weight:700}
-.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:#e6f2fb;color:#1b4e70;border:1px solid #cfe6f6}
+/* container com rolagem suave e máscara nas bordas */
+.compare-wrap{
+  position: relative;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+/* sombreamento nas laterais ao rolar (efeito “fade”) */
+.compare-wrap::before,
+.compare-wrap::after{
+  content:"";
+  position:absolute; top:0; bottom:0; width:24px; pointer-events:none;
+}
+.compare-wrap::before{ left:0; background: linear-gradient(to right,#fff,rgba(255,255,255,0)); }
+.compare-wrap::after { right:0; background: linear-gradient(to left ,#fff,rgba(255,255,255,0)); }
+
+/* tabela */
+.compare{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  background:#fff;
+}
+.compare thead th{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #eef5fb;
+  font-weight:800;
+  border-bottom:1px solid var(--line);
+}
+.compare th, .compare td{
+  padding: 14px 12px;
+  text-align: center;
+  border-bottom:1px solid var(--line);
+}
+.compare td:first-child, .compare th:first-child{
+  text-align:left;
+  position: sticky; left:0; z-index:3;
+  background:#fff;                         /* fica branco pra legibilidade */
+  font-weight:700;
+}
+
+/* zebra rows para o corpo */
+.compare tbody tr:nth-child(odd){ background:#fafcff; }
+
+/* em telas pequenas, deixa fontes um pouco menores */
+@media (max-width:640px){
+  .compare th, .compare td{ padding:12px 10px; font-size: 15px; }
+}
+
+
 
 /* Pequenos toques */
 section .grid > *{align-self:start}
@@ -515,58 +631,96 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   <section id="planos">
     <div class="wrap">
       <h2>Planos e valores</h2>
-      <div class="grid cols-3" style="margin-top:16px">
-        <div class="card plan-card" tabindex="0">
-          <div class="body">
-            <h3>Plano Individual</h3>
-            <div class="plan-price">R$ 90/mês</div>
-            <ul class="features">
-              <li>Acesso livre ao salão</li>
-              <li>Orientação da equipe</li>
-              <li>Reavaliação periódica</li>
-            </ul>
-            <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">Escolher</a>
-          </div>
-        </div>
-        <div class="card plan-card featured" tabindex="0">
-          <div class="body">
-            <h3>Plano Casadinha</h3>
-            <div class="plan-price">R$ 80/mês</div>
-            <ul class="features">
-              <li>Para treinar em dupla</li>
-              <li>Acesso salão + aulas</li>
-              <li>Descontos sazonais</li>
-            </ul>
-            <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">Escolher</a>
-          </div>
-        </div>
-        <div class="card plan-card" tabindex="0">
-          <div class="body">
-            <h3>Plano Executivo</h3>
-            <div class="plan-price">R$ 70/mês</div>
-            <ul class="features">
-              <li>Horários especiais</li>
-              <li>Entrada rápida</li>
-              <li>Ideal para rotina corrida</li>
-            </ul>
-            <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">Escolher</a>
-          </div>
-        </div>
+      <div class="planos-container">
+
+  <!-- Plano Individual -->
+  <div class="plano-card">
+    <h3>Plano Individual</h3>
+    <p class="preco">R$ 90/mês</p>
+    <ul>
+      <li>✔ Acesso livre ao salão</li>
+      <li>➖ Aulas coletivas (opcional)</li>
+      <li>✔ Reavaliação periódica</li>
+      <li>❌ Horários diferenciados</li>
+    </ul>
+    <button class="btn-escolher">Escolher</button>
+  </div>
+
+  <!-- Plano Casadinha -->
+  <div class="plano-card destaque">
+    <h3>Plano Casadinha</h3>
+    <p class="preco">R$ 80/mês</p>
+    <ul>
+      <li>✔ Treinar em dupla</li>
+      <li>✔ Acesso ao salão + aulas coletivas</li>
+      <li>✔ Reavaliação periódica</li>
+      <li>❌ Horários diferenciados</li>
+      <li>✔ Descontos sazonais</li>
+    </ul>
+    <button class="btn-escolher">Escolher</button>
+  </div>
+
+  <!-- Plano Executivo -->
+  <div class="plano-card">
+    <h3>Plano Executivo</h3>
+    <p class="preco">R$ 70/mês</p>
+    <ul>
+      <li>✔ Acesso ao salão</li>
+      <li>❌ Aulas coletivas</li>
+      <li>✔ Reavaliação periódica</li>
+      <li>✔ Horários diferenciados</li>
+    </ul>
+    <button class="btn-escolher">Escolher</button>
+  </div>
+
+</div>
+
+
       </div>
 
       <!-- Tabela comparativa -->
       <div style="margin-top:24px;overflow:auto">
-        <table class="compare" aria-label="Comparação de planos">
+        <table class="compare-wrap" aria-label="Comparação de planos">
           <thead>
             <tr><th>Benefícios</th><th>Individual</th><th>Casadinha</th><th>Executivo</th></tr>
           </thead>
           <tbody>
-            <tr><td>Acesso ao salão</td><td>✔</td><td>✔</td><td>✔</td></tr>
-            <tr><td>Aulas coletivas</td><td>Opcional</td><td>Incluídas</td><td>Opcional</td></tr>
-            <tr><td>Reavaliação física</td><td>✔</td><td>✔</td><td>✔</td></tr>
-            <tr><td>Horários diferenciados</td><td>—</td><td>—</td><td>✔</td></tr>
-            <tr><td>Descontos</td><td>Campanhas</td><td>Melhor custo p/ 2</td><td>Campanhas</td></tr>
-          </tbody>
+  <tr>
+    <td>Acesso ao salão</td>
+    <td>✔</td>
+    <td>✔</td>
+    <td>✔</td>
+  </tr>
+
+  <tr>
+    <td>Aulas coletivas</td>
+    <td class="opcional">➖ Opcional</td>
+    <td>✔ Incluídas</td>
+    <td class="nao-incluso">❌ Não incluso</td>
+  </tr>
+
+  <tr>
+    <td>Reavaliação física</td>
+    <td>✔</td>
+    <td>✔</td>
+    <td>✔</td>
+  </tr>
+
+  <tr>
+    <td>Horários diferenciados</td>
+    <td class="nao-incluso">❌ Não incluso</td>
+    <td class="nao-incluso">❌ Não incluso</td>
+    <td>✔</td>
+  </tr>
+
+  <tr>
+    <td>Descontos</td>
+    <td class="opcional">➖ Campanhas</td>
+    <td>✔ Melhor custo p/ 2</td>
+    <td class="opcional">➖ Campanhas</td>
+  </tr>
+</tbody>
+
         </table>
       </div>
     </div>
