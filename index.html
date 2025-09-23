@@ -264,6 +264,37 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
 
+/* FAQ grid */
+#faq .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* FAQ cards */
+#faq .faq-card {
+  display: flex;
+  height: 100%;
+}
+
+#faq .faq-card .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+/* FAQ ícones (círculo vazio estilizado) */
+#faq .ico.faq {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #3a80b4; /* cor do tema */
+  vertical-align: middle;
+}
 
 
 /* Reveal */
@@ -655,27 +686,66 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 </section>
 
 
-
-
-
   <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <h2>Perguntas frequentes</h2>
-      <div class="grid cols-2" style="margin-top:12px">
-        <div class="card"><div class="body"><h3>A FisioForma é para iniciantes?</h3><p class="muted">Sim, fornecemos suporte de iniciantes a avançados! Plano progressivo, respeitando seu ritmo e possíveis limitações.</p></div></div>
-        <div class="card"><div class="body"><h3>Vocês fazem avaliação física?</h3><p class="muted">Fazemos avaliação inicial e reavaliações periódicas com agendamento. Basta entrar em <strong>contato</strong> pelo Instagram ou WhatsApp.</p></div></div>
-        <div class="card"><div class="body"><h3>Quais são os planos e formas de pagamento?</h3><p class="muted">Mensal, fidelidade e promoções sazonais. Cartão, PIX e dinheiro.</p></div></div>
-        <div class="card"><div class="body"><h3>Posso fazer um treino experimental?</h3><p class="muted">Não oferecemos treino experimental gratuito. Você pode agendar um tour guiado ou comprar um Day Use na recepção.</p></div></div>
-        <div class="card"><div class="body"><h3>Há acompanhamento no salão?</h3><p class="muted">Sim. Equipe orienta postura, execução e ajustes de carga. Personal à parte.</p></div></div>
-        <div class="card"><div class="body"><h3>Como funcionam as aulas coletivas?</h3><p class="muted">Temos aulas de Ritbox, dança e funcional. Incluso em qualquer plano.</p></div></div>
-        <div class="card"><div class="body"><h3>Tem vestiário, chuveiro e armário?</h3><p class="muted">Sim. Recomenda-se cadeado próprio; verifique a disponibilidade na recepção.</p></div></div>
-        <div class="card"><div class="body"><h3>Idade mínima para treinar?</h3><p class="muted">A partir de 14 anos com autorização do responsável.</p></div></div>
-        <div class="card"><div class="body"><h3>Posso pausar o plano?</h3><p class="muted">Planos com fidelidade podem ter pausa mediante justificativa.</p></div></div>
-        <div class="card"><div class="body"><h3>Aceitam Wellhub (antigo Gympass)?</h3><p class="muted" style="line-height:1.4">Sim, basta abrir o app Wellhub e fazer o check-in na Academia FisioForma.</p></div></div>
-      </div>
+<section id="faq" class="alt">
+  <div class="wrap">
+    <h2>Perguntas frequentes</h2>
+    <p class="muted" style="margin-bottom:14px">
+      Tire suas principais dúvidas sobre a FisioForma:
+    </p>
+
+    <div class="grid">
+      <!-- 1 -->
+      <article class="card faq-card">
+        <div class="body">
+          <h3><span class="ico faq"></span> A FisioForma é indicada para iniciantes?</h3>
+          <p>Sim. Oferecemos suporte a todos os níveis, do iniciante ao avançado, com plano progressivo que respeita o ritmo individual e possíveis limitações.</p>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card faq-card">
+        <div class="body">
+          <h3><span class="ico faq"></span> Vocês realizam avaliação física?</h3>
+          <p>Sim. Realizamos avaliação inicial e reavaliações periódicas mediante agendamento. Entre em contato pelo Instagram ou WhatsApp para marcar.</p>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card faq-card">
+        <div class="body">
+          <h3><span class="ico faq"></span> Quais são os planos e formas de pagamento?</h3>
+          <p>Disponibilizamos planos mensais, fidelidade e promoções sazonais. Aceitamos cartão, PIX e dinheiro.</p>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card faq-card">
+        <div class="body">
+          <h3><span class="ico faq"></span> Posso fazer um treino experimental?</h3>
+          <p>Não oferecemos treino experimental gratuito. Você pode agendar um tour guiado pelas instalações ou adquirir um Day Use diretamente na recepção.</p>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card faq-card">
+        <div class="body">
+          <h3><span class="ico faq"></span> Há acompanhamento no salão?</h3>
+          <p>Sim. Nossa equipe orienta postura, execução e ajustes de carga durante os treinos. O serviço de personal trainer pode ser contratado à parte.</p>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="card faq-card">
+        <div class="body">
+          <h3><span class="ico faq"></span> Como funcionam as aulas coletivas?</h3>
+          <p>Oferecemos aulas de Ritbox, dança e funcional, com turmas dinâmicas e motivadoras. Todas as modalidades estão inclusas em qualquer plano.</p>
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
+
 </main>
 
 <footer>
