@@ -27,8 +27,11 @@
 <style>
 :root{
   --bg:#ffffff; --ink:#222; --muted:#5a5a5a; --card:#f5f7fa; --line:#d9d9d9;
-  --brand:#3a80b4; --brand-ink:#2d5e7e; --ok:#0ea5e9;
+  --brand:#2b6b8a;        /* azul principal (novo) */
+  --brand-ink:#1f4e63;    /* hover/destaque (novo) */
+  --ok:#0ea5e9;
 }
+
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
 html {scroll-behavior: smooth;}
@@ -228,12 +231,6 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .no  { color:#2c3e50; font-weight:700; }
 .compare .opt { color:#6b7280; }
 
-/* Links sem sublinhado (somente onde interessa) */
-#planos a, .compare a {
-  text-decoration: none;
-  color: #2c3e50;         /* azul escuro */
-}
-#planos a:hover, .compare a:hover { text-decoration: none; }
 
   .plano-card li.no,
 .compare .no,
@@ -243,11 +240,7 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .opt,
 .opcional { color:#6b7280; }
 
-/* === Azul FisioForma (coeso com o título e botões iniciais) === */
-:root {
-  --brand:    #2b6b8a;   /* azul principal */
-  --brand-ink:#1f4e63;   /* azul mais escuro (hover/destaque) */
-}
+
 
 /* Preços e botões */
 .planos-container .plano-card .preco {
@@ -279,14 +272,7 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
   font-weight:600;
 }
 
-/* Links sem sublinhado */
-#planos a, .compare a {
-  text-decoration:none !important;
-  color: var(--brand-ink) !important;
-}
-#planos a:hover, .compare a:hover {
-  text-decoration:none !important;
-}
+
 
 /* Destaque plano Casadinha */
 .plano-card.destaque {
@@ -325,7 +311,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 #normas-resumo .grid{display:grid;gap:18px}
 @media(min-width:600px){#normas-resumo .grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:980px){#normas-resumo .grid{grid-template-columns:repeat(3,1fr)}}
-.normas-card{background:#fff;border:1px solid #e0e0e0; var(--line);border-radius:14px;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;display:flex;flex-direction:column;min-height:auto}
+.normas-card{   background:#fff;   border:1px solid var(--line);   border-radius:14px;   overflow:hidden;   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;   display:flex;flex-direction:column;min-height:auto; }
 .normas-card:hover{transform:translateY(-4px);box-shadow: 0 6px 18px rgba(0,0,0,.06);;border-color:#bcd7ea}
 .normas-card .body{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .normas-card h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px}
