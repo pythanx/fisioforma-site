@@ -324,43 +324,56 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 
 /* === Cards do hero (horários, redes, mensagens) — ajustes visuais === */
   /* Container das mensagens em grid */
-.mensagens {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
-  align-items: stretch; /* força a mesma altura por linha */
-}
+<div class="dm-mock" aria-label="Conversa no Instagram">
+  <div class="dm-header">
+    <div class="left">
+      <span class="avatar"></span>
+      <div class="meta">
+        <strong>@fisioforma.acad</strong>
+        <span>Academia • ativo agora</span>
+      </div>
+    </div>
+    <div class="dots" aria-hidden="true">•••</div>
+  </div>
 
-/* Cada mensagem vira um card */
-.mensagens .msg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: justify; /* deixa o texto alinhado dos dois lados */
-  border: 1px solid #dbe5ec;
-  border-radius: 12px;
-  background: #f9fbfe;
-  box-shadow: 0 4px 10px rgba(0,0,0,.06);
-  padding: 16px;
-  line-height: 1.6;
-}
+  <div class="dm-thread">
+    <!-- aluno -->
+    <div class="bubble them">
+      Oi! Como é o ambiente da academia?
+    </div>
 
+    <!-- fisioforma -->
+    <div class="bubble me">
+      💙 Na FisioForma, o espaço é amplo, o clima é leve e a motivação é contagiante.
+    </div>
 
-/* envelope padrão dos cards */
-.hero .info-box,
-.mensagens .msg {
-  border: 1px solid #dbe5ec;          /* borda mais leve/coesa */
-  border-radius: 12px;                 /* raio consistente */
-  background: #ffffff;                 /* fundo branco limpo */
-  box-shadow: 0 6px 16px rgba(0,0,0,.06);
-}
+    <!-- aluno -->
+    <div class="bubble them">
+      Tem aulas coletivas e acompanhamento?
+    </div>
 
-/* conteúdo e respiros iguais */
-.hero .info-box,
-.mensagens .msg {
-  padding: 14px 16px;
-  line-height: 1.6;
-}
+    <!-- fisioforma -->
+    <div class="bubble me">
+      Seja qual for seu objetivo, temos o ambiente e o apoio. Mais do que aparelhos, oferecemos um espaço completo para a sua evolução.
+    </div>
+
+    <!-- aluno -->
+    <div class="bubble them">
+      E a vibe do lugar?
+    </div>
+
+    <!-- fisioforma -->
+    <div class="bubble me">
+      Um ambiente acolhedor e uma jornada inesquecível. Aqui você não só treina — você se conecta com a sua melhor versão.
+    </div>
+
+    <!-- fisioforma (extra curto) -->
+    <div class="bubble me">
+      Nosso suporte é constante. Chegue e sinta-se em casa! 🙂
+    </div>
+  </div>
+</div>
+
 
 /* título do card de horários */
 .hero .info-box h3{
@@ -671,14 +684,56 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
       <!-- Coluna DIREITA (mensagens) -->
       <aside class="card">
-        <div class="body muted">
-          <div class="mensagens">
-            <div class="msg">💙 Na Fisioforma, o espaço é amplo, o clima é leve e a motivação é contagiante.</div>
-            <div class="msg">💙 Seja qual for seu objetivo, temos o ambiente e o apoio. Mais do que aparelhos, oferecemos um espaço completo para a sua evolução.</div>
-            <div class="msg">💙 Um ambiente acolhedor e uma jornada inesquecível. Na Fisioforma, você não só treina, você se conecta com a sua melhor versão.</div>
-            <div class="msg">💙 Mais que uma academia, um refúgio para sua saúde. Nosso suporte é constante. Chegue e sinta-se em casa.</div>
+        <div class="dm-mock" aria-label="Conversa no Instagram">
+          <div class="dm-header">
+            <div class="left">
+              <span class="avatar"></span>
+              <div class="meta">
+                <strong>@fisioforma.acad</strong>
+                <span>Academia • ativo agora</span>
+              </div>
+            </div>
+            <div class="dots" aria-hidden="true">•••</div>
+          </div>
+        
+          <div class="dm-thread">
+            <!-- aluno -->
+            <div class="bubble them">
+              Oi! Como é o ambiente da academia?
+            </div>
+        
+            <!-- fisioforma -->
+            <div class="bubble me">
+              💙 Na FisioForma, o espaço é amplo, o clima é leve e a motivação é contagiante.
+            </div>
+        
+            <!-- aluno -->
+            <div class="bubble them">
+              Tem aulas coletivas e acompanhamento?
+            </div>
+        
+            <!-- fisioforma -->
+            <div class="bubble me">
+              Seja qual for seu objetivo, temos o ambiente e o apoio. Mais do que aparelhos, oferecemos um espaço completo para a sua evolução.
+            </div>
+        
+            <!-- aluno -->
+            <div class="bubble them">
+              E a vibe do lugar?
+            </div>
+        
+            <!-- fisioforma -->
+            <div class="bubble me">
+              Um ambiente acolhedor e uma jornada inesquecível. Aqui você não só treina — você se conecta com a sua melhor versão.
+            </div>
+        
+            <!-- fisioforma (extra curto) -->
+            <div class="bubble me">
+              Nosso suporte é constante. Chegue e sinta-se em casa! 🙂
+            </div>
           </div>
         </div>
+
       </aside>
     </div>
   </section>
