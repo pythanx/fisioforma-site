@@ -321,6 +321,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 /* Mensagens (hero) */
 
 /* ====== Instagram DM mock ====== */
+/* ===== Instagram DM mock ===== */
 .ig-dm{
   border:1px solid var(--line);
   border-radius:20px;
@@ -330,96 +331,65 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   max-width:560px;
   font-size:15px;
 }
-
-/* Topo (igual app) */
 .ig-top{
   display:flex; align-items:center; justify-content:space-between;
-  padding:10px 12px;
-  border-bottom:1px solid #eef1f5;
-  background:#fff;
+  padding:10px 12px; border-bottom:1px solid #eef1f5; background:#fff;
 }
 .ig-top .left{display:flex; align-items:center; gap:10px}
-.ig-top .chev{font-size:24px; line-height:1; color:#1c1c1c; opacity:.8}
-.ig-top .ring{
-  display:inline-grid; place-items:center;
-  width:28px; height:28px; border-radius:999px;
-  background:conic-gradient(#f58529,#dd2a7b,#8134af,#515bd4,#f58529);
-  padding:2px;
-}
+.ig-top .chev{font-size:24px; line-height:1; color:#1c1c1c; opacity:.85}
+.ig-top .ring{display:grid; place-items:center; width:28px; height:28px; border-radius:999px;
+  background:conic-gradient(#f58529,#dd2a7b,#8134af,#515bd4,#f58529); padding:2px;}
 .ig-top .avatar{
   width:100%; height:100%; border-radius:999px;
-  background:#e9eef3 url('logo-fisioforma.png') center/cover no-repeat;
+  background:#e9eef3 url('logo-fisioforma.png') center/cover no-repeat; /* trocado pro seu logo */
 }
 .ig-top .meta strong{display:block; font-size:14px}
 .ig-top .meta span{display:block; font-size:12px; color:#8a8f98; margin-top:2px}
-.ig-top .right .dot{
-  display:inline-block; width:4px; height:4px; border-radius:50%;
-  background:#1c1c1c; margin-left:3px; opacity:.8;
-}
+.ig-top .right .dot{display:inline-block; width:4px; height:4px; border-radius:50%; background:#1c1c1c; margin-left:3px; opacity:.8}
 
-/* Thread */
-.ig-thread{
-  background:#f7f8fb;
-  padding:14px 12px 10px;
-  display:flex; flex-direction:column; gap:10px;
-  max-height:360px; overflow:auto;
-}
+.ig-thread{background:#f7f8fb; padding:14px 12px 10px; display:flex; flex-direction:column; gap:10px; max-height:360px; overflow:auto}
 
-/* Mensagens */
+/* bolhas */
 .msg{
-  max-width:78%;
-  padding:10px 12px;
-  border-radius:18px;
-  line-height:1.55;
-  position:relative;
-  word-wrap:break-word;
-  box-shadow:0 2px 5px rgba(0,0,0,.04);
+  max-width:78%; padding:10px 12px; border-radius:18px; line-height:1.55; position:relative;
+  word-wrap:break-word; box-shadow:0 2px 5px rgba(0,0,0,.04);
 }
-.msg .time{
-  font-size:11px; color:#9aa3ad; margin-top:6px;
-}
+.msg .time{font-size:11px; color:#9aa3ad; margin-top:6px}
 
-/* Aluno (esquerda) */
-.msg.them{
-  align-self:flex-start;
-  background:#fff;
-  border:1px solid #e5e9ef;
-  color:#1b2b3a;
-}
+/* aluno */
+.msg.them{align-self:flex-start; background:#fff; border:1px solid #e5e9ef; color:#1b2b3a}
 .msg.them:after{
-  content:""; position:absolute; left:-6px; bottom:0;
-  width:12px; height:12px; background:#fff; border-left:1px solid #e5e9ef; border-bottom:1px solid #e5e9ef;
-  border-bottom-left-radius:12px; transform:translateY(0) rotate(45deg);
+  content:""; position:absolute; left:-6px; bottom:0; width:12px; height:12px; background:#fff;
+  border-left:1px solid #e5e9ef; border-bottom:1px solid #e5e9ef; border-bottom-left-radius:12px; transform:rotate(45deg);
 }
 
-/* FisioForma (direita) */
-.msg.me{
-  align-self:flex-end;
-  background:var(--brand);
-  color:#fff;
-}
+/* FisioForma – azul do Instagram */
+:root{ --ig-blue:#3797F0; }
+.msg.me{align-self:flex-end; background:var(--ig-blue); color:#fff}
 .msg.me:after{
-  content:""; position:absolute; right:-6px; bottom:0;
-  width:12px; height:12px; background:var(--brand);
+  content:""; position:absolute; right:-6px; bottom:0; width:12px; height:12px; background:var(--ig-blue);
   border-bottom-right-radius:12px; transform:rotate(45deg);
 }
 
-/* Barra de digitar */
-.ig-input{
-  display:flex; align-items:center; gap:8px;
-  padding:8px; border-top:1px solid #eef1f5; background:#fff;
+/* digitando… */
+.typing{display:flex; align-items:center; gap:8px; margin-top:2px}
+.typing.them{align-self:flex-start}
+.typing .bubble{
+  background:#fff; border:1px solid #e5e9ef; border-radius:16px; padding:8px 10px; display:inline-flex; gap:4px
 }
-.ig-input .field{
-  flex:1; background:#f2f3f6; border-radius:22px; padding:10px 14px;
-  border:1px solid #e8ebf0;
+.typing .bubble span{
+  width:6px; height:6px; border-radius:50%; background:#b7c1cb; display:inline-block; animation:blink 1s infinite ease-in-out;
 }
+.typing .bubble span:nth-child(2){animation-delay:.15s}
+.typing .bubble span:nth-child(3){animation-delay:.3s}
+.typing .hint{font-size:12px; color:#9aa3ad}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+
+.ig-input{display:flex; align-items:center; gap:8px; padding:8px; border-top:1px solid #eef1f5; background:#fff}
+.ig-input .field{flex:1; background:#f2f3f6; border-radius:22px; padding:10px 14px; border:1px solid #e8ebf0}
 .ig-input .placeholder{color:#949aa4; font-size:14px}
-.ig-input .send{
-  width:36px; height:36px; border-radius:50%; border:0; cursor:pointer;
-  background:var(--brand); color:#fff; font-weight:700;
-  display:grid; place-items:center;
-}
-.ig-input .send:hover{background:var(--brand-ink)}
+.ig-input .send{width:36px; height:36px; border-radius:50%; border:0; cursor:pointer; background:var(--ig-blue); color:#fff; font-weight:700; display:grid; place-items:center}
+.ig-input .send:hover{filter:brightness(.95)}
 
 @media (max-width:640px){
   .ig-dm{max-width:100%}
@@ -728,55 +698,86 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
       <!-- Coluna DIREITA (mensagens) -->
       <aside class="card">
-        <div class="dm-mock" aria-label="Conversa no Instagram">
-          <div class="dm-header">
-            <div class="left">
-              <span class="avatar"></span>
-              <div class="meta">
-                <strong>@fisioforma.acad</strong>
-                <span>Academia • ativo agora</span>
-              </div>
-            </div>
-            <div class="dots" aria-hidden="true">•••</div>
-          </div>
-        
-          <div class="dm-thread">
-            <!-- aluno -->
-            <div class="bubble them">
-              Oi! Como é o ambiente da academia?
-            </div>
-        
-            <!-- fisioforma -->
-            <div class="bubble me">
-              💙 Na FisioForma, o espaço é amplo, o clima é leve e a motivação é contagiante.
-            </div>
-        
-            <!-- aluno -->
-            <div class="bubble them">
-              Tem aulas coletivas e acompanhamento?
-            </div>
-        
-            <!-- fisioforma -->
-            <div class="bubble me">
-              Seja qual for seu objetivo, temos o ambiente e o apoio. Mais do que aparelhos, oferecemos um espaço completo para a sua evolução.
-            </div>
-        
-            <!-- aluno -->
-            <div class="bubble them">
-              E a vibe do lugar?
-            </div>
-        
-            <!-- fisioforma -->
-            <div class="bubble me">
-              Um ambiente acolhedor e uma jornada inesquecível. Aqui você não só treina — você se conecta com a sua melhor versão.
-            </div>
-        
-            <!-- fisioforma (extra curto) -->
-            <div class="bubble me">
-              Nosso suporte é constante. Chegue e sinta-se em casa! 🙂
-            </div>
-          </div>
-        </div>
+        <!-- DM Instagram mock (FisioForma) -->
+<div class="ig-dm" aria-label="Conversa no Instagram">
+  <!-- topo -->
+  <div class="ig-top">
+    <div class="left">
+      <span class="chev" aria-hidden="true">‹</span>
+      <span class="ring"><span class="avatar"></span></span>
+      <div class="meta">
+        <strong>@fisioforma.acad</strong>
+        <span>ativo agora</span>
+      </div>
+    </div>
+    <div class="right" aria-hidden="true">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- thread -->
+  <div class="ig-thread">
+    <div class="msg them">
+      Oi! Quais são os valores do plano mensal?
+      <div class="time">13:39</div>
+    </div>
+
+    <div class="msg me">
+      Hoje o mensal é <strong>R$ 90</strong>. Temos o <strong>Casadinha R$ 80</strong> por pessoa e o <strong>Executivo R$ 70</strong> (janela fora do pico).
+      <div class="time">13:40</div>
+    </div>
+
+    <div class="msg them">
+      As aulas coletivas estão inclusas?
+      <div class="time">13:41</div>
+    </div>
+
+    <div class="msg me">
+      Sim! Ritbox, dança e funcional estão <strong>incluídas</strong> (no executivo, apenas musculação em janela).
+      <div class="time">13:41</div>
+    </div>
+
+    <div class="msg them">
+      Como são os horários de pico?
+      <div class="time">13:42</div>
+    </div>
+
+    <div class="msg me">
+      Pico geralmente <strong>6h–8h</strong> e <strong>18h–20h30</strong>. Fora desses períodos é mais tranquilo. 🙂
+      <div class="time">13:43</div>
+    </div>
+
+    <div class="msg them">
+      Tem estacionamento e avaliação física?
+      <div class="time">13:44</div>
+    </div>
+
+    <div class="msg me">
+      Temos <strong>vagas próximas</strong> e <strong>reavaliação periódica</strong> inclusa. Quer vir conhecer?
+      <div class="time">13:44</div>
+    </div>
+
+    <!-- digitando... -->
+    <div class="typing them">
+      <span class="bubble"><span></span><span></span><span></span></span>
+      <span class="hint">digitando…</span>
+    </div>
+
+    <!-- exemplo de última resposta enviada -->
+    <!--
+    <div class="msg me">
+      Pode vir hoje até 22h. Te espero! 💙
+      <div class="time">13:45 • visualizada</div>
+    </div>
+    -->
+  </div>
+
+  <!-- barra de digitar fake -->
+  <div class="ig-input">
+    <div class="field"><span class="placeholder">Enviar mensagem…</span></div>
+    <button class="send" aria-label="Enviar">➤</button>
+  </div>
+</div>
 
       </aside>
     </div>
