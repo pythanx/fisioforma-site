@@ -194,6 +194,27 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 #normas-resumo .actions{margin-top:14px;display:flex;justify-content:center}
 #normas-resumo .actions .cta.outline{border-radius:10px;padding:10px 14px}
 
+/* --- Corrige corte de texto nos cards de Normas --- */
+#normas-resumo .normas-card { 
+  min-height: unset; 
+  overflow: visible;              /* deixa o conteúdo respirar */
+}
+#normas-resumo .normas-card .body { 
+  height: auto;
+}
+#normas-resumo .normas-card p{
+  overflow: visible !important;   /* remove clamp/ellipsis herdado */
+  white-space: normal !important; 
+  text-overflow: clip !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+}
+#normas-resumo .normas-card{
+  overflow: clip;  /* conserva o border-radius sem cortar o texto interno */
+}
+
+
 /* Reveal */
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease}
 .reveal.in{opacity:1;transform:none}
