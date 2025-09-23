@@ -8,6 +8,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=3">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=3">
 <meta name="theme-color" content="#3a80b4">
+
+<!-- Metas sociais e canonical (ajuste o domínio quando publicar) -->
+<link rel="canonical" href="https://www.seu-endereco.com.br/normas.html">
+<meta property="og:title" content="Normas • FisioForma Academia">
+<meta property="og:description" content="Normas de convivência, etiqueta, segurança e uso da FisioForma Academia.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.seu-endereco.com.br/normas.html">
+<meta property="og:image" content="logo-fisioforma.png">
+<meta name="twitter:card" content="summary_large_image">
+
 <style>
 :root{
   --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
@@ -20,7 +30,7 @@ a{color:var(--brand);text-decoration:none}
 a:hover{text-decoration:underline}
 .wrap{max-width:1100px;margin:auto;padding:0 16px}
 
-/* Header/Nav (mesmo estilo) */
+/* Header/Nav (mesmo estilo do site) */
 header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10;backdrop-filter:saturate(120%) blur(6px)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
 .logo img{height:56px}
@@ -37,12 +47,6 @@ h3{margin:18px 0 8px}
 section{padding:42px 0}
 section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
-/* Normas
-.badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;background:#e6f2fb;border:1px solid #cfe6f6;color:#1b4e70}
-.note{background:#fffbeb;border:1px solid #fde68a;color:#854d0e}
-.ok{background:#ecfeff;border:1px solid #a5f3fc;color:#065f46}
-.danger{background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}
-*/
 /* ===== Badges para Normas ===== */
 .badge {
   display: inline-block;
@@ -53,42 +57,11 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
   line-height: 1.4;
   font-weight: 600;
 }
-
-/* Azul claro (informação) */
-.badge.info {
-  background: #e6f4ff;
-  color: #084298;
-  border: 1px solid #b6e0fe;
-}
-
-/* Vermelho (alerta/perigo) */
-.badge.danger {
-  background: #fdecea;
-  color: #b71c1c;
-  border: 1px solid #f5c2c7;
-}
-
-/* Amarelo (dica/nota) */
-.badge.note {
-  background: #fff8e1;
-  color: #7f6000;
-  border: 1px solid #ffe599;
-}
-
-/* Laranja (aviso) */
-.badge.warn {
-  background: #fff4e5;
-  color: #8a4500;
-  border: 1px solid #ffb86b;
-}
-
-/* Verde (positivo/curiosidade, boas práticas extras) */
-.badge.success {
-  background: #e8f5e9;
-  color: #1b5e20;
-  border: 1px solid #a5d6a7;
-}
-
+.badge.info { background:#e6f4ff; color:#084298; border:1px solid #b6e0fe; }
+.badge.danger { background:#fdecea; color:#b71c1c; border:1px solid #f5c2c7; }
+.badge.note { background:#fff8e1; color:#7f6000; border:1px solid #ffe599; }
+.badge.warn { background:#fff4e5; color:#8a4500; border:1px solid #ffb86b; }
+.badge.success { background:#e8f5e9; color:#1b5e20; border:1px solid #a5d6a7; }
 
 .grid{display:grid;gap:22px}
 @media(min-width:860px){.grid.cols-2{grid-template-columns:1.1fr .9fr}}
@@ -97,96 +70,55 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
 .card .body{padding:18px 20px}
 .card h3{margin-top:0}
 
-.toc{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff}
-.toc ol{margin:6px 0 0 18px;padding:0}
-.toc li{margin:4px 0}
 .rule-list{margin:10px 0 0 0;padding:0 0 0 18px}
 .rule-list li{margin:8px 0}
 
 .kv{display:grid;grid-template-columns:140px 1fr;gap:6px 14px}
 .kv div:nth-child(odd){color:var(--muted)}
 
-.toc {
+/* TOC (índice) — versão única e limpa */
+.toc{
   border:1px solid var(--brand);
   border-radius:12px;
   padding:16px 18px;
   background:#f8fbff;
   box-shadow:0 2px 6px rgba(0,0,0,.04);
 }
-
-.toc strong {
-  display:block;
-  font-size:15px;
-  font-weight:700;
-  margin-bottom:10px;
-  color:var(--brand-ink);
+.toc strong{
+  display:block;font-size:15px;font-weight:700;margin-bottom:10px;color:var(--brand-ink);
 }
+.toc ol{margin:0;padding-left:20px}
+.toc li{margin:6px 0;font-size:14px}
+.toc a{color:var(--brand-ink);text-decoration:none;transition:color .2s ease}
+.toc a:hover{color:var(--brand)}
 
-.toc ol {
-  margin:0;
-  padding-left:20px;
-}
-
-.toc li {
-  margin:6px 0;
-  font-size:14px;
-}
-
-.toc a {
-  color:var(--brand-ink);
-  text-decoration:none;     /* sem sublinhado */
-  transition:color .2s ease;
-}
-
-.toc a:hover {
-  color:var(--brand);       /* destaque no hover */
-}
-
-
+/* Skip-link (acessibilidade) */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px}
 
 .footer-meta{
-  font-size:12px;
-  color:#777;
-  margin-top:14px;
-  text-align:right;
-  font-style:italic;
+  font-size:12px;color:#777;margin-top:14px;text-align:right;font-style:italic;
 }
-.footer-meta span{
-  font-weight:600;
-  color:var(--brand-ink);
-}
-
+.footer-meta span{font-weight:600;color:var(--brand-ink)}
 
 footer{border-top:1px solid var(--line);margin-top:28px}
 footer .wrap{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 16px;
-  color:var(--muted);
-  font-size:14px
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:18px 16px;color:var(--muted);font-size:14px
 }
 footer .credit{opacity:.9}
-footer .credit a{
-  color:inherit;
-  text-decoration:none;
-  border-bottom:1px dotted currentColor
-}
-footer .credit a:hover{
-  opacity:1;
-  text-decoration:underline
-}
-
-
+footer .credit a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+footer .credit a:hover{opacity:1;text-decoration:underline}
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
 <header>
   <div class="wrap nav">
-    <div class="logo"><img src="logo-fisioforma.png" alt="Logo FisioForma"></div>
+    <div class="logo">
+      <img src="logo-fisioforma.png" alt="Logo FisioForma" width="160" height="56">
+    </div>
     <nav class="links">
       <a href="index.html#sobre">Sobre</a>
       <a href="index.html#planos">Planos</a>
@@ -195,11 +127,11 @@ footer .credit a:hover{
       <a href="normas.html" aria-current="page">Normas</a>
       <a href="index.html#contato">Contato</a>
     </nav>
-    <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noreferrer">Fale no WhatsApp</a>
+    <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">Fale no WhatsApp</a>
   </div>
 </header>
 
-<main>
+<main id="conteudo">
   <!-- Hero -->
   <section class="alt">
     <div class="wrap">
@@ -229,7 +161,7 @@ footer .credit a:hover{
               <div>Unidade</div><div>Anjo da Guarda — São Luís/MA</div>
               <div>Horário</div><div>Seg–Sex 06h–22h • Sáb 08h–12h/14h30–17h30 • Dom 08h–12h</div>
               <div>Contato</div><div><a href="tel:+5598992223926">(98) 99222-3926</a> • <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a></div>
-              <div>Redes</div><div><a href="https://instagram.com/fisioforma.acad" target="_blank">@fisioforma.acad</a></div>
+              <div>Redes</div><div><a href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener noreferrer">@fisioforma.acad</a></div>
             </div>
             <p class="badge note" style="margin-top:10px">Em feriados, podem existir horários especiais — acompanhe nossos avisos no Instagram.</p>
           </div>
@@ -247,7 +179,7 @@ footer .credit a:hover{
         <li><strong>Guarde</strong> anilhas, barras e halteres nos suportes correspondentes.</li>
         <li><strong>Revezamento é bem-vindo</strong>: permita que outros alunos usem a máquina entre suas séries.</li>
         <li><strong>Sem ocupação indevida</strong>: evite “reservar” equipamentos deixando toalha/garrafa.</li>
-        <li><strong>Roupas e calçados adequados</strong>: tênis fechado; evite treinar sem camisa em áreas comuns.</li>
+        <li><strong>Roupas e calçados adequados</strong>: tênis fechado; evite permanecer sem camisa nas áreas comuns.</li>
         <li><strong>Hidratação</strong>: garrafas com tampa; evite derramar líquidos no piso.</li>
       </ul>
       <p class="badge success">Boas práticas: pequenas atitudes melhoram o convívio e mantêm o salão organizado.</p>
@@ -341,10 +273,9 @@ footer .credit a:hover{
         <li><strong>Não é permitida</strong> a permanência de crianças no salão de musculação ou áreas de treino sem autorização formal, para evitar riscos de acidentes.</li>
         <li><strong>Crianças acompanhantes</strong> devem permanecer em áreas comuns autorizadas (recepção/espera), sempre sob responsabilidade do responsável legal.</li>
       </ul>
-     <p class="badge warn">Aviso: o ambiente de treino contém pesos livres, cabos e máquinas que podem causar acidentes graves.</p>
+      <p class="badge warn">Aviso: o ambiente de treino contém pesos livres, cabos e máquinas que podem causar acidentes graves.</p>
     </div>
   </section>
-
 
   <!-- Financeiro -->
   <section id="financeiro" class="alt">
@@ -376,35 +307,35 @@ footer .credit a:hover{
         </div>
       </div>
       <p class="footer-meta"> Última atualização: <span id="dt"></span> • FisioForma Academia</p>
+    </div> <!-- FECHA .wrap -->
   </section>
 
   <!-- Mensagem final -->
   <section class="alt">
-  <div class="wrap" style="text-align:center; margin-top:20px">
-    <p style="font-size:15px; color:var(--muted); line-height:1.6">
-      A <strong>FisioForma</strong> agradece sua colaboração em manter nosso espaço
-      seguro, organizado e acolhedor. Juntos construímos uma comunidade mais forte. 💙 
-    </p>
-  </div>
-</section>
+    <div class="wrap" style="text-align:center; margin-top:20px">
+      <p style="font-size:15px; color:var(--muted); line-height:1.6">
+        A <strong>FisioForma</strong> agradece sua colaboração em manter nosso espaço
+        seguro, organizado e acolhedor. Juntos construímos uma comunidade mais forte. 💙 
+      </p>
+    </div>
+  </section>
 
 </main>
 
 <footer>
   <div class="wrap">
     <div>© <span id="y"></span> FisioForma Academia. Todos os direitos reservados. 
-      <span class="muted">• Dúvidas? <a href="https://wa.me/5598992223926" target="_blank">Chame no WhatsApp</a></span>
+      <span class="muted">• Dúvidas? <a href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">Chame no WhatsApp</a></span>
     </div>
     <div class="credit">Developed by <strong>Giselle Oliveira</strong></div>
   </div>
 </footer>
 
-
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
-const d=new Date();document.getElementById('dt').textContent=
-  d.toLocaleDateString('pt-BR',{year:'numeric',month:'long',day:'2-digit'});
+const d = new Date();
+document.getElementById('dt').textContent =
+  d.toLocaleDateString('pt-BR', { year:'numeric', month:'long', day:'2-digit' });
 </script>
 </body>
 </html>
-
