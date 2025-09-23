@@ -213,6 +213,29 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 #normas-resumo .normas-card{
   overflow: clip;  /* conserva o border-radius sem cortar o texto interno */
 }
+/* Grid dos cards */
+#normas-resumo .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;  /* garante que os cards da mesma linha tenham a mesma altura */
+}
+
+/* Cards */
+#normas-resumo .normas-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;          /* ocupa toda a altura da linha */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Texto justificado */
+#normas-resumo .normas-card p {
+  text-align: justify;
+  margin-top: 0.5rem;
+}
 
 
 /* Reveal */
