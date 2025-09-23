@@ -644,12 +644,11 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
     <!-- Coluna DIREITA (mensagens) -->
 <aside class="card" style="overflow:visible">
-  <section class="igdm">
-    <div class="igdm-wrap" role="region" aria-label="Conversa no Instagram (dark)">
-      <!-- Header -->
+  <section class="igdm" aria-label="Conversa no Instagram (dark)">
+    <div class="igdm-wrap" role="region">
       <header class="igdm-head">
         <div class="left">
-          <img class="avatar" src="logo-fisioforma.png?v=5" alt="FisioForma" width="40" height="40">
+          <img class="avatar" src="logo-fisioforma.png" alt="FisioForma" width="40" height="40">
           <div class="meta">
             <div class="name">Academia FisioForma 💪</div>
             <div class="handle">fisioforma.acad</div>
@@ -658,13 +657,12 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         <div aria-hidden="true">📞 🎥 ℹ️</div>
       </header>
 
-      <!-- Corpo -->
       <div class="igdm-body">
         <div class="meta-line">Reagiu ao story de @Giselle Oliveira</div>
 
         <div class="story">
-          <div class="thumb"><img src="story-img.png?v=5" alt="Story da FisioForma"></div>
-          <div class="reaction-pill">❤️</div>
+          <div class="thumb"><img src="story-img.png?v=5" alt="Story da FisioForma" width="120" height="214" loading="lazy"></div>
+          <div class="reaction-pill" aria-hidden="true">❤️</div>
         </div>
 
         <div class="msg them"><div class="bubble">Oi, tudo bem? Quanto é a mensalidade?</div></div>
@@ -678,7 +676,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
           <div class="react" aria-hidden="true">👍</div>
         </div>
 
-        <div class="time-stamp">2 de set de 2025 08:53</div>
+        <div class="time-stamp" aria-label="Enviado em 2 de setembro de 2025 às 08:53">2 de set de 2025 08:53</div>
 
         <div class="msg them"><div class="bubble">E a avaliação física, quanto fica?</div></div>
         <div class="msg me"><div class="bubble">Para alunos matriculados é <strong>R$ 60</strong>. Para externos e usuários <strong>Wellhub (antigo Gympass)</strong>, <strong>R$ 80</strong>.</div></div>
@@ -709,15 +707,15 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
         </div>
       </div>
 
-      <!-- barra de input -->
       <div class="igdm-input">
         <div class="btns" aria-hidden="true"><span>😊</span></div>
-        <div class="field">Mensagem…</div>
+        <div class="field" aria-label="Mensagem">Mensagem…</div>
         <div class="btns" aria-hidden="true"><span>🎤</span><span>📷</span><span>❤️</span></div>
       </div>
     </div>
   </section>
 </aside>
+
 
 
 
