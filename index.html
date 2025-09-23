@@ -551,18 +551,22 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   border-radius:14px 14px 14px 4px;
   display:inline-block;
 }
-.msg.me{
-  align-self:flex-end;
-  background:#2563eb;              /* azul “bolha” */
-  color:#fff;
-  padding:10px 12px;
-  border-radius:14px 14px 4px 14px;
-  display:inline-block;
-  margin-left:auto;
+.msg.me {
+  align-self: flex-end;
+  background: var(--brand);   /* azul institucional */
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 14px 14px 4px 14px;
+  display: inline-block;
+  margin-left: auto;
 }
 .msg.me strong{color:#fff}
 .msg.user strong{color:#f3f4f6}
-.msg.me.closing{ background:#1f4e63; }  /* azul final */
+/* Mensagem final */
+.msg.me.closing {
+  background: var(--brand-ink);  /* azul mais escuro */
+  color: #fff;
+}
 
 /* “digitando…” */
 .typing{
