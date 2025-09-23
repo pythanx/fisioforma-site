@@ -323,6 +323,28 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 .msg{background:#f9fbfe;border:1px solid #d9d9d9;border-radius:12px;padding:14px 16px;line-height:1.65}
 
 /* === Cards do hero (horários, redes, mensagens) — ajustes visuais === */
+  /* Container das mensagens em grid */
+.mensagens {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  align-items: stretch; /* força a mesma altura por linha */
+}
+
+/* Cada mensagem vira um card */
+.mensagens .msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify; /* deixa o texto alinhado dos dois lados */
+  border: 1px solid #dbe5ec;
+  border-radius: 12px;
+  background: #f9fbfe;
+  box-shadow: 0 4px 10px rgba(0,0,0,.06);
+  padding: 16px;
+  line-height: 1.6;
+}
+
 
 /* envelope padrão dos cards */
 .hero .info-box,
