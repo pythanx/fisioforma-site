@@ -249,6 +249,21 @@ ul.values{list-style:none;padding-left:0;margin:8px 0 0 0}
 ul.values li{margin:6px 0}
 ul.values li::before{content:"•";color:var(--brand);display:inline-block;width:1em;margin-left:-1em}
 
+.mensagens {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* aumenta o espaço entre cada msg */
+}
+
+.msg {
+  background: #f9fbfe;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  padding: 14px 16px;
+  line-height: 1.65; /* aumenta o respiro interno */
+}
+
+
 /* Skip-link (acessibilidade) */
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .skip-link:focus{position:static;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px}
