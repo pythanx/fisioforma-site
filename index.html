@@ -320,82 +320,95 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 
 /* Mensagens (hero) */
 
-/* ====== Instagram DM mock ====== */
-/* ===== Instagram DM mock ===== */
-.ig-dm{
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:#fff;
-  overflow:hidden;
-  box-shadow:0 10px 26px rgba(0,0,0,.06);
-  max-width:560px;
-  font-size:15px;
-}
-.ig-top{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:10px 12px; border-bottom:1px solid #eef1f5; background:#fff;
-}
-.ig-top .left{display:flex; align-items:center; gap:10px}
-.ig-top .chev{font-size:24px; line-height:1; color:#1c1c1c; opacity:.85}
-.ig-top .ring{display:grid; place-items:center; width:28px; height:28px; border-radius:999px;
-  background:conic-gradient(#f58529,#dd2a7b,#8134af,#515bd4,#f58529); padding:2px;}
-.ig-top .avatar{
-  width:100%; height:100%; border-radius:999px;
-  background:#e9eef3 url('logo-fisioforma.png') center/cover no-repeat; /* trocado pro seu logo */
-}
-.ig-top .meta strong{display:block; font-size:14px}
-.ig-top .meta span{display:block; font-size:12px; color:#8a8f98; margin-top:2px}
-.ig-top .right .dot{display:inline-block; width:4px; height:4px; border-radius:50%; background:#1c1c1c; margin-left:3px; opacity:.8}
-
-.ig-thread{background:#f7f8fb; padding:14px 12px 10px; display:flex; flex-direction:column; gap:10px; max-height:360px; overflow:auto}
-
-/* bolhas */
-.msg{
-  max-width:78%; padding:10px 12px; border-radius:18px; line-height:1.55; position:relative;
-  word-wrap:break-word; box-shadow:0 2px 5px rgba(0,0,0,.04);
-}
-.msg .time{font-size:11px; color:#9aa3ad; margin-top:6px}
-
-/* aluno */
-.msg.them{align-self:flex-start; background:#fff; border:1px solid #e5e9ef; color:#1b2b3a}
-.msg.them:after{
-  content:""; position:absolute; left:-6px; bottom:0; width:12px; height:12px; background:#fff;
-  border-left:1px solid #e5e9ef; border-bottom:1px solid #e5e9ef; border-bottom-left-radius:12px; transform:rotate(45deg);
+<style>
+/* ====== IG DM — estilos isolados ====== */
+.igdm{padding:8px}
+.igdm-wrap{
+  max-width: 880px;
+  margin: 0 auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0b0b0b;            /* vibe instagram dark */
+  color: #e5e7eb;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
 }
 
-/* FisioForma – azul do Instagram */
-:root{ --ig-blue:#3797F0; }
-.msg.me{align-self:flex-end; background:var(--ig-blue); color:#fff}
-.msg.me:after{
-  content:""; position:absolute; right:-6px; bottom:0; width:12px; height:12px; background:var(--ig-blue);
-  border-bottom-right-radius:12px; transform:rotate(45deg);
+/* Header */
+.igdm-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;border-bottom:1px solid #1f2937;background:#111214
+}
+.igdm-head .left{display:flex;align-items:center;gap:10px}
+.igdm-head .avatar{width:40px;height:40px;border-radius:999px;background:#fff;object-fit:cover}
+.igdm-head .meta{line-height:1.1}
+.igdm-head .name{font-weight:800;color:#f3f4f6}
+.igdm-head .handle{font-size:12px;color:#9ca3af}
+.igdm-head .emoji{filter:saturate(1.2)}
+.igdm-head .actions{display:flex;gap:10px;font-size:16px;opacity:.7}
+
+/* Body */
+.igdm-body{
+  height: 520px;                   /* ajuste a altura conforme o layout */
+  overflow:auto;
+  padding:16px 12px 18px;
+  background: #0b0b0b url('') center/cover no-repeat;
 }
 
-/* digitando… */
-.typing{display:flex; align-items:center; gap:8px; margin-top:2px}
-.typing.them{align-self:flex-start}
-.typing .bubble{
-  background:#fff; border:1px solid #e5e9ef; border-radius:16px; padding:8px 10px; display:inline-flex; gap:4px
+/* Mensagens */
+.msg{max-width: 75%; margin:10px 0; padding:0}
+.msg p{margin:0}
+.msg.user{
+  align-self:flex-start;
+  background:#1c1f23;
+  color:#e5e7eb;
+  border:1px solid #2a2f35;
+  padding:10px 12px;
+  border-radius:14px 14px 14px 4px;
+  display:inline-block;
 }
-.typing .bubble span{
-  width:6px; height:6px; border-radius:50%; background:#b7c1cb; display:inline-block; animation:blink 1s infinite ease-in-out;
+.msg.me{
+  align-self:flex-end;
+  background:#2563eb;              /* azul “bolha” */
+  color:#fff;
+  padding:10px 12px;
+  border-radius:14px 14px 4px 14px;
+  display:inline-block;
+  margin-left:auto;
 }
-.typing .bubble span:nth-child(2){animation-delay:.15s}
-.typing .bubble span:nth-child(3){animation-delay:.3s}
-.typing .hint{font-size:12px; color:#9aa3ad}
+.msg.me strong{color:#fff}
+.msg.user strong{color:#f3f4f6}
+
+.msg.me.closing{
+  background:#1f4e63;              /* seu azul mais escuro para destaque final */
+}
+
+/* “digitando…” */
+.typing{
+  display:flex;gap:6px;align-items:center;margin:8px 0 0 0;
+  background:#1c1f23;border:1px solid #2a2f35;padding:8px 10px;border-radius:14px 14px 14px 4px; width:max-content
+}
+.typing .dot{
+  width:6px;height:6px;border-radius:999px;background:#9ca3af;opacity:.6;
+  animation: blink 1.2s infinite ease-in-out;
+}
+.typing .dot:nth-child(2){animation-delay:.15s}
+.typing .dot:nth-child(3){animation-delay:.3s}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
 
-.ig-input{display:flex; align-items:center; gap:8px; padding:8px; border-top:1px solid #eef1f5; background:#fff}
-.ig-input .field{flex:1; background:#f2f3f6; border-radius:22px; padding:10px 14px; border:1px solid #e8ebf0}
-.ig-input .placeholder{color:#949aa4; font-size:14px}
-.ig-input .send{width:36px; height:36px; border-radius:50%; border:0; cursor:pointer; background:var(--ig-blue); color:#fff; font-weight:700; display:grid; place-items:center}
-.ig-input .send:hover{filter:brightness(.95)}
+/* Scrollbar discreto (webkit) */
+.igdm-body::-webkit-scrollbar{height:8px;width:8px}
+.igdm-body::-webkit-scrollbar-thumb{background:#1f2937;border-radius:999px}
+.igdm-body::-webkit-scrollbar-track{background:transparent}
 
-@media (max-width:640px){
-  .ig-dm{max-width:100%}
-  .msg{max-width:86%}
+/* Responsivo */
+@media (max-width: 640px){
+  .igdm-wrap{border-radius:14px}
+  .igdm-body{height: 460px}
+  .msg{max-width: 86%}
 }
-
+</style>
+<!-- ====== /IG DM ====== -->
   
 /* Normas (layout base) */
 #normas-resumo .grid{display:grid;gap:18px}
@@ -698,110 +711,70 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
       <!-- Coluna DIREITA (mensagens) -->
       <aside class="card">
-        <!-- DM Instagram mock (FisioForma) -->
-<div class="ig-dm" aria-label="Conversa no Instagram">
-  <!-- DM Instagram mock (FisioForma) -->
-<div class="ig-dm" aria-label="Conversa no Instagram">
-  <!-- topo -->
-  <div class="ig-top">
-    <div class="left">
-      <span class="chev" aria-hidden="true">‹</span>
-      <span class="ring"><span class="avatar"></span></span>
-      <div class="meta">
-        <strong>@fisioforma.acad</strong>
-        <span>ativo agora</span>
+       <!-- ====== DM estilo Instagram — FisioForma ====== -->
+<section class="igdm">
+  <div class="igdm-wrap">
+    <!-- Topo (header) -->
+    <header class="igdm-head">
+      <div class="left">
+        <img class="avatar" src="logo-fisioforma.png" alt="FisioForma avatar" width="40" height="40" />
+        <div class="meta">
+          <div class="name">Academia FisioForma <span class="emoji">💪</span></div>
+          <div class="handle">fisioforma.acad</div>
+        </div>
+      </div>
+      <div class="actions" aria-hidden="true">
+        <!-- ícones meramente decorativos -->
+        <span>📞</span><span>🎥</span><span>ℹ️</span>
+      </div>
+    </header>
+
+    <!-- Corpo da conversa -->
+    <div class="igdm-body" role="log" aria-live="polite">
+        <!-- Perguntas do aluno -->
+        <div class="msg user"><p>Oi, tudo bem? Quanto é a mensalidade?</p></div>
+  
+        <!-- Respostas da FisioForma -->
+        <div class="msg me"><p>Oi! Tudo ótimo e você? 💙 Nossos planos começam em <strong>R$ 90</strong>. Temos também o <strong>Casadinha (R$ 80 por pessoa)</strong> e o <strong>Executivo (R$ 70)</strong> para quem treina fora do pico.</p></div>
+  
+        <div class="msg user"><p>E a avaliação física, quanto fica?</p></div>
+        <div class="msg me">
+          <p>Para alunos matriculados é <strong>R$ 60</strong>. Para externos e usuários <strong>Wellhub (antigo Gympass)</strong>, <strong>R$ 80</strong>.</p>
+        </div>
+  
+        <div class="msg user"><p>Vocês aceitam Wellhub?</p></div>
+        <div class="msg me"><p>Sim! Pode treinar normalmente com seu acesso Wellhub. 💙</p></div>
+  
+        <div class="msg user"><p>Tem alguém no salão para instruir durante o treino?</p></div>
+        <div class="msg me"><p>Tem sim! Nossa equipe está sempre no salão para orientar, ajustar cargas e corrigir movimentos. Você nunca treina sozinho(a).</p></div>
+  
+        <div class="msg user"><p>Os avaliadores são homens ou mulheres?</p></div>
+        <div class="msg me"><p>Temos <strong>avaliadores homens e mulheres</strong>. A disponibilidade depende do horário, mas pode ficar tranquilo(a): todos atendem com respeito e profissionalismo.</p></div>
+  
+        <div class="msg user"><p>Quais são os horários de pico?</p></div>
+        <div class="msg me"><p>Geralmente, <strong>7:30–10:00</strong> e <strong>18:00–20:00</strong>. Fora desses períodos o espaço fica mais tranquilo.</p></div>
+  
+        <div class="msg user"><p>Tem dança aí?</p></div>
+        <div class="msg me">
+          <p>Temos sim! Nossa grade costuma incluir <strong>Ritbox/Dança</strong> e <strong>Funcional</strong> (as turmas variam por período). É só checar a programação atual na recepção ou no WhatsApp. 💃🕺</p>
+        </div>
+  
+        <div class="msg user"><p>E o ambiente, como é?</p></div>
+        <div class="msg me">
+          <p>Aqui o clima é <strong>acolhedor</strong>, leve e motivador. Mais do que aparelhos, oferecemos um espaço de <strong>apoio</strong> e evolução para você se conectar com a sua melhor versão.</p>
+        </div>
+  
+        <div class="msg me closing">
+          <p>Qualquer dúvida, chama a gente. <strong>Estamos te esperando</strong> 💙</p>
+        </div>
+  
+        <!-- “digitando…” (visual) -->
+        <div class="typing user" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
       </div>
     </div>
-    <div class="right" aria-hidden="true">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-    </div>
-  </div>
-
-  <!-- thread -->
-  <div class="ig-thread">
-    <div class="msg them">
-      Oi! Qual o valor da mensalidade?
-      <div class="time">13:38</div>
-    </div>
-
-    <div class="msg me">
-      O plano mensal está <strong>R$ 90</strong>. Também temos <strong>Casadinha R$ 80</strong> por pessoa e o <strong>Executivo R$ 70</strong> (fora dos horários de pico).
-      <div class="time">13:39</div>
-    </div>
-
-    <div class="msg them">
-      E a avaliação física, quanto custa?
-      <div class="time">13:40</div>
-    </div>
-
-    <div class="msg me">
-      Para alunos matriculados a avaliação custa <strong>R$ 60</strong>. Para externos e Wellhub (ex-Gympass) é <strong>R$ 80</strong>.
-      <div class="time">13:40</div>
-    </div>
-
-    <div class="msg them">
-      Vocês aceitam Wellhub?
-      <div class="time">13:41</div>
-    </div>
-
-    <div class="msg me">
-      Sim, aceitamos Wellhub normalmente. 😉
-      <div class="time">13:41</div>
-    </div>
-
-    <div class="msg them">
-      Quais os horários de pico?
-      <div class="time">13:42</div>
-    </div>
-
-    <div class="msg me">
-      Os horários de maior movimento são geralmente <strong>7h30–10h</strong> e <strong>18h–20h</strong>.
-      <div class="time">13:42</div>
-    </div>
-
-    <div class="msg them">
-      E os avaliadores, tem homem e mulher?
-      <div class="time">13:43</div>
-    </div>
-
-    <div class="msg me">
-      Sim. Temos avaliadores homens e mulheres, variando conforme o turno. Assim você pode escolher o horário mais confortável.
-      <div class="time">13:43</div>
-    </div>
-
-    <div class="msg them">
-      Tem alguém no salão para instruir durante o treino?
-      <div class="time">13:44</div>
-    </div>
-
-    <div class="msg me">
-      Sim! Nossa equipe está sempre no salão para orientar postura, execução e ajustes. Se quiser, também temos opção de personal trainer.
-      <div class="time">13:44</div>
-    </div>
-
-    <!-- digitando... -->
-    <div class="typing them">
-      <span class="bubble"><span></span><span></span><span></span></span>
-      <span class="hint">digitando…</span>
-    </div>
-  </div>
-
-  <!-- barra de digitar fake -->
-  <div class="ig-input">
-    <div class="field"><span class="placeholder">Enviar mensagem…</span></div>
-    <button class="send" aria-label="Enviar">➤</button>
-  </div>
-</div>
-
-    
-  </div>
-
-  <!-- barra de digitar fake -->
-  <div class="ig-input">
-    <div class="field"><span class="placeholder">Enviar mensagem…</span></div>
-    <button class="send" aria-label="Enviar">➤</button>
-  </div>
-</div>
+  </section>
 
       </aside>
     </div>
