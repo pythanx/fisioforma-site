@@ -25,10 +25,7 @@
 <link rel="preload" as="image" href="foto1.png?v=2" imagesrcset="foto1.png?v=2" fetchpriority="high">
 
 <style>
-:root{
-  --bg:#ffffff; --ink:#222; --muted:#5a5a5a; --card:#f5f7fa; --line:#d9d9d9;
-  --brand:#3a80b4; --brand-ink:#2d5e7e; --ok:#0ea5e9;
-}
+
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
 html {scroll-behavior: smooth;}
@@ -214,7 +211,12 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .opt{ color:#6b7280; }  /* ➖ */
 
   /* === Cores alinhadas à FisioForma (azul/preto/cinza) === */
-
+/* === Azul FisioForma (coeso com o título e botões iniciais) === */
+:root {
+  --brand:    #2b6b8a;   /* azul principal */
+  --brand-ink:#1f4e63;   /* azul mais escuro (hover/destaque) */
+}
+  
 /* Listas dos cards de plano */
 .plano-card li.no { 
   color: #2c3e50;         /* azul escuro */
