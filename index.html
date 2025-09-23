@@ -803,48 +803,47 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   </section>
 
   <!-- CONTATO -->
-  <section id="contato" class="alt">
-  <div class="wrap grid cols-2">
+  <section id="contato" class="bg-gray-50 py-16">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+    <!-- Informações de contato -->
     <div>
-      <h2>Fale com a gente</h2>
+      <h2 class="text-3xl font-bold mb-6">Fale com a gente</h2>
+      <ul class="space-y-4 text-lg">
+        <li class="flex items-center space-x-3">
+          <i class="fas fa-phone-alt text-blue-800"></i>
+          <span>(98) 99222-3926</span>
+        </li>
+        <li class="flex items-center space-x-3">
+          <i class="fas fa-envelope text-blue-800"></i>
+          <span>academiafisioformaag@gmail.com</span>
+        </li>
+        <li class="flex items-center space-x-3">
+          <i class="fas fa-map-marker-alt text-blue-800"></i>
+          <span>Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA</span>
+        </li>
+      </ul>
 
-      <p>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a">
-          <path d="M6.62 10.79a15.464 15.464 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.46.57 3.58.11.34.03.72-.24 1.01l-2.21 2.2Z"/>
-        </svg>
-        <a href="tel:+5598992223926">(98) 99222-3926</a>
+      <!-- Frase de acolhimento -->
+      <p class="mt-6 text-gray-700">
+        Será um prazer atender você. Clique abaixo e fale diretamente conosco pelo WhatsApp.
       </p>
 
-      <p>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a">
-          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
-        </svg>
-        <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a>
-      </p>
-
-      <p>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5Z"/>
-        </svg>
-        <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA" target="_blank" rel="noopener noreferrer">
-          Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA
-        </a>
-      </p>
-
-      <p>
-        <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">
-          Chamar no WhatsApp
-        </a>
-      </p>
+      <a href="https://wa.me/5598992223926" target="_blank"
+        class="inline-block mt-6 px-6 py-3 bg-blue-800 text-white font-semibold rounded-lg shadow hover:bg-blue-900 transition">
+        Chamar no WhatsApp
+      </a>
     </div>
 
+    <!-- Mapa -->
     <div>
-      <iframe class="map" title="Mapa FisioForma"
-        src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Lu%C3%ADs,+MA&output=embed"
-        loading="lazy"></iframe>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.476...etc"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
+
 
 
 
