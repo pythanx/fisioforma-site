@@ -319,109 +319,114 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 .hero .socials .ig svg{fill:#E1306C}
 
 /* Mensagens (hero) */
-.mensagens{display:flex;flex-direction:column;gap:18px}
-.msg{background:#f9fbfe;border:1px solid #d9d9d9;border-radius:12px;padding:14px 16px;line-height:1.65}
 
-/* === Cards do hero (horários, redes, mensagens) — ajustes visuais === */
-  /* Container das mensagens em grid */
-<div class="dm-mock" aria-label="Conversa no Instagram">
-  <div class="dm-header">
-    <div class="left">
-      <span class="avatar"></span>
-      <div class="meta">
-        <strong>@fisioforma.acad</strong>
-        <span>Academia • ativo agora</span>
-      </div>
-    </div>
-    <div class="dots" aria-hidden="true">•••</div>
-  </div>
+/* ====== Instagram DM mock ====== */
+.ig-dm{
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 10px 26px rgba(0,0,0,.06);
+  max-width:560px;
+  font-size:15px;
+}
 
-  <div class="dm-thread">
-    <!-- aluno -->
-    <div class="bubble them">
-      Oi! Como é o ambiente da academia?
-    </div>
+/* Topo (igual app) */
+.ig-top{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px;
+  border-bottom:1px solid #eef1f5;
+  background:#fff;
+}
+.ig-top .left{display:flex; align-items:center; gap:10px}
+.ig-top .chev{font-size:24px; line-height:1; color:#1c1c1c; opacity:.8}
+.ig-top .ring{
+  display:inline-grid; place-items:center;
+  width:28px; height:28px; border-radius:999px;
+  background:conic-gradient(#f58529,#dd2a7b,#8134af,#515bd4,#f58529);
+  padding:2px;
+}
+.ig-top .avatar{
+  width:100%; height:100%; border-radius:999px;
+  background:#e9eef3 url('logo-fisioforma.png') center/cover no-repeat;
+}
+.ig-top .meta strong{display:block; font-size:14px}
+.ig-top .meta span{display:block; font-size:12px; color:#8a8f98; margin-top:2px}
+.ig-top .right .dot{
+  display:inline-block; width:4px; height:4px; border-radius:50%;
+  background:#1c1c1c; margin-left:3px; opacity:.8;
+}
 
-    <!-- fisioforma -->
-    <div class="bubble me">
-      💙 Na FisioForma, o espaço é amplo, o clima é leve e a motivação é contagiante.
-    </div>
+/* Thread */
+.ig-thread{
+  background:#f7f8fb;
+  padding:14px 12px 10px;
+  display:flex; flex-direction:column; gap:10px;
+  max-height:360px; overflow:auto;
+}
 
-    <!-- aluno -->
-    <div class="bubble them">
-      Tem aulas coletivas e acompanhamento?
-    </div>
+/* Mensagens */
+.msg{
+  max-width:78%;
+  padding:10px 12px;
+  border-radius:18px;
+  line-height:1.55;
+  position:relative;
+  word-wrap:break-word;
+  box-shadow:0 2px 5px rgba(0,0,0,.04);
+}
+.msg .time{
+  font-size:11px; color:#9aa3ad; margin-top:6px;
+}
 
-    <!-- fisioforma -->
-    <div class="bubble me">
-      Seja qual for seu objetivo, temos o ambiente e o apoio. Mais do que aparelhos, oferecemos um espaço completo para a sua evolução.
-    </div>
+/* Aluno (esquerda) */
+.msg.them{
+  align-self:flex-start;
+  background:#fff;
+  border:1px solid #e5e9ef;
+  color:#1b2b3a;
+}
+.msg.them:after{
+  content:""; position:absolute; left:-6px; bottom:0;
+  width:12px; height:12px; background:#fff; border-left:1px solid #e5e9ef; border-bottom:1px solid #e5e9ef;
+  border-bottom-left-radius:12px; transform:translateY(0) rotate(45deg);
+}
 
-    <!-- aluno -->
-    <div class="bubble them">
-      E a vibe do lugar?
-    </div>
+/* FisioForma (direita) */
+.msg.me{
+  align-self:flex-end;
+  background:var(--brand);
+  color:#fff;
+}
+.msg.me:after{
+  content:""; position:absolute; right:-6px; bottom:0;
+  width:12px; height:12px; background:var(--brand);
+  border-bottom-right-radius:12px; transform:rotate(45deg);
+}
 
-    <!-- fisioforma -->
-    <div class="bubble me">
-      Um ambiente acolhedor e uma jornada inesquecível. Aqui você não só treina — você se conecta com a sua melhor versão.
-    </div>
-
-    <!-- fisioforma (extra curto) -->
-    <div class="bubble me">
-      Nosso suporte é constante. Chegue e sinta-se em casa! 🙂
-    </div>
-  </div>
-</div>
-
-
-/* título do card de horários */
-.hero .info-box h3{
-  margin: 0 0 8px 0;
-  font-weight: 800;
-  font-size: 16px;
+/* Barra de digitar */
+.ig-input{
   display:flex; align-items:center; gap:8px;
+  padding:8px; border-top:1px solid #eef1f5; background:#fff;
+}
+.ig-input .field{
+  flex:1; background:#f2f3f6; border-radius:22px; padding:10px 14px;
+  border:1px solid #e8ebf0;
+}
+.ig-input .placeholder{color:#949aa4; font-size:14px}
+.ig-input .send{
+  width:36px; height:36px; border-radius:50%; border:0; cursor:pointer;
+  background:var(--brand); color:#fff; font-weight:700;
+  display:grid; place-items:center;
+}
+.ig-input .send:hover{background:var(--brand-ink)}
+
+@media (max-width:640px){
+  .ig-dm{max-width:100%}
+  .msg{max-width:86%}
 }
 
-/* ícone do título (reaproveita o SVG já existente) */
-.hero .info-box h3 svg{
-  width: 18px; height:18px; fill: var(--brand);
-  flex-shrink: 0;
-}
-
-/* listas internas — alinhamento e respiro */
-.hero .info-box ul{ margin: 8px 0 0 0; padding: 0; list-style: none; }
-.hero .info-box li{ margin: 6px 0; }
-
-/* bloco de redes sociais igual ao card */
-.hero .info-box + .info-box{ margin-top: 12px; }
-
-/* “balões” de mensagens da direita — visual de card e não de bolha */
-.mensagens{ display:flex; flex-direction:column; gap:12px; }
-.mensagens .msg{
-  color:#2b3a46;                      /* texto mais legível */
-  background:#f9fbfe;                 /* leve azulado */
-  border-color:#e6eef5;
-}
-
-
-
-/* responsividade: mantém a harmonia em telas pequenas */
-@media (max-width: 900px){
-  .hero .info-box, .mensagens .msg{ padding: 12px 14px; }
-  .mensagens{ gap:10px; }
-}
-
-/* micro-interação no hover */
-.hero .info-box:hover,
-.mensagens .msg:hover{
-  transform: translateY(-2px);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-  box-shadow: 0 10px 22px rgba(0,0,0,.08);
-  border-color:#cfe0ea;
-}
-
-
+  
 /* Normas (layout base) */
 #normas-resumo .grid{display:grid;gap:18px}
 @media(min-width:600px){#normas-resumo .grid{grid-template-columns:repeat(2,1fr)}}
@@ -603,6 +608,45 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 
 #contato svg {
   flex-shrink: 0;
+}
+
+  /* DM Instagram — visual completo */
+.dm-mock{
+  --b:#e6eef5; --bg:#ffffff; --ink:#1e2a32; --mut:#6b7a86; --mine:#eaf6ff; --theirs:#f6f7fb;
+  border:1px solid var(--b); border-radius:16px; background:var(--bg);
+  box-shadow:0 10px 24px rgba(0,0,0,.06); overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.dm-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px; border-bottom:1px solid var(--b); background:#fbfdff;
+}
+.dm-header .left{display:flex; align-items:center; gap:10px}
+.dm-header .avatar{
+  width:28px; height:28px; border-radius:999px; background:#dfe9f2;
+  box-shadow:inset 0 0 0 2px #fff; border:1px solid var(--b);
+}
+.dm-header .meta{display:flex; flex-direction:column; line-height:1.1}
+.dm-header .meta strong{font-size:14px; color:var(--ink)}
+.dm-header .meta span{font-size:12px; color:var(--mut)}
+.dm-header .dots{letter-spacing:2px; color:#9bb2c3}
+
+.dm-thread{
+  padding:12px; display:flex; flex-direction:column; gap:8px;
+  max-height:420px; overflow:auto; background:
+    radial-gradient(1200px 600px at 15% 20%, rgba(240,248,255,.65), transparent 55%),
+    linear-gradient(#fff, #fff);
+}
+.bubble{
+  max-width:85%; padding:10px 12px; border-radius:16px; font-size:15px; line-height:1.45;
+  border:1px solid var(--b); box-shadow:0 4px 12px rgba(0,0,0,.04)
+}
+.bubble.them{ align-self:flex-start; background:var(--theirs); border-top-left-radius:6px }
+.bubble.me{   align-self:flex-end;   background:var(--mine);   border-top-right-radius:6px }
+.bubble.me::after, .bubble.them::after{ content:""; display:block; height:2px; opacity:.25 }
+
+@media (max-width:760px){
+  .dm-thread{ max-height:360px }
 }
 
 
