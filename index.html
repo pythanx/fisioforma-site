@@ -213,6 +213,36 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .no{ color:#d32f2f; }   /* ❌ */
 .compare .opt{ color:#6b7280; }  /* ➖ */
 
+  /* === Cores alinhadas à FisioForma (azul/preto/cinza) === */
+
+/* Listas dos cards de plano */
+.plano-card li.no { 
+  color: #2c3e50;         /* azul escuro */
+  font-weight: 700;
+}
+.plano-card li.opt { 
+  color: #6b7280;         /* cinza neutro */
+}
+
+/* Tabela comparativa (usa as mesmas classes) */
+.compare .no  { color:#2c3e50; font-weight:700; }
+.compare .opt { color:#6b7280; }
+
+/* Links sem sublinhado (somente onde interessa) */
+#planos a, .compare a {
+  text-decoration: none;
+  color: #2c3e50;         /* azul escuro */
+}
+#planos a:hover, .compare a:hover { text-decoration: none; }
+
+  .plano-card li.no,
+.compare .no,
+.nao-incluso { color:#2c3e50; font-weight:700; }
+
+.plano-card li.opt,
+.compare .opt,
+.opcional { color:#6b7280; }
+
 
 
 /* Pequenos toques */
