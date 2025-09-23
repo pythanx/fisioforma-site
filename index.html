@@ -322,6 +322,71 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 .mensagens{display:flex;flex-direction:column;gap:18px}
 .msg{background:#f9fbfe;border:1px solid #d9d9d9;border-radius:12px;padding:14px 16px;line-height:1.65}
 
+/* === Cards do hero (horários, redes, mensagens) — ajustes visuais === */
+
+/* envelope padrão dos cards */
+.hero .info-box,
+.mensagens .msg {
+  border: 1px solid #dbe5ec;          /* borda mais leve/coesa */
+  border-radius: 12px;                 /* raio consistente */
+  background: #ffffff;                 /* fundo branco limpo */
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+
+/* conteúdo e respiros iguais */
+.hero .info-box,
+.mensagens .msg {
+  padding: 14px 16px;
+  line-height: 1.6;
+}
+
+/* título do card de horários */
+.hero .info-box h3{
+  margin: 0 0 8px 0;
+  font-weight: 800;
+  font-size: 16px;
+  display:flex; align-items:center; gap:8px;
+}
+
+/* ícone do título (reaproveita o SVG já existente) */
+.hero .info-box h3 svg{
+  width: 18px; height:18px; fill: var(--brand);
+  flex-shrink: 0;
+}
+
+/* listas internas — alinhamento e respiro */
+.hero .info-box ul{ margin: 8px 0 0 0; padding: 0; list-style: none; }
+.hero .info-box li{ margin: 6px 0; }
+
+/* bloco de redes sociais igual ao card */
+.hero .info-box + .info-box{ margin-top: 12px; }
+
+/* “balões” de mensagens da direita — visual de card e não de bolha */
+.mensagens{ display:flex; flex-direction:column; gap:12px; }
+.mensagens .msg{
+  color:#2b3a46;                      /* texto mais legível */
+  background:#f9fbfe;                 /* leve azulado */
+  border-color:#e6eef5;
+}
+
+
+
+/* responsividade: mantém a harmonia em telas pequenas */
+@media (max-width: 900px){
+  .hero .info-box, .mensagens .msg{ padding: 12px 14px; }
+  .mensagens{ gap:10px; }
+}
+
+/* micro-interação no hover */
+.hero .info-box:hover,
+.mensagens .msg:hover{
+  transform: translateY(-2px);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  border-color:#cfe0ea;
+}
+
+
 /* Normas (layout base) */
 #normas-resumo .grid{display:grid;gap:18px}
 @media(min-width:600px){#normas-resumo .grid{grid-template-columns:repeat(2,1fr)}}
