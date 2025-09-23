@@ -1,0 +1,19 @@
+# --- Básico ---
+
+# Força www → sem www
+www.fisioforma.com.br/* https://fisioforma.com.br/:splat 301!
+
+# Ou ao contrário (sem www → www), se preferir:
+# fisioforma.com.br/* https://www.fisioforma.com.br/:splat 301!
+
+# Redireciona /normas para normas.html
+/normas /normas.html 200
+
+# Redireciona /contato para WhatsApp
+/contato https://wa.me/5598992223926 301
+
+# Redireciona /instagram para perfil oficial
+/instagram https://instagram.com/fisioforma.acad 301
+
+# Catch-all → se alguém digitar rota inexistente, volta para home
+/* /index.html 200
