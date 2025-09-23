@@ -238,29 +238,31 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
 
-/* Grid da Estrutura */
-#estrutura .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* === Estrutura: cards nivelados por linha + texto justificado === */
+#estrutura .grid{
+  display:grid !important;                                 /* garante grid */
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 1.5rem;
-  align-items: stretch;   /* mesma altura na linha */
+  align-items: stretch;                                     /* iguala a altura na linha */
 }
 
-/* Cards da Estrutura */
-#estrutura .estrutura-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;           /* ocupa altura do mais alto */
-  padding: 1rem;
-  box-sizing: border-box;
+#estrutura .card{
+  display:flex;                                            /* permite esticar */
+  height:100%;                                             /* ocupa altura do mais alto da linha */
 }
 
-/* Texto justificado */
-#estrutura .estrutura-card p {
-  text-align: justify;
-  margin-top: 0.5rem;
+#estrutura .card .body{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  height:100%;
 }
+
+#estrutura .card p{
+  text-align: justify;                                     /* texto justificado */
+  margin-top: .5rem;
+}
+
 
 
 
