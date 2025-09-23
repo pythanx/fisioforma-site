@@ -553,84 +553,129 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
       <p class="muted" style="margin-bottom:14px"> Mantemos o espaço seguro e acolhedor para todos. Aqui vão as principais regras — rápidas de ler e fáceis de seguir. </p>
       <div class="grid">
         <!-- Cards (exatamente como você já tinha) -->
-        <section id="normas-resumo" class="alt">
-  <div class="wrap">
-    <h2>Normas da FisioForma</h2>
-    <p class="muted" style="margin-bottom:14px">
-      Mantemos o espaço seguro e acolhedor para todos. Estas são as principais regras resumidas.
-    </p>
+        <!-- 1 Etiqueta -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 22a10 10 0 100-20 10 10 0 000 20zm1-14h-2v6h6v-2h-4V8z"/>
+                </svg>
+                Etiqueta e boas práticas <span class="mini-badge success">Essencial</span>
+              </h3>
+              <p>Higienize o aparelho após o uso, guarde os pesos e permita revezamento. Roupas/tenis adequados sempre.</p>
+            </div>
+          </article>
 
-    <div class="grid">
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Etiqueta e boas práticas <span class="mini-badge success">Essencial</span></h3>
-          <p>Higienize o aparelho, guarde os pesos e permita revezamento.</p>
+          <!-- 2 Equipamentos -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 13H5v-2h14v2z"/>
+                </svg>
+                Uso de equipamentos <span class="mini-badge note">Dica</span>
+              </h3>
+              <p>Confirme travas/presilhas, nada de arremessar pesos. Em dúvida, peça orientação técnica.</p>
+            </div>
+          </article>
+
+          <!-- 3 Música -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 19V6l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+                </svg>
+                Música & barulho <span class="mini-badge warn">Aviso</span>
+              </h3>
+              <p>Som pessoal com fones. Evite gritos e quedas de pesos. Ligações rápidas e em tom baixo.</p>
+            </div>
+          </article>
+
+          <!-- 4 Banheiros -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 22V2h2v20H7zm8-8V6h2v8h3l-4 6-4-6h3z"/>
+                </svg>
+                Banheiros & vestiários <span class="mini-badge danger">Atenção</span>
+              </h3>
+              <p>Papéis no lixo (não no vaso). Chuveiro consciente. Respeite a privacidade e use armários de forma rotativa.</p>
+            </div>
+          </article>
+
+          <!-- 5 Segurança -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2l8 4v6c0 5-3.8 9.7-8 10-4.2-.3-8-5-8-10V6l8-4z"/>
+                </svg>
+                Segurança & saúde <span class="mini-badge danger">Prioridade</span>
+              </h3>
+              <p>Informe qualquer mal-estar, use calçado fechado e siga instruções em emergências.</p>
+            </div>
+          </article>
+
+          <!-- 6 Convivência -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M16 11c1.7 0 3-1.3 3-3S17.7 5 16 5s-3 1.3-3 3 1.3 3 3 3zm-8 0c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4zm8 0c-.5 0-1 .1-1.4.2 1.6 1.2 2.4 2.6 2.4 3.8v2h7v-2c0-2.7-5.3-4-8-4z"/>
+                </svg>
+                Convivência & privacidade <span class="mini-badge success">Clima bom</span>
+              </h3>
+              <p>Respeito e empatia com iniciantes e mais velhos. Evite filmar terceiros sem autorização.</p>
+            </div>
+          </article>
+
+          <!-- 7 Menores -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 12c2.2 0 4-1.8 4-4S14.2 4 12 4 8 5.8 8 8s1.8 4 4 4zm0 2c-3 0-9 1.5-9 4.5V22h18v-3.5c0-3-6-4.5-9-4.5z"/>
+                </svg>
+                Menores de idade <span class="mini-badge warn">Preventivo</span>
+              </h3>
+              <p>A partir de 14 anos com autorização. Crianças não permanecem no salão por segurança.</p>
+            </div>
+          </article>
+
+          <!-- 8 Financeiro -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21 7H3V5h18v2zm0 4H3v10h18V11zm-5 4H8v2h8v-2z"/>
+                </svg>
+                Financeiro & acesso <span class="mini-badge info">Info</span>
+              </h3>
+              <p>Acesso com plano ativo e identificação. Pagamentos e pausas seguem contrato.</p>
+            </div>
+          </article>
+
+          <!-- 9 Sanções -->
+          <article class="normas-card reveal">
+            <div class="body">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 3c.6 0 1 .4 1 1v5c0 .6-.4 1-1 1s-1-.4-1-1V6c0-.6.4-1 1-1zm0 10c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1z"/>
+                </svg>
+                Sanções <span class="mini-badge danger">Atualizado</span>
+              </h3>
+              <p>Orientação &gt; advertência &gt; suspensão. Tolerância zero a assédio, discriminação e danos.</p>
+            </div>
+          </article>
         </div>
-      </article>
 
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Uso de equipamentos <span class="mini-badge note">Dica</span></h3>
-          <p>Verifique travas/presilhas e não arremesse pesos.</p>
+        <div class="actions">
+          <a class="cta outline" href="normas.html" target="_blank" rel="noopener noreferrer">Ver todas as normas</a>
         </div>
-      </article>
-
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Música & barulho <span class="mini-badge warn">Aviso</span></h3>
-          <p>Use fones; evite gritos e quedas de peso.</p>
-        </div>
-      </article>
-
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Banheiros & vestiários <span class="mini-badge danger">Atenção</span></h3>
-          <p>Papéis no lixo, banho consciente e respeito à privacidade.</p>
-        </div>
-      </article>
-
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Segurança & saúde <span class="mini-badge danger">Prioridade</span></h3>
-          <p>Alerte a equipe sobre mal-estar e use calçado fechado.</p>
-        </div>
-      </article>
-
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Convivência & privacidade <span class="mini-badge success">Clima bom</span></h3>
-          <p>Respeite iniciantes e não filme terceiros sem permissão.</p>
-        </div>
-      </article>
-
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Menores de idade <span class="mini-badge warn">Preventivo</span></h3>
-          <p>A partir de 14 anos com autorização; crianças fora do salão.</p>
-        </div>
-      </article>
-
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Financeiro & acesso <span class="mini-badge info">Info</span></h3>
-          <p>Acesso com plano ativo e identificação; pausas conforme contrato.</p>
-        </div>
-      </article>
-
-      <article class="normas-card reveal">
-        <div class="body">
-          <h3>Sanções <span class="mini-badge danger">Atualizado</span></h3>
-          <p>Orientação → advertência → suspensão; tolerância zero a assédio.</p>
-        </div>
-      </article>
-    </div>
-
-    <div class="actions">
-      <a class="cta outline" href="normas.html">Ver todas as normas</a>
-    </div>
-  </div>
-</section>
-
+      </div>
+    </section>
         <!-- ... mantidos ... -->
       </div>
       <div class="actions">
