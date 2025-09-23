@@ -458,6 +458,60 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
 }
 
+
+/* === Seção de Contato === */
+#contato h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+#contato p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #2c3e50; /* azul escuro puxado pro preto */
+}
+
+#contato a {
+  color: #2b6b8a;   /* azul principal da FisioForma */
+  text-decoration: none;
+  font-weight: 500;
+}
+#contato a:hover {
+  color: #1f4e63;   /* tom mais escuro no hover */
+  text-decoration: none;
+}
+
+/* Ícones */
+#contato p::before {
+  font-family: "Segoe UI Emoji", sans-serif;
+  font-size: 1.2rem;
+}
+#contato p:nth-child(2)::before { content: "📞"; }  /* telefone */
+#contato p:nth-child(3)::before { content: "✉️"; }  /* email */
+#contato p:nth-child(4)::before { content: "📍"; }  /* endereço */
+
+/* Botão WhatsApp */
+#contato .cta {
+  background: #2b6b8a !important;
+  color: #fff !important;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 10px;
+  text-align: center;
+  transition: background .2s ease;
+}
+#contato .cta:hover {
+  background: #1f4e63 !important;
+}
+
+
 /* Extras */
 .pill{display:inline-block;padding:6px 10px;font-size:12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-ink);margin:6px 0 12px 0}
 ul.values{list-style:none;padding-left:0;margin:8px 0 0 0}
