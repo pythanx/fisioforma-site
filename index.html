@@ -238,6 +238,32 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
 
+/* Grid da Estrutura */
+#estrutura .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;   /* mesma altura na linha */
+}
+
+/* Cards da Estrutura */
+#estrutura .estrutura-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;           /* ocupa altura do mais alto */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Texto justificado */
+#estrutura .estrutura-card p {
+  text-align: justify;
+  margin-top: 0.5rem;
+}
+
+
+
 /* Reveal */
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease}
 .reveal.in{opacity:1;transform:none}
