@@ -17,7 +17,9 @@
 <meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fisioforma-site.vercel.app/">
-<meta property="og:image" content="logo-fisioforma-icon.png">
+<meta property="og:image" content="https://fisioforma-site.vercel.app/logo-fisioforma.png">
+<meta property="og:image:alt" content="Logo da FisioForma">
+<meta name="twitter:image" content="https://fisioforma-site.vercel.app/logo-fisioforma.png">
 <meta name="twitter:card" content="summary_large_image">
 
 
@@ -262,8 +264,6 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
   border:2px solid var(--brand) !important;
   box-shadow:0 8px 18px rgba(43,107,138,.20) !important;
 }
-#planos a, .compare a { text-decoration: none; color: #2c3e50; }
-#planos a:hover, .compare a:hover { text-decoration: none; }
 
 #planos a, .compare a { text-decoration:none !important; color: var(--brand-ink) !important; }
 #planos a:hover, .compare a:hover { text-decoration:none !important; }
@@ -321,13 +321,14 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   height: auto;
 }
 #normas-resumo .normas-card p{
-  overflow: visible !important;   /* remove clamp/ellipsis herdado */
-  white-space: normal !important; 
-  text-overflow: clip !important;
-  display: block !important;
-  -webkit-line-clamp: unset !important;
-  -webkit-box-orient: unset !important;
+  text-align: justify;
+  margin-top: .5rem;
+  overflow: visible;
+  white-space: normal;
+  text-overflow: clip;
+  display: block;
 }
+
 #normas-resumo .normas-card{
   overflow: clip;  /* conserva o border-radius sem cortar o texto interno */
 }
@@ -347,12 +348,6 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   height: 100%;          /* ocupa toda a altura da linha */
   padding: 1rem;
   box-sizing: border-box;
-}
-
-/* Texto justificado */
-#normas-resumo .normas-card p {
-  text-align: justify;
-  margin-top: 0.5rem;
 }
 
 
@@ -382,7 +377,36 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
 /* ===== IG DM — Dark (como o Instagram) ===== */
-.igdm{padding:8px}
+/* --- IGDM: cabeçalho e metadados --- */
+.igdm-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px; border-bottom:1px solid #182028; background:#0b0b0b;
+}
+.igdm-head .left{display:flex; align-items:center; gap:10px}
+.igdm-head .avatar{width:40px; height:40px; border-radius:999px; display:block}
+.igdm-head .meta .name{font-weight:700; line-height:1.1}
+.igdm-head .meta .handle{font-size:12px; color:#9aa4ad}
+
+/* --- IGDM: story/thumb & meta-line --- */
+.igdm-body .meta-line{font-size:12px; color:#9aa4ad; margin-bottom:8px}
+.story{display:flex; align-items:flex-end; gap:10px; margin:8px 0 12px}
+.story .thumb{width:120px; height:214px; border-radius:14px; overflow:hidden; background:#111}
+.reaction-pill{border:1px solid #2a2f35; background:#1c1f23; border-radius:999px; padding:4px 8px}
+
+/* --- IGDM: bolhas --- */
+.msg.them .bubble{background:#111417; border-color:#2a2f35; color:#e5e7eb}
+.msg.me   .bubble{background:#1c2730; border-color:#2a2f35; color:#e5e7eb; margin-left:auto}
+.msg.me{display:flex; justify-content:flex-end}
+
+/* --- IGDM: timestamp e typing --- */
+.time-stamp{font-size:12px; color:#9aa4ad; text-align:center; margin:6px 0}
+.typing{display:flex; gap:4px; margin-top:6px}
+.typing .dot{width:6px; height:6px; border-radius:50%; background:#9aa4ad; opacity:.6; animation:blink 1.2s infinite}
+.typing .dot:nth-child(2){animation-delay:.2s}
+.typing .dot:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2} 40%{opacity:1}}
+
+  .igdm{padding:8px}
 
 /* container do DM – escuro, sem cortar nada dentro */
 /* container do DM – escuro */
