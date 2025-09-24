@@ -1,1 +1,1367 @@
-<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <title>Academia FisioForma</title> <meta name="description" content="FisioForma — Comunidade, acolhimento e resultados reais. Anjo da Guarda, São Luís — MA."> <!-- Favicon / App Icon --> <link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=3"> <link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=3"> <meta name="theme-color" content="#3a80b4"> <!-- Social / SEO --> <link rel="canonical" href="https://fisioforma.netlify.app/"> <meta property="og:title" content="FisioForma Academia"> <meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA."> <meta property="og:type" content="website"> <meta property="og:url" content="https://fisioforma.netlify.app/"> <meta property="og:image" content="logo-fisioforma-icon.png"> <meta name="twitter:card" content="summary_large_image"> <!-- Performance --> <link rel="preconnect" href="https://snapwidget.com" crossorigin> <link rel="preload" as="image" href="foto1.png?v=2" imagesrcset="foto1.png?v=2" fetchpriority="high"> <style> :root{ --bg:#ffffff; --ink:#222; --muted:#5a5a5a; --card:#f5f7fa; --line:#d9d9d9; --brand:#3a80b4; --brand-ink:#2d5e7e; --ok:#0ea5e9; } *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu} html {scroll-behavior: smooth;} a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline} .wrap{max-width:1100px;margin:auto;padding:0 16px} /* Header/Nav */ header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10;backdrop-filter:saturate(120%) blur(6px)} .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0} .logo img{display:block; height:auto; max-height:56px; width:auto; object-fit:contain;} .links{display:none;gap:18px} .cta{display:inline-block;background:var(--brand);color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;border:1px solid transparent} .cta.outline{background:#fff;color:var(--brand);border-color:var(--brand)} .cta:hover{background:var(--brand-ink);color:#fff} @media (min-width:760px){.links{display:flex}} /* Layout utilitários */ section{padding:56px 0} section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)} h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0} .muted{color:var(--muted)} .grid{display:grid;gap:22px} @media(min-width:760px){.grid.cols-2{grid-template-columns:repeat(2,1fr)} .grid.cols-3{grid-template-columns:repeat(3,1fr)}} .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease,border-color .2s ease} .card .body{padding:18px 20px} .card:focus-within,.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:#bcd7ea;outline:none} /* Hero */ .hero{padding:64px 0} .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0} .hero p{color:var(--muted);max-width:62ch} .hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px} .hero .card{align-self:start;max-width:560px} .hero .card .body{font-size:18px;line-height:1.5} /* HERO com foto de fundo + overlay */ .hero-visual{position:relative;isolation:isolate;color:#0b1620} .hero-visual .wrap{position:relative;z-index:2} .hero-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(1200px 600px at 15% 20%, rgba(255,255,255,.95), rgba(255,255,255,.7) 45%, rgba(255,255,255,.35) 70%, rgba(255,255,255,.15) 100%);z-index:1;pointer-events:none} .hero-bg{position:absolute;inset:0;background-image:url('assets/hero-fisioforma.jpg');background-size:cover;background-position:center;filter:saturate(1.05) contrast(1.02) brightness(1.02);z-index:0} /* CTA mais chamativo no hero */ .hero-visual .cta{padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 8px 20px rgba(58,128,180,.25)} .hero-visual .cta:hover{transform:translateY(-1px)} /* Ícones Estrutura */ .ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;margin-right:8px;background:#eaf4fb;border:1px solid #d7e9f7;font-size:14px} /* Footer links */ .footer-links{display:flex;gap:12px;flex-wrap:wrap;align-items:center} .footer-links a{color:inherit;text-decoration:none;border-bottom:1px dashed currentColor} .footer-links a:hover{text-decoration:underline} /* Instagram sidebar */ .ig-frame{position:relative;width:100%;aspect-ratio:1/1;border:1px solid var(--line);border-radius:12px;overflow:hidden} .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0} /* Carrossel FOTOS (fade) */ #sobre .ff-fade{--h:clamp(220px,26vw,360px);max-width:640px;margin:24px auto 0;border:1px solid var(--line);border-radius:16px;background:#fff;position:relative;overflow:hidden} #sobre .ff-fade input{display:none} #sobre .ff-fade .viewport{position:relative;height:var(--h);background:#f2f4f7;isolation:isolate} #sobre .ff-fade .slides{list-style:none;margin:0;padding:0;position:relative;height:100%} #sobre .ff-fade .slides li{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .6s ease;will-change:opacity} #sobre .ff-fade .slides img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center} #fff1:checked ~ .viewport .slides li:nth-child(1){opacity:1} #fff2:checked ~ .viewport .slides li:nth-child(2){opacity:1} #fff3:checked ~ .viewport .slides li:nth-child(3){opacity:1} #fff4:checked ~ .viewport .slides li:nth-child(4){opacity:1} #fff5:checked ~ .viewport .slides li:nth-child(5){opacity:1} #fff6:checked ~ .viewport .slides li:nth-child(6){opacity:1} #sobre .ff-fade .nav-dots{text-align:center;margin:10px 0 14px} #sobre .ff-fade .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s} #sobre .ff-fade .nav-dots label:hover{transform:scale(1.1)} #fff1:checked ~ .nav-dots label[for="fff1"],#fff2:checked ~ .nav-dots label[for="fff2"],#fff3:checked ~ .nav-dots label[for="fff3"],#fff4:checked ~ .nav-dots label[for="fff4"],#fff5:checked ~ .nav-dots label[for="fff5"],#fff6:checked ~ .nav-dots label[for="fff6"]{background:var(--brand)} /* Depoimentos (fade) */ #depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden} #depoimentos .t-carousel input{display:none} #depoimentos .viewport{position:relative;height:clamp(200px,24vw,260px);min-height:220px;background:#fff;isolation:isolate} #depoimentos .slides{list-style:none;margin:0;padding:0;position:relative;height:100%} #depoimentos .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .55s ease;will-change:opacity;pointer-events:none} #depoimentos .bubble{max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;line-height:1.5;color:var(--ink);box-shadow:0 6px 20px rgba(0,0,0,.05)} #t1:checked ~ .viewport .slides .slide:nth-child(1), #t2:checked ~ .viewport .slides .slide:nth-child(2), #t3:checked ~ .viewport .slides .slide:nth-child(3), #t4:checked ~ .viewport .slides .slide:nth-child(4), #t5:checked ~ .viewport .slides .slide:nth-child(5), #t6:checked ~ .viewport .slides .slide:nth-child(6), #t7:checked ~ .viewport .slides .slide:nth-child(7), #t8:checked ~ .viewport .slides .slide:nth-child(8){opacity:1;pointer-events:auto} #depoimentos .nav-dots{text-align:center;margin:12px 0 16px} #depoimentos .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s} #depoimentos .nav-dots label:hover{transform:scale(1.1)} #t1:checked ~ .nav-dots label[for="t1"],#t2:checked ~ .nav-dots label[for="t2"],#t3:checked ~ .nav-dots label[for="t3"],#t4:checked ~ .nav-dots label[for="t4"],#t5:checked ~ .nav-dots label[for="t5"],#t6:checked ~ .nav-dots label[for="t6"],#t7:checked ~ .nav-dots label[for="t7"],#t8:checked ~ .nav-dots label[for="t8"]{background:var(--brand)} /* MAPA */ iframe.map{width:100%;height:360px;border:0;border-radius:12px} @media (max-width:560px){iframe.map{height:260px}} /* PLANOS */ /* === Planos: grid responsivo + cards nivelados === */ .planos-container{ display:grid; gap:20px; grid-template-columns: 1fr; } @media (min-width:768px){ .planos-container{ grid-template-columns: repeat(3,1fr); } } .plano-card{ background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,.05); display:flex; flex-direction:column; height:100%; } .plano-card h3{ margin:0 0 8px; font-size:1.2rem; } .plano-card .preco{ font-size:1.8rem; font-weight:900; color:#1d72b8; margin-bottom:10px; } .plano-card ul{ list-style:none; padding:0; margin:0 0 16px; text-align:left; font-size:.95rem; flex:1; } .plano-card ul li{ margin:6px 0; } /* status por classe (em vez de :contains) */ .plano-card li.ok{ color:#2e7d32; } /* ✔ */ .plano-card li.no{ color:#d32f2f; } /* ❌ */ .plano-card li.opt{ color:#6b7280; } /* ➖ */ .plans-table td, .plans-table th { text-align: center; padding: 10px; } .nao-incluso { color: #2c3e50; /* azul escuro puxado para o preto */ font-weight: 600; } .opcional { color: #6c757d; /* cinza neutro */ font-style: italic; } .plans-table a { text-decoration: none; /* remove sublinhado */ color: #2c3e50; /* azul escuro */ } .btn-escolher{ background:#1d72b8;color:#fff;border:0;padding:12px 16px;border-radius:10px; font-weight:600;cursor:pointer;transition:background .2s; } .btn-escolher:hover{ background:#155a8a; } /* Destaque Casadinha */ .plano-card.destaque{ border:2px solid #1d72b8; transform:scale(1.03); box-shadow:0 8px 18px rgba(29,114,184,.2); } /* === Comparativo: o wrapper é um DIV envolvendo a TABLE === */ .compare-wrap{ position:relative; overflow:auto; border:1px solid var(--line); border-radius:12px; background:#fff; } .compare-wrap::before,.compare-wrap::after{ content:""; position:absolute; top:0; bottom:0; width:24px; pointer-events:none; } .compare-wrap::before{ left:0; background:linear-gradient(to right,#fff,rgba(255,255,255,0)); } .compare-wrap::after { right:0; background:linear-gradient(to left ,#fff,rgba(255,255,255,0)); } .compare{ width:100%; border-collapse:separate; border-spacing:0; background:#fff; } .compare thead th{ position:sticky; top:0; z-index:2; background:#eef5fb; font-weight:800; border-bottom:1px solid var(--line); } .compare th,.compare td{ padding:14px 12px; text-align:center; border-bottom:1px solid var(--line); } .compare td:first-child,.compare th:first-child{ text-align:left; position:sticky; left:0; z-index:3; background:#fff; font-weight:700; } .compare tbody tr:nth-child(odd){ background:#fafcff; } @media(max-width:640px){ .compare th,.compare td{ padding:12px 10px; font-size:15px; } } /* cores na tabela via classes reaproveitadas */ .compare .ok{ color:#2e7d32; } /* ✔ */ .compare .no{ color:#d32f2f; } /* ❌ */ .compare .opt{ color:#6b7280; } /* ➖ */ /* === Cores alinhadas à FisioForma (azul/preto/cinza) === */ /* Listas dos cards de plano */ .plano-card li.no { color: #2c3e50; /* azul escuro */ font-weight: 700; } .plano-card li.opt { color: #6b7280; /* cinza neutro */ } /* Tabela comparativa (usa as mesmas classes) */ .compare .no { color:#2c3e50; font-weight:700; } .compare .opt { color:#6b7280; } /* Links sem sublinhado (somente onde interessa) */ #planos a, .compare a { text-decoration: none; color: #2c3e50; /* azul escuro */ } #planos a:hover, .compare a:hover { text-decoration: none; } .plano-card li.no, .compare .no, .nao-incluso { color:#2c3e50; font-weight:700; } .plano-card li.opt, .compare .opt, .opcional { color:#6b7280; } /* === Azul FisioForma (coeso com o título e botões iniciais) === */ :root { --brand: #2b6b8a; /* azul principal */ --brand-ink:#1f4e63; /* azul mais escuro (hover/destaque) */ } /* Preços e botões */ .planos-container .plano-card .preco { color: var(--brand) !important; } .planos-container .btn-escolher { background: var(--brand) !important; color:#fff !important; border:0 !important; } .planos-container .btn-escolher:hover { background: var(--brand-ink) !important; } /* Ícones/textos dos planos */ .planos-container .plano-card li.ok, .compare tbody .ok { color:#2c3e50 !important; /* azul escuro/preto */ font-weight:700; } .planos-container .plano-card li.no, .compare tbody .no { color:#2c3e50 !important; /* azul escuro/preto */ font-weight:700; } .planos-container .plano-card li.opt, .compare tbody .opt { color:#6b7280 !important; /* cinza neutro */ font-weight:600; } /* Links sem sublinhado */ #planos a, .compare a { text-decoration:none !important; color: var(--brand-ink) !important; } #planos a:hover, .compare a:hover { text-decoration:none !important; } /* Destaque plano Casadinha */ .plano-card.destaque { border:2px solid var(--brand) !important; box-shadow:0 8px 18px rgba(43,107,138,.20) !important; } /* Pequenos toques */ section .grid > *{align-self:start} footer{border-top:1px solid var(--line);margin-top:28px} footer .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:18px 16px;color:var(--muted);font-size:14px} footer .credit{opacity:.9} footer .credit a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor} footer .credit a:hover{opacity:1;text-decoration:underline} /* Bloco de horários + redes no HERO */ .hero .info-box{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 14px rgba(0,0,0,.04);max-width:340px} .hero .info-box h3{display:flex;align-items:center;gap:8px;margin:0 0 10px 0;font-size:17px;font-weight:800} .hero .info-box h3 svg{width:20px;height:20px;fill:var(--brand)} .hero .info-box ul{list-style:none;margin:0;padding:0} .hero .info-box li{margin:6px 0} .hero .info-box li strong{font-weight:700} .hero .socials{margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap} .hero .socials a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;text-decoration:none;color:var(--ink);transition:.15s ease} .hero .socials a:hover{background:#f5faff;border-color:#bcd7ea;transform:translateY(-1px)} .hero .socials svg{width:16px;height:16px} .hero .socials .wa svg{fill:#25D366} .hero .socials .ig svg{fill:#E1306C} /* Normas (layout base) */ #normas-resumo .grid{display:grid;gap:18px} @media(min-width:600px){#normas-resumo .grid{grid-template-columns:repeat(2,1fr)}} @media(min-width:980px){#normas-resumo .grid{grid-template-columns:repeat(3,1fr)}} .normas-card{background:#fff;border:1px solid #e0e0e0; var(--line);border-radius:14px;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;display:flex;flex-direction:column;min-height:auto} .normas-card:hover{transform:translateY(-4px);box-shadow: 0 6px 18px rgba(0,0,0,.06);;border-color:#bcd7ea} .normas-card .body{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1} .normas-card h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px} .normas-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden} .normas-card .mini-badge{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid transparent} .mini-badge.info{background:#e6f4ff;border-color:#b6e0fe;color:#084298} .mini-badge.warn{background:#fff4e5;border-color:#ffb86b;color:#8a4500} .mini-badge.danger{background:#fdecea;border-color:#f5c2c7;color:#b71c1c} .mini-badge.success{background:#e8f5e9;border-color:#a5d6a7;color:#1b5e20} .mini-badge.note{background:#fff8e1;border-color:#ffe599;color:#7f6000} #normas-resumo .actions{margin-top:14px;display:flex;justify-content:center} #normas-resumo .actions .cta.outline{border-radius:10px;padding:10px 14px} /* --- Corrige corte de texto nos cards de Normas --- */ #normas-resumo .normas-card { min-height: unset; overflow: visible; /* deixa o conteúdo respirar */ } #normas-resumo .normas-card .body { height: auto; } #normas-resumo .normas-card p{ overflow: visible !important; /* remove clamp/ellipsis herdado */ white-space: normal !important; text-overflow: clip !important; display: block !important; -webkit-line-clamp: unset !important; -webkit-box-orient: unset !important; } #normas-resumo .normas-card{ overflow: clip; /* conserva o border-radius sem cortar o texto interno */ } /* Grid dos cards */ #normas-resumo .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: stretch; /* garante que os cards da mesma linha tenham a mesma altura */ } /* Cards */ #normas-resumo .normas-card { display: flex; flex-direction: column; justify-content: flex-start; height: 100%; /* ocupa toda a altura da linha */ padding: 1rem; box-sizing: border-box; } /* Texto justificado */ #normas-resumo .normas-card p { text-align: justify; margin-top: 0.5rem; } /* === Estrutura: cards nivelados por linha + texto justificado === */ #estrutura .grid{ display:grid !important; /* garante grid */ grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; align-items: stretch; /* iguala a altura na linha */ } #estrutura .card{ display:flex; /* permite esticar */ height:100%; /* ocupa altura do mais alto da linha */ } #estrutura .card .body{ display:flex; flex-direction:column; justify-content:flex-start; height:100%; } #estrutura .card p{ text-align: justify; /* texto justificado */ margin-top: .5rem; } /* ===== IG DM — Dark (como o Instagram) ===== */ .igdm{padding:8px} /* container do DM – escuro, sem cortar nada dentro */ .igdm-wrap{ max-width:880px;margin:0 auto;border:1px solid #182028;border-radius:18px; background:#0b0b0b;box-shadow:0 10px 28px rgba(0,0,0,.35);color:#e5e7eb; overflow:visible; /* importante p/ reações */ font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; } /* header dark */ .igdm-head{ display:flex;align-items:center;justify-content:space-between; padding:10px 14px;border-bottom:1px solid #182028;background:#111214 } .igdm-head .left{display:flex;gap:10px;align-items:center} .igdm-head .avatar{width:40px;height:40px;border-radius:999px;object-fit:cover; box-shadow:0 0 0 2px #111214;border:1px solid #182028} .igdm-head .meta{line-height:1.1} .igdm-head .name{font-weight:800;color:#f3f4f6} .igdm-head .handle{font-size:12px;color:#9ca3af} /* área rolável */ .igdm-body{ background:#0b0b0b;padding:16px 12px;overflow:auto;max-height:520px; } /* bolhas */ .msg{max-width:75%;margin:8px 0;position:relative} .bubble{ display:inline-block;padding:10px 12px;line-height:1.45;border-radius:18px; box-shadow:0 1px 0 rgba(0,0,0,.08);border:1px solid transparent } .them .bubble{background:#1c1f23;border-color:#2a2f35;color:#e6e9ef} .me .bubble{background:#1b74e4;border-color:#155ec0;color:#fff} .me .bubble.ending{background:#15508a} /* story + reação (aluno reagiu ao story) */ .story{display:flex;align-items:flex-end;gap:10px;margin:6px 0 2px} .story .thumb{width:120px;height:214px;border-radius:12px;overflow:hidden; border:1px solid #182028;background:#0f1113} .story .thumb img{width:100%;height:100%;object-fit:cover;display:block} .reaction-pill{ background:#1c1f23;border:1px solid #2a2f35;border-radius:999px; padding:6px 10px;font-size:18px;box-shadow:0 1px 0 rgba(0,0,0,.1) } /* reações nas bolhas (não corta) */ .react{ position:absolute;right:-10px;bottom:-12px; /* canto da bolha */ background:#1c1f23;border:1px solid #2a2f35;border-radius:999px; padding:4px 8px;font-size:16px;line-height:1;display:flex;gap:4px; box-shadow:0 1px 0 rgba(0,0,0,.12) } .msg{overflow:visible} /* garante que a reação apareça */ .igdm-body{overflow:auto} /* rolagem segura */ /* “digitando…” estilo IG */ .typing{ display:flex;gap:6px;align-items:center;margin-top:6px; background:#1c1f23;border:1px solid #2a2f35;padding:8px 10px;border-radius:18px; width:max-content } .dot{width:6px;height:6px;border-radius:999px;background:#9aa9bb;opacity:.5; animation:blink 1.2s infinite ease-in-out} .dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s} @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}} @media (max-width:640px){ .igdm-body{max-height:460px} .msg{max-width:86%} } /* linha acima do story */ .igdm-body .meta-line{ color:#94a3b8; font-size:12px; margin:2px 0 6px 6px; } /* timestamp centralizado */ .time-stamp{ color:#94a3b8; font-size:12px; text-align:center; margin:12px 0; } /* barra inferior de mensagem (fake) */ .igdm-input{ display:flex; align-items:center; gap:10px; padding:10px 12px; border-top:1px solid #182028; background:#0b0b0b; } .igdm-input .field{ flex:1; background:#1c1f23; border:1px solid #2a2f35; color:#e5e7eb; border-radius:24px; padding:10px 14px; font-size:14px; } .igdm-input .btns{display:flex; gap:10px; font-size:18px; color:#cbd5e1} .igdm-input .btns span{display:inline-flex; align-items:center} +/* linha “meta” e timestamp */ +.igdm-body .meta-line{color:#94a3b8;font-size:12px;margin:2px 0 6px 6px} +.time-stamp{color:#94a3b8;font-size:12px;text-align:center;margin:12px 0} + +/* barra de input fake do IG */ +.igdm-input{ + display:flex;align-items:center;gap:10px; + padding:10px 12px;border-top:1px solid #182028;background:#0b0b0b; +} +.igdm-input .field{ + flex:1;background:#1c1f23;border:1px solid #2a2f35;color:#e5e7eb; + border-radius:24px;padding:10px 14px;font-size:14px; +} +.igdm-input .btns{display:flex;gap:10px;font-size:18px;color:#cbd5e1} +.igdm-input .btns span{display:inline-flex;align-items:center} /* Reveal */ .reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease} .reveal.in{opacity:1;transform:none} /* Respeita quem desativa animações */ @media (prefers-reduced-motion: reduce){ *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;} } /* === Seção de Contato === */ #contato h2 { font-size: 1.8rem; margin-bottom: 1rem; } #contato p { display: flex; align-items: center; gap: 8px; margin: 10px 0; font-size: 1rem; color: #2c3e50; } #contato a { color: #2b6b8a; /* azul da identidade */ text-decoration: none; font-weight: 500; } #contato a:hover { color: #1f4e63; /* tom mais escuro */ } /* Botão WhatsApp */ #contato .cta { background: #2b6b8a; color: #fff !important; border: none; padding: 12px 20px; font-size: 1rem; font-weight: 700; border-radius: 12px; display: inline-block; margin-top: 12px; text-align: center; transition: background .2s ease; } #contato .cta:hover { background: #1f4e63; } #contato svg { flex-shrink: 0; } /* Extras */ .pill{display:inline-block;padding:6px 10px;font-size:12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-ink);margin:6px 0 12px 0} ul.values{list-style:none;padding-left:0;margin:8px 0 0 0} ul.values li{margin:6px 0} ul.values li::before{content:"•";color:var(--brand);display:inline-block;width:1em;margin-left:-1em} /* Skip-link (acessibilidade) */ .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden} .skip-link:focus{position:static;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px} </style> </head> <body> <a class="skip-link" href="#conteudo">Pular para o conteúdo</a> <header> <div class="wrap nav"> <div class="logo"> <img src="logo-fisioforma.png" srcset="logo-fisioforma@2x.png 2x" alt="Logo FisioForma" width="320" height="112"> </div> <nav class="links" aria-label="Links principais"> <a href="#sobre">Sobre</a> <a href="#planos">Planos</a> <a href="#estrutura">Estrutura</a> <a href="normas.html">Normas</a> <a href="#contato">Contato</a> </nav> <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">Fale no WhatsApp</a> </div> </header> <main id="conteudo"> <!-- HERO --> <section class="hero hero-visual"> <div class="hero-bg" aria-hidden="true"></div> <div class="wrap grid cols-2"> <!-- Coluna ESQUERDA --> <div> <h1>FisioForma: <span style="color:var(--brand-ink)">treino que cabe na sua vida</span></h1> <p class="muted">Comunidade, acolhimento e resultados reais. Atendimento humanizado e orientação segura para você conquistar seus objetivos.</p> <div class="btns"> <a class="cta" href="#planos">Ver planos</a> <a class="cta outline" href="#contato">Agendar visita</a> </div> <!-- Bloco de horários --> <div class="info-box"> <h3> <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 .001-16.001A8 8 0 0 1 12 20Zm.75-13h-1.5v5l4.25 2.55.75-1.23-3.5-2.07V7Z"/></svg> Horário de funcionamento </h3> <ul> <li><strong>Segunda a sexta:</strong> 06:00 às 22:00</li> <li><strong>Sábados:</strong> 08:00 às 12:00 | 14:30 às 17:30</li> <li><strong>Domingo:</strong> 08:00 às 12:00</li> <li><em>Feriados podem ter horários especiais.</em></li> </ul> </div> <!-- Redes sociais --> <div class="info-box"> <h3>Redes sociais:</h3> <div class="socials"> <a class="wa" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer"> <svg viewBox="0 0 24 24"><path d="M12.04 2C6.57 2 2.16 6.4 2.16 11.87c0 2.09.57 4.03 1.63 5.7L2 22l4.57-1.74a9.9 9.9 0 0 0 5.47 1.6h.01c5.47 0 9.88-4.4 9.88-9.87C22 6.4 17.5 2 12.04 2Zm5.72 13.96c-.24.68-1.39 1.29-1.92 1.32-.53.03-1.23.05-1.99-.12-.45-.1-1.04-.34-1.81-.67-3.18-1.38-5.24-4.6-5.4-4.81-.16-.21-1.29-1.72-1.29-3.28 0-1.56.82-2.33 1.11-2.66.29-.33.63-.41.84-.41h.61c.19 0 .46-.08.72.54.27.65.92 2.24 1 2.4.08.16.13.35.02.56-.11.21-.17.35-.34.54-.17.19-.36.43-.52.58-.17.17-.35.36-.15.71.2.35.9 1.49 1.93 2.42 1.32 1.18 2.43 1.55 2.79 1.72.36.17.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.8-.18.33.12 2.09.98 2.45 1.16.36.18.6.26.69.41.09.15.09.87-.14 1.55Z"/></svg> WhatsApp </a> <a class="ig" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener noreferrer"> <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm6.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18.25 6.5Z"/></svg> Instagram </a> </div> </div> </div> <!-- Coluna DIREITA (mensagens) --> <aside class="card" style="overflow:visible"> <!-- evita corte no contêiner do card --> <section class="igdm"> <div class="igdm-wrap" role="region" aria-label="Conversa no Instagram (dark)"> <!-- Header --> <header class="igdm-head"> <div class="left"> <img class="avatar" src="logo-fisioforma.png" alt="FisioForma" width="40" height="40"> <div class="meta"> <div class="name">Academia FisioForma 💪</div> <div class="handle">fisioforma.acad</div> </div> </div> <div aria-hidden="true">📞 🎥 ℹ️</div> </header> <!-- Corpo --> <div class="igdm-body"> <div class="igdm-body"> <!-- meta “reagiu...” acima do story --> <div class="meta-line">Reagiu ao story de @Giselle Oliveira</div> <!-- story + reação --> <div class="story"> <div class="thumb"><img src="story-img.png?v=4" alt="Story da FisioForma"></div> <div class="reaction-pill">❤️</div> </div> <!-- conversa --> <div class="msg them"><div class="bubble">Oi, tudo bem? Quanto é a mensalidade?</div></div> <div class="msg me"> <div class="bubble"> Oi! Tudo ótimo e você? 💙 Nossos planos começam em <strong>R$ 90</strong>. Temos também o <strong>Casadinha (R$ 80 por pessoa)</strong> e o <strong>Executivo (R$ 70)</strong> para quem treina fora do pico. </div> <div class="react" aria-hidden="true">👍</div> </div> <div class="time-stamp">2 de set de 2025 08:53</div> <div class="msg them"><div class="bubble">E a avaliação física, quanto fica?</div></div> <div class="msg me"> <div class="bubble"> Para alunos matriculados é <strong>R$ 60</strong>. Para externos e usuários <strong>Wellhub (antigo Gympass)</strong>, <strong>R$ 80</strong>. </div> </div> <div class="msg them"><div class="bubble">Vocês aceitam Wellhub?</div></div> <div class="msg me"> <div class="bubble">Aceitamos sim — pode treinar normalmente com seu acesso Wellhub. 💙</div> <div class="react" aria-hidden="true">❤️</div> </div> <div class="msg them"><div class="bubble">Quais são os horários de pico?</div></div> <div class="msg me"> <div class="bubble"> Geralmente <strong>07:30–10:00</strong> e <strong>18:00–20:00</strong>. Fora desses horários o salão fica mais tranquilo. </div> </div> <div class="msg them"><div class="bubble">Tem avaliador homem ou mulher?</div></div> <div class="msg me"> <div class="bubble"> Temos avaliadores <strong>homens e mulheres</strong>. A disponibilidade depende do horário — todos atendem com respeito e profissionalismo. </div> </div> <div class="msg them"><div class="bubble">Tem dança aí?</div></div> <div class="msg me"> <div class="bubble"> Temos sim! <strong>Ritbox/Dança</strong> e <strong>Funcional</strong> (turmas variam por período). Podemos te enviar a grade atual no WhatsApp. 💃🕺 </div> </div> <div class="msg them"><div class="bubble">E o ambiente, como é?</div></div> <div class="msg me"> <div class="bubble ending"> Acolhedor, leve e motivador. Mais do que aparelhos, oferecemos apoio pra você evoluir no seu ritmo. <strong>Estamos te esperando</strong> 💙 </div> <div class="react" aria-hidden="true">💙</div> </div> <!-- “digitando…” --> <div class="typing" aria-hidden="true"> <span class="dot"></span><span class="dot"></span><span class="dot"></span> </div> </div> <!-- barra de input (fake), logo depois da .igdm-body --> <div class="igdm-input"> <div class="btns" aria-hidden="true"><span>😊</span></div> <div class="field">Mensagem…</div> <div class="btns" aria-hidden="true"><span>🎤</span><span>📷</span><span>❤️</span></div> </div> </div> </section> </aside> <!-- DEPOIMENTOS --> <section id="depoimentos" class="alt" aria-label="Depoimentos de alunos"> <div class="wrap"> <h2>O que nossos alunos dizem</h2> <div class="t-carousel" aria-live="polite"> <!-- radios --> <input type="radio" name="t" id="t1" checked> <input type="radio" name="t" id="t2"> <input type="radio" name="t" id="t3"> <input type="radio" name="t" id="t4"> <input type="radio" name="t" id="t5"> <input type="radio" name="t" id="t6"> <input type="radio" name="t" id="t7"> <input type="radio" name="t" id="t8"> <div class="viewport"> <div class="slides"> <!-- Google/Instagram exemplos --> <article class="slide"><div class="bubble"><p>“Ambiente legal, equipe atenciosa.”</p><p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p></div></article> <article class="slide"><div class="bubble"><p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p><p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p></div></article> <article class="slide"><div class="bubble"><p>“Ameiiiiiiii tudo.”</p><p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p></div></article> <article class="slide"><div class="bubble"><p>“Academia boa e com excelente atendimento.”</p><p><strong>— Wesley (Google · 2 anos)</strong></p></div></article> <article class="slide"><div class="bubble"><p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p><p><strong>— Aluna no Instagram</strong></p></div></article> <article class="slide"><div class="bubble"><p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p><p><strong>— Comentário no Instagram</strong></p></div></article> <article class="slide"><div class="bubble"><p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p><p><strong>— Seguidora no Instagram</strong></p></div></article> <article class="slide"><div class="bubble"><p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p><p><strong>— Feedback no Instagram</strong></p></div></article> </div> </div> <div class="nav-dots" aria-hidden="true"> <label for="t1"></label><label for="t2"></label><label for="t3"></label><label for="t4"></label> <label for="t5"></label><label for="t6"></label><label for="t7"></label><label for="t8"></label> </div> </div> </div> </section> <!-- INSTAGRAM SIDEBAR --> <section id="instagram" class="alt"> <div class="wrap grid cols-2"> <div> <h2>Novidades da FisioForma</h2> <p class="muted">Acompanhe avisos, eventos e promoções no nosso Instagram.</p> </div> <aside style="border-left:1px solid var(--line); padding-left:16px;"> <div class="card" style="border-radius:18px; overflow:hidden;"> <div class="body" style="padding:12px 16px"> <h3 style="margin:0 0 4px 0">@fisioforma.acad</h3> <div class="ig-frame"> <iframe src="https://snapwidget.com/embed/1024785" title="Feed do Instagram" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div> <div style="text-align:center; margin-top:10px"> <a href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener noreferrer" class="cta" style="display:inline-block; padding:10px 14px; border-radius:10px;">👉 Ver no Instagram</a> </div> </div> </div> </aside> </div> </section> <!-- SOBRE + CARROSSEL FOTOS --> <section id="sobre" class="alt" aria-labelledby="sobre-titulo"> <div class="wrap"> <h2 id="sobre-titulo">Sobre a FisioForma</h2> <p class="pill">11 anos no mercado — desde 2014</p> <h3>Nossa história</h3> <p class="muted"> Fundada em 2014 no bairro Anjo da Guarda, em São Luís – MA, a <strong>FisioForma Academia</strong> nasceu com a proposta de unir <strong>acolhimento</strong>, <strong>orientação profissional</strong> e <strong>resultados reais</strong>. Ao longo de mais de onze anos, evoluímos junto com a comunidade, mantendo o foco em um ambiente seguro, motivador e acessível para diferentes perfis — de iniciantes a praticantes avançados. </p> <p class="muted"> <strong>Propósito:</strong> Promover saúde, autoestima e qualidade de vida através da atividade física orientada, em um ambiente seguro e acolhedor.<br> <strong>Visão:</strong> Ser reconhecida como a principal academia da comunidade do Anjo da Guarda, referência em atendimento humanizado e resultados sustentáveis. </p> <p class="muted"><strong>Valores</strong></p> <!-- <h3 class="muted" style="margin-top:8px">Valores</h3> --> <ul class="values muted"> <li><strong>Compromisso:</strong> evolução consistente com acompanhamento próximo.</li> <li><strong>Respeito:</strong> ética, acolhimento e educação em cada interação.</li> <li><strong>Comunidade:</strong> um ambiente de apoio e motivação coletiva.</li> <li><strong>Empatia:</strong> escuta ativa e planos condizentes com cada objetivo.</li> <li><strong>Excelência:</strong> melhoria contínua de estrutura, serviços e atendimento.</li> </ul> <div class="ff-fade" aria-label="Galeria de fotos da academia"> <!-- radios --> <input type="radio" name="fff" id="fff1" checked> <input type="radio" name="fff" id="fff2"> <input type="radio" name="fff" id="fff3"> <input type="radio" name="fff" id="fff4"> <input type="radio" name="fff" id="fff5"> <input type="radio" name="fff" id="fff6"> <div class="viewport"> <ul class="slides"> <li><img src="foto1.png?v=2" alt="Área de musculação" decoding="async"></li> <li><img src="foto2.png?v=2" alt="Máquinas de treino" decoding="async" loading="lazy"></li> <li><img src="foto3.png?v=2" alt="Espaço para aulas coletivas" decoding="async" loading="lazy"></li> <li><img src="foto4.png?v=2" alt="Ambiente amplo e climatizado" decoding="async" loading="lazy"></li> <li><img src="foto5.png?v=2" alt="Área de cardio com esteiras e bicicletas" decoding="async" loading="lazy"></li> <li><img src="foto6.png?v=2" alt="Vista geral da academia" decoding="async" loading="lazy"></li> </ul> </div> <div class="nav-dots"> <label for="fff1"></label><label for="fff2"></label><label for="fff3"></label> <label for="fff4"></label><label for="fff5"></label><label for="fff6"></label> </div> </div> </div> </section> <!-- PLANOS --> <section id="planos"> <div class="wrap"> <h2>Planos e valores</h2> <div class="planos-container"> <!-- Plano Individual --> <div class="plano-card"> <h3>Plano Individual</h3> <p class="preco">R$ 90/mês</p> <ul> <li class="ok">✔ Acesso livre ao salão</li> <li class="opt">➖ Aulas coletivas (opcional)</li> <li class="ok">✔ Reavaliação periódica</li> <li class="no">❌ Horários diferenciados</li> </ul> <button class="btn-escolher">Escolher</button> </div> <!-- Plano Casadinha --> <div class="plano-card destaque"> <h3>Plano Casadinha</h3> <p class="preco">R$ 80/mês</p> <ul> <li class="ok">✔ Treinar em dupla</li> <li class="ok">✔ Acesso ao salão + aulas coletivas</li> <li class="ok">✔ Reavaliação periódica</li> <li class="no">❌ Horários diferenciados</li> <li class="ok">✔ Descontos sazonais</li> </ul> <button class="btn-escolher">Escolher</button> </div> <!-- Plano Executivo --> <div class="plano-card"> <h3>Plano Executivo</h3> <p class="preco">R$ 70/mês</p> <ul> <li class="ok">✔ Acesso ao salão (janela executiva — fora do pico)</li> <li class="no">❌ Aulas coletivas</li> <li class="ok">✔ Reavaliação periódica</li> <li class="ok">✔ Horários diferenciados</li> </ul> <button class="btn-escolher">Escolher</button> </div> </div> <!-- Tabela comparativa --> <div style="margin-top:24px;overflow:auto"> <div class="compare-wrap" style="margin-top:24px"> <table class="compare" aria-label="Comparação de planos"> <thead> <tr> <th>Benefícios</th> <th>Individual</th> <th>Casadinha</th> <th>Executivo</th> </tr> </thead> <tbody> <tr> <td>Acesso ao salão</td> <td class="ok">✔ Livre</td> <td class="ok">✔ Livre</td> <td class="ok">✔ Janela executiva (fora do pico)</td> </tr> <tr> <td>Aulas coletivas</td> <td class="opt">➖ Opcional</td> <td class="ok">✔ Incluídas</td> <td class="no">❌ Não incluso</td> </tr> <tr> <td>Reavaliação física</td> <td class="ok">✔</td> <td class="ok">✔</td> <td class="ok">✔</td> </tr> <tr> <td>Horários diferenciados</td> <td class="no">❌ Não se aplica</td> <td class="no">❌ Não se aplica</td> <td class="ok">✔ Fora do pico</td> </tr> <tr> <td>Descontos</td> <td class="opt">➖ Campanhas</td> <td class="ok">✔ Melhor custo p/ 2</td> <td class="opt">➖ Campanhas</td> </tr> </tbody> </table> </div> </div> </div> </section> <!-- CONTATO --> <section id="contato" class="alt"> <div class="wrap grid cols-2"> <div> <h2>Fale com a gente</h2> <p> <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a"> <path d="M6.62 10.79a15.464 15.464 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.46.57 3.58.11.34.03.72-.24 1.01l-2.21 2.2Z"/> </svg> <a href="tel:+5598992223926">(98) 99222-3926</a> </p> <p> <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a"> <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/> </svg> <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a> </p> <p> <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a"> <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5Z"/> </svg> <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA" target="_blank" rel="noopener noreferrer"> Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA </a> </p> <!-- Frase de acolhimento (sem horários) --> <p class="muted" style="margin-top:8px">Será um prazer atender você. Clique abaixo e fale diretamente conosco pelo WhatsApp.</p> <p> <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer"> Chamar no WhatsApp </a> </p> </div> <div> <iframe class="map" title="Mapa FisioForma" src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+S%C3%A3o+Lu%C3%ADs,+MA&output=embed" loading="lazy"></iframe> </div> </div> </section> <!-- ESTRUTURA --> <section id="estrutura" class="alt"> <div class="wrap"> <h2>Estrutura</h2> <p class="muted">Ambiente completo para treinos de musculação, cardio e aulas coletivas, com suporte e comodidades para o dia a dia.</p> <div class="grid cols-3" style="margin-top:12px"> <div class="card"><div class="body"><h3><span class="ico">🏋️</span>Musculação</h3><p class="muted">Máquinas guiadas, racks e halteres — organização por grupos musculares.</p></div></div> <div class="card"><div class="body"><h3><span class="ico">🚴</span>Cardio</h3><p class="muted">Esteiras, elípticos e bikes para aquecimento, condicionamento e emagrecimento.</p></div></div> <div class="card"><div class="body"><h3><span class="ico">💃</span>Aulas coletivas</h3><p class="muted">Ritbox, dança e funcional — turmas dinâmicas e motivadoras.</p></div></div> <div class="card"><div class="body"><h3><span class="ico">📊</span>Avaliação física</h3><p class="muted">Check-up inicial e reavaliações periódicas para acompanhar sua evolução.</p></div></div> <div class="card"><div class="body"><h3><span class="ico">🧼</span>Vestiários</h3><p class="muted">Chuveiros, armários e bebedouros — ambiente limpo e organizado.</p></div></div> <div class="card"><div class="body"><h3><span class="ico">🛡️</span>Acessibilidade e segurança</h3><p class="muted">Acesso facilitado e equipe atenta para corrigir e orientar movimentos.</p></div></div> </div> </div> </section> <!-- NORMAS RESUMO (com ícones) --> <section id="normas-resumo" class="alt"> <div class="wrap"> <h2>Normas da FisioForma</h2> <p class="muted" style="margin-bottom:14px"> Nosso compromisso é manter um ambiente seguro, respeitoso e acolhedor. Confira as normas principais — simples, claras e fáceis de seguir: </p> <div class="grid"> <!-- 1 Etiqueta --> <article class="normas-card"> <div class="body"> <h3><span class="ico">✅</span> Etiqueta e boas práticas <span class="mini-badge success">Essencial</span></h3> <p>Higienizar os aparelhos após o uso, guardar os pesos, permitir o revezamento entre alunos e utilizar sempre roupas e calçados adequados.</p> </div> </article> <!-- 2 Equipamentos --> <article class="normas-card"> <div class="body"> <h3><span class="ico">🛠️</span> Uso de equipamentos <span class="mini-badge note">Orientação</span></h3> <p>Conferir travas e presilhas antes do treino, não arremessar pesos e solicitar orientação da equipe sempre que houver dúvida.</p> </div> </article> <!-- 3 Música --> <article class="normas-card"> <div class="body"> <h3><span class="ico">🎧</span> Música e barulho <span class="mini-badge warn">Aviso</span></h3> <p>Utilizar apenas fones de ouvido para ouvir música, evitar gritos, quedas bruscas de pesos e ligações prolongadas dentro do salão.</p> </div> </article> <!-- 4 Banheiros --> <article class="normas-card"> <div class="body"> <h3><span class="ico">🚻</span> Banheiros e vestiários <span class="mini-badge danger">Atenção</span></h3> <p>Descartar papéis no lixo, utilizar a água de forma consciente, respeitar a privacidade dos demais usuários e manter os armários como uso rotativo.</p> </div> </article> <!-- 5 Segurança --> <article class="normas-card"> <div class="body"> <h3><span class="ico">🛡️</span> Segurança e saúde <span class="mini-badge danger">Prioridade</span></h3> <p>Comunicar imediatamente qualquer mal-estar à equipe, treinar sempre com calçado fechado e seguir as orientações em situações de emergência.</p> </div> </article> <!-- 6 Convivência --> <article class="normas-card"> <div class="body"> <h3><span class="ico">🤝</span> Convivência e privacidade <span class="mini-badge success">Respeito</span></h3> <p>Tratar todos com respeito e empatia. Não fotografar ou filmar terceiros sem autorização expressa.</p> </div> </article> <!-- 7 Menores --> <article class="normas-card"> <div class="body"> <h3><span class="ico">🧒</span> Menores de idade <span class="mini-badge warn">Restrição</span></h3> <p>O acesso é permitido a partir dos 14 anos, mediante autorização do responsável. Crianças não devem permanecer no salão de treinos.</p> </div> </article> <!-- 8 Financeiro --> <article class="normas-card"> <div class="body"> <h3><span class="ico">💳</span> Financeiro e acesso <span class="mini-badge info">Informativo</span></h3> <p>O acesso é exclusivo para alunos com matrícula ativa e identificação válida. Pagamentos, pausas e cancelamentos obedecem às regras contratuais.</p> </div> </article> <!-- 9 Sanções --> <article class="normas-card"> <div class="body"> <h3><span class="ico">⛔</span> Sanções <span class="mini-badge danger">Crítico</span></h3> <p>O descumprimento das normas gera, sucessivamente: orientação, advertência e suspensão. <strong>Tolerância zero:</strong> casos de assédio, discriminação ou condutas abusivas resultarão em desligamento imediato.</p> </div> </article> </div> <div class="actions"> <a class="cta outline" href="normas.html" target="_blank" rel="noopener noreferrer">Ver todas as normas</a> </div> </div> </section> <!-- FAQ <section id="faq" class="alt"> <div class="wrap"> <h2>Perguntas frequentes</h2> <p class="muted" style="margin-bottom:14px"> Tire suas principais dúvidas sobre a FisioForma: </p> <div class="grid"> <!-- 1 -- <article class="card faq-card"> <div class="body"> <h3><span class="ico faq"></span> A FisioForma é indicada para iniciantes?</h3> <p>Sim. Oferecemos suporte a todos os níveis, do iniciante ao avançado, com plano progressivo que respeita o ritmo individual e possíveis limitações.</p> </div> </article> <!-- 2 -- <article class="card faq-card"> <div class="body"> <h3><span class="ico faq"></span> Vocês realizam avaliação física?</h3> <p>Sim. Realizamos avaliação inicial e reavaliações periódicas mediante agendamento. Entre em contato pelo Instagram ou WhatsApp para marcar.</p> </div> </article> <!-- 3 -- <article class="card faq-card"> <div class="body"> <h3><span class="ico faq"></span> Quais são os planos e formas de pagamento?</h3> <p>Disponibilizamos planos mensais, fidelidade e promoções sazonais. Aceitamos cartão, PIX e dinheiro.</p> </div> </article> <!-- 4 -- <article class="card faq-card"> <div class="body"> <h3><span class="ico faq"></span> Posso fazer um treino experimental?</h3> <p>Não oferecemos treino experimental gratuito. Você pode agendar um tour guiado pelas instalações ou adquirir um Day Use diretamente na recepção.</p> </div> </article> <!-- 5 -- <article class="card faq-card"> <div class="body"> <h3><span class="ico faq"></span> Há acompanhamento no salão?</h3> <p>Sim. Nossa equipe orienta postura, execução e ajustes de carga durante os treinos. O serviço de personal trainer pode ser contratado à parte.</p> </div> </article> <!-- 6 -- <article class="card faq-card"> <div class="body"> <h3><span class="ico faq"></span> Como funcionam as aulas coletivas?</h3> <p>Oferecemos aulas de Ritbox, dança e funcional, com turmas dinâmicas e motivadoras. Todas as modalidades estão inclusas em qualquer plano.</p> </div> </article> </div> </div> </section> --> </main> <footer> <div class="footer-links"> <a href="#sobre">Sobre</a> <a href="#planos">Planos</a> <a href="#estrutura">Estrutura</a> <a href="#contato">Contato</a> </div> <div class="wrap"> <div>© <span id="y"></span> FisioForma Academia. Todos os direitos reservados.</div> <div class="credit">Developed by <strong>Giselle Oliveira</strong></div> </div> </footer> <script>document.getElementById('y').textContent=new Date().getFullYear()</script> <!-- Autoplay fotos (FADE) com respeito a prefers-reduced-motion --> <script> (function(){ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; const box = document.querySelector('#sobre .ff-fade'); if(!box) return; const radios = [...box.querySelectorAll('input[name="fff"]')]; const imgs = [...box.querySelectorAll('.slides img')]; let i = 0, hold = false, loaded = 0; function start(){ if (!reduce) { setInterval(()=>{ if(!hold){ i = (i+1) % radios.length; radios[i].checked = true; } }, 4200); box.addEventListener('mouseenter', ()=> hold = true); box.addEventListener('mouseleave', ()=> hold = false); } } imgs.forEach(img=>{ if(img.complete){ if(++loaded===imgs.length) start(); } else{ img.addEventListener('load', ()=>{ if(++loaded===imgs.length) start(); }, {once:true}); img.addEventListener('error', ()=>{ if(++loaded===imgs.length) start(); }, {once:true}); } }); })(); </script> <script> // garante que o primeiro esteja marcado (function(){ const first = document.querySelector('#depoimentos input[name="t"]'); if (first) first.checked = true; })(); </script> <!-- Autoplay depoimentos (respeita prefers-reduced-motion) --> <script> (function(){ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; const box = document.querySelector('#depoimentos .t-carousel'); if(!box) return; const radios = [...box.querySelectorAll('input[name="t"]')]; let i = radios.findIndex(r => r.checked); if (i < 0) { radios[0].checked = true; i = 0; } let hold = false; const tick = () => { if(!hold){ i = (i+1)%radios.length; radios[i].checked = true; } }; if (!reduce) setInterval(tick, 4500); box.addEventListener('mouseenter', ()=> hold = true); box.addEventListener('mouseleave', ()=> hold = false); })(); </script> <script> // swipe nos depoimentos (function(){ const box = document.querySelector('#depoimentos .t-carousel'); if(!box) return; let x0=null, i=[...box.querySelectorAll('input[name="t"]')].findIndex(r=>r.checked); const radios=[...box.querySelectorAll('input[name="t"]')]; const go=n=>{ i=(n+radios.length)%radios.length; radios[i].checked=true; }; box.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true}); box.addEventListener('touchend',e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>40) go(i + (dx<0?1:-1)); },{passive:true}); })(); </script> <!-- JSON-LD (SEO Local) --> <script type="application/ld+json"> { "@context": "https://schema.org", "@type": "HealthClub", "name": "FisioForma Academia", "image": "https://fisioforma.netlify.app/logo-fisioforma.png", "url": "https://fisioforma.netlify.app/", "telephone": "+55 98 99222-3926", "priceRange": "$$", "address": { "@type": "PostalAddress", "streetAddress": "Avenida Vaticano, 04", "addressLocality": "São Luís", "addressRegion": "MA", "postalCode": "65085-255", "addressCountry": "BR" }, "sameAs": [ "https://instagram.com/fisioforma.acad", "https://wa.me/5598992223926" ], "openingHoursSpecification": [ {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"06:00","closes":"22:00"}, {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"12:00"}, {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"14:30","closes":"17:30"}, {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"12:00"} ], "geo": {"@type":"GeoCoordinates","latitude": -2.5610109,"longitude": -44.3353749}, "hasMap": "https://www.google.com/maps/search/Av.+Vaticano,+4+-+Anjo+da+Guarda,+S%C3%A3o+Lu%C3%ADs+-+MA,+65085-255", "potentialAction": {"@type":"ReserveAction","target":"https://wa.me/5598992223926","result":{"@type":"Thing","name":"Atendimento via WhatsApp"}} } </script> <script> <script> (function () { const t = document.querySelector('.igdm .typing'); if (!t) return; setTimeout(()=> t.style.display='none', 3200); })(); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Academia FisioForma</title>
+<meta name="description" content="FisioForma — Comunidade, acolhimento e resultados reais. Anjo da Guarda, São Luís — MA.">
+
+<!-- Favicon / App Icon -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-fisioforma.png?v=3">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-fisioforma.png?v=3">
+<meta name="theme-color" content="#3a80b4">
+
+<!-- Social / SEO -->
+<link rel="canonical" href="https://fisioforma-site.vercel.app/">
+<meta property="og:title" content="FisioForma Academia">
+<meta property="og:description" content="Acolhimento, orientação profissional e resultados reais em São Luís — MA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fisioforma-site.vercel.app/">
+<meta property="og:image" content="logo-fisioforma-icon.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Performance -->
+<link rel="preconnect" href="https://snapwidget.com" crossorigin>
+<link rel="preload" as="image" href="foto1.png?v=2" imagesrcset="foto1.png?v=2" fetchpriority="high">
+
+<style>
+
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
+html {scroll-behavior: smooth;}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:auto;padding:0 16px}
+
+/* Header/Nav */
+header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:10;backdrop-filter:saturate(120%) blur(6px)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo img{display:block; height:auto; max-height:56px; width:auto; object-fit:contain;}
+.links{display:none;gap:18px}
+.cta{display:inline-block;background:var(--brand);color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;border:1px solid transparent}
+.cta.outline{background:#fff;color:var(--brand);border-color:var(--brand)}
+.cta:hover{background:var(--brand-ink);color:#fff}
+@media (min-width:760px){.links{display:flex}}
+
+/* Layout utilitários */
+section{padding:56px 0}
+section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:22px}
+@media(min-width:760px){.grid.cols-2{grid-template-columns:repeat(2,1fr)} .grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease,border-color .2s ease}
+.card .body{padding:18px 20px}
+.card:focus-within,.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:#bcd7ea;outline:none}
+
+/* Hero */
+.hero{padding:64px 0}
+.hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0}
+.hero p{color:var(--muted);max-width:62ch}
+.hero .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.hero .card{align-self:start;max-width:560px}
+.hero .card .body{font-size:18px;line-height:1.5}
+
+/* HERO com foto de fundo + overlay */
+.hero-visual{position:relative;isolation:isolate;color:#0b1620}
+.hero-visual .wrap{position:relative;z-index:2}
+.hero-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(1200px 600px at 15% 20%, rgba(255,255,255,.95), rgba(255,255,255,.7) 45%, rgba(255,255,255,.35) 70%, rgba(255,255,255,.15) 100%);z-index:1;pointer-events:none}
+.hero-bg{position:absolute;inset:0;background-image:url('assets/hero-fisioforma.jpg');background-size:cover;background-position:center;filter:saturate(1.05) contrast(1.02) brightness(1.02);z-index:0}
+
+/* CTA mais chamativo no hero */
+.hero-visual .cta{padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 8px 20px rgba(58,128,180,.25)}
+.hero-visual .cta:hover{transform:translateY(-1px)}
+
+/* ===== Ajuste fino do CARD do chat (lado direito do hero) ===== */
+
+/* limita a largura e encosta à direita */
+.hero .igdm{
+  width: min(560px, 46vw);   /* fica no máx. 560px, ou 46% da viewport */
+  justify-self: end;         /* gruda no lado direito da coluna */
+  align-self: start;         /* alinha pelo topo da coluna */
+  margin-top: 6px;           /* pequeno respiro do topo */
+}
+
+/* altura um pouco maior e sombra mais suave */
+.igdm-wrap{
+  height: clamp(420px, 52vh, 580px);   /* ↑ um pouco a altura mínima */
+  box-shadow: 0 14px 36px rgba(0,0,0,.28);  /* sombra mais “flutuante” */
+  border-radius: 18px;
+}
+
+/* responsivo: quando a grid vira uma coluna, o chat ocupa 100% */
+@media (max-width: 980px){
+  .hero .igdm{
+    width: 100%;
+    justify-self: stretch;
+    margin-top: 14px;
+  }
+  .igdm-wrap{
+    height: clamp(360px, 48vh, 540px);
+  }
+}
+
+/* impede efeitos de hover do .card global afetarem o chat */
+.igdm-card:hover, .igdm-card:focus-within{
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+
+
+/* Ícones Estrutura */
+.ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;margin-right:8px;background:#eaf4fb;border:1px solid #d7e9f7;font-size:14px}
+
+
+  /* ===== Estilos do rodapé ===== */
+/* ===== Estilos do rodapé ===== */
+.site-footer {
+  background: #3a80b4; /* mesma cor dos botões */
+  color: #fff;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+}
+.footer-nav {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.footer-nav a {
+  text-decoration: none;
+  color: #ffffffcc;   /* branco suave */
+  font-size: 15px;
+  transition: color .3s ease;
+}
+.footer-nav a:hover,
+.footer-nav a:focus {
+  color: #fff;        /* destaque no hover */
+  outline: none;
+}
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.footer-copy {
+  margin: 0;
+  font-size: 13px;
+  color: #e0e0e0;
+}
+.footer-credit {
+  margin: 0;
+  font-size: 13px;
+  color: #ffffffcc;
+}
+
+/* Layout desktop: alinhamento lateral */
+@media (min-width: 900px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  .footer-bottom {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+
+/* Layout desktop: nav à esquerda, copyright à direita */
+@media (min-width: 900px){
+  .footer-inner{
+    padding:22px 24px;
+    flex-direction:row;
+    justify-content:space-between;
+  }
+}
+
+/* Dark mode opcional */
+@media (prefers-color-scheme: dark){
+  .site-footer{ background:#0f172a; border-top-color:#1f2937; }
+  .footer-nav a{ color:#c7ced6; }
+  .footer-nav a:hover,
+  .footer-nav a:focus{ color:#86c3ee; background:rgba(134,195,238,.12); }
+  .footer-copy{ color:#9aa3ad; }
+}
+
+
+
+/* Instagram sidebar */
+.ig-frame{position:relative;width:100%;aspect-ratio:1/1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Carrossel FOTOS (fade) */
+#sobre .ff-fade{--h:clamp(220px,26vw,360px);max-width:640px;margin:24px auto 0;border:1px solid var(--line);border-radius:16px;background:#fff;position:relative;overflow:hidden}
+#sobre .ff-fade input{display:none}
+#sobre .ff-fade .viewport{position:relative;height:var(--h);background:#f2f4f7;isolation:isolate}
+#sobre .ff-fade .slides{list-style:none;margin:0;padding:0;position:relative;height:100%}
+#sobre .ff-fade .slides li{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .6s ease;will-change:opacity}
+#sobre .ff-fade .slides img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center}
+#fff1:checked ~ .viewport .slides li:nth-child(1){opacity:1}
+#fff2:checked ~ .viewport .slides li:nth-child(2){opacity:1}
+#fff3:checked ~ .viewport .slides li:nth-child(3){opacity:1}
+#fff4:checked ~ .viewport .slides li:nth-child(4){opacity:1}
+#fff5:checked ~ .viewport .slides li:nth-child(5){opacity:1}
+#fff6:checked ~ .viewport .slides li:nth-child(6){opacity:1}
+#sobre .ff-fade .nav-dots{text-align:center;margin:10px 0 14px}
+#sobre .ff-fade .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
+#sobre .ff-fade .nav-dots label:hover{transform:scale(1.1)}
+#fff1:checked ~ .nav-dots label[for="fff1"],#fff2:checked ~ .nav-dots label[for="fff2"],#fff3:checked ~ .nav-dots label[for="fff3"],#fff4:checked ~ .nav-dots label[for="fff4"],#fff5:checked ~ .nav-dots label[for="fff5"],#fff6:checked ~ .nav-dots label[for="fff6"]{background:var(--brand)}
+
+/* Depoimentos (fade) */
+#depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}
+#depoimentos .t-carousel input{display:none}
+#depoimentos .viewport{position:relative;height:clamp(200px,24vw,260px);min-height:220px;background:#fff;isolation:isolate}
+#depoimentos .slides{list-style:none;margin:0;padding:0;position:relative;height:100%}
+#depoimentos .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .55s ease;will-change:opacity;pointer-events:none}
+#depoimentos .bubble{max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;line-height:1.5;color:var(--ink);box-shadow:0 6px 20px rgba(0,0,0,.05)}
+#t1:checked ~ .viewport .slides .slide:nth-child(1),
+#t2:checked ~ .viewport .slides .slide:nth-child(2),
+#t3:checked ~ .viewport .slides .slide:nth-child(3),
+#t4:checked ~ .viewport .slides .slide:nth-child(4),
+#t5:checked ~ .viewport .slides .slide:nth-child(5),
+#t6:checked ~ .viewport .slides .slide:nth-child(6),
+#t7:checked ~ .viewport .slides .slide:nth-child(7),
+#t8:checked ~ .viewport .slides .slide:nth-child(8){opacity:1;pointer-events:auto}
+#depoimentos .nav-dots{text-align:center;margin:12px 0 16px}
+#depoimentos .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
+#depoimentos .nav-dots label:hover{transform:scale(1.1)}
+#t1:checked ~ .nav-dots label[for="t1"],#t2:checked ~ .nav-dots label[for="t2"],#t3:checked ~ .nav-dots label[for="t3"],#t4:checked ~ .nav-dots label[for="t4"],#t5:checked ~ .nav-dots label[for="t5"],#t6:checked ~ .nav-dots label[for="t6"],#t7:checked ~ .nav-dots label[for="t7"],#t8:checked ~ .nav-dots label[for="t8"]{background:var(--brand)}
+
+/* MAPA */
+iframe.map{width:100%;height:360px;border:0;border-radius:12px}
+@media (max-width:560px){iframe.map{height:260px}}
+
+/* PLANOS */
+/* === Planos: grid responsivo + cards nivelados === */
+.planos-container{
+  display:grid;
+  gap:20px;
+  grid-template-columns: 1fr;
+}
+@media (min-width:768px){
+  .planos-container{ grid-template-columns: repeat(3,1fr); }
+}
+.plano-card{
+  background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px;
+  text-align:center; box-shadow:0 4px 10px rgba(0,0,0,.05);
+  display:flex; flex-direction:column; height:100%;
+}
+.plano-card h3{ margin:0 0 8px; font-size:1.2rem; }
+.plano-card .preco{ font-size:1.8rem; font-weight:900; color:#1d72b8; margin-bottom:10px; }
+.plano-card ul{ list-style:none; padding:0; margin:0 0 16px; text-align:left; font-size:.95rem; flex:1; }
+.plano-card ul li{ margin:6px 0; }
+
+/* status por classe (em vez de :contains) */
+.plano-card li.ok{ color:#2e7d32; }     /* ✔ */
+.plano-card li.no{ color:#d32f2f; }     /* ❌ */
+.plano-card li.opt{ color:#6b7280; }    /* ➖ */
+
+.plans-table td,
+.plans-table th {
+  text-align: center;
+  padding: 10px;
+}
+
+.nao-incluso {
+  color: #2c3e50; /* azul escuro puxado para o preto */
+  font-weight: 600;
+}
+
+.opcional {
+  color: #6c757d; /* cinza neutro */
+  font-style: italic;
+}
+
+.plans-table a {
+  text-decoration: none; /* remove sublinhado */
+  color: #2c3e50; /* azul escuro */
+}
+
+
+.btn-escolher{
+  background:#1d72b8;color:#fff;border:0;padding:12px 16px;border-radius:10px;
+  font-weight:600;cursor:pointer;transition:background .2s;
+}
+.btn-escolher:hover{ background:#155a8a; }
+
+/* Destaque Casadinha */
+.plano-card.destaque{ border:2px solid #1d72b8; transform:scale(1.03); box-shadow:0 8px 18px rgba(29,114,184,.2); }
+
+/* === Comparativo: o wrapper é um DIV envolvendo a TABLE === */
+.compare-wrap{
+  position:relative; overflow:auto; border:1px solid var(--line);
+  border-radius:12px; background:#fff;
+}
+.compare-wrap::before,.compare-wrap::after{
+  content:""; position:absolute; top:0; bottom:0; width:24px; pointer-events:none;
+}
+.compare-wrap::before{ left:0; background:linear-gradient(to right,#fff,rgba(255,255,255,0)); }
+.compare-wrap::after { right:0; background:linear-gradient(to left ,#fff,rgba(255,255,255,0)); }
+
+.compare{ width:100%; border-collapse:separate; border-spacing:0; background:#fff; }
+.compare thead th{
+  position:sticky; top:0; z-index:2; background:#eef5fb; font-weight:800; border-bottom:1px solid var(--line);
+}
+.compare th,.compare td{ padding:14px 12px; text-align:center; border-bottom:1px solid var(--line); }
+.compare td:first-child,.compare th:first-child{
+  text-align:left; position:sticky; left:0; z-index:3; background:#fff; font-weight:700;
+}
+.compare tbody tr:nth-child(odd){ background:#fafcff; }
+@media(max-width:640px){ .compare th,.compare td{ padding:12px 10px; font-size:15px; } }
+
+/* cores na tabela via classes reaproveitadas */
+.compare .ok{ color:#2e7d32; }   /* ✔ */
+.compare .no{ color:#d32f2f; }   /* ❌ */
+.compare .opt{ color:#6b7280; }  /* ➖ */
+
+  /* === Cores alinhadas à FisioForma (azul/preto/cinza) === */
+/* === Azul FisioForma (coeso com o título e botões iniciais) === */
+:root{
+  --bg:#ffffff; 
+  --ink:#222; 
+  --muted:#5a5a5a; 
+  --card:#f5f7fa; 
+  --line:#d9d9d9;
+  --brand:#2b6b8a;      /* já está no seu CSS novo */
+  --brand-ink:#1f4e63;  /* idem */
+}
+
+  
+/* Listas dos cards de plano */
+.plano-card li.no { 
+  color: #2c3e50;         /* azul escuro */
+  font-weight: 700;
+}
+.plano-card li.opt { 
+  color: #6b7280;         /* cinza neutro */
+}
+
+/* Tabela comparativa (usa as mesmas classes) */
+.compare .no  { color:#2c3e50; font-weight:700; }
+.compare .opt { color:#6b7280; }
+
+/* Links sem sublinhado (somente onde interessa) */
+#planos a, .compare a {
+  text-decoration: none;
+  color: #2c3e50;         /* azul escuro */
+}
+#planos a:hover, .compare a:hover { text-decoration: none; }
+
+  .plano-card li.no,
+.compare .no,
+.nao-incluso { color:#2c3e50; font-weight:700; }
+
+.plano-card li.opt,
+.compare .opt,
+.opcional { color:#6b7280; }
+
+
+/* Preços e botões */
+.planos-container .plano-card .preco {
+  color: var(--brand) !important;
+}
+.planos-container .btn-escolher {
+  background: var(--brand) !important;
+  color:#fff !important;
+  border:0 !important;
+}
+.planos-container .btn-escolher:hover {
+  background: var(--brand-ink) !important;
+}
+
+/* Ícones/textos dos planos */
+.planos-container .plano-card li.ok,
+.compare tbody .ok {
+  color:#2c3e50 !important;   /* azul escuro/preto */
+  font-weight:700;
+}
+.planos-container .plano-card li.no,
+.compare tbody .no {
+  color:#2c3e50 !important;   /* azul escuro/preto */
+  font-weight:700;
+}
+.planos-container .plano-card li.opt,
+.compare tbody .opt {
+  color:#6b7280 !important;   /* cinza neutro */
+  font-weight:600;
+}
+
+/* Links sem sublinhado */
+#planos a, .compare a {
+  text-decoration:none !important;
+  color: var(--brand-ink) !important;
+}
+#planos a:hover, .compare a:hover {
+  text-decoration:none !important;
+}
+
+/* Destaque plano Casadinha */
+.plano-card.destaque {
+  border:2px solid var(--brand) !important;
+  box-shadow:0 8px 18px rgba(43,107,138,.20) !important;
+}
+
+
+
+/* Pequenos toques */
+section .grid > *{align-self:start}
+
+
+/* Bloco de horários + redes no HERO */
+.hero .info-box{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 14px rgba(0,0,0,.04);max-width:340px}
+.hero .info-box h3{display:flex;align-items:center;gap:8px;margin:0 0 10px 0;font-size:17px;font-weight:800}
+.hero .info-box h3 svg{width:20px;height:20px;fill:var(--brand)}
+.hero .info-box ul{list-style:none;margin:0;padding:0}
+.hero .info-box li{margin:6px 0}
+.hero .info-box li strong{font-weight:700}
+.hero .socials{margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero .socials a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;text-decoration:none;color:var(--ink);transition:.15s ease}
+.hero .socials a:hover{background:#f5faff;border-color:#bcd7ea;transform:translateY(-1px)}
+.hero .socials svg{width:16px;height:16px}
+.hero .socials .wa svg{fill:#25D366}
+.hero .socials .ig svg{fill:#E1306C}
+
+  
+
+  
+/* Normas (layout base) */
+#normas-resumo .grid{display:grid;gap:18px}
+@media(min-width:600px){#normas-resumo .grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){#normas-resumo .grid{grid-template-columns:repeat(3,1fr)}}
+.normas-card{background:#fff;border:1px solid;border-radius:14px; ...}
+.normas-card:hover{transform:translateY(-4px);box-shadow: 0 6px 18px rgba(0,0,0,.06);;border-color:#bcd7ea}
+.normas-card .body{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.normas-card h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px}
+.normas-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.normas-card .mini-badge{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid transparent}
+.mini-badge.info{background:#e6f4ff;border-color:#b6e0fe;color:#084298}
+.mini-badge.warn{background:#fff4e5;border-color:#ffb86b;color:#8a4500}
+.mini-badge.danger{background:#fdecea;border-color:#f5c2c7;color:#b71c1c}
+.mini-badge.success{background:#e8f5e9;border-color:#a5d6a7;color:#1b5e20}
+.mini-badge.note{background:#fff8e1;border-color:#ffe599;color:#7f6000}
+#normas-resumo .actions{margin-top:14px;display:flex;justify-content:center}
+#normas-resumo .actions .cta.outline{border-radius:10px;padding:10px 14px}
+
+/* --- Corrige corte de texto nos cards de Normas --- */
+#normas-resumo .normas-card { 
+  min-height: unset; 
+  overflow: visible;              /* deixa o conteúdo respirar */
+}
+#normas-resumo .normas-card .body { 
+  height: auto;
+}
+#normas-resumo .normas-card p{
+  overflow: visible !important;   /* remove clamp/ellipsis herdado */
+  white-space: normal !important; 
+  text-overflow: clip !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+}
+#normas-resumo .normas-card{
+  overflow: clip;  /* conserva o border-radius sem cortar o texto interno */
+}
+/* Grid dos cards */
+#normas-resumo .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;  /* garante que os cards da mesma linha tenham a mesma altura */
+}
+
+/* Cards */
+#normas-resumo .normas-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;          /* ocupa toda a altura da linha */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Texto justificado */
+#normas-resumo .normas-card p {
+  text-align: justify;
+  margin-top: 0.5rem;
+}
+
+
+/* === Estrutura: cards nivelados por linha + texto justificado === */
+#estrutura .grid{
+  display:grid !important;                                 /* garante grid */
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 1.5rem;
+  align-items: stretch;                                     /* iguala a altura na linha */
+}
+
+#estrutura .card{
+  display:flex;                                            /* permite esticar */
+  height:100%;                                             /* ocupa altura do mais alto da linha */
+}
+
+#estrutura .card .body{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  height:100%;
+}
+
+#estrutura .card p{
+  text-align: justify;                                     /* texto justificado */
+  margin-top: .5rem;
+}
+
+/* ===== IG DM — Dark (como o Instagram) ===== */
+/* ===== IG DM — Header e tipografia ===== */
+/* 1) Zera o “card branco” apenas nesse bloco */
+.card.igdm-card{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* 2) O widget DM vira um card escuro completo */
+.igdm-wrap{
+  display: flex;                /* coluna: header/body/input */
+  flex-direction: column;
+  width: 100%;
+  height: clamp(360px, 48vh, 560px);  /* altura responsiva */
+  border: 1px solid #182028;
+  border-radius: 20px;
+  background: #0b0b0b;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  overflow: hidden;             /* clipa cantos arredondados */
+  color: #e5e7eb;
+  isolation: isolate;
+}
+
+/* 3) Header, body, input em dark e colados */
+.igdm-head{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 14px;
+  background:#0b0b0b;
+  border-bottom:1px solid #182028;
+}
+.igdm-body{
+  flex: 1 1 auto;               /* ocupa todo o meio */
+  overflow: auto;
+  background:#0b0b0b;
+  padding: 18px 14px 26px;      /* espaço p/ reações */
+  scrollbar-width: thin;
+}
+.igdm-input{
+  flex: 0 0 auto;               /* fixa no rodapé */
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px;
+  border-top:1px solid #182028;
+  background:#0b0b0b;
+}
+.igdm-input .field{
+  flex:1 1 auto; min-width:0;
+  background:#1c1f23; border:1px solid #2a2f35; color:#e5e7eb;
+  border-radius:24px; padding:10px 14px; font-size:14px;
+}
+.igdm-input .btns{ display:flex; gap:10px; font-size:18px; color:#cbd5e1; }
+.igdm-input .btns span{ display:inline-flex; align-items:center; }
+
+/* Avatar/títulos do header */
+.igdm-head .left{ display:flex; align-items:center; gap:10px; }
+.igdm-head .avatar{
+  width:36px; height:36px; border-radius:50%; object-fit:cover;
+  border:1px solid #2a2f35; background:#111; display:block;
+}
+.igdm-head .meta{ line-height:1.1; }
+.igdm-head .meta .name{ font-weight:800; color:#e9eef3; margin-bottom:2px; }
+.igdm-head .meta .handle{ font-size:12px; color:#9aa1a8; }
+
+/* (Opcional) limita a largura do widget dentro da coluna do hero */
+.igdm { max-width: 560px; margin-left: auto; }
+
+  
+
+  
+/* Reveal */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* Respeita quem desativa animações */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+}
+
+
+/* === Seção de Contato === */
+#contato h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+#contato p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+#contato a {
+  color: #2b6b8a;    /* azul da identidade */
+  text-decoration: none;
+  font-weight: 500;
+}
+#contato a:hover {
+  color: #1f4e63;    /* tom mais escuro */
+}
+
+
+/* Botão WhatsApp */
+#contato .cta {
+  background: #2b6b8a;
+  color: #fff !important;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 12px;
+  text-align: center;
+  transition: background .2s ease;
+}
+#contato .cta:hover {
+  background: #1f4e63;
+}
+
+#contato svg {
+  flex-shrink: 0;
+}
+
+
+
+/* Extras */
+.pill{display:inline-block;padding:6px 10px;font-size:12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-ink);margin:6px 0 12px 0}
+ul.values{list-style:none;padding-left:0;margin:8px 0 0 0}
+ul.values li{margin:6px 0}
+ul.values li::before{content:"•";color:var(--brand);display:inline-block;width:1em;margin-left:-1em}
+
+/* Skip-link (acessibilidade) */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px}
+
+  /* === HERO: trava a largura da coluna do chat === */
+.hero .wrap.grid.cols-2{
+  grid-template-columns: minmax(0,1fr) minmax(320px,560px); /* esq flexível | dir até 560px */
+  align-items: start;
+  column-gap: 24px;
+}
+
+/* O item de grid é o ASIDE */
+.hero aside.igdm-card{
+  justify-self: end;     /* encosta à direita */
+  width: 100%;           /* ocupa a coluna */
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Dentro do aside, o widget ocupa 100% da coluna */
+.hero .igdm{ max-width: none !important; margin-left: 0 !important; width: 100%; }
+.igdm-wrap{ height: clamp(420px,52vh,580px); border-radius: 18px; }
+
+/* Responsivo: quando “quebra” para 1 coluna */
+@media (max-width: 980px){
+  .hero .wrap.grid.cols-2{ grid-template-columns: 1fr; }
+  .hero aside.igdm-card{ justify-self: stretch; }
+  .igdm-wrap{ height: clamp(360px,48vh,540px); }
+}
+
+/* ===== Header / Menu ===== */
+.site-header {
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.header-inner {
+  max-width:1100px;
+  margin:0 auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo img {
+  height:40px;
+}
+.main-nav {
+  display:flex;
+  gap:24px;
+}
+.main-nav a {
+  text-decoration:none;
+  color:#3a80b4;
+  font-size:15px;
+  font-weight:500;
+  transition:color .3s ease;
+}
+.main-nav a:hover,
+.main-nav a:focus {
+  color:#1f4e72; /* tom mais escuro no hover */
+}
+.btn-whatsapp {
+  background:#3a80b4;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:14px;
+  text-decoration:none;
+  transition:background .3s ease, transform .2s ease;
+}
+.btn-whatsapp:hover {
+  background:#1f4e72;
+  transform:scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .main-nav {
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+  }
+  .btn-whatsapp {
+    margin-top:10px;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ===== Header / Menu ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href="#home" class="logo">
+       <img src="logo-fisioforma.png" srcset="logo-fisioforma@2x.png 2x" alt="Logo FisioForma">
+    </a>
+
+    <!-- Navegação -->
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#sobre">Sobre</a>
+      <a href="#planos">Planos</a>
+      <a href="#estrutura">Estrutura</a>
+      <a href="#normas">Normas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <!-- Botão WhatsApp -->
+    <a href="https://wa.me/5598983541687" target="_blank" class="btn-whatsapp">
+      Fale no WhatsApp
+    </a>
+  </div>
+</header>
+
+
+<main id="conteudo">
+  <!-- HERO -->
+  <section class="hero hero-visual">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap grid cols-2">
+      <!-- Coluna ESQUERDA -->
+      <div>
+        <h1>FisioForma: <span style="color:var(--brand-ink)">treino que cabe na sua vida</span></h1>
+        <p class="muted">Comunidade, acolhimento e resultados reais. Atendimento humanizado e orientação segura para você conquistar seus objetivos.</p>
+        <div class="btns">
+          <a class="cta" href="#planos">Ver planos</a>
+          <a class="cta outline" href="#contato">Agendar visita</a>
+        </div>
+
+        <!-- Bloco de horários -->
+        <div class="info-box">
+          <h3>
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 .001-16.001A8 8 0 0 1 12 20Zm.75-13h-1.5v5l4.25 2.55.75-1.23-3.5-2.07V7Z"/></svg>
+            Horário de funcionamento
+          </h3>
+          <ul>
+            <li><strong>Segunda a sexta:</strong> 06:00 às 22:00</li>
+            <li><strong>Sábados:</strong> 08:00 às 12:00 | 14:30 às 17:30</li>
+            <li><strong>Domingo:</strong> 08:00 às 12:00</li>
+            <li><em>Feriados podem ter horários especiais.</em></li>
+          </ul>
+        </div>
+
+        <!-- Redes sociais -->
+        <div class="info-box">
+          <h3>Redes sociais:</h3>
+          <div class="socials">
+            <a class="wa" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M12.04 2C6.57 2 2.16 6.4 2.16 11.87c0 2.09.57 4.03 1.63 5.7L2 22l4.57-1.74a9.9 9.9 0 0 0 5.47 1.6h.01c5.47 0 9.88-4.4 9.88-9.87C22 6.4 17.5 2 12.04 2Zm5.72 13.96c-.24.68-1.39 1.29-1.92 1.32-.53.03-1.23.05-1.99-.12-.45-.1-1.04-.34-1.81-.67-3.18-1.38-5.24-4.6-5.4-4.81-.16-.21-1.29-1.72-1.29-3.28 0-1.56.82-2.33 1.11-2.66.29-.33.63-.41.84-.41h.61c.19 0 .46-.08.72.54.27.65.92 2.24 1 2.4.08.16.13.35.02.56-.11.21-.17.35-.34.54-.17.19-.36.43-.52.58-.17.17-.35.36-.15.71.2.35.9 1.49 1.93 2.42 1.32 1.18 2.43 1.55 2.79 1.72.36.17.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.8-.18.33.12 2.09.98 2.45 1.16.36.18.6.26.69.41.09.15.09.87-.14 1.55Z"/></svg>
+              WhatsApp
+            </a>
+            <a class="ig" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm6.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18.25 6.5Z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+  <!-- Coluna DIREITA (mensagens) -->
+<aside class="card igdm-card">
+  <section class="igdm">
+    <div class="igdm-wrap" role="region" aria-label="Conversa no Instagram (dark)">
+      <header class="igdm-head">
+        <div class="left">
+          <img class="avatar" src="logo-fisioforma.png?v=5" alt="FisioForma" width="40" height="40">
+          <div class="meta">
+            <div class="name">Academia FisioForma 💪</div>
+            <div class="handle">fisioforma.acad</div>
+          </div>
+        </div>
+        <div aria-hidden="true">📞 🎥 ℹ️</div>
+      </header>
+
+      <div class="igdm-body">
+        <!-- … mensagens … -->
+      </div>
+
+      <div class="igdm-input">
+        <div class="btns" aria-hidden="true"><span>😊</span></div>
+        <div class="field">Mensagem…</div>
+        <div class="btns" aria-hidden="true"><span>🎤</span><span>📷</span><span>❤️</span></div>
+      </div>
+    </div>
+  </section>
+</aside>
+
+</div>      <!-- fecha .wrap.grid.cols-2 -->
+</section>  <!-- fecha o HERO -->
+    
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" class="alt" aria-label="Depoimentos de alunos">
+    <div class="wrap">
+      <h2>O que nossos alunos dizem</h2>
+      <div class="t-carousel" aria-live="polite">
+        <!-- radios -->
+        <input type="radio" name="t" id="t1" checked>
+        <input type="radio" name="t" id="t2">
+        <input type="radio" name="t" id="t3">
+        <input type="radio" name="t" id="t4">
+        <input type="radio" name="t" id="t5">
+        <input type="radio" name="t" id="t6">
+        <input type="radio" name="t" id="t7">
+        <input type="radio" name="t" id="t8">
+        <div class="viewport">
+          <div class="slides">
+            <!-- Google/Instagram exemplos -->
+            <article class="slide"><div class="bubble"><p>“Ambiente legal, equipe atenciosa.”</p><p><strong>— Juliana Viegas Ferreira (Google · 3 meses)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Local excelente. Desde o atendimento até os equipamentos. Entrega tudo que promete e ainda se preocupa com o meio ambiente.”</p><p><strong>— VOLTLUX Energia Solar (Google · 1 ano)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Ameiiiiiiii tudo.”</p><p><strong>— Heldalene Pavão (Google · 1 ano)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Academia boa e com excelente atendimento.”</p><p><strong>— Wesley (Google · 2 anos)</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Melhor academia do bairro! Sempre animada e cheia de energia positiva ✨”</p><p><strong>— Aluna no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Treinos que realmente dão resultado, professores sempre atenciosos 👊”</p><p><strong>— Comentário no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p><p><strong>— Seguidora no Instagram</strong></p></div></article>
+            <article class="slide"><div class="bubble"><p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p><p><strong>— Feedback no Instagram</strong></p></div></article>
+          </div>
+        </div>
+        <div class="nav-dots" aria-hidden="true">
+          <label for="t1"></label><label for="t2"></label><label for="t3"></label><label for="t4"></label>
+          <label for="t5"></label><label for="t6"></label><label for="t7"></label><label for="t8"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM SIDEBAR -->
+  <section id="instagram" class="alt">
+    <div class="wrap grid cols-2">
+      <div>
+        <h2>Novidades da FisioForma</h2>
+        <p class="muted">Acompanhe avisos, eventos e promoções no nosso Instagram.</p>
+      </div>
+      <aside style="border-left:1px solid var(--line); padding-left:16px;">
+        <div class="card" style="border-radius:18px; overflow:hidden;">
+          <div class="body" style="padding:12px 16px">
+            <h3 style="margin:0 0 4px 0">@fisioforma.acad</h3>
+            <div class="ig-frame">
+              <iframe src="https://snapwidget.com/embed/1024785" title="Feed do Instagram" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div style="text-align:center; margin-top:10px">
+              <a href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener noreferrer" class="cta" style="display:inline-block; padding:10px 14px; border-radius:10px;">👉 Ver no Instagram</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SOBRE + CARROSSEL FOTOS -->
+  <section id="sobre" class="alt" aria-labelledby="sobre-titulo">
+    <div class="wrap">
+      <h2 id="sobre-titulo">Sobre a FisioForma</h2>
+      <p class="pill">11 anos no mercado — desde 2014</p>
+
+      <h3>Nossa história</h3>
+      <p class="muted">
+        Fundada em 2014 no bairro Anjo da Guarda, em São Luís – MA, a <strong>FisioForma Academia</strong> nasceu com a proposta de unir <strong>acolhimento</strong>, <strong>orientação profissional</strong> e <strong>resultados reais</strong>. Ao longo de mais de onze anos, evoluímos junto com a comunidade, mantendo o foco em um ambiente seguro, motivador e acessível para diferentes perfis — de iniciantes a praticantes avançados.
+      </p>
+
+      <p class="muted">
+        <strong>Propósito:</strong> Promover saúde, autoestima e qualidade de vida através da atividade física orientada, em um ambiente seguro e acolhedor.<br>
+        <strong>Visão:</strong> Ser reconhecida como a principal academia da comunidade do Anjo da Guarda, referência em atendimento humanizado e resultados sustentáveis.
+      </p>
+      <p class="muted"><strong>Valores</strong></p>
+     <!-- <h3 class="muted" style="margin-top:8px">Valores</h3> -->
+      <ul class="values muted">
+        <li><strong>Compromisso:</strong> evolução consistente com acompanhamento próximo.</li>
+        <li><strong>Respeito:</strong> ética, acolhimento e educação em cada interação.</li>
+        <li><strong>Comunidade:</strong> um ambiente de apoio e motivação coletiva.</li>
+        <li><strong>Empatia:</strong> escuta ativa e planos condizentes com cada objetivo.</li>
+        <li><strong>Excelência:</strong> melhoria contínua de estrutura, serviços e atendimento.</li>
+      </ul>
+
+      <div class="ff-fade" aria-label="Galeria de fotos da academia">
+        <!-- radios -->
+        <input type="radio" name="fff" id="fff1" checked>
+        <input type="radio" name="fff" id="fff2">
+        <input type="radio" name="fff" id="fff3">
+        <input type="radio" name="fff" id="fff4">
+        <input type="radio" name="fff" id="fff5">
+        <input type="radio" name="fff" id="fff6">
+        <div class="viewport">
+          <ul class="slides">
+            <li><img src="foto1.png?v=2" alt="Área de musculação" decoding="async"></li>
+            <li><img src="foto2.png?v=2" alt="Máquinas de treino" decoding="async" loading="lazy"></li>
+            <li><img src="foto3.png?v=2" alt="Espaço para aulas coletivas" decoding="async" loading="lazy"></li>
+            <li><img src="foto4.png?v=2" alt="Ambiente amplo e climatizado" decoding="async" loading="lazy"></li>
+            <li><img src="foto5.png?v=2" alt="Área de cardio com esteiras e bicicletas" decoding="async" loading="lazy"></li>
+            <li><img src="foto6.png?v=2" alt="Vista geral da academia" decoding="async" loading="lazy"></li>
+          </ul>
+        </div>
+        <div class="nav-dots">
+          <label for="fff1"></label><label for="fff2"></label><label for="fff3"></label>
+          <label for="fff4"></label><label for="fff5"></label><label for="fff6"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos">
+    <div class="wrap">
+      <h2>Planos e valores</h2>
+      <div class="planos-container">
+        <!-- Plano Individual -->
+        <div class="plano-card">
+          <h3>Plano Individual</h3>
+          <p class="preco">R$ 90/mês</p>
+          <ul>
+            <li class="ok">✔ Acesso livre ao salão</li>
+            <li class="opt">➖ Aulas coletivas (opcional)</li>
+            <li class="ok">✔ Reavaliação periódica</li>
+            <li class="no">❌ Horários diferenciados</li>
+          </ul>
+          <button class="btn-escolher">Escolher</button>
+        </div>
+        
+        <!-- Plano Casadinha -->
+        <div class="plano-card destaque">
+          <h3>Plano Casadinha</h3>
+          <p class="preco">R$ 80/mês</p>
+          <ul>
+            <li class="ok">✔ Treinar em dupla</li>
+            <li class="ok">✔ Acesso ao salão + aulas coletivas</li>
+            <li class="ok">✔ Reavaliação periódica</li>
+            <li class="no">❌ Horários diferenciados</li>
+            <li class="ok">✔ Descontos sazonais</li>
+          </ul>
+          <button class="btn-escolher">Escolher</button>
+        </div>
+        
+        <!-- Plano Executivo -->
+        <div class="plano-card">
+          <h3>Plano Executivo</h3>
+          <p class="preco">R$ 70/mês</p>
+          <ul>
+            <li class="ok">✔ Acesso ao salão (janela executiva — fora do pico)</li>
+            <li class="no">❌ Aulas coletivas</li>
+            <li class="ok">✔ Reavaliação periódica</li>
+            <li class="ok">✔ Horários diferenciados</li>
+          </ul>
+          <button class="btn-escolher">Escolher</button>
+        </div>
+      </div>
+
+      <!-- Tabela comparativa -->
+      <div style="margin-top:24px;overflow:auto">
+        <div class="compare-wrap" style="margin-top:24px">
+          <table class="compare" aria-label="Comparação de planos">
+            <thead>
+              <tr>
+                <th>Benefícios</th>
+                <th>Individual</th>
+                <th>Casadinha</th>
+                <th>Executivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Acesso ao salão</td>
+                <td class="ok">✔ Livre</td>
+                <td class="ok">✔ Livre</td>
+                <td class="ok">✔ Janela executiva (fora do pico)</td>
+              </tr>
+              <tr>
+                <td>Aulas coletivas</td>
+                <td class="opt">➖ Opcional</td>
+                <td class="ok">✔ Incluídas</td>
+                <td class="no">❌ Não incluso</td>
+              </tr>
+              <tr>
+                <td>Reavaliação física</td>
+                <td class="ok">✔</td>
+                <td class="ok">✔</td>
+                <td class="ok">✔</td>
+              </tr>
+              <tr>
+                <td>Horários diferenciados</td>
+                <td class="no">❌ Não se aplica</td>
+                <td class="no">❌ Não se aplica</td>
+                <td class="ok">✔ Fora do pico</td>
+              </tr>
+              <tr>
+                <td>Descontos</td>
+                <td class="opt">➖ Campanhas</td>
+                <td class="ok">✔ Melhor custo p/ 2</td>
+                <td class="opt">➖ Campanhas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="alt">
+  <div class="wrap grid cols-2">
+    <div>
+      <h2>Fale com a gente</h2>
+
+      <p>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a">
+          <path d="M6.62 10.79a15.464 15.464 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.46.57 3.58.11.34.03.72-.24 1.01l-2.21 2.2Z"/>
+        </svg>
+        <a href="tel:+5598992223926">(98) 99222-3926</a>
+      </p>
+
+      <p>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
+        </svg>
+        <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a>
+      </p>
+
+      <p>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#2b6b8a">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5Z"/>
+        </svg>
+        <a href="https://maps.google.com/?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+São+Luís,+MA" target="_blank" rel="noopener noreferrer">
+          Avenida Vaticano, 04 – Anjo da Guarda, São Luís – MA
+        </a>
+      </p>
+
+      <!-- Frase de acolhimento (sem horários) -->
+      <p class="muted" style="margin-top:8px">Será um prazer atender você. Clique abaixo e fale diretamente conosco pelo WhatsApp.</p>
+
+      <p>
+        <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">
+          Chamar no WhatsApp
+        </a>
+      </p>
+    </div>
+
+    <div>
+      <iframe class="map" title="Mapa FisioForma"
+        src="https://www.google.com/maps?q=Avenida+Vaticano,+04+Anjo+da+Guarda,+S%C3%A3o+Lu%C3%ADs,+MA&output=embed"
+        loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- ESTRUTURA -->
+  <section id="estrutura" class="alt">
+    <div class="wrap">
+      <h2>Estrutura</h2>
+      <p class="muted">Ambiente completo para treinos de musculação, cardio e aulas coletivas, com suporte e comodidades para o dia a dia.</p>
+      <div class="grid cols-3" style="margin-top:12px">
+        <div class="card"><div class="body"><h3><span class="ico">🏋️</span>Musculação</h3><p class="muted">Máquinas guiadas, racks e halteres — organização por grupos musculares.</p></div></div>
+        <div class="card"><div class="body"><h3><span class="ico">🚴</span>Cardio</h3><p class="muted">Esteiras, elípticos e bikes para aquecimento, condicionamento e emagrecimento.</p></div></div>
+        <div class="card"><div class="body"><h3><span class="ico">💃</span>Aulas coletivas</h3><p class="muted">Ritbox, dança e funcional — turmas dinâmicas e motivadoras.</p></div></div>
+        <div class="card"><div class="body"><h3><span class="ico">📊</span>Avaliação física</h3><p class="muted">Check-up inicial e reavaliações periódicas para acompanhar sua evolução.</p></div></div>
+        <div class="card"><div class="body"><h3><span class="ico">🧼</span>Vestiários</h3><p class="muted">Chuveiros, armários e bebedouros — ambiente limpo e organizado.</p></div></div>
+        <div class="card"><div class="body"><h3><span class="ico">🛡️</span>Acessibilidade e segurança</h3><p class="muted">Acesso facilitado e equipe atenta para corrigir e orientar movimentos.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- NORMAS RESUMO (com ícones) -->
+<section id="normas-resumo" class="alt">
+  <div class="wrap">
+    <h2>Normas da FisioForma</h2>
+    <p class="muted" style="margin-bottom:14px">
+      Nosso compromisso é manter um ambiente seguro, respeitoso e acolhedor. Confira as normas principais — simples, claras e fáceis de seguir:
+    </p>
+
+    <div class="grid">
+      <!-- 1 Etiqueta -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">✅</span> Etiqueta e boas práticas <span class="mini-badge success">Essencial</span></h3>
+          <p>Higienizar os aparelhos após o uso, guardar os pesos, permitir o revezamento entre alunos e utilizar sempre roupas e calçados adequados.</p>
+        </div>
+      </article>
+
+      <!-- 2 Equipamentos -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">🛠️</span> Uso de equipamentos <span class="mini-badge note">Orientação</span></h3>
+          <p>Conferir travas e presilhas antes do treino, não arremessar pesos e solicitar orientação da equipe sempre que houver dúvida.</p>
+        </div>
+      </article>
+
+      <!-- 3 Música -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">🎧</span> Música e barulho <span class="mini-badge warn">Aviso</span></h3>
+          <p>Utilizar apenas fones de ouvido para ouvir música, evitar gritos, quedas bruscas de pesos e ligações prolongadas dentro do salão.</p>
+        </div>
+      </article>
+
+      <!-- 4 Banheiros -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">🚻</span> Banheiros e vestiários <span class="mini-badge danger">Atenção</span></h3>
+          <p>Descartar papéis no lixo, utilizar a água de forma consciente, respeitar a privacidade dos demais usuários e manter os armários como uso rotativo.</p>
+        </div>
+      </article>
+
+      <!-- 5 Segurança -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">🛡️</span> Segurança e saúde <span class="mini-badge danger">Prioridade</span></h3>
+          <p>Comunicar imediatamente qualquer mal-estar à equipe, treinar sempre com calçado fechado e seguir as orientações em situações de emergência.</p>
+        </div>
+      </article>
+
+      <!-- 6 Convivência -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">🤝</span> Convivência e privacidade <span class="mini-badge success">Respeito</span></h3>
+          <p>Tratar todos com respeito e empatia. Não fotografar ou filmar terceiros sem autorização expressa.</p>
+        </div>
+      </article>
+
+      <!-- 7 Menores -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">🧒</span> Menores de idade <span class="mini-badge warn">Restrição</span></h3>
+          <p>O acesso é permitido a partir dos 14 anos, mediante autorização do responsável. Crianças não devem permanecer no salão de treinos.</p>
+        </div>
+      </article>
+
+      <!-- 8 Financeiro -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">💳</span> Financeiro e acesso <span class="mini-badge info">Informativo</span></h3>
+          <p>O acesso é exclusivo para alunos com matrícula ativa e identificação válida. Pagamentos, pausas e cancelamentos obedecem às regras contratuais.</p>
+        </div>
+      </article>
+
+      <!-- 9 Sanções -->
+      <article class="normas-card">
+        <div class="body">
+          <h3><span class="ico">⛔</span> Sanções <span class="mini-badge danger">Crítico</span></h3>
+          <p>O descumprimento das normas gera, sucessivamente: orientação, advertência e suspensão. <strong>Tolerância zero:</strong> casos de assédio, discriminação ou condutas abusivas resultarão em desligamento imediato.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="actions">
+      <a class="cta outline" href="normas.html" target="_blank" rel="noopener noreferrer">Ver todas as normas</a>
+    </div>
+  </div>
+</section>
+
+
+  
+</main>
+
+
+
+<!-- ===== Rodapé ===== -->
+<!-- ===== Rodapé ===== -->
+<footer class="site-footer" role="contentinfo" aria-label="Footer">
+  <div class="footer-inner">
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="#sobre">Spbre</a>
+      <a href="#planos">Planos</a>
+      <a href="#estrutura">Estrutura</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2025 FisioForma Academia. Todos os Direitos Reservados.
+      </p>
+      <p class="footer-credit">
+        Designed & Developed by <strong>Giselle Oliveira</strong>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+<!-- Autoplay fotos (FADE) com respeito a prefers-reduced-motion -->
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const box = document.querySelector('#sobre .ff-fade');
+  if(!box) return;
+  const radios = [...box.querySelectorAll('input[name="fff"]')];
+  const imgs = [...box.querySelectorAll('.slides img')];
+  let i = 0, hold = false, loaded = 0;
+  function start(){
+    if (!reduce) {
+      setInterval(()=>{ if(!hold){ i = (i+1) % radios.length; radios[i].checked = true; } }, 4200);
+      box.addEventListener('mouseenter', ()=> hold = true);
+      box.addEventListener('mouseleave', ()=> hold = false);
+    }
+  }
+  imgs.forEach(img=>{
+    if(img.complete){ if(++loaded===imgs.length) start(); }
+    else{
+      img.addEventListener('load', ()=>{ if(++loaded===imgs.length) start(); }, {once:true});
+      img.addEventListener('error', ()=>{ if(++loaded===imgs.length) start(); }, {once:true});
+    }
+  });
+})();
+</script>
+
+<script> // garante que o primeiro esteja marcado
+(function(){ const first = document.querySelector('#depoimentos input[name="t"]'); if (first) first.checked = true; })();
+</script>
+
+<!-- Autoplay depoimentos (respeita prefers-reduced-motion) -->
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const box = document.querySelector('#depoimentos .t-carousel');
+  if(!box) return;
+  const radios = [...box.querySelectorAll('input[name="t"]')];
+  let i = radios.findIndex(r => r.checked);
+  if (i < 0) { radios[0].checked = true; i = 0; }
+  let hold = false;
+  const tick = () => { if(!hold){ i = (i+1)%radios.length; radios[i].checked = true; } };
+  if (!reduce) setInterval(tick, 4500);
+  box.addEventListener('mouseenter', ()=> hold = true);
+  box.addEventListener('mouseleave', ()=> hold = false);
+})();
+</script>
+
+<script> // swipe nos depoimentos
+(function(){
+  const box = document.querySelector('#depoimentos .t-carousel');
+  if(!box) return;
+  let x0=null, i=[...box.querySelectorAll('input[name="t"]')].findIndex(r=>r.checked);
+  const radios=[...box.querySelectorAll('input[name="t"]')];
+  const go=n=>{ i=(n+radios.length)%radios.length; radios[i].checked=true; };
+  box.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  box.addEventListener('touchend',e=>{
+    if(x0==null) return;
+    const dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>40) go(i + (dx<0?1:-1));
+  },{passive:true});
+})();
+</script>
+
+<!-- JSON-LD (SEO Local) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthClub",
+  "name": "FisioForma Academia",
+  "image": "https://fisioforma-site.vercel.app/logo-fisioforma.png",
+  "url": "https://fisioforma-site.vercel.app/",
+  "telephone": "+55 98 99222-3926",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenida Vaticano, 04",
+    "addressLocality": "São Luís",
+    "addressRegion": "MA",
+    "postalCode": "65085-255",
+    "addressCountry": "BR"
+  },
+  "sameAs": [
+    "https://instagram.com/fisioforma.acad",
+    "https://wa.me/5598992223926"
+  ],
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"06:00","closes":"22:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"12:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"14:30","closes":"17:30"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"12:00"}
+  ],
+  "geo": {"@type":"GeoCoordinates","latitude": -2.5610109,"longitude": -44.3353749},
+  "hasMap": "https://www.google.com/maps/search/Av.+Vaticano,+4+-+Anjo+da+Guarda,+S%C3%A3o+Lu%C3%ADs+-+MA,+65085-255",
+  "potentialAction": {"@type":"ReserveAction","target":"https://wa.me/5598992223926","result":{"@type":"Thing","name":"Atendimento via WhatsApp"}}
+}
+</script>
+<script>
+  (function () {
+    const t = document.querySelector('.igdm .typing');
+    if (!t) return;
+    setTimeout(()=> t.style.display='none', 3200);
+  })();
+</script>
+
+
+</body>
+</html>
