@@ -524,6 +524,42 @@ section .grid > *{align-self:start}
 }
 
 /* ===== IG DM — Dark (como o Instagram) ===== */
+  /* ===== IG DM: container, header, body e input ===== */
+.igdm-wrap{
+  display:flex; flex-direction:column;
+  background:linear-gradient(180deg,#0b1116,#0f141a);
+  border:1px solid #20262d; border-radius:18px;
+  box-shadow:0 14px 36px rgba(0,0,0,.28);
+  overflow:hidden;
+}
+.igdm-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px; border-bottom:1px solid #1f2730; background:#0f141a;
+}
+.igdm-head .left{display:flex; align-items:center; gap:10px}
+.igdm-head .avatar{
+  width:36px; height:36px; border-radius:999px; border:1px solid #1f2730; object-fit:cover;
+}
+.igdm-head .meta .name{font-weight:800; color:#e6e9ef; line-height:1}
+.igdm-head .meta .handle{font-size:12px; color:#9aa9bb; line-height:1.1}
+.igdm-body{
+  padding:14px 12px;
+  background:#0c1117;
+  border-bottom:1px solid #1f2730;
+  max-height: clamp(300px, 46vh, 460px);
+  overflow:auto;
+}
+.igdm-input{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 12px; background:#0f141a;
+}
+.igdm-input .field{
+  flex:1; padding:10px 12px; border-radius:18px;
+  background:#121922; border:1px solid #1f2730; color:#dbe5f2;
+}
+.igdm-input .btns{display:flex; gap:8px; color:#c7d2e0; opacity:.9}
+.igdm-input .btns span{display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px}
+
 /* ===== IG DM — bolhas, story, reações ===== */
 .msg{max-width:75%;margin:8px 0;position:relative;overflow:visible}
 .bubble{
