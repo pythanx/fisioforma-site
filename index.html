@@ -113,45 +113,69 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 /* Ícones Estrutura */
 .ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;margin-right:8px;background:#eaf4fb;border:1px solid #d7e9f7;font-size:14px}
 
-/* Footer links */
+
   /* ===== Estilos do rodapé ===== */
-.site-footer{
-  background:#f8f9fa;
-  border-top:1px solid #e5e7eb;
+/* ===== Estilos do rodapé ===== */
+.site-footer {
+  background: #3a80b4; /* mesma cor dos botões */
+  color: #fff;
 }
-.footer-inner{
-  max-width:1100px;
-  margin:0 auto;
-  padding:18px 16px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  align-items:center;
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
 }
-.footer-nav{
-  display:flex;
-  gap:28px;
-  flex-wrap:wrap;
+.footer-nav {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
 }
-.footer-nav a{
-  text-decoration:none;             /* sem sublinhado */
-  color:#556070;                    /* cinza elegante */
-  font-size:15px;
-  padding:6px 4px;
-  border-radius:8px;
-  transition:color .2s ease, background-color .2s ease, transform .2s ease;
+.footer-nav a {
+  text-decoration: none;
+  color: #ffffffcc;   /* branco suave */
+  font-size: 15px;
+  transition: color .3s ease;
 }
 .footer-nav a:hover,
-.footer-nav a:focus{
-  color:#3a80b4;                    /* azul da marca */
-  background:rgba(58,128,180,.08);  /* realce sutil */
-  outline:none;
+.footer-nav a:focus {
+  color: #fff;        /* destaque no hover */
+  outline: none;
 }
-.footer-copy{
-  margin:0;
-  font-size:13px;
-  color:#6b7280;
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
+.footer-copy {
+  margin: 0;
+  font-size: 13px;
+  color: #e0e0e0;
+}
+.footer-credit {
+  margin: 0;
+  font-size: 13px;
+  color: #ffffffcc;
+}
+
+/* Layout desktop: alinhamento lateral */
+@media (min-width: 900px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  .footer-bottom {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
 
 /* Layout desktop: nav à esquerda, copyright à direita */
 @media (min-width: 900px){
@@ -1101,41 +1125,30 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   
 </main>
 
-<footer style="background:#f8f9fa; padding:20px 0; border-top:1px solid #ddd;">
-  <nav style="text-align:center; margin-bottom:8px;">
-    <a href="#sobre" style="margin:0 15px; text-decoration:none; color:#555; font-size:14px;">Sobre</a>
-    <a href="#planos" style="margin:0 15px; text-decoration:none; color:#555; font-size:14px;">Planos</a>
-    <a href="#estrutura" style="margin:0 15px; text-decoration:none; color:#555; font-size:14px;">Estrutura</a>
-    <a href="#contato" style="margin:0 15px; text-decoration:none; color:#555; font-size:14px;">Contato</a>
-  </nav>
-  <p style="text-align:center; font-size:13px; color:#888; margin:0;">
-    © 2025 FisioForma Academia. Todos os direitos reservados.
-  </p>
-</footer>
-
-<style>
-  footer nav a:hover {
-    color: #3a80b4; /* cor da identidade */
-    transition: color 0.3s ease;
-  }
-</style>
 
 
 <!-- ===== Rodapé ===== -->
-<footer class="site-footer" role="contentinfo" aria-label="Rodapé">
+<!-- ===== Rodapé ===== -->
+<footer class="site-footer" role="contentinfo" aria-label="Footer">
   <div class="footer-inner">
-    <nav class="footer-nav" aria-label="Navegação do rodapé">
-      <a href="#sobre">Sobre</a>
-      <a href="#planos">Planos</a>
-      <a href="#estrutura">Estrutura</a>
-      <a href="#contato">Contato</a>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="#sobre">About</a>
+      <a href="#planos">Plans</a>
+      <a href="#estrutura">Facilities</a>
+      <a href="#contato">Contact</a>
     </nav>
 
-    <p class="footer-copy">
-      © 2025 FisioForma Academia. Todos os direitos reservados.
-    </p>
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2025 FisioForma Academia. All rights reserved.
+      </p>
+      <p class="footer-credit">
+        Designed & Developed by <strong>Giselle Oliveira</strong>
+      </p>
+    </div>
   </div>
 </footer>
+
 
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
