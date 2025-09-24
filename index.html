@@ -413,102 +413,71 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 
 /* ===== IG DM — Dark (como o Instagram) ===== */
 /* ===== IG DM — Header e tipografia ===== */
+/* 1) Zera o “card branco” apenas nesse bloco */
+.card.igdm-card{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* 2) O widget DM vira um card escuro completo */
+.igdm-wrap{
+  display: flex;                /* coluna: header/body/input */
+  flex-direction: column;
+  width: 100%;
+  height: clamp(360px, 48vh, 560px);  /* altura responsiva */
+  border: 1px solid #182028;
+  border-radius: 20px;
+  background: #0b0b0b;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  overflow: hidden;             /* clipa cantos arredondados */
+  color: #e5e7eb;
+  isolation: isolate;
+}
+
+/* 3) Header, body, input em dark e colados */
 .igdm-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
   padding:12px 14px;
-  background:#0b0b0b;               /* mantém tudo escuro */
-  border-bottom:1px solid #182028;   /* divide do feed */
+  background:#0b0b0b;
+  border-bottom:1px solid #182028;
 }
-
-.igdm-head .left{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.igdm-body{
+  flex: 1 1 auto;               /* ocupa todo o meio */
+  overflow: auto;
+  background:#0b0b0b;
+  padding: 18px 14px 26px;      /* espaço p/ reações */
+  scrollbar-width: thin;
 }
-
-.igdm-head .avatar{
-  width:36px; height:36px;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  border:1px solid #2a2f35;
-  background:#111;
-}
-
-.igdm-head .meta{line-height:1.1}
-.igdm-head .meta .name{
-  font-weight:800;
-  color:#e9eef3;                     /* forte/legível no dark */
-  margin-bottom:2px;
-}
-.igdm-head .meta .handle{
-  font-size:12px;
-  color:#9aa1a8;                     /* cinza suave */
-}
-
-/* garante que o corpo e o input acompanhem o dark */
-.igdm-wrap{ background:#0b0b0b; }
-.igdm-body{ background:#0b0b0b; }
-.igdm-input{ background:#0b0b0b; border-top:1px solid #182028; }
-
-/* se o card “cortar” cantos/sombra, já está visível, mas reforço: */
-aside.card[style*="overflow:visible"]{ overflow:visible !important; }
-
-  /* Evita quebra do input da DM */
-.igdm-input{ display:flex; flex-wrap:nowrap; } /* força tudo na mesma linha */
-.igdm-input .field{ flex:1 1 auto; min-width:0; } /* permite encolher de verdade */
-.igdm-input .btns{ flex:0 0 auto; } /* ícones não esticam */
-
-
-/* === IG DM: barra de input (fix) === */
 .igdm-input{
-  display:flex !important;
-  align-items:center;
-  gap:10px;
+  flex: 0 0 auto;               /* fixa no rodapé */
+  display:flex; align-items:center; gap:10px;
   padding:10px 12px;
   border-top:1px solid #182028;
   background:#0b0b0b;
-  flex-wrap:nowrap !important;      /* impede quebra */
 }
-
-.igdm-input .btns{
-  display:flex;
-  gap:10px;
-  flex:0 0 auto;                    /* ícones não esticam */
-}
-
-.igdm-input .btns span{
-  display:inline-flex;
-  align-items:center;
-}
-
-/* o “campo” precisa poder encolher */
 .igdm-input .field{
-  flex:1 1 auto;
-  min-width:0;                      /* ESSENCIAL para não empurrar os ícones */
-  background:#1c1f23;
-  border:1px solid #2a2f35;
-  color:#e5e7eb;
-  border-radius:24px;
-  padding:10px 14px;
-  line-height:1.2;
-  white-space:nowrap;               /* mantém “Mensagem…” numa linha */
+  flex:1 1 auto; min-width:0;
+  background:#1c1f23; border:1px solid #2a2f35; color:#e5e7eb;
+  border-radius:24px; padding:10px 14px; font-size:14px;
 }
-.igdm-input {
-  display:flex; align-items:center;
-  background:#1c1c1c;
-  padding:6px 10px; gap:8px;
-  border-top:1px solid #2a2a2a;
+.igdm-input .btns{ display:flex; gap:10px; font-size:18px; color:#cbd5e1; }
+.igdm-input .btns span{ display:inline-flex; align-items:center; }
+
+/* Avatar/títulos do header */
+.igdm-head .left{ display:flex; align-items:center; gap:10px; }
+.igdm-head .avatar{
+  width:36px; height:36px; border-radius:50%; object-fit:cover;
+  border:1px solid #2a2f35; background:#111; display:block;
 }
-.igdm-input input {
-  flex:1; border:none; outline:none;
-  background:#2a2a2a; color:#fff;
-  padding:8px 12px; border-radius:20px;
-  font-size:14px;
-}
+.igdm-head .meta{ line-height:1.1; }
+.igdm-head .meta .name{ font-weight:800; color:#e9eef3; margin-bottom:2px; }
+.igdm-head .meta .handle{ font-size:12px; color:#9aa1a8; }
+
+/* (Opcional) limita a largura do widget dentro da coluna do hero */
+.igdm { max-width: 560px; margin-left: auto; }
 
   
 
@@ -648,7 +617,7 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 
 
   <!-- Coluna DIREITA (mensagens) -->
-<aside class="card" style="overflow:visible">
+<aside class="card igdm-card">
   <section class="igdm">
     <div class="igdm-wrap" role="region" aria-label="Conversa no Instagram (dark)">
       <header class="igdm-head">
