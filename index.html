@@ -457,6 +457,11 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 /* se o card “cortar” cantos/sombra, já está visível, mas reforço: */
 aside.card[style*="overflow:visible"]{ overflow:visible !important; }
 
+  /* Evita quebra do input da DM */
+.igdm-input{ display:flex; flex-wrap:nowrap; } /* força tudo na mesma linha */
+.igdm-input .field{ flex:1 1 auto; min-width:0; } /* permite encolher de verdade */
+.igdm-input .btns{ flex:0 0 auto; } /* ícones não esticam */
+
 
 
   
