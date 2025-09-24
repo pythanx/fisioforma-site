@@ -77,9 +77,64 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 .ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;margin-right:8px;background:#eaf4fb;border:1px solid #d7e9f7;font-size:14px}
 
 /* Footer links */
-.footer-links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.footer-links a{color:inherit;text-decoration:none;border-bottom:1px dashed currentColor}
-.footer-links a:hover{text-decoration:underline}
+  /* ===== Estilos do rodapé ===== */
+.site-footer{
+  background:#f8f9fa;
+  border-top:1px solid #e5e7eb;
+}
+.footer-inner{
+  max-width:1100px;
+  margin:0 auto;
+  padding:18px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:center;
+}
+.footer-nav{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.footer-nav a{
+  text-decoration:none;             /* sem sublinhado */
+  color:#556070;                    /* cinza elegante */
+  font-size:15px;
+  padding:6px 4px;
+  border-radius:8px;
+  transition:color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.footer-nav a:hover,
+.footer-nav a:focus{
+  color:#3a80b4;                    /* azul da marca */
+  background:rgba(58,128,180,.08);  /* realce sutil */
+  outline:none;
+}
+.footer-copy{
+  margin:0;
+  font-size:13px;
+  color:#6b7280;
+}
+
+/* Layout desktop: nav à esquerda, copyright à direita */
+@media (min-width: 900px){
+  .footer-inner{
+    padding:22px 24px;
+    flex-direction:row;
+    justify-content:space-between;
+  }
+}
+
+/* Dark mode opcional */
+@media (prefers-color-scheme: dark){
+  .site-footer{ background:#0f172a; border-top-color:#1f2937; }
+  .footer-nav a{ color:#c7ced6; }
+  .footer-nav a:hover,
+  .footer-nav a:focus{ color:#86c3ee; background:rgba(134,195,238,.12); }
+  .footer-copy{ color:#9aa3ad; }
+}
+
+
 
 /* Instagram sidebar */
 .ig-frame{position:relative;width:100%;aspect-ratio:1/1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
@@ -301,11 +356,7 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 
 /* Pequenos toques */
 section .grid > *{align-self:start}
-footer{border-top:1px solid var(--line);margin-top:28px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:18px 16px;color:var(--muted);font-size:14px}
-footer .credit{opacity:.9}
-footer .credit a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
-footer .credit a:hover{opacity:1;text-decoration:underline}
+
 
 /* Bloco de horários + redes no HERO */
 .hero .info-box{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 14px rgba(0,0,0,.04);max-width:340px}
@@ -1033,11 +1084,22 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 </style>
 
 
+<!-- ===== Rodapé ===== -->
+<footer class="site-footer" role="contentinfo" aria-label="Rodapé">
+  <div class="footer-inner">
+    <nav class="footer-nav" aria-label="Navegação do rodapé">
+      <a href="#sobre">Sobre</a>
+      <a href="#planos">Planos</a>
+      <a href="#estrutura">Estrutura</a>
+      <a href="#contato">Contato</a>
+    </nav>
 
-  <footer style="background:#f8f9fa; padding:20px 0; text-align:center; font-size:14px; color:#555; border-top:1px solid #ddd;">
-  <p style="margin:4px 0;">© 2025 FisioForma Academia. Todos os direitos reservados.</p>
-  <p style="margin:4px 0; font-weight:500;">Developed by Giselle Oliveira</p>
+    <p class="footer-copy">
+      © 2025 FisioForma Academia. Todos os direitos reservados.
+    </p>
+  </div>
 </footer>
+
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 
