@@ -536,29 +536,51 @@ section .grid > *{align-self:start}
 }
 
 /* header / body / input (mantém seu dark do Insta) */
-.igdm-head{display:flex;align-items:center;justify-content:space-between;
-  padding:10px 12px;background:#0f141a;border-bottom:1px solid #1e2730;}
-.igdm-body{
-  flex:1;                     /* ocupa todo o espaço do meio */
-  padding:14px 12px;
-  background:#0c1117;
-  border-bottom:1px solid #1e2730;
-  overflow:auto;
-  scrollbar-width:thin;
-
-  /* mantém o typing “grudado” no fim sem sobrepor mensagens */
-  display:flex; 
-  flex-direction:column;
+/* Header preto com ícones à direita */
+.igdm-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:12px 14px; background:#0f141a; border-bottom:1px solid #1e2730;
+  color:#e6e9ef; font-weight:700;
 }
-.igdm-input{display:flex;gap:8px;align-items:center;
-  padding:10px 12px;background:#0f141a;}
+.igdm-head .left{display:flex;align-items:center;gap:10px}
+.igdm-head .avatar{width:28px;height:28px;border-radius:999px;display:block}
+.igdm-head .meta .name{line-height:1}
+.igdm-head .meta .handle{font-weight:500;opacity:.6;font-size:12px}
+
+  
+  
+/* Área das mensagens */
+.igdm-body{
+  flex:1; background:#0b1116; padding:14px 12px 76px; /* espaço p/ o input fixo */
+  overflow:auto; scrollbar-width:thin;
+  display:flex; flex-direction:column;
+}
+  
+/* Barra de input fixa no rodapé (como o app) */
+.igdm-input{
+  position:sticky; bottom:0; z-index:2;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px; background:#0f141a; border-top:1px solid #1e2730;
+}
+.igdm-input .field{
+  flex:1; height:42px; border-radius:999px; background:#121820; color:#8fa3b8;
+  display:flex; align-items:center; padding:0 14px; font-size:14px;
+  border:1px solid #1f2a36;
+}
+.igdm-input .btns span{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px}
+
 
 /* ===== Altura nivelada com a coluna da esquerda ===== */
-.hero .wrap.grid.cols-2{ align-items:stretch; }  /* as 2 colunas esticam */
-aside.igdm-card{ display:flex; }                 /* o aside vira flex */
-.hero .igdm{ display:flex; width:100%; }         /* widget ocupa a coluna */
-.igdm-wrap{ height:100%; }                       /* preenche toda a altura */
-@media (min-width:980px){ .igdm-wrap{ min-height:520px; } }
+.hero .wrap.grid.cols-2{ grid-template-columns:minmax(0,1fr) minmax(320px,560px); align-items:stretch; column-gap:24px; }
+aside.igdm-card{ display:flex; justify-self:end; width:100%; background:transparent!important; border:0!important; box-shadow:none!important; padding:0!important; }
+.hero .igdm{ display:flex; width:100%; }
+.igdm-wrap{
+  display:flex; flex-direction:column;
+  height:100%; min-height:520px;                /* nivela com a coluna esquerda */
+  background:#0f141a; border:1px solid #1e2730; border-radius:20px;
+  box-shadow:0 16px 36px rgba(0,0,0,.22); overflow:hidden;
+}
+
 
 /* ===== “digitando…” ===== */
 .typing{
@@ -577,51 +599,53 @@ aside.igdm-card{ display:flex; }                 /* o aside vira flex */
 
 
 /* ===== IG DM — bolhas, story, reações ===== */
-.msg{max-width:75%;margin:8px 0;position:relative;overflow:visible}
+/* Mensagens — alinhamentos e bolhas */
+.msg{max-width:78%; margin:8px 0; position:relative}
+.them{align-self:flex-start}
+.me{align-self:flex-end}
 .bubble{
-  display:inline-block;padding:10px 12px;line-height:1.45;border-radius:18px;
-  box-shadow:0 1px 0 rgba(0,0,0,.08);border:1px solid transparent
+  display:inline-block; padding:11px 13px; line-height:1.4; border-radius:18px;
+  border:1px solid transparent; box-shadow:0 1px 0 rgba(0,0,0,.08);
+  word-wrap:break-word; white-space:pre-wrap;
 }
-.them .bubble{background:#1c1f23;border-color:#2a2f35;color:#e6e9ef}
-.me .bubble{background:#1b74e4;border-color:#155ec0;color:#fff}
+.them .bubble{background:#171b22; border-color:#2a2f35; color:#e6e9ef}
+.me .bubble{background:#1b74e4; border-color:#155ec0; color:#fff}
 .me .bubble.ending{background:#15508a}
 
-/* story + reação */
-.story{display:flex;align-items:flex-end;gap:10px;margin:6px 0 2px}
-.story .thumb{width:120px;height:214px;border-radius:12px;overflow:hidden;
-  border:1px solid #182028;background:#0f1113}
-.story .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.reaction-pill{
-  background:#1c1f23;border:1px solid #2a2f35;border-radius:999px;
-  padding:6px 10px;font-size:18px;box-shadow:0 1px 0 rgba(0,0,0,.1)
-}
-
-/* reações nas bolhas (sem cortar) */
+/* Reações no canto da bolha (coração, joinha) */
 .react{
-  position:absolute;right:-10px;bottom:-12px;
-  background:#1c1f23;border:1px solid #2a2f35;border-radius:999px;
-  padding:4px 8px;font-size:16px;line-height:1;display:flex;gap:4px;
-  box-shadow:0 1px 0 rgba(0,0,0,.12)
+  position:absolute; right:-10px; bottom:-12px;
+  background:#171b22; border:1px solid #2a2f35; border-radius:999px;
+  padding:4px 8px; font-size:16px; line-height:1; box-shadow:0 1px 0 rgba(0,0,0,.12)
 }
 
-/* linha “meta” e timestamp */
+/* Story + pílula de reação (primeira linha) */
 .meta-line{color:#94a3b8;font-size:12px;margin:2px 0 6px 6px}
-.time-stamp{color:#94a3b8;font-size:12px;text-align:center;margin:12px 0}
+.story{display:flex;align-items:flex-end;gap:10px;margin:6px 0 2px}
+.story .thumb{width:128px;height:228px;border-radius:12px;overflow:hidden;border:1px solid #182028;background:#0f1113}
+.story .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.reaction-pill{background:#171b22;border:1px solid #2a2f35;border-radius:999px;padding:6px 10px;font-size:18px}
 
-/* “digitando…” */
+/* Timestamp centralizado */
+.time-stamp{color:#8fa3b8;font-size:12px;text-align:center;margin:10px 0}
+
+/* “Digitando…” sempre visível colado no fim da conversa */
 .typing{
-  display:flex;gap:6px;align-items:center;margin-top:6px;
-  background:#1c1f23;border:1px solid #2a2f35;padding:8px 10px;border-radius:18px;
-  width:max-content
+  position:sticky; bottom:8px; align-self:flex-start;
+  display:flex; gap:6px; align-items:center; width:max-content;
+  margin:8px 6px 0; padding:8px 10px; border-radius:18px;
+  background:#171b22; border:1px solid #2a2f35;
 }
-.dot{width:6px;height:6px;border-radius:999px;background:#9aa9bb;opacity:.5;
-  animation:blink 1.2s infinite ease-in-out}
-.dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s}
+.dot{width:6px;height:6px;border-radius:999px;background:#9aa9bb;opacity:.5;animation:blink 1.2s infinite ease-in-out}
+.dot:nth-child(2){animation-delay:.15s}
+.dot:nth-child(3){animation-delay:.3s}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
 
-/* ajuste de altura em mobile */
+/* Mobile: checar altura máxima do feed */
+@media (max-width:980px){
+  .igdm-wrap{min-height:480px}
+}
 @media (max-width:640px){
-  .igdm-body{max-height:460px}
   .msg{max-width:86%}
 }
 
