@@ -463,6 +463,40 @@ aside.card[style*="overflow:visible"]{ overflow:visible !important; }
 .igdm-input .btns{ flex:0 0 auto; } /* ícones não esticam */
 
 
+/* === IG DM: barra de input (fix) === */
+.igdm-input{
+  display:flex !important;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-top:1px solid #182028;
+  background:#0b0b0b;
+  flex-wrap:nowrap !important;      /* impede quebra */
+}
+
+.igdm-input .btns{
+  display:flex;
+  gap:10px;
+  flex:0 0 auto;                    /* ícones não esticam */
+}
+
+.igdm-input .btns span{
+  display:inline-flex;
+  align-items:center;
+}
+
+/* o “campo” precisa poder encolher */
+.igdm-input .field{
+  flex:1 1 auto;
+  min-width:0;                      /* ESSENCIAL para não empurrar os ícones */
+  background:#1c1f23;
+  border:1px solid #2a2f35;
+  color:#e5e7eb;
+  border-radius:24px;
+  padding:10px 14px;
+  line-height:1.2;
+  white-space:nowrap;               /* mantém “Mensagem…” numa linha */
+}
 
   
 
