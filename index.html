@@ -72,6 +72,43 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 .hero-visual .cta{padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 8px 20px rgba(58,128,180,.25)}
 .hero-visual .cta:hover{transform:translateY(-1px)}
 
+/* ===== Ajuste fino do CARD do chat (lado direito do hero) ===== */
+
+/* limita a largura e encosta à direita */
+.hero .igdm{
+  width: min(560px, 46vw);   /* fica no máx. 560px, ou 46% da viewport */
+  justify-self: end;         /* gruda no lado direito da coluna */
+  align-self: start;         /* alinha pelo topo da coluna */
+  margin-top: 6px;           /* pequeno respiro do topo */
+}
+
+/* altura um pouco maior e sombra mais suave */
+.igdm-wrap{
+  height: clamp(420px, 52vh, 580px);   /* ↑ um pouco a altura mínima */
+  box-shadow: 0 14px 36px rgba(0,0,0,.28);  /* sombra mais “flutuante” */
+  border-radius: 18px;
+}
+
+/* responsivo: quando a grid vira uma coluna, o chat ocupa 100% */
+@media (max-width: 980px){
+  .hero .igdm{
+    width: 100%;
+    justify-self: stretch;
+    margin-top: 14px;
+  }
+  .igdm-wrap{
+    height: clamp(360px, 48vh, 540px);
+  }
+}
+
+/* impede efeitos de hover do .card global afetarem o chat */
+.igdm-card:hover, .igdm-card:focus-within{
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+
 
 /* Ícones Estrutura */
 .ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;margin-right:8px;background:#eaf4fb;border:1px solid #d7e9f7;font-size:14px}
