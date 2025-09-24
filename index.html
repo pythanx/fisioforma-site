@@ -412,56 +412,51 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
 }
 
 /* ===== IG DM — Dark (como o Instagram) ===== */
-.igdm{padding:8px}
-
-/* container do DM – escuro, sem cortar nada dentro */
-/* container do DM – escuro */
-.igdm-wrap{
-  max-width:880px;margin:0 auto;border:1px solid #182028;
-  border-radius:20px;                 /* ++ borda mais suave */
-  background:#0b0b0b;box-shadow:0 10px 28px rgba(0,0,0,.35);color:#e5e7eb;
-  overflow:hidden;                    /* ++ clipa o scroll ao raio */
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+/* ===== IG DM — Header e tipografia ===== */
+.igdm-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  background:#0b0b0b;               /* mantém tudo escuro */
+  border-bottom:1px solid #182028;   /* divide do feed */
 }
 
-/* área rolável */
-.igdm-body{
-  background:#0b0b0b;
-  padding:18px 14px 26px;             /* ++ espaço inferior p/ reações */
-  overflow:auto;max-height:520px;
-  scrollbar-width:thin;
+.igdm-head .left{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-/* bolhas */
-.msg{max-width:75%;margin:10px 0;position:relative}
-.bubble{
-  display:inline-block;padding:12px 14px;line-height:1.45;
-  border-radius:20px;                 /* ++ arredondado tipo IG */
-  box-shadow:0 1px 0 rgba(0,0,0,.08);border:1px solid transparent
+.igdm-head .avatar{
+  width:36px; height:36px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  border:1px solid #2a2f35;
+  background:#111;
 }
 
-/* story */
-.story .thumb{width:120px;height:214px;border-radius:14px; /* ++ */ }
-
-/* reação da bolha (dentro do clip) */
-.react{
-  position:absolute;right:6px;bottom:-6px;                 /* ++ não “vaza” a borda */
-  background:#1c1f23;border:1px solid #2a2f35;border-radius:999px;
-  padding:4px 8px;font-size:16px;line-height:1;display:flex;gap:4px;
-  box-shadow:0 1px 0 rgba(0,0,0,.12)
+.igdm-head .meta{line-height:1.1}
+.igdm-head .meta .name{
+  font-weight:800;
+  color:#e9eef3;                     /* forte/legível no dark */
+  margin-bottom:2px;
+}
+.igdm-head .meta .handle{
+  font-size:12px;
+  color:#9aa1a8;                     /* cinza suave */
 }
 
-/* barra de input */
-.igdm-input{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px;border-top:1px solid #182028;background:#0b0b0b;
-}
-.igdm-input .field{
-  flex:1;background:#1c1f23;border:1px solid #2a2f35;color:#e5e7eb;
-  border-radius:24px;padding:10px 14px;font-size:14px;
-}
-.igdm-input .btns{display:flex;gap:10px;font-size:18px;color:#cbd5e1}
-.igdm-input .btns span{display:inline-flex;align-items:center}
+/* garante que o corpo e o input acompanhem o dark */
+.igdm-wrap{ background:#0b0b0b; }
+.igdm-body{ background:#0b0b0b; }
+.igdm-input{ background:#0b0b0b; border-top:1px solid #182028; }
+
+/* se o card “cortar” cantos/sombra, já está visível, mas reforço: */
+aside.card[style*="overflow:visible"]{ overflow:visible !important; }
+
 
 
   
