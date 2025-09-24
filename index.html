@@ -690,27 +690,103 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   .igdm-wrap{ height: clamp(360px,48vh,540px); }
 }
 
+/* ===== Header / Menu ===== */
+.site-header {
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.header-inner {
+  max-width:1100px;
+  margin:0 auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo img {
+  height:40px;
+}
+.main-nav {
+  display:flex;
+  gap:24px;
+}
+.main-nav a {
+  text-decoration:none;
+  color:#3a80b4;
+  font-size:15px;
+  font-weight:500;
+  transition:color .3s ease;
+}
+.main-nav a:hover,
+.main-nav a:focus {
+  color:#1f4e72; /* tom mais escuro no hover */
+}
+.btn-whatsapp {
+  background:#3a80b4;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:14px;
+  text-decoration:none;
+  transition:background .3s ease, transform .2s ease;
+}
+.btn-whatsapp:hover {
+  background:#1f4e72;
+  transform:scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .main-nav {
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+  }
+  .btn-whatsapp {
+    margin-top:10px;
+  }
+}
+
+
 </style>
 </head>
 <body>
 
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<header>
-  <div class="wrap nav">
-    <div class="logo">
-      <img src="logo-fisioforma.png" srcset="logo-fisioforma@2x.png 2x" alt="Logo FisioForma" width="320" height="112">
-    </div>
-    <nav class="links" aria-label="Links principais">
+<!-- ===== Header / Menu ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href="#home" class="logo">
+      <img src="logo.png" alt="FisioForma Academia" />
+    </a>
+
+    <!-- Navegação -->
+    <nav class="main-nav" aria-label="Main navigation">
       <a href="#sobre">Sobre</a>
       <a href="#planos">Planos</a>
       <a href="#estrutura">Estrutura</a>
-      <a href="normas.html">Normas</a>
+      <a href="#normas">Normas</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">Fale no WhatsApp</a>
+
+    <!-- Botão WhatsApp -->
+    <a href="https://wa.me/5598983541687" target="_blank" class="btn-whatsapp">
+      Fale no WhatsApp
+    </a>
   </div>
 </header>
+
 
 <main id="conteudo">
   <!-- HERO -->
