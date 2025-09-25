@@ -114,86 +114,85 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 .ico{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;margin-right:8px;background:#eaf4fb;border:1px solid #d7e9f7;font-size:14px}
 
 
-  /* ===== Estilos do rodapé ===== */
-/* ===== Estilos do rodapé ===== */
-.site-footer {
-  background: #3a80b4; /* mesma cor dos botões */
-  color: #fff;
+/* ===== Rodapé (estilo do menu) ===== */
+.site-footer{
+  background:#fff;                  /* igual ao header */
+  border-top:1px solid #e5e7eb;     /* linha sutil como no menu */
+  color:#2c5f86;
 }
-.footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 22px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  text-align: center;
+.footer-inner{
+  max-width:1100px;
+  margin:0 auto;
+  padding:18px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center;
+  text-align:center;
 }
-.footer-nav {
-  display: flex;
-  gap: 28px;
-  flex-wrap: wrap;
+
+/* Nav do rodapé com efeito underline animado (igual ao menu) */
+.footer-nav{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
 }
-.footer-nav a {
-  text-decoration: none;
-  color: #ffffffcc;   /* branco suave */
-  font-size: 15px;
-  transition: color .3s ease;
+.footer-nav a{
+  position:relative;
+  text-decoration:none;             /* sem sublinhado fixo */
+  color:#2c5f86;
+  font-size:15px;
+  font-weight:600;
+  padding:6px 2px;
+  transition:color .25s ease;
+}
+.footer-nav a::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-6px;
+  width:0; height:2px;
+  background:#3a80b4;              /* azul dos botões */
+  border-radius:2px;
+  transition:width .25s ease;
 }
 .footer-nav a:hover,
-.footer-nav a:focus {
-  color: #fff;        /* destaque no hover */
-  outline: none;
+.footer-nav a:focus{ color:#1f4e72; outline:none; }
+.footer-nav a:hover::after,
+.footer-nav a:focus::after{ width:100%; }
+
+/* Texto do copyright/creditos */
+.footer-bottom{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
 }
-.footer-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.footer-copy{
+  margin:0;
+  font-size:13px;
+  color:#6b7280;                    /* cinza elegante */
 }
-.footer-copy {
-  margin: 0;
-  font-size: 13px;
-  color: #e0e0e0;
-}
-.footer-credit {
-  margin: 0;
-  font-size: 13px;
-  color: #ffffffcc;
+.footer-credit{
+  margin:0;
+  font-size:13px;
+  color:#2c5f86;
 }
 
-/* Layout desktop: alinhamento lateral */
-@media (min-width: 900px) {
-  .footer-inner {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-  }
-  .footer-bottom {
-    align-items: flex-end;
-    text-align: right;
-  }
-}
-
-
-/* Layout desktop: nav à esquerda, copyright à direita */
-@media (min-width: 900px){
+/* Layout desktop */
+@media (min-width:900px){
   .footer-inner{
-    padding:22px 24px;
     flex-direction:row;
     justify-content:space-between;
+    text-align:left;
   }
+  .footer-bottom{ align-items:flex-end; text-align:right; }
 }
 
-/* Dark mode opcional */
+/* Mantém claro mesmo no dark-mode do SO */
 @media (prefers-color-scheme: dark){
-  .site-footer{ background:#0f172a; border-top-color:#1f2937; }
-  .footer-nav a{ color:#c7ced6; }
-  .footer-nav a:hover,
-  .footer-nav a:focus{ color:#86c3ee; background:rgba(134,195,238,.12); }
-  .footer-copy{ color:#9aa3ad; }
+  .site-footer{ background:#fff; border-top-color:#e5e7eb; }
+  .footer-copy{ color:#7a8490; }
 }
+
 
 
 
@@ -758,8 +757,12 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   display: flex; align-items: center; gap: 20px;
 }
 
-.logo img {
-  height:40px;
+/* Logo maior e responsiva */
+.logo img{
+  height: clamp(48px, 6vw, 64px);   /* min 48px, cresce até 64px */
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 .main-nav{ display:flex; gap:28px; margin-left:auto; margin-right:auto; }
 /* ===== Navegação ===== */
