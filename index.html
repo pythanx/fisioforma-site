@@ -255,6 +255,150 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #ph6:checked ~ .dots label[for="ph6"]{background:var(--brand);transform:scale(1.2)}
 
 
+
+/* ====== SOBRE x FOTOS (mesma altura) ====== */
+#sobre .wrap .grid.cols-2 { align-items: stretch; }
+#sobre .wrap .grid.cols-2 > * { height: 100%; }
+
+/* o card vira um contêiner flexível e preenche a coluna */
+#sobre .sobre-card,
+#sobre .carrossel-card{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====== Card base – visual alinhado ao de Depoimentos ====== */
+#sobre .sobre-card,
+#sobre .carrossel-card{
+  background: radial-gradient(900px 300px at 50% -80px,#fff 0%,#f6fbff 65%,#f1f7fd 100%);
+  border: 1px solid #e6eef7;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(8,34,66,.10);
+  padding: 22px 18px;
+}
+
+/* === SOBRE (cards alinhados e look dos depoimentos) === */
+.about .about-grid{
+  display:grid;
+  grid-template-columns: minmax(0,1.1fr) minmax(320px,1fr);
+  gap:22px;
+  align-items:stretch;                /* <- alturas iguais */
+}
+
+/* ---- Card de texto (copy) ---- */
+.about .copy{
+  display:flex; flex-direction:column;
+  background: radial-gradient(1200px 400px at -20% 0%, #fff 0%, #f6fbff 65%, #f1f7fd 100%);
+  border:1px solid #e6eef7;
+  border-radius:16px;
+  padding:18px 18px 20px;
+  box-shadow:0 18px 44px rgba(8,34,66,.08);
+  min-height:100%;
+}
+.about .badge{
+  display:inline-block;
+  font-size:12px; font-weight:800;
+  color:#0b2a3a; background:#eaf5ff; border:1px solid #cfe3f5;
+  padding:6px 10px; border-radius:999px;
+}
+.about .kpis{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 12px}
+.about .kpi{
+  font-size:12px; font-weight:800;
+  color:#0b2a3a; background:#f1f5f9; border:1px solid #e2e8f0;
+  padding:6px 10px; border-radius:999px;
+}
+.about .mission-cards{
+  display:grid; gap:12px; grid-template-columns:1fr 1fr;
+  margin:10px 0 12px;
+}
+.about .mission-card{
+  background:#fff; border:1px solid #e6eef7; border-radius:12px;
+  padding:12px 14px; box-shadow:0 8px 20px rgba(8,34,66,.06);
+}
+.about .values{margin:8px 0 0; padding-left:0; list-style:none}
+.about .values li{margin:8px 0; display:flex; gap:8px}
+.about .values li::before{
+  content:""; width:10px; height:10px; margin-top:.45em; border-radius:999px;
+  background:#2b6b8a; box-shadow:0 0 0 6px rgba(43,107,138,.10);
+}
+
+/* ---- Card do carrossel (mesmo estilo do depoimento) ---- */
+.about .gallery{
+  display:flex; flex-direction:column;
+  background: radial-gradient(900px 300px at 50% -80px,#fff 0%,#f6fbff 65%,#f1f7fd 100%);
+  border:1px solid #e6eef7; border-radius:16px;
+  padding:12px 12px 56px;             /* espaço para dots */
+  box-shadow:0 24px 60px rgba(8,34,66,.10);
+  min-height:100%;
+  position:relative; isolation:isolate;
+}
+
+/* viewport e slides */
+.about .gallery .viewport{
+  border:1px solid #e9f1f9; border-radius:12px; overflow:hidden;
+  background:linear-gradient(#fff,#fbfdff 60%,#fff);
+  box-shadow:0 10px 28px rgba(8,34,66,.06) inset;
+  min-height: clamp(260px, 34vw, 380px);
+}
+.about .gallery .slides{
+  list-style:none; margin:0; padding:0; position:relative; height:100%;
+}
+.about .gallery .slides li{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  opacity:0; transform:translateY(6px) scale(.995);
+  transition:opacity .45s ease, transform .45s ease;
+}
+.about .gallery .slides img{
+  max-width:100%; max-height:100%; object-fit:cover; width:100%; height:100%;
+}
+
+/* mostrar slide ativo via radios */
+#ph1:checked ~ .viewport .slides li:nth-child(1),
+#ph2:checked ~ .viewport .slides li:nth-child(2),
+#ph3:checked ~ .viewport .slides li:nth-child(3),
+#ph4:checked ~ .viewport .slides li:nth-child(4),
+#ph5:checked ~ .viewport .slides li:nth-child(5),
+#ph6:checked ~ .viewport .slides li:nth-child(6){ opacity:1; transform:none; }
+
+/* esconder radios nativos */
+.about .gallery input[type="radio"]{ position:absolute; left:-9999px; }
+
+/* dots iguais ao componente de depoimentos */
+.about .gallery .dots{
+  position:absolute; left:0; right:0; bottom:12px;
+  display:flex; justify-content:center; gap:8px;
+}
+.about .gallery .dots label{
+  width:10px; height:10px; border-radius:999px; cursor:pointer;
+  background:#cfd8e3; transform:scale(.9);
+  transition:transform .18s ease, background .2s ease, box-shadow .2s ease;
+}
+/* estado ativo com “anel” */
+#ph1:checked ~ .dots label[for="ph1"],
+#ph2:checked ~ .dots label[for="ph2"],
+#ph3:checked ~ .dots label[for="ph3"],
+#ph4:checked ~ .dots label[for="ph4"],
+#ph5:checked ~ .dots label[for="ph5"],
+#ph6:checked ~ .dots label[for="ph6"]{
+  background:#2b6b8a; transform:scale(1.2);
+  box-shadow:0 0 0 8px rgba(43,107,138,.12);
+}
+
+/* hover micro interação */
+.about .gallery:hover{ box-shadow:0 28px 70px rgba(8,34,66,.12); }
+
+/* ---- Responsivo ---- */
+@media (max-width: 980px){
+  .about .about-grid{ grid-template-columns: 1fr; }
+  .about .mission-cards{ grid-template-columns:1fr; }
+  .about .gallery{ padding-bottom:52px; }
+  .about .gallery .viewport{ min-height: clamp(220px, 46vw, 320px); }
+}
+
+
+
+
 /* === Depoimentos: V3 estável === */
 #depoimentos .t-carousel{
   background:radial-gradient(900px 300px at 50% -80px,#fff 0%,#f6fbff 65%,#f1f7fd 100%);
