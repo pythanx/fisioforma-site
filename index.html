@@ -1524,40 +1524,36 @@ a.btn-whatsapp:focus {
   "potentialAction": {"@type":"ReserveAction","target":"https://wa.me/5598992223926","result":{"@type":"Thing","name":"Atendimento via WhatsApp"}}
 }
 </script>
- <script>
-  (function(){
-    const body = document.querySelector('.igdm-body');
-    const typing = document.querySelector('.igdm-body .typing');
+<script>
+(function(){
+  const body   = document.querySelector('.igdm-body');
+  const typing = body ? body.querySelector('.typing') : null;
+  if(!body || !typing) return;
 
-    if (!body) return;
+  const atBottom = () =>
+    (body.scrollHeight - body.scrollTop - body.clientHeight) < 12;
 
-    // 1) Auto-scroll para o final ao abrir
-    const goBottom = () => body.scrollTop = body.scrollHeight;
-    requestAnimationFrame(goBottom);
+  function updateTypingVisibility(){
+    typing.style.display = atBottom() ? 'flex' : 'none';
+  }
 
-    // 2) Mostrar “digitando…” por 3s quando estiver perto do fim
-    const nearBottom = () => (body.scrollHeight - body.clientHeight - body.scrollTop) < 40;
+  // aparece quando chega no fim, e some ao sair do fim
+  body.addEventListener('scroll', updateTypingVisibility, {passive:true});
+  // se você entrar já no fim:
+  requestAnimationFrame(updateTypingVisibility);
 
-    function showTyping(){
-      if (!typing) return;
-      if (nearBottom()){
-        typing.style.display = 'flex';
-        clearTimeout(showTyping._t);
-        showTyping._t = setTimeout(()=> typing.style.display = 'none', 3000);
-        // garante que fique visível sem “grudar” na viewport
-        requestAnimationFrame(goBottom);
-      }
+  // “pisca” de forma realista: só mantém visível ~3s após chegar no fundo
+  let timer;
+  body.addEventListener('scroll', ()=>{
+    clearTimeout(timer);
+    if(atBottom()){
+      typing.style.display='flex';
+      timer=setTimeout(()=>{ typing.style.display='none'; }, 3200);
     }
-    // chama uma vez ao carregar
-    showTyping();
-
-    // 3) Ao rolar: se o usuário subir, ocultar o “digitando”
-    body.addEventListener('scroll', () => {
-      if (!typing) return;
-      if (!nearBottom()) typing.style.display = 'none';
-    });
-  })();
+  }, {passive:true});
+})();
 </script>
+
 
 
 </body>
