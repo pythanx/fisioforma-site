@@ -597,6 +597,52 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
   .about .copy::before{ width:4px }
 }
 
+/* ===== Valores (card 2) — título + realce ===== */
+.gallery-info .mini-divider{
+  height:1px; margin:8px 0 12px; background:linear-gradient(90deg,#e8f1f9,transparent);
+  border-radius:2px;
+}
+.gallery-info .mini-heading{
+  display:inline-flex; align-items:center; gap:8px;
+  margin:0 0 8px; font-size:14.5px; font-weight:900; color:#0e1c2a;
+  letter-spacing:.2px;
+}
+.gallery-info .mini-heading::before{
+  content:"⭐"; filter:saturate(1.1); font-size:15px;
+}
+
+/* grupo de chips com mais presença */
+.gallery-info .mini-values-wrap{ margin-top:2px }
+.gallery-info .mini-values{
+  display:flex; flex-wrap:wrap; gap:10px; margin:0; padding:0; list-style:none;
+}
+.gallery-info .mini-values li{
+  position:relative;
+  padding:7px 12px 7px 28px;  /* espaço p/ o ícone */
+  border:1px solid #dbe9f7; border-radius:999px;
+  background:linear-gradient(180deg,#f9fcff,#f3f8fe);
+  color:#0b2a3a; font-weight:800; font-size:12.5px;
+  box-shadow:0 2px 8px rgba(8,34,66,.06);
+  transition:transform .12s ease, box-shadow .18s ease, border-color .2s ease;
+}
+.gallery-info .mini-values li::before{
+  content:""; position:absolute; left:10px; top:50%; width:14px; height:14px; transform:translateY(-50%);
+  background:#2b6b8a; border-radius:50%;
+  box-shadow:0 0 0 6px rgba(43,107,138,.12);   /* anel */
+  -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>') center/12px no-repeat;
+          mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>') center/12px no-repeat;
+}
+.gallery-info .mini-values li:hover{
+  transform:translateY(-1px);
+  border-color:#cfe3f5;
+  box-shadow:0 6px 16px rgba(8,34,66,.10);
+}
+
+/* opção: cores por item (se quiser variar levinho, pode remover) */
+.gallery-info .mini-values li:nth-child(2)::before{ background:#1f4e63 }
+.gallery-info .mini-values li:nth-child(3)::before{ background:#2b6b8a }
+.gallery-info .mini-values li:nth-child(4)::before{ background:#1f4e63 }
+.gallery-info .mini-values li:nth-child(5)::before{ background:#2b6b8a }
 
 
 /* ===== Depoimentos — bloco final ===== */
@@ -1790,13 +1836,20 @@ a.btn.xs, .news-cta.xs, .cta.xs{ padding:6px 10px; font-size:13px; border-radius
             <div class="mini"><h5>Propósito</h5><p>Saúde e autoestima com treino orientado, em segurança.</p></div>
             <div class="mini"><h5>Visão</h5><p>Referência no Anjo da Guarda em atendimento humanizado.</p></div>
           </div>
-          <ul class="mini-values">
-            <li>Compromisso</li>
-            <li>Respeito</li>
-            <li>Comunidade</li>
-            <li>Empatia</li>
-            <li>Excelência</li>
-          </ul>
+          <div class="mini-divider" role="separator" aria-hidden="true"></div>
+          
+          <section class="mini-values-wrap" aria-labelledby="valores-title">
+            <h5 id="valores-title" class="mini-heading">Valores</h5>
+          
+            <ul class="mini-values" role="list">
+              <li class="v-ok">Compromisso</li>
+              <li class="v-ok">Respeito</li>
+              <li class="v-ok">Comunidade</li>
+              <li class="v-ok">Empatia</li>
+              <li class="v-ok">Excelência</li>
+            </ul>
+          </section>
+
         </div>
       </div>
 
