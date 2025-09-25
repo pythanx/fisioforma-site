@@ -1065,36 +1065,47 @@ a.btn-whatsapp:focus {
 
 
 
-/* === Novidades com gradiente por tipo + botões suaves === */
+/* === Novidades com CAPA REAL === */
 .news-list{display:grid;gap:18px}
+@media(min-width:860px){.news-list{grid-template-columns:repeat(2,1fr)}}
+
 .news-card{
   position:relative;background:#fff;border:1px solid #e6eef7;border-radius:16px;
-  padding:18px;overflow:hidden;
-  box-shadow:0 10px 28px rgba(8,34,66,.06);
+  overflow:hidden; box-shadow:0 10px 28px rgba(8,34,66,.06);
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-.news-card::before{
-  content:"";position:absolute;left:0;right:0;top:0;height:4px;border-top-left-radius:16px;border-top-right-radius:16px;
-  background:linear-gradient(90deg,#2b6b8a,#38bdf8); /* padrão */
-}
-/* Gradiente por tipo */
-.news-card[data-type="evento"]::before        {background:linear-gradient(90deg,#2563eb,#22d3ee)}
-.news-card[data-type="aniversario"]::before   {background:linear-gradient(90deg,#1d4ed8,#7c3aed)}
-.news-card[data-type="campanha"]::before      {background:linear-gradient(90deg,#f59e0b,#f97316)}
-.news-card[data-type="aviso"]::before         {background:linear-gradient(90deg,#10b981,#059669)}
-
 .news-card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(8,34,66,.10);border-color:#cfe3f5}
 
-.news-head{display:flex;align-items:center;gap:10px;margin:2px 0 8px}
-.news-date{font-size:12px;font-weight:600;color:#64748b;padding:4px 8px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0}
-.news-tag{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;border:1px solid transparent}
-.news-tag.evento{background:#e6f4ff;border-color:#b6e0fe;color:#084298}
-.news-tag.aniversario{background:#ede9fe;border-color:#c4b5fd;color:#3730a3}
-.news-tag.campanha{background:#fff8cc;border-color:#ffe287;color:#7a5a00}
-.news-title{margin:2px 0 6px;font-size:20px;line-height:1.25}
+/* capa (imagem real) */
+.news-cover{
+  position:relative; aspect-ratio:16/9; background:#eef2f7; overflow:hidden;
+}
+.news-cover img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transform:scale(1.02);
+}
+.news-cover::after{ /* gradiente p/ legibilidade do título */
+  content:""; position:absolute; inset:auto 0 0 0; height:42%;
+  background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));
+}
+
+/* meta na capa */
+.news-chip{
+  position:absolute; left:12px; bottom:12px; z-index:2;
+  display:flex; align-items:center; gap:8px; color:#fff;
+}
+.news-chip .tag, .news-chip .date{
+  font-size:12px; font-weight:700; padding:6px 10px; border-radius:999px;
+  background:rgba(0,0,0,.42); backdrop-filter:saturate(120%) blur(2px);
+  border:1px solid rgba(255,255,255,.2);
+}
+
+/* corpo */
+.news-body{padding:16px}
+.news-title{margin:6px 0 6px;font-size:20px;line-height:1.25}
 .news-text{color:#475569;margin:0 0 12px;line-height:1.55}
 
-/* Botões: primário e ghost com microinterações */
+/* Botões suaves */
 .news-actions{display:flex;gap:10px;flex-wrap:wrap}
 .news-cta{
   display:inline-flex;align-items:center;gap:8px;
@@ -1105,15 +1116,9 @@ a.btn-whatsapp:focus {
 }
 .news-cta svg{width:16px;height:16px}
 .news-cta:hover{transform:translateY(-1px);background:var(--brand-ink);box-shadow:0 10px 20px rgba(43,107,138,.26)}
-.news-cta:active{transform:translateY(0)}
 .news-cta.ghost{background:#fff;color:var(--brand);border-color:#cfe3f5;box-shadow:none}
 .news-cta.ghost:hover{background:#f5fbff;border-color:#bcd7ea;color:var(--brand-ink)}
 
-@media (max-width:640px){
-  .news-card{padding:16px 14px;border-radius:14px}
-  .news-title{font-size:18px}
-  .news-cta{padding:9px 12px;border-radius:10px}
-}
 
 /* ===== Botões “Novidades” — versão compacta e sem sublinhado ===== */
 .news-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
