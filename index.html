@@ -116,9 +116,9 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 /* ===== Rodapé (estilo do menu) ===== */
 .site-footer{
-  background:#fff;                  /* igual ao header */
-  border-top:1px solid #e5e7eb;     /* linha sutil como no menu */
-  color:#2c5f86;
+  background:#1e293b;              /* igual header */
+  border-top:1px solid #0f172a;
+  color:#e2e8f0;                   /* texto claro para contraste */
 }
 .footer-inner{
   max-width:1100px;
@@ -748,8 +748,8 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 /* ===== Header / Menu ===== */
 .site-header{
   position: sticky; top: 0; z-index: 1000;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
+  background:#1e293b;              /* cinza da logo */
+  border-bottom:1px solid #0f172a; /* tom ainda mais escuro */
   backdrop-filter: saturate(140%) blur(4px);
 }
 .header-inner{
@@ -758,19 +758,20 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   display: flex; align-items: center; gap: 20px;
 }
 
-/* Logo maior e responsiva */
+/* Logo maior e visível */
 .logo img{
-  height: clamp(48px, 6vw, 64px);   /* min 48px, cresce até 64px */
+  height: clamp(64px, 8vw, 90px);  /* mínimo 64px, pode crescer até 90px */
   width: auto;
   display: block;
   object-fit: contain;
 }
+
 .main-nav{ display:flex; gap:28px; margin-left:auto; margin-right:auto; }
 /* ===== Navegação ===== */
 .main-nav a{
   position: relative;
   text-decoration: none !important;        /* sem sublinhado fixo */
-  color: #2c5f86;                          /* azul do texto do menu */
+  color:#f1f5f9; 
   font-size: 15px; font-weight: 600;
   padding: 6px 2px;
   transition: color .25s ease;
@@ -779,8 +780,9 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   content:""; position:absolute; left:0; bottom:-6px;
   width:0; height:2px; background:#3a80b4; border-radius:2px;
   transition: width .25s ease;
+  background:#38bdf8;             /* underline animado em azul */
 }
-.main-nav a:hover,
+.main-nav a:hover{color:#38bdf8; }
 .main-nav a:focus{ color:#1f4e72; outline:none; }
 .main-nav a:hover::after,
 .main-nav a:focus::after{ width:100%; }
