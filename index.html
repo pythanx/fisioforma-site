@@ -1447,41 +1447,41 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   "potentialAction": {"@type":"ReserveAction","target":"https://wa.me/5598992223926","result":{"@type":"Thing","name":"Atendimento via WhatsApp"}}
 }
 </script>
-  <script>
-/* ===== DM: comportamentos fiéis ===== */
-(function(){
-  const body = document.querySelector('.igdm-body');
-  const typing = body?.querySelector('.typing');
+ <script>
+  (function(){
+    const body = document.querySelector('.igdm-body');
+    const typing = document.querySelector('.igdm-body .typing');
 
-  if (!body || !typing) return;
+    if (!body) return;
 
-  // rola para o fim ao carregar
-  const scrollToEnd = () => { body.scrollTop = body.scrollHeight; };
-  requestAnimationFrame(scrollToEnd);
+    // 1) Auto-scroll para o final ao abrir
+    const goBottom = () => body.scrollTop = body.scrollHeight;
+    requestAnimationFrame(goBottom);
 
-  // mostra "digitando..." só quando você está no fim da conversa
-  let hideTO;
-  const nearBottom = () => (body.scrollHeight - body.scrollTop - body.clientHeight) < 40;
+    // 2) Mostrar “digitando…” por 3s quando estiver perto do fim
+    const nearBottom = () => (body.scrollHeight - body.clientHeight - body.scrollTop) < 40;
 
-  const showTyping = () => {
-    typing.classList.remove('hide');
-    clearTimeout(hideTO);
-    hideTO = setTimeout(()=> typing.classList.add('hide'), 3200);
-  };
+    function showTyping(){
+      if (!typing) return;
+      if (nearBottom()){
+        typing.style.display = 'flex';
+        clearTimeout(showTyping._t);
+        showTyping._t = setTimeout(()=> typing.style.display = 'none', 3000);
+        // garante que fique visível sem “grudar” na viewport
+        requestAnimationFrame(goBottom);
+      }
+    }
+    // chama uma vez ao carregar
+    showTyping();
 
-  const onScroll = () => {
-    // se afastar do rodapé, esconde
-    if (!nearBottom()) typing.classList.add('hide');
-    else typing.classList.remove('hide');
-  };
-  body.addEventListener('scroll', onScroll, {passive:true});
-
-  // simula uma chegada de mensagem para efeito visual (opcional)
-  // se você não quiser, remova as duas linhas abaixo:
-  if (nearBottom()) showTyping();
-
-})();
+    // 3) Ao rolar: se o usuário subir, ocultar o “digitando”
+    body.addEventListener('scroll', () => {
+      if (!typing) return;
+      if (!nearBottom()) typing.style.display = 'none';
+    });
+  })();
 </script>
+
 
 </body>
 </html>
