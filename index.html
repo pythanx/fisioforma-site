@@ -1041,6 +1041,22 @@ a.btn-whatsapp:focus {
   text-decoration: none !important;
 }
 
+/* Novidades (cards) */
+.news-list{display:grid;gap:14px}
+.news-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.news-head{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+.news-date{font-size:12px;color:#64748b}
+.news-tag{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid #cbd5e1;background:#f1f5f9;color:#0f172a}
+.news-tag.evento{background:#e6f4ff;border-color:#b6e0fe;color:#084298}
+/* campanha (Setembro Amarelo) */
+.news-tag.campanha{background:#fff8cc;border-color:#ffe287;color:#7a5a00}
+
+.news-title{margin:4px 0 6px 0;font-size:18px}
+.news-text{margin:0 0 10px 0;color:var(--muted)}
+.news-cta{display:inline-block;padding:8px 12px;border-radius:10px;border:1px solid var(--brand);color:#fff;background:var(--brand)}
+.news-cta.outline{background:#fff;color:var(--brand)}
+.news-cta:hover{background:var(--brand-ink);color:#fff}
+
 
 </style>
 </head>
@@ -1251,9 +1267,63 @@ a.btn-whatsapp:focus {
   <section id="instagram" class="alt">
     <div class="wrap grid cols-2">
       <div>
-        <h2>Novidades da FisioForma</h2>
-        <p class="muted">Acompanhe avisos, eventos e promoções no nosso Instagram.</p>
+  <h2>Novidades da FisioForma</h2>
+  <p class="muted">Avisos, eventos e campanhas recentes da nossa academia.</p>
+
+  <div class="news-list">
+    <!-- Arraiá -->
+    <article class="news-card">
+      <div class="news-head">
+        <span class="news-date">26 jun 2025</span>
+        <span class="news-tag evento">Evento</span>
       </div>
+      <h3 class="news-title">Arraiá da FisioForma</h3>
+      <p class="news-text">
+        Música, sorrisos e o clima gostoso de São João com as turmas de dança da manhã e da noite.
+      </p>
+      <a class="news-cta" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Ver no Instagram</a>
+    </article>
+
+    <!-- 11 anos – teaser -->
+    <article class="news-card">
+      <div class="news-head">
+        <span class="news-date">11 ago 2025</span>
+        <span class="news-tag evento">Aniversário</span>
+      </div>
+      <h3 class="news-title">11 anos de história 💙</h3>
+      <p class="news-text">
+        Jornada de treinos, superação e comunidade. Tem surpresa especial para celebrar!
+      </p>
+      <a class="news-cta" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Assistir o vídeo</a>
+    </article>
+
+    <!-- Aniversário – bolo -->
+    <article class="news-card">
+      <div class="news-head">
+        <span class="news-date">31 ago 2025</span>
+        <span class="news-tag evento">Aniversário</span>
+      </div>
+      <h3 class="news-title">Aniversário FisioForma 🎂</h3>
+      <p class="news-text">
+        Mais do que números, celebramos histórias, amizades e conquistas.
+      </p>
+      <a class="news-cta" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Ver fotos</a>
+    </article>
+
+    <!-- Setembro Amarelo -->
+    <article class="news-card">
+      <div class="news-head">
+        <span class="news-date">11 set 2025</span>
+        <span class="news-tag campanha">Campanha</span>
+      </div>
+      <h3 class="news-title">Setembro Amarelo</h3>
+      <p class="news-text">
+        Exercitar o corpo também é cuidar da mente. Você não está sozinho. 💛
+      </p>
+      <a class="news-cta outline" href="#contato">Falar com a equipe</a>
+    </article>
+  </div>
+</div>
       <aside style="border-left:1px solid var(--line); padding-left:16px;">
         <div class="card" style="border-radius:18px; overflow:hidden;">
           <div class="body" style="padding:12px 16px">
