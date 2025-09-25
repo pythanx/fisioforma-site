@@ -154,13 +154,6 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 
 
-
-/* Instagram sidebar */
-
-/* grade alinhada e coluna direita “presa” */
-#instagram .instagram-grid{ align-items: start; }
-#instagram aside .card{ position: sticky; top: 88px; }
-
 /* botões mais suaves (já usa sua paleta) */
 .news-cta{
   border-radius: 12px;
@@ -1365,6 +1358,17 @@ a.btn-whatsapp:focus {
   .news-cta svg{ width:13px; height:13px; }
 }
 
+/* Topbar da seção Novidades */
+#novidades .news-topbar{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:14px; flex-wrap:wrap; margin-bottom:8px;
+}
+#novidades .news-topbar h2{ margin:0 }
+#novidades .news-topbar .actions{ display:flex; gap:10px; }
+@media (max-width:680px){
+  #novidades .news-topbar{ align-items:flex-start }
+}
+
 
 
 /* Coluna direita “@fisioforma.acad” com mini thumbs */
@@ -1670,14 +1674,24 @@ a.btn.xs, .news-cta.xs, .cta.xs {
     </div>
   </section>
 
-  <!-- INSTAGRAM SIDEBAR -->
-<section id="instagram" class="alt">
+
+  <!-- NOVIDADES (full width, sem embed) -->
+<section id="novidades" class="alt" aria-label="Novidades da FisioForma">
   <div class="wrap">
-    <h2>Novidades da FisioForma</h2>
-    <p class="muted">Avisos, eventos e campanhas recentes da nossa academia.</p>
+
+    <div class="news-topbar">
+      <div class="title-wrap">
+        <h2>Novidades da FisioForma</h2>
+        <p class="muted">Avisos, eventos e campanhas recentes da nossa academia.</p>
+      </div>
+      <div class="actions">
+        <a class="news-cta ghost sm" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Instagram</a>
+        <a class="news-cta sm" href="#planos">Ver tudo</a>
+      </div>
+    </div>
 
     <div class="news-list">
-
+      <!-- (mantenha aqui os mesmos <article class="news-card"> que você já tem) -->
       <!-- Arraiá -->
       <article class="news-card" data-type="evento">
         <figure class="news-cover">
@@ -1793,10 +1807,12 @@ a.btn.xs, .news-cta.xs, .cta.xs {
           <p class="news-text">Parabéns à nossa equipe FisioForma — vocês são gigantes! 💙</p>
         </div>
       </article>
-
+      <!-- ... -->
     </div>
+
   </div>
 </section>
+
 
 
   <!-- SOBRE + CARROSSEL FOTOS -->
