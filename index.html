@@ -528,8 +528,12 @@ section .grid > *{align-self:start}
   flex-direction:column;
   border:1px solid #1e2730;
   border-radius:18px;
-  box-shadow:0 18px 38px rgba(0,0,0,.22);
   overflow:hidden;                 /* garante o recorte nos 4 cantos */
+  background:#0c1117 !important;
+  /* mantém a sombra + adiciona um contorno externo 1px do mesmo tom */
+  box-shadow:
+    0 18px 38px rgba(0,0,0,.22),
+    0 0 0 1px #0c1117; /* <- “anel” por fora que mata o halo claro */
 }
 
 /* topo (mostrando o nome sempre) */
@@ -537,10 +541,10 @@ section .grid > *{align-self:start}
   display:flex; align-items:center; justify-content:space-between;
   gap:10px; 
   color:#e6edf5;
-  background:transparent; border-bottom:1px solid #1e2730;
   border:0;
   padding:10px 12px;
-  border-bottom:1px solid #1e2730;
+  background:#0c1117 !important;
+  border-bottom:1px solid #1e2730 !important;
 }
   /* linha divisória idêntica à do IG */
 .igdm-head::after{
