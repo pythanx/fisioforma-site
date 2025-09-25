@@ -178,22 +178,82 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
   
 /* Carrossel FOTOS (fade) */
-#sobre .ff-fade{--h:clamp(220px,26vw,360px);max-width:640px;margin:24px auto 0;border:1px solid var(--line);border-radius:16px;background:#fff;position:relative;overflow:hidden}
-#sobre .ff-fade input{display:none}
-#sobre .ff-fade .viewport{position:relative;height:var(--h);background:#f2f4f7;isolation:isolate}
-#sobre .ff-fade .slides{list-style:none;margin:0;padding:0;position:relative;height:100%}
-#sobre .ff-fade .slides li{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .6s ease;will-change:opacity}
-#sobre .ff-fade .slides img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center}
-#fff1:checked ~ .viewport .slides li:nth-child(1){opacity:1}
-#fff2:checked ~ .viewport .slides li:nth-child(2){opacity:1}
-#fff3:checked ~ .viewport .slides li:nth-child(3){opacity:1}
-#fff4:checked ~ .viewport .slides li:nth-child(4){opacity:1}
-#fff5:checked ~ .viewport .slides li:nth-child(5){opacity:1}
-#fff6:checked ~ .viewport .slides li:nth-child(6){opacity:1}
-#sobre .ff-fade .nav-dots{text-align:center;margin:10px 0 14px}
-#sobre .ff-fade .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
-#sobre .ff-fade .nav-dots label:hover{transform:scale(1.1)}
-#fff1:checked ~ .nav-dots label[for="fff1"],#fff2:checked ~ .nav-dots label[for="fff2"],#fff3:checked ~ .nav-dots label[for="fff3"],#fff4:checked ~ .nav-dots label[for="fff4"],#fff5:checked ~ .nav-dots label[for="fff5"],#fff6:checked ~ .nav-dots label[for="fff6"]{background:var(--brand)}
+/* === SOBRE — layout, tipografia e microdetalhes === */
+.about{--pad:clamp(18px,2.4vw,24px)}
+.about h2{margin-bottom:8px}
+.about .sub{margin:0 0 14px;color:#475569}
+.about .badge{
+  display:inline-flex;gap:8px;align-items:center;
+  padding:6px 10px;border-radius:999px;
+  font-size:12px;font-weight:700;color:#0b1324;
+  background:linear-gradient(180deg,#f7fbff,#eef6fd);
+  border:1px solid #dbe9f7; box-shadow:0 6px 16px rgba(8,34,66,.06) inset;
+}
+
+/* grid 2 colunas em telas médias+ */
+.about-grid{display:grid;gap:var(--pad)}
+@media(min-width:960px){
+  .about-grid{grid-template-columns:1.1fr .9fr;align-items:start}
+}
+
+/* bloco de texto */
+.about .copy{background:#fff;border:1px solid var(--line);border-radius:14px;padding:var(--pad)}
+.about .copy p{margin:.6rem 0;color:#334155}
+.about .kpis{display:flex;flex-wrap:wrap;gap:10px;margin:.6rem 0 1rem}
+.about .kpi{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 10px;border-radius:10px;font-weight:800;font-size:12px;
+  background:#f1f5f9;border:1px solid #e2e8f0;color:#0f172a;
+}
+
+/* lista com check */
+.about .values{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.about .values li{display:flex;gap:10px;align-items:flex-start}
+.about .values li::before{
+  content:"✓"; flex:0 0 auto;
+  width:22px;height:22px;border-radius:999px;
+  display:inline-grid;place-items:center;
+  font-weight:900;color:#fff;background:var(--brand);
+  transform:translateY(2px)
+}
+.about .values strong{color:#0b1324}
+
+/* cartão missão/visão */
+.mission-cards{display:grid;gap:10px;margin:12px 0}
+@media(min-width:560px){.mission-cards{grid-template-columns:1fr 1fr}}
+.mission-card{
+  border:1px solid #e6eef7;border-radius:12px;background:#fff;
+  padding:14px 16px;box-shadow:0 8px 22px rgba(8,34,66,.05)
+}
+.mission-card h4{margin:0 0 6px;font-size:15px;color:#0b1324}
+
+/* galeria: moldura suave, legenda e dots maiores */
+.about .gallery{
+  background:#fff;border:1px solid #e6eef7;border-radius:16px;
+  box-shadow:0 12px 28px rgba(8,34,66,.06); overflow:hidden
+}
+.about .gallery .viewport{height:clamp(220px,28vw,360px);background:#f3f6fa}
+.about .gallery .dots{display:flex;justify-content:center;gap:8px;padding:10px}
+.about .gallery .dots label{width:8px;height:8px;border-radius:999px;background:#cbd5e1;cursor:pointer;transition:transform .15s,background .2s}
+.about .gallery [type="radio"]{position:absolute;left:-9999px}
+.about .gallery .slides{position:relative;height:100%}
+.about .gallery .slides li{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .5s}
+.about .gallery .slides img{max-width:100%;max-height:100%;object-fit:contain}
+
+/* ativação dos slides (6 imagens) */
+#ph1:checked ~ .viewport .slides li:nth-child(1),
+#ph2:checked ~ .viewport .slides li:nth-child(2),
+#ph3:checked ~ .viewport .slides li:nth-child(3),
+#ph4:checked ~ .viewport .slides li:nth-child(4),
+#ph5:checked ~ .viewport .slides li:nth-child(5),
+#ph6:checked ~ .viewport .slides li:nth-child(6){opacity:1}
+#ph1:checked ~ .dots label[for="ph1"],
+#ph2:checked ~ .dots label[for="ph2"],
+#ph3:checked ~ .dots label[for="ph3"],
+#ph4:checked ~ .dots label[for="ph4"],
+#ph5:checked ~ .dots label[for="ph5"],
+#ph6:checked ~ .dots label[for="ph6"]{background:var(--brand);transform:scale(1.2)}
+
 
 /* === Depoimentos: V3 estável === */
 #depoimentos .t-carousel{
@@ -1596,55 +1656,76 @@ a.btn.xs, .news-cta.xs, .cta.xs {
 
 
   <!-- SOBRE + CARROSSEL FOTOS -->
-  <section id="sobre" class="alt" aria-labelledby="sobre-titulo">
-    <div class="wrap">
-      <h2 id="sobre-titulo">Sobre a FisioForma</h2>
-      <p class="pill">11 anos no mercado — desde 2014</p>
+  <section id="sobre" class="alt about" aria-labelledby="sobre-titulo">
+  <div class="wrap">
+    <h2 id="sobre-titulo">Sobre a FisioForma</h2>
+    <div class="badge">11 anos no mercado — desde 2014</div>
 
-      <h3>Nossa história</h3>
-      <p class="muted">
-        Fundada em 2014 no bairro Anjo da Guarda, em São Luís – MA, a <strong>FisioForma Academia</strong> nasceu com a proposta de unir <strong>acolhimento</strong>, <strong>orientação profissional</strong> e <strong>resultados reais</strong>. Ao longo de mais de onze anos, evoluímos junto com a comunidade, mantendo o foco em um ambiente seguro, motivador e acessível para diferentes perfis — de iniciantes a praticantes avançados.
-      </p>
+    <div class="about-grid" style="margin-top:14px">
 
-      <p class="muted">
-        <strong>Propósito:</strong> Promover saúde, autoestima e qualidade de vida através da atividade física orientada, em um ambiente seguro e acolhedor.<br>
-        <strong>Visão:</strong> Ser reconhecida como a principal academia da comunidade do Anjo da Guarda, referência em atendimento humanizado e resultados sustentáveis.
-      </p>
-      <p class="muted"><strong>Valores</strong></p>
-     <!-- <h3 class="muted" style="margin-top:8px">Valores</h3> -->
-      <ul class="values muted">
-        <li><strong>Compromisso:</strong> evolução consistente com acompanhamento próximo.</li>
-        <li><strong>Respeito:</strong> ética, acolhimento e educação em cada interação.</li>
-        <li><strong>Comunidade:</strong> um ambiente de apoio e motivação coletiva.</li>
-        <li><strong>Empatia:</strong> escuta ativa e planos condizentes com cada objetivo.</li>
-        <li><strong>Excelência:</strong> melhoria contínua de estrutura, serviços e atendimento.</li>
-      </ul>
+      <!-- TEXTO -->
+      <div class="copy">
+        <p class="sub"><strong>FisioForma Academia</strong> nasceu no Anjo da Guarda (São Luís – MA) com a proposta de unir
+          <strong>acolhimento</strong>, <strong>orientação profissional</strong> e <strong>resultados reais</strong>.</p>
 
-      <div class="ff-fade" aria-label="Galeria de fotos da academia">
-        <!-- radios -->
-        <input type="radio" name="fff" id="fff1" checked>
-        <input type="radio" name="fff" id="fff2">
-        <input type="radio" name="fff" id="fff3">
-        <input type="radio" name="fff" id="fff4">
-        <input type="radio" name="fff" id="fff5">
-        <input type="radio" name="fff" id="fff6">
+        <div class="kpis">
+          <span class="kpi">+11 anos</span>
+          <span class="kpi">Equipe atenciosa</span>
+          <span class="kpi">Ambiente acolhedor</span>
+        </div>
+
+        <div class="mission-cards">
+          <div class="mission-card">
+            <h4>Propósito</h4>
+            <p>Promover saúde, autoestima e qualidade de vida por meio da atividade física orientada, em um espaço seguro e motivador.</p>
+          </div>
+          <div class="mission-card">
+            <h4>Visão</h4>
+            <p>Ser referência da comunidade do Anjo da Guarda em atendimento humanizado e resultados sustentáveis.</p>
+          </div>
+        </div>
+
+        <h4 style="margin:10px 0 6px">Valores</h4>
+        <ul class="values">
+          <li><strong>Compromisso:</strong> evolução consistente com acompanhamento próximo.</li>
+          <li><strong>Respeito:</strong> ética, acolhimento e educação em cada interação.</li>
+          <li><strong>Comunidade:</strong> apoio e motivação coletiva.</li>
+          <li><strong>Empatia:</strong> escuta ativa e planos condizentes com cada objetivo.</li>
+          <li><strong>Excelência:</strong> melhoria contínua de estrutura, serviços e atendimento.</li>
+        </ul>
+      </div>
+
+      <!-- GALERIA (usa suas fotos reais) -->
+      <div class="gallery" aria-label="Fotos da academia">
+        <!-- rádios -->
+        <input type="radio" name="ph" id="ph1" checked>
+        <input type="radio" name="ph" id="ph2">
+        <input type="radio" name="ph" id="ph3">
+        <input type="radio" name="ph" id="ph4">
+        <input type="radio" name="ph" id="ph5">
+        <input type="radio" name="ph" id="ph6">
+
         <div class="viewport">
           <ul class="slides">
-            <li><img src="foto1.png?v=2" alt="Área de musculação" decoding="async"></li>
-            <li><img src="foto2.png?v=2" alt="Máquinas de treino" decoding="async" loading="lazy"></li>
-            <li><img src="foto3.png?v=2" alt="Espaço para aulas coletivas" decoding="async" loading="lazy"></li>
-            <li><img src="foto4.png?v=2" alt="Ambiente amplo e climatizado" decoding="async" loading="lazy"></li>
-            <li><img src="foto5.png?v=2" alt="Área de cardio com esteiras e bicicletas" decoding="async" loading="lazy"></li>
-            <li><img src="foto6.png?v=2" alt="Vista geral da academia" decoding="async" loading="lazy"></li>
+            <li><img src="foto1.png?v=2" alt="Salão principal — musculação"></li>
+            <li><img src="foto2.png?v=2" alt="Máquinas e organização por grupos"></li>
+            <li><img src="foto3.png?v=2" alt="Espaço para aulas coletivas"></li>
+            <li><img src="foto4.png?v=2" alt="Ambiente amplo e climatizado"></li>
+            <li><img src="foto5.png?v=2" alt="Área de cardio"></li>
+            <li><img src="foto6.png?v=2" alt="Vista geral"></li>
           </ul>
         </div>
-        <div class="nav-dots">
-          <label for="fff1"></label><label for="fff2"></label><label for="fff3"></label>
-          <label for="fff4"></label><label for="fff5"></label><label for="fff6"></label>
+
+        <div class="dots" aria-hidden="true">
+          <label for="ph1"></label><label for="ph2"></label><label for="ph3"></label>
+          <label for="ph4"></label><label for="ph5"></label><label for="ph6"></label>
         </div>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- PLANOS -->
   <section id="planos">
