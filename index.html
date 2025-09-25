@@ -851,156 +851,59 @@ section .grid > *{align-self:start}
   margin-top: .5rem;
 }
 
-/* ===== IG DM – container fiel ao Instagram ===== */
-.igdm-wrap{
-  display:flex;
-  flex-direction:column;
-  border:1px solid #1e2730;
-  border-radius: 0 0 18px 18px !important; /* topo quadrado */
-  overflow:hidden;                 /* garante o recorte nos 4 cantos */
-  background:#0c1117 !important;
-  /* mantém a sombra + adiciona um contorno externo 1px do mesmo tom */
-  box-shadow:
-  0 18px 38px rgba(0,0,0,.22),
-  0 -0 0 2px #0c1117; /* mais espesso, pega mais o topo */
-}
+/* ===== IG DM — versão final única ===== */
+.igdm-card:hover, .igdm-card:focus-within{ transform:none !important; box-shadow:none !important; border-color:transparent !important; }
 
-/* topo (mostrando o nome sempre) */
-.igdm-head{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:10px; 
-  color:#e6edf5;
-  border:0;
-  padding:10px 12px;
+.igdm-wrap{
+  position:relative;
+  display:flex; flex-direction:column;
   background:#0c1117 !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  border-bottom:1px solid #1e2730 !important;
+  border:1px solid #1e2730;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 18px 38px rgba(0,0,0,.22);
+  isolation:isolate;
 }
-  /* linha divisória idêntica à do IG */
-.igdm-head::after{
-  display:none;
-  content:""; position:absolute; left:0; right:0; bottom:0;
-  height:1px; background:#222a32;
-  transform:translateZ(0);       /* evita “dente” no antialiasing */
+.igdm-wrap::after{ content: none !important; } /* <- CORREÇÃO */
+
+.igdm-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:#0c1117 !important; color:#e6edf5;
+  padding:10px 12px; border-bottom:1px solid #1e2730 !important;
 }
-/* bloco da esquerda (avatar + textos) */
+.igdm-head::after{ display:none !important; }
 .igdm-head .left{display:flex; align-items:center; gap:10px; min-width:0;}
-.igdm-head .avatar{width:32px; height:32px; border-radius:999px; flex:0 0 auto;}
-.igdm-head .meta{min-width:0;}
+.igdm-head .avatar{width:32px; height:32px; border-radius:999px;}
 .igdm-head .name{font-weight:800; color:#e6edf5; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .igdm-head .handle{font-size:12px; color:#93a1b3;}
 
-
-/* área de mensagens */
 .igdm-body{
-  flex:1; padding:14px 12px;
- border-bottom:1px solid #1e2730;
-  padding-top:14px; border-top:0;
-  overflow:auto;
-  scrollbar-width:none;           /* Firefox: some a barra */
-  background:#0c1117;             /* mesmo tom do Instagram dark */
-  border:0;
-
-  /* rolagem “do IG”: fina e discreta, sem invadir a borda */
-  overflow:auto; overscroll-behavior:contain; scrollbar-gutter:stable;
-  scrollbar-width:thin; scrollbar-color:#2a3340 transparent;
+  flex:1; padding:14px 12px; background:#0c1117; color:#e6e9ef;
+  border-bottom:1px solid #1e2730; overflow:auto; scrollbar-width:none;
 }
 .igdm-body::-webkit-scrollbar{width:0; height:0;}
-.igdm-body::-webkit-scrollbar-thumb{background:#2a3340; border-radius:999px display:none;}
-.igdm-body::-webkit-scrollbar-track{background:transparent}
 
-/* barra de entrada (igual ao IG) */
-.igdm-input{
-  display:flex; align-items:center; gap:8px;
-  padding:12px;
-  background:#0c1117;             /* mesmo tom do Instagram dark */
-  border:0;
-}
-.igdm-input .field{
-  flex:1; background:#0b0f14; border:1px solid #222a32;
-  color:#e6edf5; padding:14px 16px; border-radius:24px;
-}
+.igdm-input{ display:flex; align-items:center; gap:8px; padding:12px; background:#0c1117; }
+.igdm-input .field{ flex:1; background:#0b0f14; border:1px solid #222a32; color:#e6edf5; padding:14px 16px; border-radius:24px; }
 
-/* ===== Bolhas fiéis ===== */
+/* bolhas */
 .msg{max-width:75%; margin:8px 0; position:relative}
-.bubble{
-  display:inline-block; padding:10px 12px; line-height:1.45;
-  border-radius:20px; border:1px solid transparent;
-  box-shadow:0 1px 0 rgba(0,0,0,.08);
-}
-.them .bubble{background:#1b1f26; border-color:#2a2f35; color:#e6e9ef}
-.me   .bubble{background:#1b74e4;  border-color:#155ec0; color:#fff}
+.bubble{display:inline-block; padding:10px 12px; line-height:1.45; border-radius:20px; border:1px solid transparent; box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.them .bubble{background:#1b1f26; border-color:#2a2f35}
+.me .bubble{background:#1b74e4; border-color:#155ec0; color:#fff}
 .me .bubble.ending{background:#15508a}
-
-/* reação encaixada (sem cortar) */
-.react{
-  position:absolute; right:-10px; bottom:-12px;
-  background:#1c1f23; border:1px solid #2a2f35; border-radius:999px;
-  padding:4px 8px; font-size:16px; line-height:1; display:flex; gap:4px;
-  box-shadow:0 1px 0 rgba(0,0,0,.12)
-}
-
-/* story + reação (como no IG) */
+.react{ position:absolute; right:-10px; bottom:-12px; background:#1c1f23; border:1px solid #2a2f35; border-radius:999px; padding:4px 8px; font-size:16px; display:flex; gap:4px }
 .story{display:flex; align-items:flex-end; gap:10px; margin:6px 0 2px}
-.story .thumb{width:120px; height:214px; border-radius:12px; overflow:hidden;
-  border:1px solid #182028; background:#0f1113}
+.story .thumb{width:120px; height:214px; border-radius:12px; overflow:hidden; border:1px solid #182028; background:#0f1113}
 .story .thumb img{width:100%; height:100%; object-fit:cover; display:block}
-.reaction-pill{
-  background:#1b1f26; border:1px solid #2a3038; border-radius:999px;
-  padding:6px 10px; font-size:18px;
-}
+.reaction-pill{ background:#1b1f26; border:1px solid #2a3038; border-radius:999px; padding:6px 10px; font-size:18px }
+.meta-line,.time-stamp{ color:#9fb0c4; font-size:12px; }
 
-/* meta e timestamp */
-.meta-line{color:#9fb0c4; font-size:12px; margin:2px 0 6px 6px}
-.time-stamp{color:#9fb0c4; font-size:12px; text-align:center; margin:12px 0}
-
-/* ===== “digitando…” — em linha, sem grudar na tela ===== */
-/* “digitando…” — agora rola junto (não é sticky) */
-.typing{
-  display:flex; gap:6px; align-items:center;
-  margin:10px 6px 2px 6px; padding:8px 10px; width:max-content;
-  border-radius:18px; background:#1c1f23; border:1px solid #2a2f35;
-}
-.dot{width:6px; height:6px; border-radius:999px; background:#9aa9bb; opacity:.5;
-  animation:blink 1.2s infinite ease-in-out}
-.dot:nth-child(2){animation-delay:.15s}
-.dot:nth-child(3){animation-delay:.3s}
+.typing{ display:flex; gap:6px; align-items:center; margin:10px 6px 2px 6px; padding:8px 10px; width:max-content; border-radius:18px; background:#1c1f23; border:1px solid #2a2f35 }
+.dot{ width:6px; height:6px; border-radius:999px; background:#9aa9bb; opacity:.5; animation:blink 1.2s infinite ease-in-out }
+.dot:nth-child(2){ animation-delay:.15s } .dot:nth-child(3){ animation-delay:.3s }
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
-/* ===== Nivelar a altura com a coluna esquerda ===== */
-.hero .wrap.grid.cols-2{align-items:stretch}
-.hero aside.igdm-card{display:flex}
-.hero .igdm{display:flex; width:100%}
-.igdm-wrap{height:100%}
-@media (min-width:980px){ .igdm-wrap{min-height:540px} }  /* mesma sensação de “painel” do IG */
-
-/* pequenos refinamentos mobile */
-@media (max-width:640px){
-  .msg{max-width:86%}
-}
-
-
-/* === PATCH: some a “pontinha” nas quinas do chat === */
-.igdm-wrap{
-  position: relative;
-  background: #0c1117 !important;   /* trocar o gradiente por sólido */
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 18px 38px rgba(0,0,0,.22);
-  isolation: isolate;               /* evita halo do fundo atrás */
-}
-
-/* pinta um “anel” interno do mesmo tom pra matar o anti-aliasing */
-.igdm-wrap::after{
-  content:"none" !important;
-}
-
-/* header com o MESMO fundo do wrap e sem pseudo-linha extra */
-.igdm-head{
-  background:#0c1117 !important;
-  border-bottom:1px solid #1e2730 !important;
-}
-.igdm-head::after{ display:none !important; }
+@media (max-width:640px){ .msg{max-width:86%} }
 
 
   
