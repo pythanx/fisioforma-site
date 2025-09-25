@@ -538,13 +538,14 @@ section .grid > *{align-self:start}
   display:flex; align-items:center; justify-content:space-between;
   gap:10px; 
   color:#e6edf5;
-  background:#0c1117;             /* mesmo tom do Instagram dark */
+  background:transparent; border-bottom:1px solid #1e2730;
   border:0;
   padding:10px 12px;
   border-bottom:1px solid #1e2730;
 }
   /* linha divisória idêntica à do IG */
 .igdm-head::after{
+  display:none;
   content:""; position:absolute; left:0; right:0; bottom:0;
   height:1px; background:#222a32;
   transform:translateZ(0);       /* evita “dente” no antialiasing */
@@ -645,7 +646,7 @@ section .grid > *{align-self:start}
 }
 
 
-  
+
 
   
 /* Reveal */
