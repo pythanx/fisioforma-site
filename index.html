@@ -452,6 +452,8 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 }
 .btn-escolher:hover{ background:#155a8a; }
 
+
+
 /* Destaque Casadinha */
 .plano-card.destaque{ border:2px solid #1d72b8; transform:scale(1.03); box-shadow:0 8px 18px rgba(29,114,184,.2); }
 
@@ -1119,48 +1121,46 @@ a.btn-whatsapp:focus {
 .news-cta.ghost{background:#fff;color:var(--brand);border-color:#cfe3f5;box-shadow:none}
 .news-cta.ghost:hover{background:#f5fbff;border-color:#bcd7ea;color:var(--brand-ink)}
 
+/* ===== BOTÕES DAS NOVIDADES — ultra compactos ===== */
+.news-actions{ gap:8px; margin-top:6px; }
 
-/* ===== Botões “Novidades” — versão compacta e sem sublinhado ===== */
-.news-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-
-/* link-base: sem sublinhado em qualquer estado */
 .news-card a,
-.news-card a:visited,
 .news-card a:hover,
-.news-card a:focus{
-  text-decoration:none !important;
-  -webkit-text-decoration:none !important;
-}
+.news-card a:focus{ text-decoration:none !important; }
 
-/* botão principal (compacto) */
+/* principal */
 .news-cta{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:9px 12px;                    /* menor */
-  border-radius:10px;                   /* menos “bala” */
-  font-size:14px; font-weight:700;
-  color:#fff; background:#2b6b8a;       /* seu azul */
+  padding:6px 10px;           /* ↓ menor */
+  border-radius:8px;          /* menos arredondado */
+  font-size:13px; font-weight:800;
+  line-height:1;              /* altura certinha */
   border:1px solid #2b6b8a;
-  box-shadow:0 6px 14px rgba(43,107,138,.18);
-  transition:transform .15s ease, box-shadow .18s ease, background .18s ease;
+  background:#2b6b8a; color:#fff;
+  box-shadow:0 4px 10px rgba(43,107,138,.16);  /* sombra sutil */
+  transition:transform .12s ease, box-shadow .18s ease, background .18s ease;
 }
-.news-cta svg{ width:16px; height:16px; flex:0 0 auto; }
-.news-cta:hover{ background:#1f4e63; transform:translateY(-1px); box-shadow:0 10px 20px rgba(43,107,138,.26); }
+.news-cta svg{ width:14px; height:14px; }
+
+/* hover/active discretos */
+.news-cta:hover{ background:#1f4e63; transform:translateY(-1px); box-shadow:0 8px 16px rgba(43,107,138,.22); }
 .news-cta:active{ transform:none; }
 
-/* versão “ghost” discreta */
+/* variante “ghost” */
 .news-cta.ghost{
   background:#fff; color:#2b6b8a;
   border-color:#cfe3f5; box-shadow:none;
 }
-.news-cta.ghost:hover{ background:#f5fbff; color:#1f4e63; border-color:#bcd7ea; }
+.news-cta.ghost:hover{ background:#f6fbff; color:#1f4e63; border-color:#bcd7ea; }
 
-/* tamanho ainda menor (opcional) */
-.news-cta.sm{ padding:7px 10px; font-size:13px; border-radius:8px; }
+/* versão ainda menor (se quiser) */
+.news-cta.xs{ padding:5px 8px; font-size:12.5px; border-radius:7px; }
 
-/* remove qualquer sublinhado herdado em cards/tabela */
-.news-card .news-cta,
-.compare a,
-#planos a{ text-decoration:none !important; }
+/* em telas pequenas, reduz um tiquinho mais */
+@media (max-width:560px){
+  .news-cta{ padding:6px 9px; font-size:12.5px; }
+  .news-cta svg{ width:13px; height:13px; }
+}
+
 
 
 /* Coluna direita “@fisioforma.acad” com mini thumbs */
