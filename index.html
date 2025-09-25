@@ -1115,6 +1115,48 @@ a.btn-whatsapp:focus {
   .news-cta{padding:9px 12px;border-radius:10px}
 }
 
+/* ===== Botões “Novidades” — versão compacta e sem sublinhado ===== */
+.news-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+
+/* link-base: sem sublinhado em qualquer estado */
+.news-card a,
+.news-card a:visited,
+.news-card a:hover,
+.news-card a:focus{
+  text-decoration:none !important;
+  -webkit-text-decoration:none !important;
+}
+
+/* botão principal (compacto) */
+.news-cta{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:9px 12px;                    /* menor */
+  border-radius:10px;                   /* menos “bala” */
+  font-size:14px; font-weight:700;
+  color:#fff; background:#2b6b8a;       /* seu azul */
+  border:1px solid #2b6b8a;
+  box-shadow:0 6px 14px rgba(43,107,138,.18);
+  transition:transform .15s ease, box-shadow .18s ease, background .18s ease;
+}
+.news-cta svg{ width:16px; height:16px; flex:0 0 auto; }
+.news-cta:hover{ background:#1f4e63; transform:translateY(-1px); box-shadow:0 10px 20px rgba(43,107,138,.26); }
+.news-cta:active{ transform:none; }
+
+/* versão “ghost” discreta */
+.news-cta.ghost{
+  background:#fff; color:#2b6b8a;
+  border-color:#cfe3f5; box-shadow:none;
+}
+.news-cta.ghost:hover{ background:#f5fbff; color:#1f4e63; border-color:#bcd7ea; }
+
+/* tamanho ainda menor (opcional) */
+.news-cta.sm{ padding:7px 10px; font-size:13px; border-radius:8px; }
+
+/* remove qualquer sublinhado herdado em cards/tabela */
+.news-card .news-cta,
+.compare a,
+#planos a{ text-decoration:none !important; }
+
 
 /* Coluna direita “@fisioforma.acad” com mini thumbs */
 .insta-reels{
