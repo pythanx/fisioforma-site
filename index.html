@@ -721,44 +721,55 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 }
 
 /* ===== Header / Menu ===== */
-.site-header {
-  background:#fff;
-  border-bottom:1px solid #e5e7eb;
-  position:sticky;
-  top:0;
-  z-index:1000;
+.site-header{
+  position: sticky; top: 0; z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: saturate(140%) blur(4px);
 }
-.header-inner {
-  max-width:1100px;
-  margin:0 auto;
-  padding:14px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+.header-inner{
+  max-width: 1100px; margin: 0 auto;
+  padding: 12px 20px;
+  display: flex; align-items: center; gap: 20px;
 }
+
 .logo img {
   height:40px;
 }
-.main-nav {
-  display:flex;
-  gap:24px;
-}
+.main-nav{ display:flex; gap:28px; margin-left:auto; margin-right:auto; }
 /* ===== Navegação ===== */
-.main-nav a {
-  text-decoration: none;   /* remove sublinhado */
-  color: #3a80b4;
-  font-size: 15px;
-  font-weight: 500;
-  transition: color 0.3s ease;
+.main-nav a{
+  position: relative;
+  text-decoration: none !important;        /* sem sublinhado fixo */
+  color: #2c5f86;                          /* azul do texto do menu */
+  font-size: 15px; font-weight: 600;
+  padding: 6px 2px;
+  transition: color .25s ease;
 }
-
+.main-nav a::after{
+  content:""; position:absolute; left:0; bottom:-6px;
+  width:0; height:2px; background:#3a80b4; border-radius:2px;
+  transition: width .25s ease;
+}
 .main-nav a:hover,
-.main-nav a:focus {
-  color: #1f4e72;
-  outline: none;
+.main-nav a:focus{ color:#1f4e72; outline:none; }
+.main-nav a:hover::after,
+.main-nav a:focus::after{ width:100%; }
+
+/* link ativo (página/âncora atual) — adicione class="active" no link correspondente */
+.main-nav a.active{
+  color:#1f4e72;
+}
+.main-nav a.active::after{
+  width:100%;
 }
 
+/* layout no mobile */
+@media (max-width: 820px){
+  .header-inner{ flex-wrap: wrap; justify-content: center; }
+  .main-nav{ order: 3; flex-wrap: wrap; gap:18px; margin: 8px 0 0; }
+  a.btn-whatsapp{ order: 2; }
+}
 /* ===== Botão WhatsApp ===== */
 /* força remover sublinhado de QUALQUER link com classe btn-whatsapp */
 a.btn-whatsapp,
@@ -817,20 +828,20 @@ a.btn-whatsapp:focus {
   <div class="header-inner">
     <!-- Logo -->
     <a href="#home" class="logo">
-       <img src="logo-fisioforma.png" srcset="logo-fisioforma@2x.png 2x" alt="Logo FisioForma">
+       <img src="logo-fisioforma.png" srcset="logo-fisioforma@2x.png 2x" alt="Logo FisioForma" style="height:40px">
     </a>
 
     <!-- Navegação -->
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#sobre">Sobre</a>
-      <a href="#planos">Planos</a>
-      <a href="#estrutura">Estrutura</a>
-      <a href="#normas">Normas</a>
-      <a href="#contato">Contato</a>
-    </nav>
+     <nav class="main-nav" aria-label="Main navigation">
+          <a href="#sobre" class="active">Sobre</a>
+          <a href="#planos">Planos</a>
+          <a href="#estrutura">Estrutura</a>
+          <a href="#normas">Normas</a>
+          <a href="#contato">Contato</a>
+        </nav>
 
     <!-- Botão WhatsApp -->
-    <a href="https://wa.me/5598983541687" target="_blank" class="btn-whatsapp">
+    <a class="btn-whatsapp" href="https://wa.me/5598983541687" target="_blank" rel="noopener">
       Fale no WhatsApp
     </a>
   </div>
@@ -1333,12 +1344,12 @@ a.btn-whatsapp:focus {
 
 
 
-<!-- ===== Rodapé ===== -->
+
 <!-- ===== Rodapé ===== -->
 <footer class="site-footer" role="contentinfo" aria-label="Footer">
   <div class="footer-inner">
     <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="#sobre">Spbre</a>
+      <a href="#sobre">Sobre</a>
       <a href="#planos">Planos</a>
       <a href="#estrutura">Estrutura</a>
       <a href="#contato">Contato</a>
