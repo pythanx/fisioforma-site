@@ -1236,56 +1236,34 @@ a.btn-whatsapp:focus {
 }
 
 
-/* ===== BOTÕES GERAIS (CTA, planos, novidades, rodapé) ===== */
-a.btn, button, 
-.news-cta, .cta, .cta a {
-  display:inline-flex; align-items:center; justify-content:center;
-  gap:6px;
-  padding:8px 14px;
-  border-radius:8px;
-  font-size:14px; font-weight:700;
-  line-height:1.2;
+/* ===== Botões (geral + novidades + rodapé) — bloco único ===== */
+a.btn, button, .news-cta, .cta, .cta a {
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:8px 14px; border-radius:8px;
+  font-size:14px; font-weight:700; line-height:1.2;
   text-decoration:none !important;
-  border:1px solid #2b6b8a;
-  background:#2b6b8a; color:#fff;
+  border:1px solid #2b6b8a; background:#2b6b8a; color:#fff;
   box-shadow:0 4px 10px rgba(43,107,138,.16);
   transition:transform .12s ease, box-shadow .18s ease, background .18s ease;
   cursor:pointer;
 }
-a.btn svg, button svg,
-.news-cta svg, .cta svg { width:15px; height:15px; }
-
-/* Hover / Active */
-a.btn:hover, button:hover,
-.news-cta:hover, .cta:hover {
-  background:#1f4e63;
-  transform:translateY(-1px);
-  box-shadow:0 8px 16px rgba(43,107,138,.22);
+a.btn:hover, button:hover, .news-cta:hover, .cta:hover{
+  background:#1f4e63; transform:translateY(-1px); box-shadow:0 8px 16px rgba(43,107,138,.22);
 }
-a.btn:active, button:active,
-.news-cta:active, .cta:active { transform:none; }
+a.btn:active, button:active, .news-cta:active, .cta:active{ transform:none; }
 
-/* Ghost (fundo branco) */
-a.btn.ghost, .news-cta.ghost, .cta.ghost {
-  background:#fff; color:#2b6b8a;
-  border-color:#cfe3f5; box-shadow:none;
+a.btn.ghost, .news-cta.ghost, .cta.ghost{
+  background:#fff; color:#2b6b8a; border-color:#cfe3f5; box-shadow:none;
 }
-a.btn.ghost:hover, .news-cta.ghost:hover, .cta.ghost:hover {
+a.btn.ghost:hover, .news-cta.ghost:hover, .cta.ghost:hover{
   background:#f6fbff; color:#1f4e63; border-color:#bcd7ea;
 }
 
-/* Extra compacta (usar .xs se quiser menor ainda) */
-a.btn.xs, .news-cta.xs, .cta.xs {
-  padding:6px 10px; font-size:13px; border-radius:7px;
+a.btn.xs, .news-cta.xs, .cta.xs{ padding:6px 10px; font-size:13px; border-radius:7px; }
+@media (max-width:560px){
+  a.btn, button, .news-cta, .cta{ padding:7px 11px; font-size:13px; }
 }
 
-/* Responsivo: ajustar em telas pequenas */
-@media (max-width:560px){
-  a.btn, button, .news-cta, .cta {
-    padding:7px 11px; font-size:13px;
-  }
-  a.btn svg, button svg, .news-cta svg, .cta svg { width:13px; height:13px; }
-}
 
 
 </style>
