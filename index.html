@@ -247,6 +247,20 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #ph5:checked ~ .dots label[for="ph5"],
 #ph6:checked ~ .dots label[for="ph6"]{background:var(--brand);transform:scale(1.2)}
 
+/* Sobre: histórico somente texto justificado */
+.about .copy p,
+.about .copy .lead { text-align: justify; }
+
+/* Badges mais “respiráveis” (mesmo estilo, um pouco mais clean) */
+.about .kpi{
+  font-weight: 800;
+  font-size: 12.5px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #f2f7fc;
+  border: 1px solid #dbe9f7;
+  color: #0b2a3a;
+}
 
 
 /* ====== SOBRE x FOTOS (mesma altura) ====== */
@@ -1807,47 +1821,34 @@ a.btn.xs, .news-cta.xs, .cta.xs {
 
     <div class="about-grid" style="margin-top:14px">
 
-      <!-- CARD 1: HISTÓRICO / TEXTO -->
-      <div class="copy">
-        <p class="lead">
-          Fundada em 2014 no bairro Anjo da Guarda, em São Luís – MA, a <strong>FisioForma Academia</strong> nasceu com o propósito
-          de unir <strong>acolhimento</strong>, <strong>orientação profissional</strong> e <strong>resultados reais</strong>.
-          Começamos com um salão compacto e poucos aparelhos; hoje atendemos uma comunidade inteira com estrutura moderna,
-          equipe atenciosa e um ambiente que valoriza cada trajetória.
-        </p>
-        <p class="lead">
-          Ao longo dos anos, promovemos eventos, desafios e ações sociais que fortaleceram nosso vínculo com o bairro.
-          Crescemos ouvindo os alunos: abrimos novas turmas, ajustamos horários, renovamos máquinas e mantivemos o que
-          nos define desde o primeiro dia — <em>cuidar de pessoas</em>. Aqui você encontra espaço para iniciar, evoluir e
-          se orgulhar do seu próprio ritmo.
-        </p>
-
-        <div class="kpis">
-          <span class="kpi">+11 anos</span>
-          <span class="kpi">Equipe atenciosa</span>
-          <span class="kpi">Ambiente acolhedor</span>
-        </div>
-
-        <div class="mission-cards">
-          <div class="mission-card">
-            <h4>Propósito</h4>
-            <p>Promover saúde, autoestima e qualidade de vida por meio da atividade física orientada, em um espaço seguro e motivador.</p>
-          </div>
-          <div class="mission-card">
-            <h4>Visão</h4>
-            <p>Ser referência da comunidade do Anjo da Guarda em atendimento humanizado e resultados sustentáveis.</p>
-          </div>
-        </div>
-
-        <h4 style="margin:10px 0 6px">Valores</h4>
-        <ul class="values">
-          <li><strong>Compromisso:</strong> evolução consistente com acompanhamento próximo.</li>
-          <li><strong>Respeito:</strong> ética, acolhimento e educação em cada interação.</li>
-          <li><strong>Comunidade:</strong> apoio e motivação coletiva.</li>
-          <li><strong>Empatia:</strong> escuta ativa e planos condizentes com cada objetivo.</li>
-          <li><strong>Excelência:</strong> melhoria contínua de estrutura, serviços e atendimento.</li>
-        </ul>
+    <!-- CARD 1: HISTÓRICO / TEXTO (somente histórico) -->
+    <div class="copy">
+      <p class="lead">
+        Fundada em 2014 no bairro Anjo da Guarda, em São Luís – MA, a
+        <strong>FisioForma Academia</strong> nasceu com o propósito de unir
+        <strong>acolhimento</strong>, <strong>orientação profissional</strong> e
+        <strong>resultados reais</strong>. Começamos com um salão compacto e poucos
+        aparelhos; hoje atendemos uma comunidade inteira com estrutura moderna,
+        equipe atenciosa e um ambiente que valoriza cada trajetória.
+      </p>
+      <p class="lead">
+        Ao longo dos anos, promovemos eventos, desafios e ações sociais que
+        fortaleceram nosso vínculo com o bairro. Crescemos ouvindo os alunos:
+        abrimos novas turmas, ajustamos horários, renovamos máquinas e mantivemos o
+        que nos define desde o primeiro dia — <em>cuidar de pessoas</em>. Aqui você
+        encontra espaço para iniciar, evoluir e se orgulhar do seu próprio ritmo.
+      </p>
+    
+      <!-- badges melhores -->
+      <div class="kpis">
+        <span class="kpi">Desde 2014</span>
+        <span class="kpi">Equipe que acompanha você</span>
+        <span class="kpi">Acolhimento de verdade</span>
       </div>
+    </div>
+
+
+
 
       <!-- CARD 2: GALERIA + PROPÓSITO/VISÃO/VALORES -->
       <div class="gallery" aria-label="Fotos da academia">
