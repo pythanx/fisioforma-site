@@ -177,25 +177,110 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #sobre .ff-fade .nav-dots label:hover{transform:scale(1.1)}
 #fff1:checked ~ .nav-dots label[for="fff1"],#fff2:checked ~ .nav-dots label[for="fff2"],#fff3:checked ~ .nav-dots label[for="fff3"],#fff4:checked ~ .nav-dots label[for="fff4"],#fff5:checked ~ .nav-dots label[for="fff5"],#fff6:checked ~ .nav-dots label[for="fff6"]{background:var(--brand)}
 
-/* Depoimentos (fade) */
-#depoimentos .t-carousel{max-width:880px;margin:24px auto 0;border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}
-#depoimentos .t-carousel input{display:none}
-#depoimentos .viewport{position:relative;height:clamp(200px,24vw,260px);min-height:220px;background:#fff;isolation:isolate}
-#depoimentos .slides{list-style:none;margin:0;padding:0;position:relative;height:100%}
-#depoimentos .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .55s ease;will-change:opacity;pointer-events:none}
-#depoimentos .bubble{max-width:680px;background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;line-height:1.5;color:var(--ink);box-shadow:0 6px 20px rgba(0,0,0,.05)}
-#t1:checked ~ .viewport .slides .slide:nth-child(1),
-#t2:checked ~ .viewport .slides .slide:nth-child(2),
-#t3:checked ~ .viewport .slides .slide:nth-child(3),
-#t4:checked ~ .viewport .slides .slide:nth-child(4),
-#t5:checked ~ .viewport .slides .slide:nth-child(5),
-#t6:checked ~ .viewport .slides .slide:nth-child(6),
-#t7:checked ~ .viewport .slides .slide:nth-child(7),
-#t8:checked ~ .viewport .slides .slide:nth-child(8){opacity:1;pointer-events:auto}
-#depoimentos .nav-dots{text-align:center;margin:12px 0 16px}
-#depoimentos .nav-dots label{display:inline-block;width:10px;height:10px;margin:0 5px;border-radius:50%;background:#bbb;cursor:pointer;transition:transform .1s,background .2s}
-#depoimentos .nav-dots label:hover{transform:scale(1.1)}
-#t1:checked ~ .nav-dots label[for="t1"],#t2:checked ~ .nav-dots label[for="t2"],#t3:checked ~ .nav-dots label[for="t3"],#t4:checked ~ .nav-dots label[for="t4"],#t5:checked ~ .nav-dots label[for="t5"],#t6:checked ~ .nav-dots label[for="t6"],#t7:checked ~ .nav-dots label[for="t7"],#t8:checked ~ .nav-dots label[for="t8"]{background:var(--brand)}
+/* ===== Depoimentos — visual caprichado ===== */
+#depoimentos .t-carousel{
+  background:#f8fbff;
+  border:1px solid #e6eef7;
+  border-radius:16px;
+  padding:28px 20px 40px;
+  box-shadow:0 18px 40px rgba(8,34,66,.06);
+  position:relative;
+  outline:0;              /* para receber foco sem outline feio */
+}
+
+#depoimentos .viewport{
+  background:linear-gradient(180deg,#fff, #fbfdff 60%, #ffffff 100%);
+  border:1px solid #eef3f8;
+  border-radius:16px;
+  height:clamp(220px,24vw,260px);
+  display:flex; align-items:center; justify-content:center;
+}
+
+#depoimentos .bubble{
+  max-width:min(760px, 86%);
+  background:#f2f7fc;
+  border:1px solid #e3edf7;
+  border-radius:14px;
+  padding:22px 24px 18px;
+  color:#0f172a;
+  box-shadow:0 18px 30px rgba(15,23,42,.06);
+}
+
+/* Aspas decorativas */
+#depoimentos .bubble p:first-child{
+  position:relative;
+  font-size:clamp(16px,1.6vw,18px);
+  line-height:1.6;
+  margin:0 0 10px 0;
+}
+#depoimentos .bubble p:first-child::before,
+#depoimentos .bubble p:first-child::after{
+  content:"“";
+  position:absolute; top:-8px; left:-14px;
+  font-size:32px; line-height:1; color:#9fb6cc; opacity:.45;
+}
+#depoimentos .bubble p:first-child::after{
+  content:"”"; top:auto; bottom:-18px; right:-10px; left:auto;
+}
+
+/* Autor */
+#depoimentos .bubble p + p{
+  margin:6px 0 0;
+  font-weight:800; color:#111827;
+}
+
+/* Bolinhas (nav dots) com destaque e animação sutil */
+#depoimentos .nav-dots{ margin:16px 0 0; }
+#depoimentos .nav-dots label{
+  width:10px; height:10px; border-radius:999px;
+  background:#cbd5e1; margin:0 6px; cursor:pointer;
+  transform:scale(.92);
+  transition:transform .18s ease, background .2s ease, box-shadow .2s ease;
+}
+#t1:checked ~ .nav-dots label[for="t1"],
+#t2:checked ~ .nav-dots label[for="t2"],
+#t3:checked ~ .nav-dots label[for="t3"],
+#t4:checked ~ .nav-dots label[for="t4"],
+#t5:checked ~ .nav-dots label[for="t5"],
+#t6:checked ~ .nav-dots label[for="t6"],
+#t7:checked ~ .nav-dots label[for="t7"],
+#t8:checked ~ .nav-dots label[for="t8"]{
+  background:#2b6b8a; transform:scale(1.15);
+  box-shadow:0 0 0 6px rgba(43,107,138,.12);
+}
+
+/* Setas de navegação */
+#depoimentos .nav-arrows{
+  position:absolute; inset:auto 18px 18px; display:flex; gap:10px;
+  justify-content:flex-end; pointer-events:none;
+}
+#depoimentos .nav-arrows button{
+  pointer-events:auto;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:10px;
+  border:1px solid #dbe6f2; background:#fff; color:#2b6b8a;
+  font-size:22px; font-weight:700; line-height:1;
+  box-shadow:0 8px 18px rgba(8,34,66,.08);
+  transition:transform .15s ease, box-shadow .15s ease, background .2s;
+}
+#depoimentos .nav-arrows button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 12px 22px rgba(8,34,66,.12);
+}
+#depoimentos .nav-arrows button:active{ transform:translateY(0); }
+
+/* Acessibilidade: foco visível, mas elegante */
+#depoimentos .nav-arrows button:focus-visible{
+  outline:2px solid #2b6b8a; outline-offset:2px;
+  box-shadow:0 0 0 4px rgba(43,107,138,.25);
+}
+
+/* Espaços responsivos */
+@media (max-width:640px){
+  #depoimentos .t-carousel{ padding:20px 12px 36px; }
+  #depoimentos .bubble{ max-width:92%; padding:18px 18px 14px; }
+}
+
 
 /* MAPA */
 iframe.map{width:100%;height:360px;border:0;border-radius:12px}
