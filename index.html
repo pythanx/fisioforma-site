@@ -760,24 +760,32 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
 }
 
 /* ===== Botão WhatsApp ===== */
-.btn-whatsapp {
-  display: inline-block;
+/* força remover sublinhado de QUALQUER link com classe btn-whatsapp */
+a.btn-whatsapp,
+.header .btn-whatsapp {           /* extra especificidade */
+  text-decoration: none !important;
+  -webkit-text-decoration: none !important;
+  text-underline-offset: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background: #3a80b4;
-  color: #fff;
+  color: #fff !important;
   padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 10px;
+  font-weight: 700;
   font-size: 14px;
-  text-decoration: none;   /* <<< tira o sublinhado */
-  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 6px 14px rgba(58,128,180,.18);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
-
-.btn-whatsapp:hover,
-.btn-whatsapp:focus {
-  background: #1f4e72;
-  transform: scale(1.05);
+a.btn-whatsapp:hover,
+a.btn-whatsapp:focus {
+  background:#1f4e72;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(58,128,180,.26);
   outline: none;
 }
+
 
 
 
