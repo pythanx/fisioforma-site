@@ -906,6 +906,28 @@ section .grid > *{align-self:start}
 @media (max-width:640px){ .msg{max-width:86%} }
 
 
+/* === PATCH: some a “pontinha” nas quinas do chat === */
+.igdm-wrap{
+  position: relative;
+  background: #0c1117 !important;   /* trocar o gradiente por sólido */
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 38px rgba(0,0,0,.22);
+  isolation: isolate;               /* evita halo do fundo atrás */
+}
+
+/* pinta um “anel” interno do mesmo tom pra matar o anti-aliasing */
+.igdm-wrap::after{
+  content:"none" !important;
+}
+
+/* header com o MESMO fundo do wrap e sem pseudo-linha extra */
+.igdm-head{
+  background:#0c1117 !important;
+  border-bottom:1px solid #1e2730 !important;
+}
+.igdm-head::after{ display:none !important; }
+  
   
 /* Reveal */
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease}
