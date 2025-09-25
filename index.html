@@ -1114,7 +1114,7 @@ a.btn-whatsapp:focus {
   <section id="depoimentos" class="alt" aria-label="Depoimentos de alunos">
     <div class="wrap">
       <h2>O que nossos alunos dizem</h2>
-      <div class="t-carousel" aria-live="polite">
+      <div class="t-carousel" aria-live="polite" tabindex="0">
         <!-- radios -->
         <input type="radio" name="t" id="t1" checked>
         <input type="radio" name="t" id="t2">
@@ -1136,6 +1136,10 @@ a.btn-whatsapp:focus {
             <article class="slide"><div class="bubble"><p>“Adoro os eventos e desafios da FisioForma, motiva muito a continuar firme 💪”</p><p><strong>— Seguidora no Instagram</strong></p></div></article>
             <article class="slide"><div class="bubble"><p>“Ambiente acolhedor, sempre me sinto bem-vinda para treinar ❤️”</p><p><strong>— Feedback no Instagram</strong></p></div></article>
           </div>
+        <div class="nav-arrows" aria-hidden="true">
+          <button class="prev" type="button" aria-label="Anterior">‹</button>
+          <button class="next" type="button" aria-label="Próximo">›</button>
+        </div>
         </div>
         <div class="nav-dots" aria-hidden="true">
           <label for="t1"></label><label for="t2"></label><label for="t3"></label><label for="t4"></label>
@@ -1632,6 +1636,24 @@ a.btn-whatsapp:focus {
       timer=setTimeout(()=>{ typing.style.display='none'; }, 3200);
     }
   }, {passive:true});
+})();
+</script>
+<script>
+(function(){
+  const box = document.querySelector('#depoimentos .t-carousel');
+  if(!box) return;
+  const radios = [...box.querySelectorAll('input[name="t"]')];
+  let i = radios.findIndex(r => r.checked); if(i<0){ i=0; radios[0].checked=true; }
+
+  const go = n => { i = (n + radios.length) % radios.length; radios[i].checked = true; };
+  box.querySelector('.nav-arrows .prev')?.addEventListener('click', () => go(i-1));
+  box.querySelector('.nav-arrows .next')?.addEventListener('click', () => go(i+1));
+
+  // teclado: ← → e PgUp/PgDn
+  box.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowLeft' || e.key==='PageUp'){ e.preventDefault(); go(i-1); }
+    if(e.key==='ArrowRight'|| e.key==='PageDown'){ e.preventDefault(); go(i+1); }
+  });
 })();
 </script>
 
