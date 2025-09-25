@@ -26,6 +26,17 @@
 
 <style>
 
+:root{
+  --bg:#ffffff;
+  --ink:#222;
+  --muted:#5a5a5a;
+  --card:#f5f7fa;
+  --line:#d9d9d9;
+  --brand:#2b6b8a;
+  --brand-ink:#1f4e63;
+}
+
+  
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
 html {scroll-behavior: smooth;}
@@ -479,24 +490,22 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 
 
-/* === Depoimentos: V3 estável === */
+/* ===== Depoimentos — bloco final ===== */
 #depoimentos .t-carousel{
   background:radial-gradient(900px 300px at 50% -80px,#fff 0%,#f6fbff 65%,#f1f7fd 100%);
   border:1px solid #e6eef7; border-radius:20px;
   padding:26px 18px 64px; position:relative; box-shadow:0 24px 60px rgba(8,34,66,.10);
 }
-#depoimentos .t-carousel input[type="radio"]{
-  position:absolute; left:-9999px; opacity:0; pointer-events:none;
-}
+#depoimentos .t-carousel input[type="radio"]{ position:absolute; left:-9999px; opacity:0; pointer-events:none; }
+
 #depoimentos .viewport{
   display:flex; align-items:center; justify-content:center;
   border:1px solid #e9f1f9; border-radius:16px;
-  /* importante: deixa crescer se o texto for maior */
-  min-height:clamp(220px, 24vw, 280px);
-  height:auto; overflow:visible; background:linear-gradient(#fff,#fbfdff 60%,#fff);
+  min-height:clamp(220px,24vw,280px);
+  background:linear-gradient(#fff,#fbfdff 60%,#fff);
   box-shadow:0 10px 28px rgba(8,34,66,.06) inset;
 }
-#depoimentos .slides{ position:relative; width:100%; }
+#depoimentos .slides{ position:relative; width:100%; min-height:clamp(200px,24vw,260px); }
 #depoimentos .slide{
   position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
   opacity:0; transform:translateY(6px) scale(.995);
@@ -511,16 +520,13 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #t7:checked ~ .viewport .slide:nth-child(7),
 #t8:checked ~ .viewport .slide:nth-child(8){ opacity:1; transform:none; }
 
-/* Balão sem halo e centralizado */
 #depoimentos .bubble{
   max-width:min(760px,92%); margin:0 auto;
   background:linear-gradient(180deg,#f7fbff,#f3f8fe);
   border:1px solid #dbe9f7; border-radius:16px;
   padding:22px 24px 18px; color:#0f172a;
-  box-shadow:0 16px 32px rgba(15,23,42,.08) !important;  /* sem anel externo */
+  box-shadow:0 16px 32px rgba(15,23,42,.08);
 }
-
-/* Aspas discretas (não “invadem”) */
 #depoimentos .bubble p:first-child{
   position:relative; margin:0 0 10px 0;
   font-size:clamp(16px,1.6vw,18px); line-height:1.6;
@@ -531,16 +537,10 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 }
 #depoimentos .bubble p:first-child::before{ content:"“"; left:-10px; top:-10px; font-size:36px; }
 #depoimentos .bubble p:first-child::after{  content:"”"; right:-8px; bottom:-18px; font-size:36px; }
-
-/* Autor */
-#depoimentos .bubble p + p{
-  margin:8px 0 0; font-weight:800; color:#0b1324;
-  display:flex; align-items:center; gap:10px;
-}
+#depoimentos .bubble p + p{ margin:8px 0 0; font-weight:800; color:#0b1324; display:flex; align-items:center; gap:10px; }
 #depoimentos .bubble p + p::before{ content:"—"; color:#2b6b8a; font-weight:900; }
 
-/* Dots e setas com espaço extra pra não encostar no balão */
-#depoimentos .nav-dots{ margin:20px 0 0; display:flex; justify-content:center; gap:8px; }
+#depoimentos .nav-dots{ margin:18px 0 0; display:flex; justify-content:center; gap:8px; }
 #depoimentos .nav-dots label{
   width:10px; height:10px; border-radius:999px; cursor:pointer;
   background:#cfd8e3; transform:scale(.9);
@@ -568,114 +568,8 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
   transition:transform .12s ease, box-shadow .15s ease, background .2s;
 }
 #depoimentos .nav-arrows button:hover{ transform:translateY(-1px); }
+@media (max-width:640px){ #depoimentos .t-carousel{ padding:18px 10px 58px; } }
 
-/* Mobile */
-@media (max-width:640px){
-  #depoimentos .t-carousel{ padding:18px 10px 58px; }
-  #depoimentos .bubble{ max-width:94%; padding:20px 18px 16px; }
-}
-
-
-
-/* === FIX RÁPIDO: Depoimentos === */
-
-/* 1) Esconde os radios nativos de vez */
-#depoimentos .t-carousel input[type="radio"]{
-  position:absolute !important;
-  left:-9999px !important;
-  opacity:0 !important;
-  pointer-events:none !important;
-}
-
-/* 2) Garante a pilha/posição das slides (evita layout estranho) */
-#depoimentos .viewport{ display:flex; align-items:center; justify-content:center; }
-#depoimentos .slides{ position:relative; min-height:clamp(200px, 24vw, 260px); }
-#depoimentos .slide{
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  opacity:0; transform:translateY(6px) scale(.995);
-  transition:opacity .45s ease, transform .45s ease;
-  padding:10px;
-}
-#t1:checked ~ .viewport .slides .slide:nth-child(1),
-#t2:checked ~ .viewport .slides .slide:nth-child(2),
-#t3:checked ~ .viewport .slides .slide:nth-child(3),
-#t4:checked ~ .viewport .slides .slide:nth-child(4),
-#t5:checked ~ .viewport .slides .slide:nth-child(5),
-#t6:checked ~ .viewport .slides .slide:nth-child(6),
-#t7:checked ~ .viewport .slides .slide:nth-child(7),
-#t8:checked ~ .viewport .slides .slide:nth-child(8){
-  opacity:1; transform:none;
-}
-
-/* 3) Balão: remove o halo “grosso” e centraliza melhor */
-#depoimentos .bubble{
-  max-width:min(760px, 92%);
-  margin:0 auto;
-  background:linear-gradient(180deg,#f7fbff,#f3f8fe);
-  border:1px solid #dbe9f7;
-  border-radius:16px;
-  padding:22px 24px 18px;
-  color:#0f172a;
-  box-shadow:0 16px 32px rgba(15,23,42,.08);   /* sem anel externo */
-}
-
-/* 4) Aspas: reduz tamanho e recuo pra não “invadir” o centro */
-#depoimentos .bubble p:first-child{
-  position:relative; margin:0 0 10px 0;
-  font-size:clamp(16px,1.6vw,18px); line-height:1.6;
-}
-#depoimentos .bubble p:first-child::before,
-#depoimentos .bubble p:first-child::after{
-  position:absolute; font-weight:900; line-height:1; opacity:.20;
-}
-#depoimentos .bubble p:first-child::before{
-  content:"“"; left:-10px; top:-10px; font-size:36px; color:#2b6b8a;
-}
-#depoimentos .bubble p:first-child::after{
-  content:"”"; right:-8px; bottom:-18px; font-size:36px; color:#2b6b8a;
-}
-
-/* 5) Autor com travessão e peso correto */
-#depoimentos .bubble p + p{
-  margin:8px 0 0;
-  font-weight:800; color:#0b1324;
-  display:flex; align-items:center; gap:10px;
-}
-#depoimentos .bubble p + p::before{
-  content:"—"; color:#2b6b8a; font-weight:900;
-}
-
-/* 6) Dots e setas (mantém estilo bonitinho) */
-#depoimentos .nav-dots{ margin:18px 0 0; display:flex; justify-content:center; gap:8px; }
-#depoimentos .nav-dots label{
-  width:10px; height:10px; border-radius:999px; cursor:pointer;
-  background:#cfd8e3; transform:scale(.9);
-  transition:transform .18s ease, background .2s ease, box-shadow .2s ease;
-}
-#t1:checked ~ .nav-dots label[for="t1"],
-#t2:checked ~ .nav-dots label[for="t2"],
-#t3:checked ~ .nav-dots label[for="t3"],
-#t4:checked ~ .nav-dots label[for="t4"],
-#t5:checked ~ .nav-dots label[for="t5"],
-#t6:checked ~ .nav-dots label[for="t6"],
-#t7:checked ~ .nav-dots label[for="t7"],
-#t8:checked ~ .nav-dots label[for="t8"]{
-  background:#2b6b8a; transform:scale(1.2);
-  box-shadow:0 0 0 8px rgba(43,107,138,.12);
-}
-#depoimentos .nav-arrows{
-  position:absolute; inset:auto 18px 18px; display:flex; gap:10px; justify-content:flex-end;
-  pointer-events:none;
-}
-#depoimentos .nav-arrows button{
-  pointer-events:auto; width:42px; height:42px; border-radius:999px;
-  border:1px solid #d8e6f4; background:linear-gradient(180deg,#ffffff,#f3f9ff);
-  color:#1f4e63; font-size:22px; font-weight:900; line-height:1;
-  box-shadow:0 10px 24px rgba(8,34,66,.12);
-  transition:transform .12s ease, box-shadow .15s ease, background .2s;
-}
-#depoimentos .nav-arrows button:hover{ transform:translateY(-1px); }
 
 
 
@@ -767,18 +661,6 @@ iframe.map{width:100%;height:360px;border:0;border-radius:12px}
 .compare .ok{ color:#2e7d32; }   /* ✔ */
 .compare .no{ color:#d32f2f; }   /* ❌ */
 .compare .opt{ color:#6b7280; }  /* ➖ */
-
-  /* === Cores alinhadas à FisioForma (azul/preto/cinza) === */
-/* === Azul FisioForma (coeso com o título e botões iniciais) === */
-:root{
-  --bg:#ffffff; 
-  --ink:#222; 
-  --muted:#5a5a5a; 
-  --card:#f5f7fa; 
-  --line:#d9d9d9;
-  --brand:#2b6b8a;      /* já está no seu CSS novo */
-  --brand-ink:#1f4e63;  /* idem */
-}
 
   
 /* Listas dos cards de plano */
