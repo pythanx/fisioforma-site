@@ -578,7 +578,11 @@ section .grid > *{align-self:start}
 #normas-resumo .grid{display:grid;gap:18px}
 @media(min-width:600px){#normas-resumo .grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:980px){#normas-resumo .grid{grid-template-columns:repeat(3,1fr)}}
-.normas-card{background:#fff;border:1px solid;border-radius:14px; ...}
+.normas-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+}
 .normas-card:hover{transform:translateY(-4px);box-shadow: 0 6px 18px rgba(0,0,0,.06);;border-color:#bcd7ea}
 .normas-card .body{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .normas-card h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px}
@@ -1302,96 +1306,104 @@ a.btn-whatsapp:focus {
   </section>
 
   <!-- INSTAGRAM SIDEBAR -->
-  <section id="instagram" class="alt">
-    <div class="wrap">
-  <h2>Novidades da FisioForma</h2>
-  <p class="muted">Avisos, eventos e campanhas recentes da nossa academia.</p>
+ <section id="instagram" class="alt">
+  <div class="wrap">
+    <h2>Novidades da FisioForma</h2>
+    <p class="muted">Avisos, eventos e campanhas recentes da nossa academia.</p>
+   <!-- GRID EM 2 COLUNAS -->
+    <div class="grid cols-2" style="align-items:start">
+      <!-- COLUNA ESQUERDA: CARDS -->
+      <div>
+        <div class="news-list">
+          <!-- (mantenha aqui todos os seus <article class="news-card"> exatamente como já estão) -->
+          <!-- Evento: Arraiá -->
+          <article class="news-card" data-type="evento">
+            <div class="news-head">
+              <span class="news-date">26 jun 2025</span>
+              <span class="news-tag evento">Evento</span>
+            </div>
+            <h3 class="news-title">🎉 Arraiá da FisioForma</h3>
+            <p class="news-text">Música, sorrisos e o clima gostoso de São João com as turmas de dança da manhã e da noite.</p>
+            <div class="news-actions">
+              <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOd2IG6kXJV/" target="_blank" rel="noopener">
+                <!-- ícone play -->
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Ver no Instagram
+              </a>
+            </div>
+          </article>
+      
+          <!-- Aniversário: 11 anos (teaser) -->
+          <article class="news-card" data-type="aniversario">
+            <div class="news-head">
+              <span class="news-date">11 ago 2025</span>
+              <span class="news-tag aniversario">Aniversário</span>
+            </div>
+            <h3 class="news-title">11 anos de história 💙</h3>
+            <p class="news-text">Jornada de treinos, superação e comunidade. Tem surpresa especial para celebrar!</p>
+            <div class="news-actions">
+              <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOCsIMSEbPF/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Assistir o vídeo
+              </a>
+            </div>
+          </article>
+      
+          <!-- Aniversário: celebração -->
+          <article class="news-card" data-type="aniversario">
+            <div class="news-head">
+              <span class="news-date">31 ago 2025</span>
+              <span class="news-tag aniversario">Aniversário</span>
+            </div>
+            <h3 class="news-title">Nosso aniversário foi lindo demais! 🎂</h3>
+            <p class="news-text">Agradecemos cada aluno e amigo que fez parte dessa história. Que venham muitos anos de saúde e união!</p>
+            <div class="news-actions">
+              <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOzCajpkcFA/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Ver o Reels
+              </a>
+            </div>
+          </article>
+      
+          <!-- Campanha: Setembro Amarelo -->
+          <article class="news-card" data-type="campanha">
+            <div class="news-head">
+              <span class="news-date">11 set 2025</span>
+              <span class="news-tag campanha">Campanha</span>
+            </div>
+            <h3 class="news-title">Setembro Amarelo 💛</h3>
+            <p class="news-text">Cuidar da saúde mental também é um ato de amor-próprio. Você não está sozinho: movimente-se e compartilhe boas energias.</p>
+            <div class="news-actions">
+              <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DNOA9lIt5Gd/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Ver campanha
+              </a>
+            </div>
+          </article>
+      
+          <!-- Extra (defina como campanha/aviso conforme preferir) -->
+          <article class="news-card" data-type="campanha">
+            <div class="news-head">
+              <span class="news-date">—</span>
+              <span class="news-tag campanha">Campanha</span>
+            </div>
+            <h3 class="news-title">Treine com a gente!</h3>
+            <p class="news-text">Ambiente acolhedor, equipe atenciosa e treinos que cabem na sua rotina. Bora começar hoje?</p>
+            <div class="news-actions">
+              <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DLXwDPMxlD8/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Ver o Reels
+              </a>
+              <a class="news-cta ghost" href="#planos">Conhecer planos</a>
+            </div>
+          </article>
+        </div>
+            <!-- … seus 5 cards … -->
+            </div>
+          </div>      
+ 
 
-  <div class="news-list">
-
-    <!-- Evento: Arraiá -->
-    <article class="news-card" data-type="evento">
-      <div class="news-head">
-        <span class="news-date">26 jun 2025</span>
-        <span class="news-tag evento">Evento</span>
-      </div>
-      <h3 class="news-title">🎉 Arraiá da FisioForma</h3>
-      <p class="news-text">Música, sorrisos e o clima gostoso de São João com as turmas de dança da manhã e da noite.</p>
-      <div class="news-actions">
-        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOd2IG6kXJV/" target="_blank" rel="noopener">
-          <!-- ícone play -->
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Ver no Instagram
-        </a>
-      </div>
-    </article>
-
-    <!-- Aniversário: 11 anos (teaser) -->
-    <article class="news-card" data-type="aniversario">
-      <div class="news-head">
-        <span class="news-date">11 ago 2025</span>
-        <span class="news-tag aniversario">Aniversário</span>
-      </div>
-      <h3 class="news-title">11 anos de história 💙</h3>
-      <p class="news-text">Jornada de treinos, superação e comunidade. Tem surpresa especial para celebrar!</p>
-      <div class="news-actions">
-        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOCsIMSEbPF/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Assistir o vídeo
-        </a>
-      </div>
-    </article>
-
-    <!-- Aniversário: celebração -->
-    <article class="news-card" data-type="aniversario">
-      <div class="news-head">
-        <span class="news-date">31 ago 2025</span>
-        <span class="news-tag aniversario">Aniversário</span>
-      </div>
-      <h3 class="news-title">Nosso aniversário foi lindo demais! 🎂</h3>
-      <p class="news-text">Agradecemos cada aluno e amigo que fez parte dessa história. Que venham muitos anos de saúde e união!</p>
-      <div class="news-actions">
-        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOzCajpkcFA/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Ver o Reels
-        </a>
-      </div>
-    </article>
-
-    <!-- Campanha: Setembro Amarelo -->
-    <article class="news-card" data-type="campanha">
-      <div class="news-head">
-        <span class="news-date">11 set 2025</span>
-        <span class="news-tag campanha">Campanha</span>
-      </div>
-      <h3 class="news-title">Setembro Amarelo 💛</h3>
-      <p class="news-text">Cuidar da saúde mental também é um ato de amor-próprio. Você não está sozinho: movimente-se e compartilhe boas energias.</p>
-      <div class="news-actions">
-        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DNOA9lIt5Gd/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Ver campanha
-        </a>
-      </div>
-    </article>
-
-    <!-- Extra (defina como campanha/aviso conforme preferir) -->
-    <article class="news-card" data-type="campanha">
-      <div class="news-head">
-        <span class="news-date">—</span>
-        <span class="news-tag campanha">Campanha</span>
-      </div>
-      <h3 class="news-title">Treine com a gente!</h3>
-      <p class="news-text">Ambiente acolhedor, equipe atenciosa e treinos que cabem na sua rotina. Bora começar hoje?</p>
-      <div class="news-actions">
-        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DLXwDPMxlD8/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Ver o Reels
-        </a>
-        <a class="news-cta ghost" href="#planos">Conhecer planos</a>
-      </div>
-    </article>
-  </div>
-
+      <!-- COLUNA DIREITA: FEED IG -->
       <aside style="border-left:1px solid var(--line); padding-left:16px;">
         <div class="card" style="border-radius:18px; overflow:hidden;">
           <div class="body" style="padding:12px 16px">
@@ -1747,7 +1759,6 @@ a.btn-whatsapp:focus {
 </a>
 
 
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 
 <!-- Autoplay fotos (FADE) com respeito a prefers-reduced-motion -->
 <script>
