@@ -486,7 +486,7 @@ section .grid > *{align-self:start}
   display:flex;
   flex-direction:column;
   border:1px solid #1e2730;
-  border-radius:18px;
+  border-radius: 0 0 18px 18px !important; /* topo quadrado */
   overflow:hidden;                 /* garante o recorte nos 4 cantos */
   background:#0c1117 !important;
   /* mantém a sombra + adiciona um contorno externo 1px do mesmo tom */
@@ -503,6 +503,8 @@ section .grid > *{align-self:start}
   border:0;
   padding:10px 12px;
   background:#0c1117 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
   border-bottom:1px solid #1e2730 !important;
 }
   /* linha divisória idêntica à do IG */
@@ -620,11 +622,7 @@ section .grid > *{align-self:start}
 
 /* pinta um “anel” interno do mesmo tom pra matar o anti-aliasing */
 .igdm-wrap::after{
-  content:"";
-  position:absolute; inset:0;
-  border-radius:18px;
-  box-shadow: 0 0 0 1px #0c1117 inset;
-  pointer-events:none;
+  content:"none" !important;
 }
 
 /* header com o MESMO fundo do wrap e sem pseudo-linha extra */
