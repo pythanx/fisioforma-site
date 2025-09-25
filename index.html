@@ -742,31 +742,41 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   display:flex;
   gap:24px;
 }
+/* ===== Navegação ===== */
 .main-nav a {
-  text-decoration:none;
-  color:#3a80b4;
-  font-size:15px;
-  font-weight:500;
-  transition:color .3s ease;
+  text-decoration: none;   /* remove sublinhado */
+  color: #3a80b4;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
+
 .main-nav a:hover,
 .main-nav a:focus {
-  color:#1f4e72; /* tom mais escuro no hover */
+  color: #1f4e72;
+  outline: none;
 }
+
+/* ===== Botão WhatsApp ===== */
 .btn-whatsapp {
-  background:#3a80b4;
-  color:#fff;
-  padding:10px 18px;
-  border-radius:8px;
-  font-weight:600;
-  font-size:14px;
-  text-decoration:none;
-  transition:background .3s ease, transform .2s ease;
+  display: inline-block;
+  background: #3a80b4;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;     /* remove sublinhado */
+  transition: background 0.3s ease, transform 0.2s ease;
 }
-.btn-whatsapp:hover {
-  background:#1f4e72;
-  transform:scale(1.05);
+
+.btn-whatsapp:hover,
+.btn-whatsapp:focus {
+  background: #1f4e72;
+  transform: scale(1.05);
+  outline: none;
 }
+
 
 /* Mobile */
 @media (max-width: 768px) {
