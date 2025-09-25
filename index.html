@@ -1067,6 +1067,7 @@ a.btn-whatsapp:focus {
     <nav class="main-nav" aria-label="Main navigation">
       <a href="#home" class="active">Home</a>
       <a href="#sobre">Sobre</a>
+      <a href="#depoimentos">Depoimentos</a> <!-- novo -->
       <a href="#planos">Planos</a>
       <a href="#estrutura">Estrutura</a>
       <a href="#normas">Normas</a>
@@ -1751,6 +1752,22 @@ a.btn-whatsapp:focus {
     if(e.key==='ArrowLeft' || e.key==='PageUp'){ e.preventDefault(); go(i-1); }
     if(e.key==='ArrowRight'|| e.key==='PageDown'){ e.preventDefault(); go(i+1); }
   });
+})();
+</script>
+<script>
+(() => {
+  const links = document.querySelectorAll('.main-nav a[href^="#"]');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+
+  sections.forEach(sec => io.observe(sec));
 })();
 </script>
 
