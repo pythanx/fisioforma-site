@@ -523,131 +523,100 @@ section .grid > *{align-self:start}
   margin-top: .5rem;
 }
 
-/* ===== IG DM — Dark (como o Instagram) ===== */
-/* ===== IG DM — container + borda corrigida ===== */
-.igdm-wrap{
-  display:flex;
-  flex-direction:column;
-  background:linear-gradient(180deg,#0b1116,#0f141a);
-  border:1px solid #1e2730;
-  border-radius:18px;
-  box-shadow:0 18px 38px rgba(0,0,0,.22);
-  overflow:hidden; /* não deixa vazar nos cantos */
-}
-
-/* header / body / input (mantém seu dark do Insta) */
-/* Header preto com ícones à direita */
-.igdm-head{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px; padding:12px 14px; background:#0f141a; border-bottom:1px solid #1e2730;
-  color:#e6e9ef; font-weight:700;
-}
-.igdm-head .left{display:flex;align-items:center;gap:10px}
-.igdm-head .avatar{width:28px;height:28px;border-radius:999px;display:block}
-.igdm-head .meta .name{line-height:1}
-.igdm-head .meta .handle{font-weight:500;opacity:.6;font-size:12px}
-
-  
-  
-/* Área das mensagens */
-.igdm-body{
-  flex:1; background:#0b1116; padding:14px 12px 76px; /* espaço p/ o input fixo */
-  overflow:auto; scrollbar-width:thin;
-  display:flex; flex-direction:column;
-}
-  
-/* Barra de input fixa no rodapé (como o app) */
-.igdm-input{
-  position:sticky; bottom:0; z-index:2;
-  display:flex; align-items:center; justify-content:space-between; gap:10px;
-  padding:12px; background:#0f141a; border-top:1px solid #1e2730;
-}
-.igdm-input .field{
-  flex:1; height:42px; border-radius:999px; background:#121820; color:#8fa3b8;
-  display:flex; align-items:center; padding:0 14px; font-size:14px;
-  border:1px solid #1f2a36;
-}
-.igdm-input .btns span{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px}
-
-
-/* ===== Altura nivelada com a coluna da esquerda ===== */
-.hero .wrap.grid.cols-2{ grid-template-columns:minmax(0,1fr) minmax(320px,560px); align-items:stretch; column-gap:24px; }
-aside.igdm-card{ display:flex; justify-self:end; width:100%; background:transparent!important; border:0!important; box-shadow:none!important; padding:0!important; }
+/* ===== IG DM — container fiel ao Instagram ===== */
+.hero .wrap.grid.cols-2{ align-items: stretch; }        /* coluna direita estica igual à esquerda */
+aside.igdm-card{ display:flex; }
 .hero .igdm{ display:flex; width:100%; }
 .igdm-wrap{
   display:flex; flex-direction:column;
-  height:100%; min-height:520px;                /* nivela com a coluna esquerda */
-  background:#0f141a; border:1px solid #1e2730; border-radius:20px;
-  box-shadow:0 16px 36px rgba(0,0,0,.22); overflow:hidden;
+  height:100%;                 /* NADA de height:clamp aqui */
+  background:#0c1117;          /* IG dark */
+  border:1px solid #1e2730;
+  border-radius:16px;
+  overflow:hidden;             /* clip perfeito das bordas */
+  box-shadow:0 18px 38px rgba(0,0,0,.22);
 }
 
-
-/* ===== “digitando…” ===== */
-.typing{
-  display:flex;gap:6px;align-items:center;width:max-content;
-  margin:8px 6px 0 6px;padding:8px 10px;border-radius:18px;
-  background:#1c1f23;border:1px solid #2a2f35;
-
-  /* fica sempre no rodapé do scroll, sem sumir */
-  position:sticky; bottom:8px;
+/* Cabeçalho */
+.igdm-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; padding:10px 12px;
+  background:#0f141a; border-bottom:1px solid #1e2730;
 }
-.dot{width:6px;height:6px;border-radius:999px;background:#9aa9bb;opacity:.5;
-  animation:blink 1.2s infinite ease-in-out}
-.dot:nth-child(2){animation-delay:.15s}
-.dot:nth-child(3){animation-delay:.3s}
-@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.igdm-head .left{display:flex; align-items:center; gap:10px}
+.igdm-head .avatar{width:36px; height:36px; border-radius:999px}
 
-
-/* ===== IG DM — bolhas, story, reações ===== */
-/* Mensagens — alinhamentos e bolhas */
-.msg{max-width:78%; margin:8px 0; position:relative}
-.them{align-self:flex-start}
-.me{align-self:flex-end}
-.bubble{
-  display:inline-block; padding:11px 13px; line-height:1.4; border-radius:18px;
-  border:1px solid transparent; box-shadow:0 1px 0 rgba(0,0,0,.08);
-  word-wrap:break-word; white-space:pre-wrap;
+/* Corpo (lista de mensagens) */
+.igdm-body{
+  flex:1; padding:14px 12px 10px;
+  background:#0c1117;
+  overflow-y:auto;             /* 1 única barra: a do chat */
+  overscroll-behavior:contain; /* sem “puxar” a página */
+  scrollbar-width:thin;
 }
-.them .bubble{background:#171b22; border-color:#2a2f35; color:#e6e9ef}
-.me .bubble{background:#1b74e4; border-color:#155ec0; color:#fff}
-.me .bubble.ending{background:#15508a}
+.igdm-body::-webkit-scrollbar{ width:8px; height:8px }
+.igdm-body::-webkit-scrollbar-thumb{ background:#1e2730; border-radius:6px }
 
-/* Reações no canto da bolha (coração, joinha) */
+/* Input */
+.igdm-input{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; background:#0f141a; border-top:1px solid #1e2730;
+}
+.igdm-input .field{
+  flex:1; background:#0c1117; border:1px solid #1e2730; color:#cbd5e1;
+  border-radius:24px; padding:12px 14px; opacity:.95;
+}
+
+/* ===== Mensagens (bolhas IG) ===== */
+.msg{max-width:76%; margin:8px 0; position:relative}
+.them .bubble{
+  display:inline-block; background:#1c1f23; color:#e6e9ef;
+  border:1px solid #2a2f35; padding:10px 12px;
+  border-radius: 20px 20px 20px 8px;      /* canto “da cauda” */
+}
+.me{ display:flex; justify-content:flex-end }
+.me .bubble{
+  display:inline-block; background:#1b74e4; color:#fff;
+  border:1px solid #155ec0; padding:10px 12px;
+  border-radius: 20px 20px 8px 20px;
+}
+.me .bubble.ending{ background:#15508a; border-color:#13507b }
+
+/* Reações nas bolhas */
 .react{
   position:absolute; right:-10px; bottom:-12px;
-  background:#171b22; border:1px solid #2a2f35; border-radius:999px;
-  padding:4px 8px; font-size:16px; line-height:1; box-shadow:0 1px 0 rgba(0,0,0,.12)
+  background:#1c1f23; color:#fff; border:1px solid #2a2f35;
+  border-radius:999px; padding:3px 7px; font-size:14px; line-height:1;
+  box-shadow:0 1px 0 rgba(0,0,0,.12)
 }
 
-/* Story + pílula de reação (primeira linha) */
+/* Story + reação */
 .meta-line{color:#94a3b8;font-size:12px;margin:2px 0 6px 6px}
 .story{display:flex;align-items:flex-end;gap:10px;margin:6px 0 2px}
-.story .thumb{width:128px;height:228px;border-radius:12px;overflow:hidden;border:1px solid #182028;background:#0f1113}
+.story .thumb{width:120px;height:214px;border-radius:12px;overflow:hidden;border:1px solid #182028;background:#0f1113}
 .story .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.reaction-pill{background:#171b22;border:1px solid #2a2f35;border-radius:999px;padding:6px 10px;font-size:18px}
+.reaction-pill{background:#1c1f23;border:1px solid #2a2f35;border-radius:999px;padding:6px 10px;font-size:18px}
 
-/* Timestamp centralizado */
-.time-stamp{color:#8fa3b8;font-size:12px;text-align:center;margin:10px 0}
+/* Timestamp central (IG) */
+.time-stamp{color:#94a3b8;font-size:12px;text-align:center;margin:12px 0}
 
-/* “Digitando…” sempre visível colado no fim da conversa */
+/* “Digitando…” — não é sticky; some quando rolar */
 .typing{
-  position:sticky; bottom:8px; align-self:flex-start;
-  display:flex; gap:6px; align-items:center; width:max-content;
-  margin:8px 6px 0; padding:8px 10px; border-radius:18px;
-  background:#171b22; border:1px solid #2a2f35;
+  display:flex; gap:6px; align-items:center;
+  background:#1c1f23; border:1px solid #2a2f35; color:#9aa9bb;
+  padding:8px 10px; border-radius:18px; width:max-content; margin:8px 6px 0;
 }
+.typing.hide{ display:none; }
 .dot{width:6px;height:6px;border-radius:999px;background:#9aa9bb;opacity:.5;animation:blink 1.2s infinite ease-in-out}
 .dot:nth-child(2){animation-delay:.15s}
 .dot:nth-child(3){animation-delay:.3s}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
 
-/* Mobile: checar altura máxima do feed */
-@media (max-width:980px){
-  .igdm-wrap{min-height:480px}
-}
+/* Mobile: bolha um pouco mais larga */
 @media (max-width:640px){
   .msg{max-width:86%}
 }
+
 
 
   
@@ -1465,5 +1434,41 @@ ul.values li::before{content:"•";color:var(--brand);display:inline-block;width
   "potentialAction": {"@type":"ReserveAction","target":"https://wa.me/5598992223926","result":{"@type":"Thing","name":"Atendimento via WhatsApp"}}
 }
 </script>
+  <script>
+/* ===== DM: comportamentos fiéis ===== */
+(function(){
+  const body = document.querySelector('.igdm-body');
+  const typing = body?.querySelector('.typing');
+
+  if (!body || !typing) return;
+
+  // rola para o fim ao carregar
+  const scrollToEnd = () => { body.scrollTop = body.scrollHeight; };
+  requestAnimationFrame(scrollToEnd);
+
+  // mostra "digitando..." só quando você está no fim da conversa
+  let hideTO;
+  const nearBottom = () => (body.scrollHeight - body.scrollTop - body.clientHeight) < 40;
+
+  const showTyping = () => {
+    typing.classList.remove('hide');
+    clearTimeout(hideTO);
+    hideTO = setTimeout(()=> typing.classList.add('hide'), 3200);
+  };
+
+  const onScroll = () => {
+    // se afastar do rodapé, esconde
+    if (!nearBottom()) typing.classList.add('hide');
+    else typing.classList.remove('hide');
+  };
+  body.addEventListener('scroll', onScroll, {passive:true});
+
+  // simula uma chegada de mensagem para efeito visual (opcional)
+  // se você não quiser, remova as duas linhas abaixo:
+  if (nearBottom()) showTyping();
+
+})();
+</script>
+
 </body>
 </html>
