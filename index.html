@@ -1043,90 +1043,57 @@ a.btn-whatsapp:focus {
 
 
 
-/* === Novidades – versão caprichada === */
-.news-list{
-  display:grid; gap:18px;
-}
-
+/* === Novidades com gradiente por tipo + botões suaves === */
+.news-list{display:grid;gap:18px}
 .news-card{
-  position:relative;
-  background:#fff;
-  border:1px solid #e6eef7;
-  border-radius:16px;
-  padding:18px 18px 16px;
+  position:relative;background:#fff;border:1px solid #e6eef7;border-radius:16px;
+  padding:18px;overflow:hidden;
   box-shadow:0 10px 28px rgba(8,34,66,.06);
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  overflow:hidden;
 }
-
-/* filete de destaque no topo */
 .news-card::before{
-  content:"";
-  position:absolute; left:0; right:0; top:0; height:4px;
-  background:linear-gradient(90deg,#2b6b8a,#38bdf8);
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;border-top-left-radius:16px;border-top-right-radius:16px;
+  background:linear-gradient(90deg,#2b6b8a,#38bdf8); /* padrão */
 }
+/* Gradiente por tipo */
+.news-card[data-type="evento"]::before        {background:linear-gradient(90deg,#2563eb,#22d3ee)}
+.news-card[data-type="aniversario"]::before   {background:linear-gradient(90deg,#1d4ed8,#7c3aed)}
+.news-card[data-type="campanha"]::before      {background:linear-gradient(90deg,#f59e0b,#f97316)}
+.news-card[data-type="aviso"]::before         {background:linear-gradient(90deg,#10b981,#059669)}
 
-/* hover “flutua” um tiquinho */
-.news-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 40px rgba(8,34,66,.10);
-  border-color:#cfe3f5;
-}
+.news-card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(8,34,66,.10);border-color:#cfe3f5}
 
-/* cabeçalho: data + tag */
-.news-head{
-  display:flex; align-items:center; gap:10px;
-  margin:2px 0 8px;
-}
-.news-date{
-  font-size:12px; font-weight:600; color:#64748b;
-  padding:4px 8px; border-radius:999px;
-  background:#f1f5f9; border:1px solid #e2e8f0;
-}
+.news-head{display:flex;align-items:center;gap:10px;margin:2px 0 8px}
+.news-date{font-size:12px;font-weight:600;color:#64748b;padding:4px 8px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0}
+.news-tag{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;border:1px solid transparent}
+.news-tag.evento{background:#e6f4ff;border-color:#b6e0fe;color:#084298}
+.news-tag.aniversario{background:#ede9fe;border-color:#c4b5fd;color:#3730a3}
+.news-tag.campanha{background:#fff8cc;border-color:#ffe287;color:#7a5a00}
+.news-title{margin:2px 0 6px;font-size:20px;line-height:1.25}
+.news-text{color:#475569;margin:0 0 12px;line-height:1.55}
 
-/* tags pílula */
-.news-tag{
-  font-size:11px; font-weight:700;
-  padding:4px 10px; border-radius:999px;
-  border:1px solid transparent;
-}
-.news-tag.evento{ background:#e6f4ff; border-color:#b6e0fe; color:#084298;}
-.news-tag.campanha{ background:#fff8cc; border-color:#ffe287; color:#7a5a00;}
-/* se quiser uma tag “promo”: */
-/*.news-tag.promo{ background:#e8f5e9; border-color:#a5d6a7; color:#1b5e20;}*/
-
-.news-title{
-  margin:2px 0 6px; font-size:20px; line-height:1.25;
-  letter-spacing:.1px;
-}
-.news-text{
-  color:#475569; margin:0 0 12px; line-height:1.55;
-}
-
-/* CTA primária e outline combinando com a paleta */
+/* Botões: primário e ghost com microinterações */
+.news-actions{display:flex;gap:10px;flex-wrap:wrap}
 .news-cta{
-  display:inline-block; border-radius:12px;
-  padding:10px 14px; font-weight:800;
-  border:1px solid var(--brand); background:var(--brand); color:#fff;
+  display:inline-flex;align-items:center;gap:8px;
+  border-radius:12px;padding:10px 14px;font-weight:800;
+  border:1px solid var(--brand);background:var(--brand);color:#fff;
   box-shadow:0 6px 14px rgba(43,107,138,.18);
-  transition:transform .12s ease, box-shadow .18s ease, background .18s ease;
+  transition:transform .12s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
 }
-.news-cta.outline{ background:#fff; color:var(--brand); }
-.news-cta:hover{
-  transform:translateY(-1px);
-  background:var(--brand-ink); color:#fff;
-  box-shadow:0 10px 20px rgba(43,107,138,.26);
-}
+.news-cta svg{width:16px;height:16px}
+.news-cta:hover{transform:translateY(-1px);background:var(--brand-ink);box-shadow:0 10px 20px rgba(43,107,138,.26)}
+.news-cta:active{transform:translateY(0)}
+.news-cta.ghost{background:#fff;color:var(--brand);border-color:#cfe3f5;box-shadow:none}
+.news-cta.ghost:hover{background:#f5fbff;border-color:#bcd7ea;color:var(--brand-ink)}
 
-/* separador sutil entre cards (quando quiser mais respiro) */
-.news-card + .news-card{ margin-top:2px; }
-
-/* responsivo: deixa “tocável” e com respiro maior */
 @media (max-width:640px){
-  .news-card{ padding:16px 14px; border-radius:14px; }
-  .news-title{ font-size:18px; }
-  .news-cta{ padding:9px 12px; border-radius:10px; }
+  .news-card{padding:16px 14px;border-radius:14px}
+  .news-title{font-size:18px}
+  .news-cta{padding:9px 12px;border-radius:10px}
 }
+
+
 
 
 </style>
@@ -1336,65 +1303,97 @@ a.btn-whatsapp:focus {
 
   <!-- INSTAGRAM SIDEBAR -->
   <section id="instagram" class="alt">
-    <div class="wrap grid cols-2">
-      <div>
+    <div class="wrap">
   <h2>Novidades da FisioForma</h2>
   <p class="muted">Avisos, eventos e campanhas recentes da nossa academia.</p>
 
   <div class="news-list">
-    <!-- Arraiá -->
-    <article class="news-card">
+
+    <!-- Evento: Arraiá -->
+    <article class="news-card" data-type="evento">
       <div class="news-head">
         <span class="news-date">26 jun 2025</span>
         <span class="news-tag evento">Evento</span>
       </div>
-      <h3 class="news-title">Arraiá da FisioForma</h3>
-      <p class="news-text">
-        Música, sorrisos e o clima gostoso de São João com as turmas de dança da manhã e da noite.
-      </p>
-      <a class="news-cta" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Ver no Instagram</a>
+      <h3 class="news-title">🎉 Arraiá da FisioForma</h3>
+      <p class="news-text">Música, sorrisos e o clima gostoso de São João com as turmas de dança da manhã e da noite.</p>
+      <div class="news-actions">
+        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOd2IG6kXJV/" target="_blank" rel="noopener">
+          <!-- ícone play -->
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Ver no Instagram
+        </a>
+      </div>
     </article>
 
-    <!-- 11 anos – teaser -->
-    <article class="news-card">
+    <!-- Aniversário: 11 anos (teaser) -->
+    <article class="news-card" data-type="aniversario">
       <div class="news-head">
         <span class="news-date">11 ago 2025</span>
-        <span class="news-tag evento">Aniversário</span>
+        <span class="news-tag aniversario">Aniversário</span>
       </div>
       <h3 class="news-title">11 anos de história 💙</h3>
-      <p class="news-text">
-        Jornada de treinos, superação e comunidade. Tem surpresa especial para celebrar!
-      </p>
-      <a class="news-cta" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Assistir o vídeo</a>
+      <p class="news-text">Jornada de treinos, superação e comunidade. Tem surpresa especial para celebrar!</p>
+      <div class="news-actions">
+        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOCsIMSEbPF/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Assistir o vídeo
+        </a>
+      </div>
     </article>
 
-    <!-- Aniversário – bolo -->
-    <article class="news-card">
+    <!-- Aniversário: celebração -->
+    <article class="news-card" data-type="aniversario">
       <div class="news-head">
         <span class="news-date">31 ago 2025</span>
-        <span class="news-tag evento">Aniversário</span>
+        <span class="news-tag aniversario">Aniversário</span>
       </div>
-      <h3 class="news-title">Aniversário FisioForma 🎂</h3>
-      <p class="news-text">
-        Mais do que números, celebramos histórias, amizades e conquistas.
-      </p>
-      <a class="news-cta" href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener">Ver fotos</a>
+      <h3 class="news-title">Nosso aniversário foi lindo demais! 🎂</h3>
+      <p class="news-text">Agradecemos cada aluno e amigo que fez parte dessa história. Que venham muitos anos de saúde e união!</p>
+      <div class="news-actions">
+        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DOzCajpkcFA/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Ver o Reels
+        </a>
+      </div>
     </article>
 
-    <!-- Setembro Amarelo -->
-    <article class="news-card">
+    <!-- Campanha: Setembro Amarelo -->
+    <article class="news-card" data-type="campanha">
       <div class="news-head">
         <span class="news-date">11 set 2025</span>
         <span class="news-tag campanha">Campanha</span>
       </div>
-      <h3 class="news-title">Setembro Amarelo</h3>
-      <p class="news-text">
-        Exercitar o corpo também é cuidar da mente. Você não está sozinho. 💛
-      </p>
-      <a class="news-cta outline" href="#contato">Falar com a equipe</a>
+      <h3 class="news-title">Setembro Amarelo 💛</h3>
+      <p class="news-text">Cuidar da saúde mental também é um ato de amor-próprio. Você não está sozinho: movimente-se e compartilhe boas energias.</p>
+      <div class="news-actions">
+        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DNOA9lIt5Gd/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Ver campanha
+        </a>
+      </div>
     </article>
+
+    <!-- Extra (defina como campanha/aviso conforme preferir) -->
+    <article class="news-card" data-type="campanha">
+      <div class="news-head">
+        <span class="news-date">—</span>
+        <span class="news-tag campanha">Campanha</span>
+      </div>
+      <h3 class="news-title">Treine com a gente!</h3>
+      <p class="news-text">Ambiente acolhedor, equipe atenciosa e treinos que cabem na sua rotina. Bora começar hoje?</p>
+      <div class="news-actions">
+        <a class="news-cta" href="https://www.instagram.com/fisioforma.acad/reel/DLXwDPMxlD8/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Ver o Reels
+        </a>
+        <a class="news-cta ghost" href="#planos">Conhecer planos</a>
+      </div>
+    </article>
+
   </div>
 </div>
+
       <aside style="border-left:1px solid var(--line); padding-left:16px;">
         <div class="card" style="border-radius:18px; overflow:hidden;">
           <div class="body" style="padding:12px 16px">
