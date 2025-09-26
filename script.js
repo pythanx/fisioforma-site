@@ -20,14 +20,14 @@
     }
   });
 })();
-</script>
 
-<script> // garante que o primeiro esteja marcado
+
+garante que o primeiro esteja marcado
 (function(){ const first = document.querySelector('#depoimentos input[name="t"]'); if (first) first.checked = true; })();
 </script>
 
 <!-- Autoplay depoimentos (respeita prefers-reduced-motion) -->
-<script>
+
 (function(){
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const box = document.querySelector('#depoimentos .t-carousel');
