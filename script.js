@@ -44,90 +44,20 @@
 
 
  // swipe nos depoimentos
-// Autoplay e Swipe para o Carrossel de Depoimentos de Alunos (Card 1)
+// Bloco 1: Carrossel de Alunos (#t-aluno-carousel) - Deve estar no script.js
 (function() {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const box = document.querySelector('#t-aluno-carousel');
   if (!box) return;
-
-  const radios = [...box.querySelectorAll('input[name="t_aluno"]')]; 
-  let i = radios.findIndex(r => r.checked); 
-  if (i < 0) { i = 0; radios[0].checked = true; }
-
-  let hold = false;
-  
-  const go = n => { 
-    i = (n + radios.length) % radios.length; 
-    radios[i].checked = true; 
-  };
-  
-  // Autoplay roda a cada 4.2 segundos
-  let timer;
-  const start = () => { 
-    if (reduce) return; 
-    timer = setInterval(() => { if (!hold) go(i + 1); }, 4200); 
-  };
-
-  // Pausa ao interagir
-  box.addEventListener('mouseenter', () => hold = true);
-  box.addEventListener('mouseleave', () => hold = false);
-
-  // Navegação por toque (Swipe Mobile)
-  let x0 = null;
-  box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
-  
-  box.addEventListener('touchend', e => {
-    if (x0 == null) return;
-    const dx = e.changedTouches[0].clientX - x0; 
-    x0 = null;
-    if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
-  }, { passive: true });
-  
-  setTimeout(start, 500);
-
+  // ... resto do código do carrossel de alunos ...
 })();
 
-// Autoplay e Swipe para o Carrossel de Dicas do Professor (Card 2)
+// Bloco 2: Carrossel do Professor (#t-professor-carousel) - Deve estar no script.js
 (function() {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const box = document.querySelector('#t-professor-carousel');
   if (!box) return;
-
-  const radios = [...box.querySelectorAll('input[name="t_prof"]')]; 
-  let i = radios.findIndex(r => r.checked); 
-  if (i < 0) { i = 0; radios[0].checked = true; } 
-
-  let hold = false;
-  
-  const go = n => { 
-    i = (n + radios.length) % radios.length; 
-    radios[i].checked = true; 
-  };
-  
-  // Autoplay roda a cada 3.8 segundos (um pouco mais rápido)
-  let timer;
-  const start = () => { 
-    if (reduce) return; 
-    timer = setInterval(() => { if (!hold) go(i + 1); }, 3800); 
-  };
-
-  // Pausa ao interagir
-  box.addEventListener('mouseenter', () => hold = true);
-  box.addEventListener('mouseleave', () => hold = false);
-
-  // Navegação por toque (Swipe Mobile)
-  let x0 = null;
-  box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
-  
-  box.addEventListener('touchend', e => {
-    if (x0 == null) return;
-    const dx = e.changedTouches[0].clientX - x0; 
-    x0 = null;
-    if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
-  }, { passive: true });
-  
-  setTimeout(start, 500);
-
+  // ... resto do código do carrossel do professor ...
 })();
 
 
