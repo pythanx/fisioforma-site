@@ -59,38 +59,6 @@ garante que o primeiro esteja marcado
 })();
 
 
-<!-- JSON-LD (SEO Local) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HealthClub",
-  "name": "FisioForma Academia",
-  "image": "https://fisioforma-site.vercel.app/logo-fisioforma.png",
-  "url": "https://fisioforma-site.vercel.app/",
-  "telephone": "+55 98 99222-3926",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Avenida Vaticano, 04",
-    "addressLocality": "São Luís",
-    "addressRegion": "MA",
-    "postalCode": "65085-255",
-    "addressCountry": "BR"
-  },
-  "sameAs": [
-    "https://instagram.com/fisioforma.acad",
-    "https://wa.me/5598992223926"
-  ],
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"06:00","closes":"22:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"12:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"14:30","closes":"17:30"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"12:00"}
-  ],
-  "geo": {"@type":"GeoCoordinates","latitude": -2.5610109,"longitude": -44.3353749},
-  "hasMap": "https://www.google.com/maps/search/Av.+Vaticano,+4+-+Anjo+da+Guarda,+S%C3%A3o+Lu%C3%ADs+-+MA,+65085-255",
-  "potentialAction": {"@type":"ReserveAction","target":"https://wa.me/5598992223926","result":{"@type":"Thing","name":"Atendimento via WhatsApp"}}
-}
 
 
 (function(){
