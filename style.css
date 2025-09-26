@@ -790,7 +790,7 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 
 /* ---------------------------------------------------- */
-/* --- ESTILOS DO CARD FIXO DO PROFESSOR --- */
+/* --- ESTILOS DO CARD FIXO DO PROFESSOR (COM LIMPEZA DE INLINE STYLES) --- */
 /* ---------------------------------------------------- */
 
 .professor-card { 
@@ -804,7 +804,27 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     align-items: center; 
     height: 100%; 
     justify-content: flex-start;
+    /* Estilo movido do HTML: */
+    padding: 30px; 
 }
+
+/* Estilos para os blocos de conteúdo internos (Dicas e Dúvidas) */
+.professor-card > div:first-of-type { /* Div de '3 Dicas Essenciais' */
+    margin-top: 25px;
+    width: 100%;
+}
+.professor-card > div:last-of-type { /* Div de '3 Dúvidas Comuns' */
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* Estilo para o separador <hr> */
+.professor-card hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 15px 0;
+}
+
 .professor-avatar { 
     width: 120px; 
     height: 120px; 
@@ -829,8 +849,13 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     color: var(--ink);
 }
 .mini-heading {
-    margin: 0;
     font-weight: 700;
+    /* Estilos movidos do HTML: */
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 1.15rem;
+    color: var(--brand);
+    margin-top: 0; /* Garante que 'margin: 0' seja aplicado */
 }
 
 
