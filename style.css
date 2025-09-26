@@ -768,7 +768,7 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #t-aluno-carousel .slide { width: calc(100% / 9); padding: 0; }
 
 /* Estilos dos cards de alunos (Mantidos) */
-.bubble { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); min-height: 400px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; height: 100%; }
+.bubble { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); min-height: 400px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; height: 100%; position: relative;  }
 .bubble-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 15px auto; border: 4px solid var(--brand-ink); display: block; }
 .bubble-title { font-size: 1.3rem; font-weight: 700; color: var(--brand); margin: 0 0 10px 0; line-height: 1.3; }
 .bubble-text { font-size: 0.95rem; line-height: 1.6; color: var(--ink); margin: 0 0 20px 0; font-style: italic; }
@@ -776,6 +776,19 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 .review-source { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin: 0 0 4px 0; }
 .review-text { font-size: 0.9rem; color: var(--ink); margin: 0; line-height: 1.4; }
 .bubble-author { font-size: 0.9rem; color: var(--muted); margin-top: auto; font-weight: 600; }
+
+/* Adicione (ou edite) a classe .real-review-icon no seu style.css: */
+.real-review-icon {
+    position: absolute; /* ESSENCIAL para se posicionar em relação ao .bubble */
+    top: -15px;         /* Move 15px para cima (para fora da borda) */
+    right: 30px;        /* Move 30px da direita (para o canto superior direito) */
+    z-index: 5;         /* Garante que fique por cima da borda */
+    
+    /* Dependendo de como você estilizou a bolinha, você pode precisar: */
+    /* width: 30px; */
+    /* height: 30px; */
+    /* border-radius: 50%; */
+}
 
 /* Transições ALUNOS (1 slide por vez) */
 #t1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 9)); }
