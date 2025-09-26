@@ -1852,3 +1852,8 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
         transform: none; /* Remove o scale do card destaque no mobile */
     }
 }
+/* AJUSTE PARA O TEXTO DO BOTÃO ESCOLHER PLANO FICAR BRANCO */
+.plano-card .btn-escolher {
+    /* Força o texto a ser branco se houver alguma herança ou sobreposição */
+    color: #fff !important; 
+}
