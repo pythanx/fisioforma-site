@@ -1454,3 +1454,217 @@ a.btn.xs, .news-cta.xs, .cta.xs{ padding:6px 10px; font-size:13px; border-radius
 @media (max-width:560px){
   a.btn, button, .news-cta, .cta{ padding:7px 11px; font-size:13px; }
 }
+
+
+/* ======================================================= */
+/* ====== Adições de Estilo para Novas Seções (Gemini) ===== */
+/* ======================================================= */
+
+/* 1. Estilizando o título H1 (cor da span) */
+.hero h1 .h1-destaque-span {
+  color: var(--brand-ink);
+}
+
+/* 2. Responsividade do Hero/DM Card (Refinando o layout cols-2) */
+@media (min-width: 768px) {
+  .hero .wrap.grid.cols-2 {
+    display: grid;
+    /* Conteúdo principal ligeiramente maior que o cartão DM */
+    grid-template-columns: 1.2fr 1fr; 
+    gap: 40px;
+    align-items: flex-start;
+  }
+}
+
+/* 3. Estilo do bloco de DM (simulação de Instagram) */
+.igdm-card {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0;
+}
+.igdm-card .igdm-wrap {
+  background: #262626; /* Fundo do chat - dark mode */
+  border-radius: 16px;
+  color: #fff;
+}
+
+
+/* ====== PLANOS ====== */
+
+/* Estilo do Card em Destaque (Casadinha) */
+.plano-card.destaque {
+  border-color: var(--brand);
+  background: var(--card); 
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(43, 107, 138, 0.15);
+}
+
+/* Estilo do botão dentro do card */
+.plano-card .btn-escolher {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Ícones da lista (usando as classes ok, no, opt do HTML) */
+.plano-card ul li {
+  display: flex; 
+  align-items: center;
+  /* Retorna a borda pontilhada (se a sua não estiver completa) */
+  border-bottom: 1px dashed var(--line);
+  padding: 8px 0;
+}
+.plano-card ul li:last-child {
+  border-bottom: none;
+}
+.plano-card ul li.ok::before { content: '✔️'; margin-right: 8px; color: #2e7d32; }
+.plano-card ul li.no::before { content: '❌'; margin-right: 8px; color: #d32f2f; }
+.plano-card ul li.opt::before { content: '▪️'; margin-right: 8px; color: #6b7280; }
+
+/* Tabela Comparativa (responsividade) */
+.compare-wrap { overflow-x: auto; }
+table.compare {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 20px;
+}
+table.compare th, table.compare td {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+}
+table.compare th { background: var(--card); }
+table.compare td.ok, table.compare td.no, table.compare td.opt {
+  text-align: center;
+  font-weight: 600;
+  color: var(--brand-ink);
+}
+
+
+/* ====== NOVIDADES ====== */
+
+/* Container de Novidades (Responsividade) */
+.news-list {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr; /* Mobile: Coluna única */
+  margin-top: 20px;
+}
+@media (min-width: 768px) {
+  .news-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .news-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Estilo do Card de Novidade */
+.news-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+.news-cover {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+.news-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.news-chip {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+.news-chip span {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.news-body {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.news-title {
+  color: var(--brand-ink);
+  margin-top: 0;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.news-text {
+  flex-grow: 1;
+  color: var(--muted);
+}
+.news-actions {
+  margin-top: 12px;
+}
+
+
+/* ====== COMPONENTES GENÉRICOS (Normas) ====== */
+
+/* Componentes da seção Normas e Sobre */
+.mini-heading {
+  font-size: 1rem;
+  color: var(--brand-ink);
+  margin: 12px 0 8px 0;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* MINI BADGES (Normas) */
+.mini-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 8px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.mini-badge.success { background: #e6f6ec; color: #28a745; }
+.mini-badge.note { background: #eaf3f9; color: var(--brand); }
+.mini-badge.warn { background: #fff8e6; color: #ffc107; }
+.mini-badge.danger { background: #fbebeb; color: #dc3545; }
+.mini-badge.info { background: #eaf3f9; color: #17a2b8; }
+
+/* Card de Normas (Estrutura) */
+.normas-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+}
+.normas-card h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--brand-ink);
+  margin-top: 0;
+}
+.normas-card h3 .ico {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
