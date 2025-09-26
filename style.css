@@ -683,9 +683,6 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 
 /* ================================================= */
-/* ====== SEÇÃO: DEPOIMENTOS / COMUNIDADE (#depoimentos) ====== */
-/* ================================================= */
-/* ================================================= */
 /* ====== SEÇÃO: DEPOIMENTOS / COMUNIDADE (#depoimentos) - LAYOUT DE COLUNAS ====== */
 /* ================================================= */
 
@@ -698,11 +695,11 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     gap: 32px;
     margin-top: 32px;
 }
-/* Grid layout para desktop: Coluna de depoimentos (maior) e Coluna do Professor (menor) */
+/* Grid layout para desktop: 2/5 (Alunos) e 1.5/5 (Professor) */
 @media (min-width: 900px) {
     .two-col-content {
-        grid-template-columns: 2fr 1.5fr; /* 57% e 43% aproximadamente */
-        align-items: start; /* Alinha o conteúdo ao topo */
+        grid-template-columns: 2fr 1.5fr; 
+        align-items: start;
     }
 }
 
@@ -716,115 +713,39 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     margin-bottom: 20px;
 }
 
-/* ---------------------------------------------------- */
-/* --- COLUNA 1: CARROSSEL DE DEPOIMENTOS (AVATARES) --- */
-/* ---------------------------------------------------- */
+/* --- ESTILOS COMUNS AOS CARROSSEIS (Tanto Aluno quanto Professor) --- */
 
-#t-aluno-carousel {
-    max-width: 480px; /* Limita a largura do carrossel para destaque visual */
-    margin: 0 auto;
-    position: relative; /* Necessário para a mecânica do carrossel */
+.t-carousel {
+    position: relative; 
+    overflow: hidden;
+    margin: 0 auto; 
+    /* Adiciona flexbox aqui para garantir a coluna de depoimentos horizontal */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+.t-carousel .viewport {
+    width: 100%;
     overflow: hidden;
 }
 
-/* Base do Carrossel (ajuste para 9 slides) */
-#t-aluno-carousel .slides {
+.t-carousel .slides {
     display: flex;
-    width: 900%; /* 9 slides */
     transition: transform 0.5s ease;
 }
 
-/* Slide individual (1 slide por vez) */
-#t-aluno-carousel .slide {
-    width: calc(100% / 9); 
+.t-carousel .slide {
     flex-shrink: 0;
+    padding: 0 10px; /* Espaçamento entre os slides (principalmente para o professor) */
 }
 
-/* Estilo da Bolha de Depoimento (o card) */
-#t-aluno-carousel .bubble {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    min-height: 400px; /* Altura fixa para todos os cards */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center; 
-    text-align: center;
-    height: 100%; /* Garante altura total */
-}
-
-/* Imagem do Avatar */
-#t-aluno-carousel .bubble-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; 
-    object-fit: cover;
-    margin: 0 auto 15px auto; 
-    border: 4px solid var(--brand-ink); /* Avatar do Aluno */
-    display: block;
-}
-
-/* Título Principal (Frase Montada) */
-#t-aluno-carousel .bubble-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--brand); 
-    margin: 0 0 10px 0;
-    line-height: 1.3;
-}
-
-/* Texto de Suporte (Motivação) */
-#t-aluno-carousel .bubble-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0 0 20px 0;
-    font-style: italic;
-}
-
-/* Bloco do Depoimento Real */
-.real-review {
-    background: var(--card);
-    border-left: 4px solid var(--brand); /* Cor da marca para destaque */
-    padding: 10px 15px;
-    margin: 10px 0 20px 0;
-    width: 100%;
-    text-align: left;
-}
-
-.review-source {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin: 0 0 4px 0;
-}
-
-.review-text {
-    font-size: 0.9rem;
-    color: var(--ink);
-    margin: 0;
-    line-height: 1.4;
-}
-
-/* Nome do Autor/Fonte */
-#t-aluno-carousel .bubble-author {
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin-top: auto; /* Empurra para o final do card */
-    font-weight: 600;
-}
-
-
-/* NAVEGAÇÃO BOLINHAS (dots) - Adaptação para o novo ID */
-#t-aluno-carousel .nav-dots {
+/* NAVEGAÇÃO BOLINHAS (dots) */
+.t-carousel .nav-dots {
     text-align: center;
     margin-top: 20px;
 }
-#t-aluno-carousel .nav-dots label {
+.t-carousel .nav-dots label {
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -834,24 +755,68 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     cursor: pointer;
     transition: background 0.3s ease;
 }
-#t_a1:checked ~ .nav-dots label[for="t_a1"],
-#t_a2:checked ~ .nav-dots label[for="t_a2"],
-#t_a3:checked ~ .nav-dots label[for="t_a3"],
-#t_a4:checked ~ .nav-dots label[for="t_a4"],
-#t_a5:checked ~ .nav-dots label[for="t_a5"],
-#t_a6:checked ~ .nav-dots label[for="t_a6"],
-#t_a7:checked ~ .nav-dots label[for="t_a7"],
-#t_a8:checked ~ .nav-dots label[for="t_a8"],
-#t_a9:checked ~ .nav-dots label[for="t_a9"] {
+
+/* Alunos: Ativação dos dots */
+#t_a1:checked ~ .nav-dots label[for="t_a1"], #t_a2:checked ~ .nav-dots label[for="t_a2"], #t_a3:checked ~ .nav-dots label[for="t_a3"], 
+#t_a4:checked ~ .nav-dots label[for="t_a4"], #t_a5:checked ~ .nav-dots label[for="t_a5"], #t_a6:checked ~ .nav-dots label[for="t_a6"],
+#t_a7:checked ~ .nav-dots label[for="t_a7"], #t_a8:checked ~ .nav-dots label[for="t_a8"], #t_a9:checked ~ .nav-dots label[for="t_a9"] {
     background: var(--brand);
 }
 
-/* Animação de Slide (para o carrossel de alunos) */
-/* Esconde os inputs de rádio */
-#t-aluno-carousel input[type="radio"] {
-    display: none;
+/* Professor: Ativação dos dots */
+#t_p1:checked ~ .nav-dots label[for="t_p1"], #t_p2:checked ~ .nav-dots label[for="t_p2"], #t_p3:checked ~ .nav-dots label[for="t_p3"], 
+#t_p4:checked ~ .nav-dots label[for="t_p4"], #t_p5:checked ~ .nav-dots label[for="t_p5"], #t_p6:checked ~ .nav-dots label[for="t_p6"] {
+    background: var(--brand);
 }
-/* Mecânica de transição do carrossel */
+
+
+/* ---------------------------------------------------- */
+/* --- CARROSSEL 1: ALUNOS (9 Slides, 1 visível por vez) --- */
+/* ---------------------------------------------------- */
+
+#t-aluno-carousel {
+    max-width: 480px; 
+}
+
+#t-aluno-carousel .slides {
+    width: 900%; /* 9 slides */
+}
+
+#t-aluno-carousel .slide {
+    width: calc(100% / 9); 
+    padding: 0; /* Remove padding lateral no slide de aluno */
+}
+
+.bubble {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; 
+    text-align: center;
+    height: 100%;
+}
+.bubble-img { /* Avatar */
+    width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 15px auto; 
+    border: 4px solid var(--brand-ink); display: block;
+}
+.bubble-title { font-size: 1.3rem; font-weight: 700; color: var(--brand); margin: 0 0 10px 0; line-height: 1.3; }
+.bubble-text { font-size: 0.95rem; line-height: 1.6; color: var(--ink); margin: 0 0 20px 0; font-style: italic; }
+
+.real-review { /* Bloco do Depoimento Real */
+    background: var(--card); border-left: 4px solid var(--brand); padding: 10px 15px; margin: 10px 0 20px 0;
+    width: 100%; text-align: left;
+}
+.review-source { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin: 0 0 4px 0; }
+.review-text { font-size: 0.9rem; color: var(--ink); margin: 0; line-height: 1.4; }
+.bubble-author { font-size: 0.9rem; color: var(--muted); margin-top: auto; font-weight: 600; }
+
+/* Transições ALUNOS (1 slide por vez) */
 #t_a1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 9)); }
 #t_a2:checked ~ .viewport .slides { transform: translateX(calc(1 * -100% / 9)); }
 #t_a3:checked ~ .viewport .slides { transform: translateX(calc(2 * -100% / 9)); }
@@ -864,31 +829,23 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 
 /* ---------------------------------------------------- */
-/* --- COLUNA 2: CARROSSEL DO PROFESSOR (DICAS/DÚVIDAS) --- */
+/* --- CARROSSEL 2: PROFESSOR (6 Slides) --- */
 /* ---------------------------------------------------- */
 
 #t-professor-carousel {
-    /* Não limita a largura, ele deve preencher a coluna */
-    margin: 0; 
-    position: relative;
-    overflow: hidden;
+    max-width: 480px; /* Limita a largura para seguir o padrão do lado esquerdo no mobile */
 }
 
-/* Base do Carrossel (ajuste para 6 slides) */
 #t-professor-carousel .slides {
-    display: flex;
     width: 600%; /* 6 slides */
-    transition: transform 0.5s ease;
 }
 
-/* Slide individual: Ocupa 1/6 do total (100% da viewport do carrossel no mobile) */
+/* Mobile/Padrão: 1 slide visível por vez */
 #t-professor-carousel .slide {
     width: calc(100% / 6); 
-    padding: 0 10px; /* Espaçamento entre os cards */
-    flex-shrink: 0;
+    padding: 0 10px;
 }
 
-/* Estilo do Card do Professor (mantido) */
 .professor-card {
     background: #fff;
     border: 1px solid var(--brand);
@@ -899,17 +856,22 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 300px; /* Adiciona uma altura mínima para manter o card visível */
-    height: 100%; /* Garante altura total */
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    min-height: 300px; 
+    height: 100%;
+    justify-content: center;
+}
+.professor-avatar { /* Avatar */
+    width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px auto;
+    border: 4px solid var(--brand);
+}
+.tip-type { /* DICA DE TREINO / DÚVIDA FREQUENTE */
+    display: block; font-size: 0.75rem; font-weight: 600; color: var(--brand-ink); text-transform: uppercase; margin-bottom: 5px;
+}
+.tip-text {
+    font-size: 0.95rem; margin: 0; line-height: 1.4;
 }
 
-/* Tweak para o dot navigation do professor */
-#t-professor-carousel .nav-dots {
-    margin-top: 15px;
-}
-
-/* Mecânica de transição do carrossel (1 slide por vez no mobile) */
+/* Transições PROFESSOR (1 slide por vez no Mobile) */
 #t_p1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 6)); }
 #t_p2:checked ~ .viewport .slides { transform: translateX(calc(1 * -100% / 6)); }
 #t_p3:checked ~ .viewport .slides { transform: translateX(calc(2 * -100% / 6)); }
@@ -918,33 +880,37 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 #t_p6:checked ~ .viewport .slides { transform: translateX(calc(5 * -100% / 6)); }
 
 
-/* === CORREÇÃO: MOSTRAR 2 CARDS NO DESKTOP/TABLET === */
+/* === DESKTOP / TABLET (Mostra 2 cards do professor por vez) === */
 @media (min-width: 641px) {
-    /* Agora cada slide ocupa 1/2 da coluna do carrossel, mostrando 2 por vez */
+    /* Define que cada slide ocupará 1/2 da viewport do carrossel */
     #t-professor-carousel .slide {
         width: calc(100% / 2); 
     }
     
-    /* O carrossel tem 6 slides, queremos que ele se mova 1 slide por vez */
-    /* Total de slides visíveis no desktop é 2. Temos 6 slides.
-       O último slide visível será: slide 5 + slide 6. 
-       Precisamos de 5 posições de rádio: 1->2, 2->3, 3->4, 4->5.
-       O número de labels (dots) no HTML está correto (6), mas usaremos 4 transições para deslizar de 1 em 1.
+    /* As 6 posições de rádio agora representam:
+       P1: Slides 1+2 | P2: Slides 2+3 | P3: Slides 3+4 | P4: Slides 4+5 | P5: Slides 5+6 | P6: (invisível/loop)
+       Usaremos 4 posições efetivas de transição para o desktop, deslizando 1 slide por vez (2 visíveis).
     */
     
-    /* Posição 1: Mostra slides 1 e 2 */
-    #t_p1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 6)); }
-    /* Posição 2: Mostra slides 2 e 3 (Deslocamento de 1 slide) */
-    #t_p2:checked ~ .viewport .slides { transform: translateX(calc(1 * -100% / 6)); }
-    /* Posição 3: Mostra slides 3 e 4 */
-    #t_p3:checked ~ .viewport .slides { transform: translateX(calc(2 * -100% / 6)); }
-    /* Posição 4: Mostra slides 4 e 5 */
-    #t_p4:checked ~ .viewport .slides { transform: translateX(calc(3 * -100% / 6)); }
-    /* Posição 5: Mostra slides 5 e 6 (Última posição) */
-    #t_p5:checked ~ .viewport .slides { transform: translateX(calc(4 * -100% / 6)); }
-    /* Posição 6 (Retorna ao início) */
-    #t_p6:checked ~ .viewport .slides { transform: translateX(calc(5 * -100% / 6)); }
-    /* ATENÇÃO: Se as bolinhas de navegação ficarem confusas, o JavaScript vai ignorar as últimas para não quebrar. */
+    /* 1º deslocamento: Mostra 1+2 */
+    #t_p1:checked ~ .viewport .slides { transform: translateX(0); }
+    /* 2º deslocamento: Mostra 2+3 (Move 1 slide/1/6 da largura total) */
+    #t_p2:checked ~ .viewport .slides { transform: translateX(calc(-100% / 6)); }
+    /* 3º deslocamento: Mostra 3+4 */
+    #t_p3:checked ~ .viewport .slides { transform: translateX(calc(-200% / 6)); }
+    /* 4º deslocamento: Mostra 4+5 */
+    #t_p4:checked ~ .viewport .slides { transform: translateX(calc(-300% / 6)); }
+    /* 5º deslocamento: Mostra 5+6 (Última visualização completa) */
+    #t_p5:checked ~ .viewport .slides { transform: translateX(calc(-400% / 6)); }
+    /* 6º deslocamento: Volta ao loop visualmente, ou mostra o final (Deixamos igual ao P5) */
+    #t_p6:checked ~ .viewport .slides { transform: translateX(calc(-400% / 6)); }
+}
+
+/* Mobile: Colunas se empilham */
+@media (max-width: 900px) {
+    .testimonial-col, .professor-col {
+        margin-bottom: 20px;
+    }
 }
 
 
