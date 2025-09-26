@@ -864,145 +864,87 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 
 /* ---------------------------------------------------- */
-/* --- COLUNA 2: CARD DO PROFESSOR (FIXO) --- */
+/* --- COLUNA 2: CARROSSEL DO PROFESSOR (DICAS/DÚVIDAS) --- */
 /* ---------------------------------------------------- */
 
+#t-professor-carousel {
+    /* Não limita a largura, ele deve preencher a coluna */
+    margin: 0; 
+    position: relative;
+    overflow: hidden;
+}
+
+/* Base do Carrossel (ajuste para 6 slides) */
+#t-professor-carousel .slides {
+    display: flex;
+    width: 600%; /* 6 slides */
+    transition: transform 0.5s ease;
+}
+
+/* Slide individual: Ocupa 1/6 do total (100% da viewport do carrossel no mobile) */
+#t-professor-carousel .slide {
+    width: calc(100% / 6); 
+    padding: 0 10px; /* Espaçamento entre os cards */
+    flex-shrink: 0;
+}
+
+/* Estilo do Card do Professor (mantido) */
 .professor-card {
     background: #fff;
     border: 1px solid var(--brand);
     border-radius: 12px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 300px; /* Adiciona uma altura mínima para manter o card visível */
+    height: 100%; /* Garante altura total */
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
 }
 
-.professor-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 20px auto;
-    border: 4px solid var(--brand);
+/* Tweak para o dot navigation do professor */
+#t-professor-carousel .nav-dots {
+    margin-top: 15px;
 }
 
-.tips-list {
-    width: 100%;
-    text-align: left;
-    margin-top: 10px;
-}
+/* Mecânica de transição do carrossel (1 slide por vez no mobile) */
+#t_p1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 6)); }
+#t_p2:checked ~ .viewport .slides { transform: translateX(calc(1 * -100% / 6)); }
+#t_p3:checked ~ .viewport .slides { transform: translateX(calc(2 * -100% / 6)); }
+#t_p4:checked ~ .viewport .slides { transform: translateX(calc(3 * -100% / 6)); }
+#t_p5:checked ~ .viewport .slides { transform: translateX(calc(4 * -100% / 6)); }
+#t_p6:checked ~ .viewport .slides { transform: translateX(calc(5 * -100% / 6)); }
 
-.tip-item {
-    border-bottom: 1px dashed var(--line);
-    padding: 10px 0;
-}
-.tip-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
 
-.tip-type {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--brand-ink);
-    text-transform: uppercase;
-    margin-bottom: 2px;
-}
-.tip-text {
-    font-size: 0.95rem;
-    margin: 0;
-    line-height: 1.4;
-}
-
-/* Mobile: Colunas se empilham */
-@media (max-width: 900px) {
-    .testimonial-col, .professor-col {
-        margin-bottom: 20px;
+/* === CORREÇÃO: MOSTRAR 2 CARDS NO DESKTOP/TABLET === */
+@media (min-width: 641px) {
+    /* Agora cada slide ocupa 1/2 da coluna do carrossel, mostrando 2 por vez */
+    #t-professor-carousel .slide {
+        width: calc(100% / 2); 
     }
-}
-
-
-/* NAVEGAÇÃO BOLINHAS (dots) */
-.nav-dots {
-    text-align: center;
-    margin-top: 24px;
-}
-
-.nav-dots label {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: var(--line);
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-/* Bolinha Ativa */
-#t1:checked ~ .nav-dots label[for="t1"],
-#t2:checked ~ .nav-dots label[for="t2"],
-#t3:checked ~ .nav-dots label[for="t3"],
-#t4:checked ~ .nav-dots label[for="t4"],
-#t5:checked ~ .nav-dots label[for="t5"],
-#t6:checked ~ .nav-dots label[for="t6"],
-#t7:checked ~ .nav-dots label[for="t7"],
-#t8:checked ~ .nav-dots label[for="t8"],
-#t9:checked ~ .nav-dots label[for="t9"],
-#t10:checked ~ .nav-dots label[for="t10"],
-#t11:checked ~ .nav-dots label[for="t11"],
-#t12:checked ~ .nav-dots label[for="t12"] {
-    background: var(--brand);
-}
-
-/* RESPONSIVIDADE (4 slides visíveis no desktop) */
-@media (min-width: 1200px) {
-    .t-carousel .slide {
-        width: calc(100% / 12 * 4); /* 4 slides visíveis */
-    }
-    /* Ajuste de deslocamento para 1/4 da viewport */
-    #t1:checked ~ .viewport .slides { transform: translateX(calc(0 * -25%)) !important; }
-    #t2:checked ~ .viewport .slides { transform: translateX(calc(1 * -25%)) !important; }
-    #t3:checked ~ .viewport .slides { transform: translateX(calc(2 * -25%)) !important; }
-    #t4:checked ~ .viewport .slides { transform: translateX(calc(3 * -25%)) !important; }
-    #t5:checked ~ .viewport .slides { transform: translateX(calc(4 * -25%)) !important; }
-    #t6:checked ~ .viewport .slides { transform: translateX(calc(5 * -25%)) !important; }
-    #t7:checked ~ .viewport .slides { transform: translateX(calc(6 * -25%)) !important; }
-    #t8:checked ~ .viewport .slides { transform: translateX(calc(7 * -25%)) !important; }
-    #t9:checked ~ .viewport .slides { transform: translateX(calc(8 * -25%)) !important; }
-    #t10:checked ~ .viewport .slides { transform: translateX(calc(9 * -25%)) !important; }
-    #t11:checked ~ .viewport .slides { transform: translateX(calc(10 * -25%)) !important; }
-    #t12:checked ~ .viewport .slides { transform: translateX(calc(11 * -25%)) !important; }
-}
-
-/* Exibir 2 slides em tablets */
-@media (max-width: 900px) {
-    .t-carousel .slide {
-        width: calc(100% / 12 * 6); /* 2 slides visíveis */
-    }
-    /* Ajuste de deslocamento para 1/2 da viewport */
-    #t1:checked ~ .viewport .slides { transform: translateX(calc(0 * -50%)) !important; }
-    #t2:checked ~ .viewport .slides { transform: translateX(calc(1 * -50%)) !important; }
-    #t3:checked ~ .viewport .slides { transform: translateX(calc(2 * -50%)) !important; }
-    #t4:checked ~ .viewport .slides { transform: translateX(calc(3 * -50%)) !important; }
-    #t5:checked ~ .viewport .slides { transform: translateX(calc(4 * -50%)) !important; }
-    #t6:checked ~ .viewport .slides { transform: translateX(calc(5 * -50%)) !important; }
-    #t7:checked ~ .viewport .slides { transform: translateX(calc(6 * -50%)) !important; }
-    #t8:checked ~ .viewport .slides { transform: translateX(calc(7 * -50%)) !important; }
-    #t9:checked ~ .viewport .slides { transform: translateX(calc(8 * -50%)) !important; }
-    #t10:checked ~ .viewport .slides { transform: translateX(calc(9 * -50%)) !important; }
-    #t11:checked ~ .viewport .slides { transform: translateX(calc(10 * -50%)) !important; }
-    #t12:checked ~ .viewport .slides { transform: translateX(calc(11 * -50%)) !important; }
-}
-
-/* 1 slide em mobile */
-@media (max-width: 640px) {
-    .t-carousel .slide {
-        width: 100%; 
-    }
+    
+    /* O carrossel tem 6 slides, queremos que ele se mova 1 slide por vez */
+    /* Total de slides visíveis no desktop é 2. Temos 6 slides.
+       O último slide visível será: slide 5 + slide 6. 
+       Precisamos de 5 posições de rádio: 1->2, 2->3, 3->4, 4->5.
+       O número de labels (dots) no HTML está correto (6), mas usaremos 4 transições para deslizar de 1 em 1.
+    */
+    
+    /* Posição 1: Mostra slides 1 e 2 */
+    #t_p1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 6)); }
+    /* Posição 2: Mostra slides 2 e 3 (Deslocamento de 1 slide) */
+    #t_p2:checked ~ .viewport .slides { transform: translateX(calc(1 * -100% / 6)); }
+    /* Posição 3: Mostra slides 3 e 4 */
+    #t_p3:checked ~ .viewport .slides { transform: translateX(calc(2 * -100% / 6)); }
+    /* Posição 4: Mostra slides 4 e 5 */
+    #t_p4:checked ~ .viewport .slides { transform: translateX(calc(3 * -100% / 6)); }
+    /* Posição 5: Mostra slides 5 e 6 (Última posição) */
+    #t_p5:checked ~ .viewport .slides { transform: translateX(calc(4 * -100% / 6)); }
+    /* Posição 6 (Retorna ao início) */
+    #t_p6:checked ~ .viewport .slides { transform: translateX(calc(5 * -100% / 6)); }
+    /* ATENÇÃO: Se as bolinhas de navegação ficarem confusas, o JavaScript vai ignorar as últimas para não quebrar. */
 }
 
 
