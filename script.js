@@ -26,40 +26,65 @@
 (function(){ const first = document.querySelector('#depoimentos input[name="t"]'); if (first) first.checked = true; })();
 
 
-<!-- Autoplay depoimentos (respeita prefers-reduced-motion) -->
+// Removendo o antigo bloco genérico que quebrava (remova o que você tem e use estes)
 
+// NOVO: Carrossel 1: ALUNOS (#t-aluno-carousel) - name="t_a"
 (function(){
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const box = document.querySelector('#depoimentos .t-carousel');
-  if(!box) return;
-  const radios = [...box.querySelectorAll('input[name="t"]')];
-  let i = radios.findIndex(r => r.checked);
-  if (i < 0) { radios[0].checked = true; i = 0; }
-  let hold = false;
-  const tick = () => { if(!hold){ i = (i+1)%radios.length; radios[i].checked = true; } };
-  if (!reduce) setInterval(tick, 4500);
-  box.addEventListener('mouseenter', ()=> hold = true);
-  box.addEventListener('mouseleave', ()=> hold = false);
-})();
-
-
- // swipe nos depoimentos
-// Bloco 1: Carrossel de Alunos (#t-aluno-carousel) - Deve estar no script.js
-(function() {
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const box = document.querySelector('#t-aluno-carousel');
-  if (!box) return;
-  // ... resto do código do carrossel de alunos ...
+  if(!box) return;
+  const radios = [...box.querySelectorAll('input[name^="t_a"]')]; 
+  let i = radios.findIndex(r => r.checked); if (i < 0) { i = 0; radios[0].checked = true; }
+  let hold = false;
+
+  const go = n => { i = (n + radios.length) % radios.length; radios[i].checked = true; };
+  let timer;
+  // Intervalo de 4.2 segundos (Aluno)
+  const start = () => { if (reduce) return; timer = setInterval(() => { if(!hold) go(i+1); }, 4200); };
+  
+  box.addEventListener('mouseenter', () => hold = true);
+  box.addEventListener('mouseleave', () => hold = false);
+
+  // Swipe logic
+  let x0=null;
+  box.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  box.addEventListener('touchend',e=>{
+    if(x0==null) return;
+    const dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>40) go(i + (dx<0?1:-1));
+  },{passive:true});
+
+  start(); 
 })();
 
-// Bloco 2: Carrossel do Professor (#t-professor-carousel) - Deve estar no script.js
-(function() {
+// NOVO: Carrossel 2: PROFESSOR (#t-professor-carousel) - name="t_p"
+(function(){
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const box = document.querySelector('#t-professor-carousel');
-  if (!box) return;
-  // ... resto do código do carrossel do professor ...
-})();
+  if(!box) return;
+  const radios = [...box.querySelectorAll('input[name^="t_p"]')]; 
+  let i = radios.findIndex(r => r.checked); if (i < 0) { i = 0; radios[0].checked = true; }
+  let hold = false;
 
+  const go = n => { i = (n + radios.length) % radios.length; radios[i].checked = true; };
+  let timer;
+  // Intervalo de 5 segundos (Professor)
+  const start = () => { if (reduce) return; timer = setInterval(() => { if(!hold) go(i+1); }, 5000); };
+  
+  box.addEventListener('mouseenter', () => hold = true);
+  box.addEventListener('mouseleave', () => hold = false);
+
+  // Swipe logic
+  let x0=null;
+  box.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  box.addEventListener('touchend',e=>{
+    if(x0==null) return;
+    const dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>40) go(i + (dx<0?1:-1));
+  },{passive:true});
+
+  start();
+})();
 
 
 (function(){
