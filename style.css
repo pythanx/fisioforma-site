@@ -1856,14 +1856,12 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
         transform: none; /* Remove o scale do card destaque no mobile */
     }
 }
-/* SOLUÇÃO DEFINITIVA PARA A COR DO TEXTO DO BOTÃO ESCOLHER PLANO */
-/* Este seletor aponta para o link (a) com as classes .cta e .btn-escolher, 
-   DENTRO de um .plano-card, e em QUALQUER ESTADO (normal, hover, visitado). */
-
-.plano-card a.cta.btn-escolher,
-.plano-card a.cta.btn-escolher:link,
-.plano-card a.cta.btn-escolher:visited,
-.plano-card a.cta.btn-escolher:hover,
-.plano-card a.cta.btn-escolher:active {
+/* SOLUÇÃO DEFINITIVA (MAIS FORTE QUE TUDO) */
+/* Este seletor combina a hierarquia do card com a classe de link, 
+   o estado de hover, e o estado normal. */
+.plano-card > a.btn-escolher,
+.plano-card > a.btn-escolher:link,
+.plano-card > a.btn-escolher:visited,
+.plano-card > a.btn-escolher:hover {
     color: #fff !important; 
 }
