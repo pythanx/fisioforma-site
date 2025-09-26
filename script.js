@@ -27,56 +27,45 @@
 
 
 // Autoplay e Swipe para o Carrossel de Depoimentos de Alunos
+// ... (Código do Menu Mobile, etc.) ...
+
+// Autoplay e Swipe para o Carrossel de Depoimentos de Alunos
 (function() {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const box = document.querySelector('#t-aluno-carousel'); // Novo ID
+  // Seletor que funciona com os radios name="t" (t1, t2, etc.)
+  const box = document.querySelector('#depoimentos .t-carousel'); 
   if (!box) return;
 
-  const radios = [...box.querySelectorAll('input[name="t_aluno"]')]; // Novo nome do input
+  const radios = [...box.querySelectorAll('input[name^="t"]')]; 
   let i = radios.findIndex(r => r.checked); 
-  if (i < 0) { i = 0; radios[0].checked = true; } // Garante que um slide esteja ativo
-
+  if (i < 0) { i = 0; radios[0].checked = true; }
   let hold = false;
-  
-  // Função de troca de slide
-  const go = n => { 
-    i = (n + radios.length) % radios.length; 
-    radios[i].checked = true; 
-  };
-  
-  // Autoplay
-  let timer;
-  const start = () => { 
-    if (reduce) return; 
-    timer = setInterval(() => { if (!hold) go(i + 1); }, 4200); // Roda a cada 4.2 segundos
-  };
-  const stop = () => { 
-    clearInterval(timer); 
-  };
 
-  // Pausa ao interagir
+  // troca slide
+  const go = n => { i = (n + radios.length) % radios.length; radios[i].checked = true; };
+  
+  // autoplay
+  let timer;
+  // Intervalo de 4.2 segundos
+  const start = () => { if (reduce) return; timer = setInterval(() => { if(!hold) go(i+1); }, 4200); };
+  
   box.addEventListener('mouseenter', () => hold = true);
   box.addEventListener('mouseleave', () => hold = false);
 
-  // Navegação por toque (Swipe Mobile)
-  let x0 = null;
-  box.addEventListener('touchstart', e => { 
-    x0 = e.touches[0].clientX; 
-  }, { passive: true });
-  
-  box.addEventListener('touchend', e => {
-    if (x0 == null) return;
-    const dx = e.changedTouches[0].clientX - x0; 
-    x0 = null;
-    
-    // Se o movimento for maior que 40px, troca o slide
-    if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
-  }, { passive: true });
-  
-  // Inicia o autoplay após um breve período
-  setTimeout(start, 500);
+  // Swipe logic
+  let x0=null;
+  box.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  box.addEventListener('touchend',e=>{
+    if(x0==null) return;
+    const dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>40) go(i + (dx<0?1:-1));
+  },{passive:true});
 
+  start();
 })();
+
+// ... (Outros códigos, como carrossel da seção Sobre, etc.) ...
+
 
 (function(){
   const body   = document.querySelector('.igdm-body');
