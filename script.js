@@ -28,6 +28,12 @@
 
 // Removendo o antigo bloco genérico que quebrava (remova o que você tem e use estes)
 
+// Remova o código que começa com:
+// (function(){ const first = document.querySelector('#depoimentos input[name="t"]'); ... })();
+// e o bloco de "Autoplay depoimentos..."
+
+// SUBSTITUA pelos 2 blocos abaixo:
+
 // NOVO: Carrossel 1: ALUNOS (#t-aluno-carousel) - name="t_a"
 (function(){
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
