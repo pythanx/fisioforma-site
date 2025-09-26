@@ -1574,17 +1574,14 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .news-img {
     width: 100%;
     height: 180px; /* Mantém a altura uniforme */
-    object-fit: contain; /* A imagem será contida, mantendo sua proporção */
+    object-fit: cover; /* A imagem será contida, mantendo sua proporção */
     display: block;
-    background-color: #fff; /* Adiciona fundo branco para preencher o espaço se a imagem for menor */
-    padding: 10px; /* Adiciona um pequeno padding interno para imagens com borda */
 }
 
 .news-body {
     padding: 16px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    flex-grow: 1; 
+    /* Nenhuma definição de display, volta ao fluxo normal */
 }
 
 .news-date {
@@ -1604,7 +1601,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 }
 
 .news-text {
-    flex-grow: 1;
+
     color: var(--muted);
     font-size: 0.95rem;
 }
