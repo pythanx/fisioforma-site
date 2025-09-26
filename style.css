@@ -1859,9 +1859,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 /* SOLUÇÃO DEFINITIVA (MAIS FORTE QUE TUDO) */
 /* Este seletor combina a hierarquia do card com a classe de link, 
    o estado de hover, e o estado normal. */
-.plano-card > a.btn-escolher,
-.plano-card > a.btn-escolher:link,
-.plano-card > a.btn-escolher:visited,
-.plano-card > a.btn-escolher:hover {
+/* SOLUÇÃO DEFINITIVA (FORÇA O TEXTO INTERNO DO BOTÃO A SER BRANCO) */
+.btn-text-fix {
     color: #fff !important; 
 }
