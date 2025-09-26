@@ -1857,8 +1857,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     }
 }
 /* CORREÇÃO DEFINITIVA (FORÇA O TEXTO DO BOTÃO DENTRO DO CARD A SER BRANCO) */
-/* Este seletor aponta para o link (a) que tem as classes .cta e .btn-escolher, 
-   e que está DENTRO de um .plano-card. */
-.plano-card a.cta.btn-escolher {
+.plano-card a.btn-escolher:link, 
+.plano-card a.btn-escolher:visited {
     color: #fff !important; 
 }
