@@ -22,9 +22,9 @@
 })();
 
 
-garante que o primeiro esteja marcado
+//garante que o primeiro esteja marcado
 (function(){ const first = document.querySelector('#depoimentos input[name="t"]'); if (first) first.checked = true; })();
-</script>
+
 
 <!-- Autoplay depoimentos (respeita prefers-reduced-motion) -->
 
