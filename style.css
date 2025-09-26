@@ -1433,7 +1433,7 @@ a.btn, button, .news-cta, .cta, .cta a {
   padding:8px 14px; border-radius:8px;
   font-size:14px; font-weight:700; line-height:1.2;
   text-decoration:none !important;
-  border:1px solid #2b6b8a; background:#2b6b8a; color:#fff;
+  border:1px solid #2b6b8a; background:#2b6b8a; color:#fff !important;
   box-shadow:0 4px 10px rgba(43,107,138,.16);
   transition:transform .12s ease, box-shadow .18s ease, background .18s ease;
   cursor:pointer;
