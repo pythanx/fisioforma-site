@@ -1434,7 +1434,7 @@ a.btn, button, .news-cta, .cta, .cta a {
   font-size:14px; font-weight:700; line-height:1.2;
   text-decoration:none !important;
   border:1px solid #2b6b8a; background:#2b6b8a;
-  color:#fff !important;
+  color:#fff;
   box-shadow:0 4px 10px rgba(43,107,138,.16);
   transition:transform .12s ease, box-shadow .18s ease, background .18s ease;
   cursor:pointer;
@@ -1790,6 +1790,9 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     width: 100%;
     padding: 12px 14px;
     font-size: 1rem;
+    
+    /* CORREÇÃO DEFINITIVA (AQUI VAI FUNCIONAR) */
+    color: #fff !important; 
 }
 
 
@@ -1852,8 +1855,4 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     .plano-card.destaque {
         transform: none; /* Remove o scale do card destaque no mobile */
     }
-}
-/* CORREÇÃO FORÇADA: Garante que o texto do botão no card do plano seja branco */
-.plano-card a.btn-escolher {
-    color: #fff !important; 
 }
