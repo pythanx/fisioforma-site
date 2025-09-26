@@ -681,7 +681,7 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 
 
 /* ================================================= */
-/* ====== SEÇÃO: DEPOIMENTOS / COMUNIDADE (#depoimentos) - LAYOUT DE COLUNAS ====== */
+/* ====== SEÇÃO: DEPOIMENTOS / COMUNIDADE (#depoimentos) - LAYOUT ESTÁVEL ====== */
 /* ================================================= */
 
 #depoimentos {
@@ -693,11 +693,15 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     gap: 32px;
     margin-top: 32px;
 }
-/* Grid layout para desktop: Coluna de depoimentos (maior) e Coluna do Professor (menor) */
+/* Grid layout para desktop: 2/5 (Alunos) e 1.5/5 (Professor) */
 @media (min-width: 900px) {
     .two-col-content {
-        grid-template-columns: 2fr 1.5fr; /* 57% e 43% aproximadamente */
-        align-items: start; /* Alinha o conteúdo ao topo */
+        grid-template-columns: 2fr 1.5fr; 
+        align-items: start;
+    }
+    /* FIX ESSENCIAL: Impede que o carrossel (de Alunos) expanda a coluna */
+    .testimonial-col, .professor-col {
+        min-width: 0; 
     }
 }
 
@@ -711,115 +715,34 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     margin-bottom: 20px;
 }
 
-/* ---------------------------------------------------- */
-/* --- COLUNA 1: CARROSSEL DE DEPOIMENTOS (AVATARES) --- */
-/* ---------------------------------------------------- */
+/* --- ESTILOS COMUNS AOS CARROSSEIS (Alunos) --- */
+.t-carousel {
+    position: relative; 
+    overflow: hidden;
+    margin: 0 auto; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 100%; 
+}
 
-#t-aluno-carousel {
-    max-width: 480px; /* Limita a largura do carrossel para destaque visual */
-    margin: 0 auto;
-    position: relative; /* Necessário para a mecânica do carrossel */
+.t-carousel .viewport {
+    width: 100%;
     overflow: hidden;
 }
 
-/* Base do Carrossel (ajuste para 9 slides) */
-#t-aluno-carousel .slides {
+.t-carousel .slides {
     display: flex;
-    width: 900%; /* 9 slides */
     transition: transform 0.5s ease;
+    flex-wrap: nowrap; 
 }
 
-/* Slide individual (1 slide por vez) */
-#t-aluno-carousel .slide {
-    width: calc(100% / 9); 
-    flex-shrink: 0;
-}
-
-/* Estilo da Bolha de Depoimento (o card) */
-#t-aluno-carousel .bubble {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    min-height: 400px; /* Altura fixa para todos os cards */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center; 
-    text-align: center;
-    height: 100%; /* Garante altura total */
-}
-
-/* Imagem do Avatar */
-#t-aluno-carousel .bubble-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; 
-    object-fit: cover;
-    margin: 0 auto 15px auto; 
-    border: 4px solid var(--brand-ink); /* Avatar do Aluno */
-    display: block;
-}
-
-/* Título Principal (Frase Montada) */
-#t-aluno-carousel .bubble-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--brand); 
-    margin: 0 0 10px 0;
-    line-height: 1.3;
-}
-
-/* Texto de Suporte (Motivação) */
-#t-aluno-carousel .bubble-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0 0 20px 0;
-    font-style: italic;
-}
-
-/* Bloco do Depoimento Real */
-.real-review {
-    background: var(--card);
-    border-left: 4px solid var(--brand); /* Cor da marca para destaque */
-    padding: 10px 15px;
-    margin: 10px 0 20px 0;
-    width: 100%;
-    text-align: left;
-}
-
-.review-source {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin: 0 0 4px 0;
-}
-
-.review-text {
-    font-size: 0.9rem;
-    color: var(--ink);
-    margin: 0;
-    line-height: 1.4;
-}
-
-/* Nome do Autor/Fonte */
-#t-aluno-carousel .bubble-author {
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin-top: auto; /* Empurra para o final do card */
-    font-weight: 600;
-}
-
-
-/* NAVEGAÇÃO BOLINHAS (dots) - Adaptação para o novo ID */
-#t-aluno-carousel .nav-dots {
+/* NAVEGAÇÃO BOLINHAS (dots) - APENAS ALUNOS (usando name="t") */
+.t-carousel .nav-dots {
     text-align: center;
     margin-top: 20px;
 }
-#t-aluno-carousel .nav-dots label {
+.t-carousel .nav-dots label {
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -829,88 +752,87 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     cursor: pointer;
     transition: background 0.3s ease;
 }
-#t_a1:checked ~ .nav-dots label[for="t_a1"],
-#t_a2:checked ~ .nav-dots label[for="t_a2"],
-#t_a3:checked ~ .nav-dots label[for="t_a3"],
-#t_a4:checked ~ .nav-dots label[for="t_a4"],
-#t_a5:checked ~ .nav-dots label[for="t_a5"],
-#t_a6:checked ~ .nav-dots label[for="t_a6"],
-#t_a7:checked ~ .nav-dots label[for="t_a7"],
-#t_a8:checked ~ .nav-dots label[for="t_a8"],
-#t_a9:checked ~ .nav-dots label[for="t_a9"] {
+
+/* Ativação dos dots (Alunos) */
+#t1:checked ~ .nav-dots label[for="t1"], #t2:checked ~ .nav-dots label[for="t2"], #t3:checked ~ .nav-dots label[for="t3"], 
+#t4:checked ~ .nav-dots label[for="t4"], #t5:checked ~ .nav-dots label[for="t5"], #t6:checked ~ .nav-dots label[for="t6"],
+#t7:checked ~ .nav-dots label[for="t7"], #t8:checked ~ .nav-dots label[for="t8"], #t9:checked ~ .nav-dots label[for="t9"] {
     background: var(--brand);
 }
 
-/* Animação de Slide (para o carrossel de alunos) */
-/* Esconde os inputs de rádio */
-#t-aluno-carousel input[type="radio"] {
-    display: none;
-}
-/* Mecânica de transição do carrossel */
-#t_a1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 9)); }
-#t_a2:checked ~ .viewport .slides { transform: translateX(calc(1 * -100% / 9)); }
-#t_a3:checked ~ .viewport .slides { transform: translateX(calc(2 * -100% / 9)); }
-#t_a4:checked ~ .viewport .slides { transform: translateX(calc(3 * -100% / 9)); }
-#t_a5:checked ~ .viewport .slides { transform: translateX(calc(4 * -100% / 9)); }
-#t_a6:checked ~ .viewport .slides { transform: translateX(calc(5 * -100% / 9)); }
-#t_a7:checked ~ .viewport .slides { transform: translateX(calc(6 * -100% / 9)); }
-#t_a8:checked ~ .viewport .slides { transform: translateX(calc(7 * -100% / 9)); }
-#t_a9:checked ~ .viewport .slides { transform: translateX(calc(8 * -100% / 9)); }
+/* ---------------------------------------------------- */
+/* --- CARROSSEL 1: ALUNOS (9 Slides, 1 visível por vez) --- */
+/* ---------------------------------------------------- */
+#t-aluno-carousel { max-width: 480px; }
+#t-aluno-carousel .slides { width: 900%; }
+#t-aluno-carousel .slide { width: calc(100% / 9); padding: 0; }
+
+/* Estilos dos cards de alunos (Mantidos) */
+.bubble { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); min-height: 400px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; height: 100%; }
+.bubble-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 15px auto; border: 4px solid var(--brand-ink); display: block; }
+.bubble-title { font-size: 1.3rem; font-weight: 700; color: var(--brand); margin: 0 0 10px 0; line-height: 1.3; }
+.bubble-text { font-size: 0.95rem; line-height: 1.6; color: var(--ink); margin: 0 0 20px 0; font-style: italic; }
+.real-review { background: var(--card); border-left: 4px solid var(--brand); padding: 10px 15px; margin: 10px 0 20px 0; width: 100%; text-align: left; }
+.review-source { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin: 0 0 4px 0; }
+.review-text { font-size: 0.9rem; color: var(--ink); margin: 0; line-height: 1.4; }
+.bubble-author { font-size: 0.9rem; color: var(--muted); margin-top: auto; font-weight: 600; }
+
+/* Transições ALUNOS (1 slide por vez) */
+#t1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 9)); }
+#t2:checked ~ .viewport .slides { transform: translateX(calc(1 * -100% / 9)); }
+#t3:checked ~ .viewport .slides { transform: translateX(calc(2 * -100% / 9)); }
+#t4:checked ~ .viewport .slides { transform: translateX(calc(3 * -100% / 9)); }
+#t5:checked ~ .viewport .slides { transform: translateX(calc(4 * -100% / 9)); }
+#t6:checked ~ .viewport .slides { transform: translateX(calc(5 * -100% / 9)); }
+#t7:checked ~ .viewport .slides { transform: translateX(calc(6 * -100% / 9)); }
+#t8:checked ~ .viewport .slides { transform: translateX(calc(7 * -100% / 9)); }
+#t9:checked ~ .viewport .slides { transform: translateX(calc(8 * -100% / 9)); }
 
 
 /* ---------------------------------------------------- */
-/* --- COLUNA 2: CARD DO PROFESSOR (FIXO) --- */
+/* --- ESTILOS DO CARD FIXO DO PROFESSOR --- */
 /* ---------------------------------------------------- */
 
-.professor-card {
-    background: #fff;
-    border: 1px solid var(--brand);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.professor-card { 
+    background: #fff; 
+    border: 1px solid var(--brand); 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    height: 100%; 
+    justify-content: flex-start;
 }
-
-.professor-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 20px auto;
-    border: 4px solid var(--brand);
+.professor-avatar { 
+    width: 120px; 
+    height: 120px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: 0 auto 20px auto; 
+    border: 4px solid var(--brand); 
 }
-
-.tips-list {
-    width: 100%;
+.tip-type { 
+    display: block; 
+    font-size: 0.75rem; 
+    font-weight: 800; 
+    color: var(--brand-ink); 
+    text-transform: uppercase; 
+    margin-bottom: 4px; 
+}
+.tip-text { 
+    font-size: 0.95rem; 
+    margin: 0; 
+    line-height: 1.4; 
     text-align: left;
-    margin-top: 10px;
+    color: var(--ink);
 }
-
-.tip-item {
-    border-bottom: 1px dashed var(--line);
-    padding: 10px 0;
-}
-.tip-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.tip-type {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--brand-ink);
-    text-transform: uppercase;
-    margin-bottom: 2px;
-}
-.tip-text {
-    font-size: 0.95rem;
+.mini-heading {
     margin: 0;
-    line-height: 1.4;
+    font-weight: 700;
 }
+
 
 /* Mobile: Colunas se empilham */
 @media (max-width: 900px) {
