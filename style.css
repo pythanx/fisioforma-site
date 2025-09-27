@@ -2027,3 +2027,42 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   padding-block: 8px !important;   /* era 10px */
 }
 
+/* === Professor: ultra-compacto === */
+#depoimentos .professor-card{
+  padding: 14px !important;
+  max-height: var(--prof-max, none);
+  overflow: auto;
+}
+
+/* Título/heading */
+#depoimentos .professor-card .mini-heading{
+  font-size: 1rem !important;
+  margin: 0 0 4px !important;
+}
+
+/* Blocos “Dicas” e “FAQ” com respiro mínimo */
+#depoimentos .professor-card > div:first-of-type{ margin-top: 6px !important; }
+#depoimentos .professor-card > div:last-of-type { margin-top: 8px !important; }
+
+/* Parágrafos e itens: menos margem e linha mais justa */
+#depoimentos .professor-card p,
+#depoimentos .professor-card li,
+#depoimentos .professor-card .tip-text{
+  margin: 2px 0 !important;
+  line-height: 1.32 !important;
+  font-size: .90rem !important;
+  text-align: left;
+}
+
+/* Separadores curtinhos */
+#depoimentos .professor-card hr{ margin: 6px 0 !important; opacity:.7; }
+
+/* Listas com recuo pequeno */
+#depoimentos .professor-card ul{ margin: 2px 0 6px 14px !important; }
+
+/* Wrappers internos (se existirem) ainda mais apertados */
+#depoimentos .professor-card .card-dicas-content,
+#depoimentos .professor-card .card-faq-content{
+  padding-block: 6px !important;
+}
+
