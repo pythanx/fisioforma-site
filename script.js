@@ -211,3 +211,29 @@
   setTimeout(setHeights, 600);
 })();
 
+/* === Match height professor x carrossel === */
+(function () {
+  const sec = document.querySelector('#depoimentos');
+  if (!sec) return;
+  const leftCard  = sec.querySelector('.testimonial-col .card, .testimonial-col .slider, .testimonial-col');
+  const profCard  = sec.querySelector('.professor-col .professor-card');
+  if (!leftCard || !profCard) return;
+
+  function setHeights() {
+    profCard.style.setProperty('--prof-max', 'none');
+    const h = leftCard.getBoundingClientRect().height;
+    profCard.style.setProperty('--prof-max', `${Math.max(260, Math.round(h))}px`);
+  }
+  window.addEventListener('resize', setHeights);
+  window.addEventListener('load', setHeights);
+  const imgs = leftCard.querySelectorAll('img');
+  let loaded = 0;
+  imgs.forEach(img => {
+    if (img.complete) { if (++loaded === imgs.length) setHeights(); }
+    else {
+      img.addEventListener('load', () => { if (++loaded === imgs.length) setHeights(); }, { once: true });
+      img.addEventListener('error', () => { if (++loaded === imgs.length) setHeights(); }, { once: true });
+    }
+  });
+  setTimeout(setHeights, 600);
+})();
