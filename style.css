@@ -1939,58 +1939,51 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     color: #fff !important; 
 }
 
-/* ================================================= */
-/* ====== SEÇÃO: DEPOIMENTOS / COMUNIDADE (#depoimentos) - LAYOUT ESTÁVEL ====== */
-/* ================================================= */
-
-/* ... (as regras anteriores permanecem) ... */
-
-/* Grid layout para desktop: 2/5 (Alunos) e 1.5/5 (Professor) */
 @media (min-width: 900px) {
+    /* 1. CONTAINER PAI: Garante que as colunas tenham a mesma altura total */
     .two-col-content {
-        grid-template-columns: 2fr 1.5fr; 
-        /* REMOVEMOS A LINHA align-items: start;
-           Agora o padrão align-items: stretch garante colunas de altura igual */
+        grid-template-columns: 2fr 1.5fr; 
     }
-    
-    .testimonial-col, .professor-col {
-        min-width: 0; 
-        /* Transforma as colunas em contêineres Flexbox verticais */
+
+    /* 2. COLUNAS LATERAIS: Força ambas a serem containers Flex verticais */
+    .testimonial-col, 
+    .professor-col {
         display: flex;
         flex-direction: column;
-        height: 100%; /* Garante que a coluna use a altura total do Grid */
+        height: 100%; 
+        min-width: 0; 
     }
 
     /* ---------------------------------------------------- */
-    /* 1. ALINHAMENTO DO PROFESSOR (Faz o Card de Dicas Esticar) */
+    /* 3. ALINHAMENTO DO PROFESSOR (Cards Mantêm o Tamanho do Conteúdo) */
     /* ---------------------------------------------------- */
     
-    /* Aplica a margem entre os cards */
     .professor-col .professor-card {
         margin-bottom: 20px; 
     }
     
-    /* ESTICAMENTO: Força APENAS o Card de Dicas (:first-of-type) a crescer */
+    /* CORREÇÃO ESSENCIAL: Garante que o Card 1 (Dicas) NÃO estique, mantendo o tamanho do conteúdo */
     .professor-col .professor-card:first-of-type {
-        flex-grow: 1; /* Ocupa todo o espaço vertical restante */
+        flex-grow: 0; 
+        /* Mantém o alinhamento interno sem forçar o crescimento vertical */
         display: flex; 
         flex-direction: column;
         justify-content: flex-start;
     }
 
-    /* Garante que o Card de Dúvidas (:last-child) não cresça e remove a margem final */
+    /* Garante que o Card 2 (Dúvidas) não cresça e remove a margem final */
     .professor-col .professor-card:last-child {
         margin-bottom: 0;
         flex-grow: 0;
     }
     
     /* ---------------------------------------------------- */
-    /* 2. ALINHAMENTO DO CARROSSEL (Faz o Bubble Esticar) */
+    /* 4. ALINHAMENTO DO CARROSSEL (Carrossel Estica para Preencher a Coluna) */
     /* ---------------------------------------------------- */
 
-    /* Faz o carrossel preencher o espaço vertical restante */
+    /* ESTICAMENTO: Faz o carrossel preencher o espaço vertical restante */
     .testimonial-col .t-carousel {
-        flex-grow: 1;
+        flex-grow: 1; /* ESSENCIAL: Só este elemento cresce! */
         display: flex; 
         flex-direction: column;
         min-height: 0; 
@@ -2004,10 +1997,12 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
         min-height: 0;
     }
     
-    /* Força o card de depoimento individual (.bubble) a ter 100% da altura */
+    /* ESTICAMENTO FINAL: Força o card de depoimento individual (.bubble) a ter 100% da altura */
     .bubble {
         height: 100% !important; 
-        /* Sobrescreve o min-height: 400px; que estava impedindo o esticamento */
         min-height: initial !important; 
+        display: flex; 
+        flex-direction: column;
+        justify-content: flex-start;
     }
 }
