@@ -2004,3 +2004,38 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .professor-col .professor-card .card-dicas-content > div > div {
     flex-grow: 1; /* Faz o bloco de texto das dicas ocupar o espaço */
 }
+/* ==================================================== */
+/* CORREÇÃO DO ALINHAMENTO DO AVATAR NO CARD DO PROFESSOR */
+/* ==================================================== */
+
+/* 1. Alinha o avatar e o bloco de dicas ao centro verticalmente */
+/* Este seletor mira a div que contém o avatar e o bloco de texto de dicas */
+.professor-col .professor-card .card-dicas-content > div {
+    /* O display: flex e gap já estão no seu HTML inline, mas é bom garantir aqui */
+    /* display: flex; */
+    /* gap: 20px; */
+    
+    /* CRUCIAL: Centraliza verticalmente o avatar e o texto */
+    align-items: center !important; 
+}
+/* ==================================================== */
+/* AJUSTE DE LEITURA DO FAQ */
+/* ==================================================== */
+
+/* Melhora a legibilidade das Respostas do Professor */
+.professor-col .professor-card .card-faq-content .resposta-professor {
+    /* Deixa o texto normal para ser mais legível */
+    font-style: normal !important; 
+    
+    /* Aumenta a distinção da cor da resposta */
+    color: var(--ink) !important; /* Usa a cor padrão do texto (preto/cinza escuro) */
+    
+    /* Adiciona um recuo e uma borda para visualmente separar a resposta da pergunta */
+    padding-left: 15px; 
+    border-left: 3px solid var(--brand); /* Linha vertical com a cor da marca */
+    
+    /* Garante que o STRONG dentro da resposta tenha a cor da marca */
+    strong {
+        color: var(--brand);
+    }
+}
