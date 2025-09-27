@@ -1982,3 +1982,48 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #depoimentos .professor-card p{ margin: 6px 0; line-height: 1.45; }
 #depoimentos .professor-card hr{ margin: 10px 0; }
 
+/* === Professor: versão compacta (mantém visual, reduz espaços) === */
+.professor-col .professor-card{
+  padding: 18px !important;       /* era 30px */
+  gap: 0 !important;               /* remove gaps implícitos */
+  max-height: var(--prof-max, none);
+  overflow: auto;                  /* só rola se precisar */
+  scroll-behavior: smooth;
+}
+
+/* topo (avatar/título) */
+.professor-col .professor-card .mini-heading{
+  font-size: 1.02rem !important;
+  margin: 0 0 6px !important;      /* ↓ margem abaixo do título */
+}
+
+/* blocos internos (“3 Dicas… / 3 Dúvidas…”) */
+.professor-col .professor-card > div:first-of-type{ margin-top: 8px !important; }
+.professor-col .professor-card > div:last-of-type { margin-top: 10px !important; }
+
+/* textos mais apertados (legíveis) */
+.professor-col .professor-card p,
+.professor-col .professor-card li,
+.professor-col .professor-card .tip-text{
+  margin: 4px 0 !important;
+  line-height: 1.36 !important;
+  font-size: .93rem;
+  text-align: left;
+}
+
+/* separadores curtos */
+.professor-col .professor-card hr{
+  margin: 8px 0 !important;
+  opacity:.7;
+}
+
+/* listas com recuo menor */
+.professor-col .professor-card ul{ margin: 4px 0 6px 16px !important; }
+
+/* se você tiver wrappers (usei nomes que já aparecem no seu CSS)
+   isso dá um respiro interno uniforme, sem “inflar” demais */
+.professor-col .professor-card .card-dicas-content,
+.professor-col .professor-card .card-faq-content{
+  padding-block: 8px !important;   /* era 10px */
+}
+
