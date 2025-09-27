@@ -1183,63 +1183,100 @@ section .grid > *{align-self:start}
 
 
 /* === Seção de Contato === */
-.contact {
-  padding: 60px 20px;
-  background: #f9fcff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+/* ===== CONTATO (look & feel do site) ===== */
+#contato{
+  padding: 56px 0;
+  background: radial-gradient(1200px 600px at 15% 10%, #ffffff 0%, #f6fbff 65%, #f1f7fd 100%);
+  border-top: 1px solid #e6eef7;
+}
+#contato .wrap{max-width:1100px;margin:auto;padding:0 18px}
+
+#contato h2{
+  margin:0 0 8px;
+  font-size: clamp(26px,3.2vw,36px);
+  color:#0b1620;
+}
+#contato .sub{
+  margin:0 0 20px;
+  color:#475569;
+  font-size: clamp(14px,1.15vw,16px);
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+.contact-grid{
+  display:grid; gap:24px; align-items:stretch;
+  grid-template-columns: 1.05fr 1fr;
+}
+@media (max-width: 900px){
+  .contact-grid{ grid-template-columns:1fr }
 }
 
-.contact-info p {
-  font-size: 1rem;
-  margin: 12px 0;
-  color: var(--ink);
+/* Cartão de infos – vidro */
+.contact-card{
+  display:flex; flex-direction:column; gap:14px;
+  background: linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.72));
+  border:1px solid #e6eef7; border-radius:16px;
+  box-shadow: 0 18px 44px rgba(8,34,66,.08);
+  padding:22px;
 }
 
-.contact-info i {
-  color: var(--brand);
-  margin-right: 10px;
+/* Linha com ícone */
+.contact-row{
+  display:flex; align-items:center; gap:12px;
+  padding:10px 12px; border:1px solid #e6eef7; border-radius:12px;
+  background:#fbfdff;
+}
+.contact-row i{
+  width:36px; height:36px; flex:0 0 36px;
+  display:grid; place-items:center;
+  border-radius:10px;
+  background: radial-gradient(120% 120% at 20% 0%, #2b6b8a, #38bdf8);
+  color:#fff; font-size:16px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+}
+.contact-row a, .contact-row span{
+  color:#0b2a3a; text-decoration:none; font-weight:700;
+}
+.contact-row a:hover{ color:#1f4e63; text-decoration:underline }
+
+/* Botão WhatsApp grande */
+.btn-whatsapp{
+  display:inline-flex; align-items:center; gap:10px;
+  width:max-content;
+  margin-top:6px;
+  border-radius:12px;
+  padding:12px 18px;
+  background:#2b6b8a; color:#fff !important; font-weight:800;
+  border:1px solid #2b6b8a;
+  box-shadow:0 10px 24px rgba(43,107,138,.20);
+  transition: transform .12s ease, box-shadow .18s ease, background .18s ease;
+}
+.btn-whatsapp:hover{ background:#1f4e63; transform:translateY(-1px); box-shadow:0 14px 30px rgba(31,78,99,.28) }
+.btn-whatsapp i{ font-size:18px }
+
+/* Moldura do mapa */
+.contact-map{
+  background:#fff; border:1px solid #e6eef7; border-radius:16px;
+  box-shadow:0 18px 44px rgba(8,34,66,.08);
+  padding:10px;
+  display:flex;
+}
+.contact-map .map-wrap{
+  border:1px solid #e9f1f9; border-radius:12px; overflow:hidden;
+  background:linear-gradient(#fff,#fbfdff 60%,#fff);
+  aspect-ratio: 16/9; width:100%;
+}
+.contact-map iframe{
+  width:100%; height:100%; border:0; display:block;
 }
 
-.contact-info a {
-  color: var(--brand);
-  font-weight: 600;
-  text-decoration: none;
+/* mini aviso de erro do mapa (fallback) */
+.map-fallback{
+  display:none; place-items:center; text-align:center;
+  color:#0e1c2a; padding:18px;
 }
+.contact-map.map-error .map-wrap{ display:none }
+.contact-map.map-error .map-fallback{ display:grid }
 
-.contact-info a:hover {
-  text-decoration: underline;
-}
-
-.btn-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #25D366;
-  color: #fff;
-  font-weight: 600;
-  padding: 12px 22px;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: 0.3s ease;
-  margin-top: 20px;
-}
-
-.btn-whatsapp:hover {
-  background: #1ebe57;
-}
-
-.contact-map iframe {
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
 
 
 
