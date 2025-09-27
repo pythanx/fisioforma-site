@@ -1964,3 +1964,21 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   .testimonial-col, .professor-col { min-width: 0; }
 }
 
+/* === Depoimentos: nivelar altura do card do Professor === */
+#depoimentos .professor-card{
+  display:flex;
+  flex-direction:column;
+  max-height: var(--prof-max, none);   /* JS define essa variável */
+  overflow: auto;                      /* rola só quando precisar */
+  scroll-behavior: smooth;
+}
+
+/* compacta um pouco o conteúdo pra caber melhor */
+#depoimentos .professor-card .card-dicas-content,
+#depoimentos .professor-card .card-faq-content{
+  padding-block: 10px;
+}
+#depoimentos .professor-card h4{ margin: 8px 0 6px; }
+#depoimentos .professor-card p{ margin: 6px 0; line-height: 1.45; }
+#depoimentos .professor-card hr{ margin: 10px 0; }
+
