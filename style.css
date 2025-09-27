@@ -1982,3 +1982,15 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     /* Esta regra depende de como você move os slides (transform: translate) */
     /* Se você estiver usando transform, a altura é controlada pelo viewport. */
 }
+/* Ajuste para o CARD DO PROFESSOR */
+.professor-col .professor-card {
+    /* Garante que o Card seja um container Flex vertical. */
+    display: flex; 
+    flex-direction: column;
+    
+    /* Remove a regra que fazia o card esticar (se ainda estiver no seu código) */
+    /* flex-grow: 0; */ 
+    
+    /* Opcional: Garante que o conteúdo fique no topo */
+    justify-content: flex-start;
+}
