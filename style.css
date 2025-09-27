@@ -1966,3 +1966,25 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .professor-col .professor-card .card-faq-content {
     margin-top: auto; 
 }
+/* Centraliza o Avatar e o Texto ao lado dele */
+.professor-col .professor-card .card-dicas-content > div {
+    /* O seletor acima mira a div interna que contém o avatar e o texto */
+    align-items: center !important; /* Mude de flex-start para center */
+}
+/* Melhora a legibilidade das Respostas do Professor */
+.professor-col .professor-card .card-faq-content .resposta-professor {
+    /* Deixa o texto normal para ser mais legível */
+    font-style: normal !important; 
+    
+    /* Aumenta a distinção da cor da resposta (use um cinza mais escuro ou a cor padrão) */
+    color: var(--ink) !important; /* Usa a cor padrão do texto (preto/cinza escuro) */
+    
+    /* Adiciona um recuo e uma borda para visualmente separar a resposta */
+    padding-left: 15px; 
+    border-left: 3px solid var(--brand); /* Linha vertical com a cor da marca */
+}
+
+/* Garante que o STRONG na resposta seja da cor padrão */
+.professor-col .professor-card .card-faq-content .resposta-professor strong {
+    color: var(--brand-ink);
+}
