@@ -1988,3 +1988,19 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .professor-col .professor-card .card-faq-content .resposta-professor strong {
     color: var(--brand-ink);
 }
+/* ==================================================== */
+/* CORREÇÃO DO ALINHAMENTO DO AVATAR NO CARD DO PROFESSOR */
+/* ==================================================== */
+
+/* 1. Alinha o avatar e o bloco de dicas ao centro verticalmente */
+.professor-col .professor-card .card-dicas-content > div {
+    display: flex; /* Garante que é um Flexbox */
+    gap: 20px; /* Mantém o espaçamento entre a imagem e o texto */
+    align-items: center !important; /* CRUCIAL: Centraliza verticalmente o avatar e o texto */
+    padding-bottom: 20px; /* Mantém o espaçamento inferior */
+}
+
+/* 2. Garante que o texto das dicas ocupe o espaço restante */
+.professor-col .professor-card .card-dicas-content > div > div {
+    flex-grow: 1; /* Faz o bloco de texto das dicas ocupar o espaço */
+}
