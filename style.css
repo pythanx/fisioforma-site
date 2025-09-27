@@ -780,8 +780,8 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 .bubble { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); min-height: 400px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; height: 100%; position: relative;  }
 .bubble-img { 
     /* Aumentado de 100px para 140px */
-    width: 140px; 
-    height: 140px; 
+    width: 300px; 
+    height: 300px; 
     border-radius: 50%; 
     object-fit: cover; 
     margin: 0 auto 20px auto; /* Adicionei um pouco mais de margem */
