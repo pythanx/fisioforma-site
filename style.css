@@ -789,6 +789,22 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
     /* height: 30px; */
     /* border-radius: 50%; */
 }
+/* Estilo para a bolinha/ícone que está 'bagunçada' */
+.review-source-icon {
+    /* POSICIONAMENTO */
+    position: absolute; /* ESSENCIAL: Posiciona em relação ao pai (.bubble) */
+    top: -15px;         /* Move 15px para cima (ajuste para posicionar metade acima da borda) */
+    right: 30px;        /* Posiciona 30px da borda direita (margem interna) */
+    z-index: 5;         /* Garante que o ícone fique por cima da borda do card */
+    
+    /* ESTILOS VISUAIS (Ajuste o tamanho e a cor conforme o seu ícone/imagem) */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Transforma o elemento em círculo */
+    /* background: var(--brand); Se for um div simples */
+    /* Se for uma imagem (ex: logo do Google), ela deve se ajustar ao 30x30 */
+    object-fit: cover;
+}
 
 /* Transições ALUNOS (1 slide por vez) */
 #t1:checked ~ .viewport .slides { transform: translateX(calc(0 * -100% / 9)); }
