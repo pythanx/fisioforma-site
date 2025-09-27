@@ -1949,48 +1949,20 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 }
 
 
-/* ==================================================== */
-/* 5. CORREÇÃO DE ALTURA ENTRE COLUNAS (AJUSTE AUTOMÁTICO PELO CONTEÚDO) */
-/* ==================================================== */
+/* CORREÇÃO DO LAYOUT INTERNO DO CARD DO PROFESSOR */
 
-/* 1. Contêiner Principal: Garante que as colunas fiquem lado a lado */
-#depoimentos .two-col-content { 
-    display: flex;
-    /* align-items: stretch; FOI REMOVIDO */
-    gap: 22px; 
-}
-
-/* 2. Colunas: Define a largura e as deixa se ajustar à altura do conteúdo */
-.testimonial-col,
-.professor-col {
-    width: calc(50% - 11px); 
-    display: block; /* Garante o comportamento padrão de bloco (sem flex) */
-    /* flex-direction: column; FOI REMOVIDO */
-  overflow:hidden;
-}
-
-/* 3. Cards internos: Remove qualquer regra de esticamento */
-.professor-col .professor-card,
-.testimonial-col .t-carousel {
-    /* flex-grow: 1; FOI REMOVIDO */
-    /* height: 100%; FOI REMOVIDO */
-}
-/* O elemento 'slides' deve ser tratado para exibir apenas um item por vez */
-.testimonial-col .t-carousel .slides {
-    /* Garante que o slides não tenha uma altura fixa grande. */
-    height: auto; 
-    /* Esta regra depende de como você move os slides (transform: translate) */
-    /* Se você estiver usando transform, a altura é controlada pelo viewport. */
-}
-/* Ajuste para o CARD DO PROFESSOR */
+/* 1. Torna o card principal um Flex Container vertical */
 .professor-col .professor-card {
-    /* Garante que o Card seja um container Flex vertical. */
     display: flex; 
     flex-direction: column;
-    
-    /* Remove a regra que fazia o card esticar (se ainda estiver no seu código) */
-    /* flex-grow: 0; */ 
-    
-    /* Opcional: Garante que o conteúdo fique no topo */
-    justify-content: flex-start;
+}
+
+/* 2. Faz o conteúdo de Dicas crescer e ocupar todo o espaço vertical restante */
+.professor-col .professor-card .card-dicas-content {
+    flex-grow: 1; 
+}
+
+/* 3. Empurra o conteúdo de FAQ (Dúvidas) para baixo (ajuda a fixar) */
+.professor-col .professor-card .card-faq-content {
+    margin-top: auto; 
 }
