@@ -211,29 +211,35 @@
   setTimeout(setHeights, 600);
 })();
 
-/* === Match height professor x carrossel === */
+// === Match height: Professor = altura do carrossel dos alunos (robusto) ===
 (function () {
   const sec = document.querySelector('#depoimentos');
   if (!sec) return;
-  const leftCard  = sec.querySelector('.testimonial-col .card, .testimonial-col .slider, .testimonial-col');
-  const profCard  = sec.querySelector('.professor-col .professor-card');
-  if (!leftCard || !profCard) return;
 
-  function setHeights() {
-    profCard.style.setProperty('--prof-max', 'none');
-    const h = leftCard.getBoundingClientRect().height;
-    profCard.style.setProperty('--prof-max', `${Math.max(260, Math.round(h))}px`);
-  }
-  window.addEventListener('resize', setHeights);
+  // Alvo do carrossel: o container que realmente dita a altura
+  // (usei o id que já aparece no seu CSS)
+  const left = sec.querySelector('#t-aluno-carousel');
+  const prof = sec.querySelector('.professor-col .professor-card');
+  if (!left || !prof) return;
+
+  const setHeights = () => {
+    // libera antes de medir
+    prof.style.setProperty('--prof-max', 'none');
+    // mede a altura visível do carrossel (com padding/borda)
+    const h = Math.round(left.getBoundingClientRect().height);
+    // aplica como limite do professor (se muito pequeno, garante mínimo)
+    prof.style.setProperty('--prof-max', `${Math.max(240, h)}px`);
+  };
+
+  // atualiza em mudanças de layout/redimensionamento
   window.addEventListener('load', setHeights);
-  const imgs = leftCard.querySelectorAll('img');
-  let loaded = 0;
-  imgs.forEach(img => {
-    if (img.complete) { if (++loaded === imgs.length) setHeights(); }
-    else {
-      img.addEventListener('load', () => { if (++loaded === imgs.length) setHeights(); }, { once: true });
-      img.addEventListener('error', () => { if (++loaded === imgs.length) setHeights(); }, { once: true });
-    }
-  });
-  setTimeout(setHeights, 600);
+  window.addEventListener('resize', setHeights);
+
+  // observa mudanças internas do carrossel (troca de slide, fontes, etc.)
+  const ro = new ResizeObserver(setHeights);
+  ro.observe(left);
+
+  // dispara uma vez depois (fallback)
+  setTimeout(setHeights, 400);
+  setHeights();
 })();
