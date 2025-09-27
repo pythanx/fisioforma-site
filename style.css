@@ -1946,43 +1946,61 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     }
     .testimonial-col, .professor-col {
         min-width: 0; 
-        
-        /* NOVO: Transforma ambas as colunas em contêineres Flexbox verticais */
+        /* Transforma ambas as colunas em contêineres Flexbox verticais */
         display: flex;
         flex-direction: column;
     }
 
-    /* 1. Alinhamento da Coluna do Professor */
-    /* Faz o Card de Dicas crescer para preencher qualquer espaço, nivelando os cards internos */
+    /* ---------------------------------------------------- */
+    /* 1. ALINHAMENTO DA COLUNA DO PROFESSOR (O Card de Dicas estica) */
+    /* ---------------------------------------------------- */
+    
+    /* Adiciona margem entre cards */
+    .professor-col .professor-card {
+        margin-bottom: 20px; 
+    }
+    
+    /* Força APENAS o Card 1 (Dicas Essenciais) a crescer e preencher o espaço vertical */
     .professor-col .professor-card:first-of-type {
-        flex-grow: 1;
-        margin-bottom: 20px;
+        flex-grow: 1; 
+        /* Garante que o conteúdo interno (foto + dicas) fique alinhado ao topo */
         display: flex; 
         flex-direction: column;
         justify-content: flex-start;
     }
+
+    /* Remove a margem extra do último card (Dúvidas) e garante que ele não cresça */
     .professor-col .professor-card:last-child {
         margin-bottom: 0;
+        flex-grow: 0;
     }
     
-    /* 2. Alinhamento da Coluna de Depoimentos */
-    /* Faz o carrossel (que é o único elemento abaixo do h3) crescer para preencher todo o espaço restante */
+    /* ---------------------------------------------------- */
+    /* 2. ALINHAMENTO DA COLUNA DE DEPOIMENTOS (O Carrossel estica) */
+    /* ---------------------------------------------------- */
+
+    /* Força o carrossel a preencher o espaço vertical restante após o título/h3 */
     .testimonial-col .t-carousel {
-        flex-grow: 1; /* Força o carrossel a se esticar verticalmente */
-        /* Opcional: Garante que o carrossel tenha altura mínima para começar a esticar */
-        min-height: 200px;
+        flex-grow: 1;
+        min-height: 0;
+        display: flex; 
+        flex-direction: column;
     }
 
-    /* 3. Ajuste do Card de Depoimento Individual */
-    /* Se o card de depoimento interno tiver uma altura fixa, ele não preencherá o carrossel. */
-    /* Forçamos o slide a ter 100% da altura do carrossel */
+    /* Garante que os elementos internos do carrossel usem a altura total */
+    .testimonial-col .t-carousel .viewport,
     .testimonial-col .t-carousel .slides,
-    .testimonial-col .t-carousel .slide {
+    .testimonial-col .t-carousel .slide { 
         height: 100%;
+        min-height: 0;
     }
-    /* E o conteúdo interno do bubble também deve se esticar */
+    
+    /* E o card de depoimento individual (.bubble) deve se esticar até o final */
     .bubble {
         height: 100%;
-        min-height: initial; /* Remove a altura mínima anterior (min-height: 400px;) */
+        min-height: initial !important; /* Remove a altura mínima fixa */
+        display: flex; 
+        flex-direction: column;
+        justify-content: flex-start;
     }
 }
