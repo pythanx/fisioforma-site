@@ -2097,3 +2097,33 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .professor-col .professor-card .dicas-grid hr {
     display: none;
 }
+/* ==================================================== */
+/* CORREÇÃO DE ALTURA ENTRE COLUNAS (HEIGHT MATCHING) */
+/* ==================================================== */
+
+/* 1. Contêiner Principal: Ativa o Flexbox e o estiramento de altura */
+#depoimentos .two-col-content { 
+    display: flex;
+    align-items: stretch; /* ESSENCIAL: Faz as colunas terem a mesma altura */
+    gap: 22px; /* Mantém o espaço entre as colunas */
+}
+
+/* 2. As Colunas: Definidas como Flex containers verticais */
+.testimonial-col,
+.professor-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. Conteúdo Interno: Faz o Card do Professor esticar para a altura da coluna */
+.professor-col .professor-card {
+    flex-grow: 1; /* CRUCIAL: Faz o card ocupar 100% da altura da coluna */
+    display: flex; /* Garante que o conteúdo interno (dicas e faq) também use Flex */
+    flex-direction: column;
+}
+
+/* 4. Conteúdo Interno do Card do Professor: Mantém o estiramento das Dicas */
+/* Se a regra abaixo já estiver no seu CSS, ignore-a, mas ela é o que garante que o FAQ não suba */
+.professor-col .professor-card .card-dicas-content {
+    flex-grow: 1; 
+}
