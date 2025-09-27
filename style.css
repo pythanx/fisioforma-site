@@ -1934,3 +1934,11 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .btn-text-fix {
     color: #fff !important; 
 }
+
+/* AJUSTE PARA EMPILHAR OS CARDS DO PROFESSOR EM TELAS PEQUENAS */
+@media (max-width: 767px) {
+    /* Força os cards do professor a empilharem verticalmente no mobile */
+    .professor-cards-wrap {
+        flex-direction: column; 
+    }
+}
