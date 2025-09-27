@@ -2039,3 +2039,32 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
         color: var(--brand);
     }
 }
+/* ==================================================== */
+/* NOVO: LAYOUT DE COLUNAS PARA AS DICAS ESSENCIAIS */
+/* ==================================================== */
+
+.professor-col .professor-card .dicas-grid {
+    /* Usa CSS Grid para criar duas colunas de largura igual */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 25px; /* Espaço entre as linhas e as colunas */
+    margin-bottom: 20px; /* Adiciona espaço antes do separador horizontal */
+}
+
+/* Garante que o separador horizontal (hr) só apareça em dispositivos maiores 
+   e que ele não quebre o layout de grid */
+.professor-col .professor-card .dicas-grid hr {
+    display: none; /* Remove o hr dentro do grid para não poluir */
+}
+
+/* Opcional: Ajuste para o padding das dicas */
+.professor-col .professor-card .dicas-grid .tip-text {
+    padding-bottom: 0; /* Remove padding desnecessário se houver */
+}
+
+/* Media Query: Volta para coluna única em telas pequenas para evitar quebras */
+@media (max-width: 600px) {
+    .professor-col .professor-card .dicas-grid {
+        grid-template-columns: 1fr; /* 1 coluna em telas menores */
+    }
+}
