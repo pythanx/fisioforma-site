@@ -2065,4 +2065,86 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #depoimentos .professor-card .card-faq-content{
   padding-block: 6px !important;
 }
+/* ===== Professor — layout compacto + nivelado ===== */
+#depoimentos .professor-card{
+  display:flex; flex-direction:column;
+  background:#fff; border:1px solid #e6eef7; border-radius:14px;
+  box-shadow:0 10px 26px rgba(8,34,66,.06);
+  max-height: var(--prof-max, 520px);     /* nivelamento */
+  overflow:auto; scroll-behavior:smooth;
+  padding:0;                               /* o padding vai nas áreas internas */
+}
+
+/* Cabeçalho fixo dentro do scroll */
+.prof-head{
+  position:sticky; top:0; z-index:2;
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px;
+  background:linear-gradient(#fff, #fbfdff);
+  border-bottom:1px solid #e9f1f9;
+}
+.prof-head .professor-avatar{
+  width:56px; height:56px; border-radius:50%;
+  object-fit:cover; border:3px solid var(--brand);
+  flex:0 0 auto;
+}
+.prof-head-meta strong{ display:block; color:var(--brand-ink); font-size:1rem; line-height:1.2 }
+.prof-head-meta span{ color:#64748b; font-size:.8rem }
+
+/* Áreas de conteúdo com pouco respiro */
+.card-dicas-content,
+.card-faq-content{ padding:12px 14px }
+
+/* Títulos mais colados */
+#depoimentos .professor-card h4{
+  margin:6px 0 4px; font-size:.98rem; color:#0e1c2a
+}
+#depoimentos .professor-card p{
+  margin:4px 0; line-height:1.45; color:#111827; font-size:.92rem
+}
+#depoimentos .professor-card hr{ margin:10px 0; border:0; border-top:1px solid #eef3f8 }
+
+/* FAQ com “chips” de pergunta */
+.faq-item{ padding:8px 10px; border:1px solid #e9f1f9; border-radius:10px; background:#fbfdff; margin:8px 0 }
+.faq-item .q{
+  font-weight:800; font-size:.9rem; color:#0b2a3a; margin-bottom:4px;
+  position:relative; padding-left:22px;
+}
+.faq-item .q::before{
+  content:"?"; position:absolute; left:0; top:0;
+  width:16px; height:16px; border-radius:50%;
+  display:grid; place-items:center; font-weight:900; font-size:.75rem;
+  background:var(--brand); color:#fff;
+}
+.faq-item .a{ margin:0; }
+
+/* Lista de dicas com bullets “check” (se usar <ul>) */
+.professor-card ul{ margin:8px 0; padding-left:0; list-style:none }
+.professor-card ul li{
+  position:relative; padding-left:22px; margin:6px 0; line-height:1.45;
+}
+.professor-card ul li::before{
+  content:""; position:absolute; left:0; top:.42em;
+  width:12px; height:12px; border-radius:50%;
+  background:var(--brand);
+  -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>') center/12px no-repeat;
+          mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>') center/12px no-repeat;
+}
+
+/* Scrollbar discreto (desktop) */
+@media (hover:hover){
+  #depoimentos .professor-card{
+    scrollbar-width:thin; scrollbar-color:#cfe3f5 transparent;
+  }
+  #depoimentos .professor-card::-webkit-scrollbar{ width:8px }
+  #depoimentos .professor-card::-webkit-scrollbar-thumb{
+    background:#cfe3f5; border-radius:8px; border:2px solid transparent; background-clip:content-box;
+  }
+  #depoimentos .professor-card::-webkit-scrollbar-track{ background:transparent }
+}
+
+/* Micro-ajustes de tipografia (dão a “compactada”) */
+#depoimentos .professor-card .tip-text{ font-size:.92rem; margin:4px 0 }
+#depoimentos .professor-card .tip-type{ font-size:.72rem; margin-bottom:2px }
+
 
