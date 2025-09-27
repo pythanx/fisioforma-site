@@ -169,3 +169,45 @@
   imgs.forEach(img => img.complete ? maybeStart() : img.addEventListener('load', maybeStart, {once:true}));
   setTimeout(()=>{ if(!done){ done = true; start(); } }, 1500);
 })();
+
+// === Match height: card do Professor = altura do carrossel ===
+(function () {
+  const sec = document.querySelector('#depoimentos');
+  if (!sec) return;
+
+  // ajuste aqui se seus seletores forem diferentes
+  const leftCard  = sec.querySelector('.testimonial-col .card, .testimonial-col .slider, .testimonial-col'); 
+  const profCard  = sec.querySelector('.professor-col .professor-card');
+
+  if (!leftCard || !profCard) return;
+
+  function setHeights() {
+    // remove limite pra medir a altura natural do card do carrossel
+    profCard.style.setProperty('--prof-max', 'none');
+
+    // mede a altura efetiva do card/esquerda
+    const h = leftCard.getBoundingClientRect().height;
+
+    // aplica como max-height no card do Professor
+    profCard.style.setProperty('--prof-max', `${Math.max(260, Math.round(h))}px`);
+  }
+
+  // chama no load, resize e depois que imagens carregarem
+  window.addEventListener('resize', setHeights);
+  window.addEventListener('load', setHeights);
+
+  // tenta reagir a imagens do carrossel
+  const imgs = leftCard.querySelectorAll('img');
+  let loaded = 0;
+  imgs.forEach(img => {
+    if (img.complete) { if (++loaded === imgs.length) setHeights(); }
+    else {
+      img.addEventListener('load', () => { if (++loaded === imgs.length) setHeights(); }, { once: true });
+      img.addEventListener('error', () => { if (++loaded === imgs.length) setHeights(); }, { once: true });
+    }
+  });
+
+  // fallback: dispara um ajuste após um pequeno delay (caso nada dispare)
+  setTimeout(setHeights, 600);
+})();
+
