@@ -2147,4 +2147,13 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #depoimentos .professor-card .tip-text{ font-size:.92rem; margin:4px 0 }
 #depoimentos .professor-card .tip-type{ font-size:.72rem; margin-bottom:2px }
 
+.professor-avatar {
+  width: 300px;
+  height: 300px;
+  min-width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto; /* centraliza */
+  display: block;
+}
 
