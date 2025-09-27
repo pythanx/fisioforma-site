@@ -1939,10 +1939,50 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     color: #fff !important; 
 }
 
-/* AJUSTE PARA EMPILHAR OS CARDS DO PROFESSOR EM TELAS PEQUENAS */
-@media (max-width: 767px) {
-    /* Força os cards do professor a empilharem verticalmente no mobile */
-    .professor-cards-wrap {
-        flex-direction: column; 
+@media (min-width: 900px) {
+    .two-col-content {
+        grid-template-columns: 2fr 1.5fr; 
+        /* O padrão stretch do Grid garante que AMBAS as colunas (.testimonial-col e .professor-col) tenham a mesma altura */
+    }
+    .testimonial-col, .professor-col {
+        min-width: 0; 
+        
+        /* NOVO: Transforma ambas as colunas em contêineres Flexbox verticais */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 1. Alinhamento da Coluna do Professor */
+    /* Faz o Card de Dicas crescer para preencher qualquer espaço, nivelando os cards internos */
+    .professor-col .professor-card:first-of-type {
+        flex-grow: 1;
+        margin-bottom: 20px;
+        display: flex; 
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .professor-col .professor-card:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* 2. Alinhamento da Coluna de Depoimentos */
+    /* Faz o carrossel (que é o único elemento abaixo do h3) crescer para preencher todo o espaço restante */
+    .testimonial-col .t-carousel {
+        flex-grow: 1; /* Força o carrossel a se esticar verticalmente */
+        /* Opcional: Garante que o carrossel tenha altura mínima para começar a esticar */
+        min-height: 200px;
+    }
+
+    /* 3. Ajuste do Card de Depoimento Individual */
+    /* Se o card de depoimento interno tiver uma altura fixa, ele não preencherá o carrossel. */
+    /* Forçamos o slide a ter 100% da altura do carrossel */
+    .testimonial-col .t-carousel .slides,
+    .testimonial-col .t-carousel .slide {
+        height: 100%;
+    }
+    /* E o conteúdo interno do bubble também deve se esticar */
+    .bubble {
+        height: 100%;
+        min-height: initial; /* Remove a altura mínima anterior (min-height: 400px;) */
     }
 }
