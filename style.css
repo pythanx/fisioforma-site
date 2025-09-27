@@ -847,8 +847,8 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 }
 
 .professor-avatar { 
-    width: 200px; 
-    height: 200px; 
+    width: 300px; 
+    height: 300px; 
     border-radius: 50%; 
     object-fit: cover; 
     margin: 0 auto 20px auto; 
