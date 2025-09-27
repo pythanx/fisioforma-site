@@ -1950,32 +1950,49 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 
 
 /* ==================================================== */
-/* 5. CORREÇÃO DE ALTURA ENTRE COLUNAS (HEIGHT MATCHING) */
+/* CORREÇÃO DEFINITIVA DO ALINHAMENTO DE ALTURA (HEIGHT MATCHING) */
 /* ==================================================== */
 
-/* 1. Define o contêiner principal para ser um Flexbox que estica */
+/* 1. Contêiner Principal: Ativa o Flexbox e Faz as Colunas Esticarem */
 #depoimentos .two-col-content { 
     display: flex;
-    align-items: stretch; /* ESSENCIAL: Faz as colunas terem a mesma altura */
-    gap: 22px; /* Mantém o espaçamento entre as colunas */
+    align-items: stretch; /* Regra mais importante para alinhar a altura */
+    gap: 22px; 
 }
 
-/* 2. Faz as colunas serem Flex containers verticais */
+/* 2. Colunas: Define a largura e as prepara para que seus filhos (os cards) estiquem */
 .testimonial-col,
 .professor-col {
-    /* Define a largura */
-    width: calc(50% - 11px); /* Ajuste para compensar o gap */
+    /* Define a largura (ex: 50% - 11px para compensar o gap) */
+    width: calc(50% - 11px); 
     
-    /* Prepara para o conteúdo interno esticar (flex-grow: 1) */
+    /* Prepara para o conteúdo interno esticar */
     display: flex;
     flex-direction: column;
 }
 
-/* 3. Garante que os cards internos preencham o espaço restante */
-/* (Estes já estão no seu CSS, é só conferir a posição) */
+/* 3. Card do Professor: Faz o card interno esticar na altura da coluna */
 .professor-col .professor-card {
     flex-grow: 1; 
+    /* Garante que o conteúdo interno se mantenha alinhado ao topo */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
+
+/* 4. Cards de Depoimento (Bubble): Garante que cada card preencha todo o slide */
+/* Verifique se essas regras estão corretas e NÃO dentro de media queries restritivas */
 .testimonial-col .t-carousel {
     flex-grow: 1; 
+    display: flex; 
+    flex-direction: column;
+    min-height: 0; 
+}
+.testimonial-col .t-carousel .viewport,
+.testimonial-col .t-carousel .slides,
+.testimonial-col .t-carousel .slide { 
+    height: 100%;
+}
+.bubble {
+    height: 100%; /* ESTA É CRUCIAL para o card individual */
 }
