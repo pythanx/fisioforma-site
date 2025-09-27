@@ -1950,43 +1950,27 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 
 
 /* ==================================================== */
-/* 5. CORREÇÃO DEFINITIVA DO ALINHAMENTO DE ALTURA (HEIGHT MATCHING) */
+/* 5. CORREÇÃO DE ALTURA ENTRE COLUNAS (AJUSTE AUTOMÁTICO PELO CONTEÚDO) */
 /* ==================================================== */
 
-/* 1. Contêiner Principal: Ativa o Flexbox e Faz as Colunas Esticarem */
+/* 1. Contêiner Principal: Garante que as colunas fiquem lado a lado */
 #depoimentos .two-col-content { 
     display: flex;
-    align-items: stretch; /* Essencial: Faz as colunas terem a mesma altura */
+    /* align-items: stretch; FOI REMOVIDO */
     gap: 22px; 
 }
 
-/* 2. Colunas: Define a largura e as prepara para que seus filhos (os cards) estiquem */
+/* 2. Colunas: Define a largura e as deixa se ajustar à altura do conteúdo */
 .testimonial-col,
 .professor-col {
-    width: calc(50% - 11px); /* Garante que a largura seja 50% menos o gap */
-    display: flex;
-    flex-direction: column; /* Organiza o conteúdo verticalmente */
-    min-height: 0; /* Ajuda o Flexbox a calcular corretamente a altura */
+    width: calc(50% - 11px); 
+    display: block; /* Garante o comportamento padrão de bloco (sem flex) */
+    /* flex-direction: column; FOI REMOVIDO */
 }
 
-/* 3. Card do Professor: FORÇA o único card a ocupar TODO o espaço vertical restante */
-.professor-col .professor-card {
-    flex-grow: 1; /* ESSENCIAL: Faz o card crescer e empurrar o CTA para baixo (se estiver na coluna) */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    min-height: 0; /* Remove qualquer conflito de altura */
-}
-
-/* 4. Carrossel: Garante que o Carrossel (o mais alto) funcione como âncora */
+/* 3. Cards internos: Remove qualquer regra de esticamento */
+.professor-col .professor-card,
 .testimonial-col .t-carousel {
-    flex-grow: 1; 
-    display: flex; 
-    flex-direction: column;
-    min-height: 0; 
-}
-
-/* Garante que o card de depoimento individual (.bubble) preencha 100% do slide */
-.bubble {
-    height: 100%;
+    /* flex-grow: 1; FOI REMOVIDO */
+    /* height: 100%; FOI REMOVIDO */
 }
