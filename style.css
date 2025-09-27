@@ -1954,7 +1954,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
         grid-template-columns: 2fr 1.5fr; 
     }
 
-    /* 2. COLUNAS LATERAIS: Força ambas a serem containers Flex verticais */
+    /* 2. COLUNAS LATERAIS: Containers Flexbox */
     .testimonial-col, 
     .professor-col {
         display: flex;
@@ -1964,33 +1964,23 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     }
 
     /* ---------------------------------------------------- */
-    /* 3. ALINHAMENTO DO PROFESSOR (Cards Mantêm o Tamanho do Conteúdo) */
+    /* 3. ALINHAMENTO DO PROFESSOR (O Card Único Define a Altura) */
     /* ---------------------------------------------------- */
     
+    /* Faz o Card ÚNICO do professor se esticar, já que ele é o único elemento flex-grow: 1 */
     .professor-col .professor-card {
-        margin-bottom: 20px; 
-    }
-    
-    /* CORREÇÃO ESSENCIAL: Garante que o Card 1 (Dicas) NÃO estique, mantendo o tamanho do conteúdo */
-    .professor-col .professor-card:first-of-type {
-        flex-grow: 0; 
-        /* Mantém o alinhamento interno sem forçar o crescimento vertical */
-        display: flex; 
+        flex-grow: 1; 
+        display: flex;
         flex-direction: column;
         justify-content: flex-start;
-    }
-
-    /* Garante que o Card 2 (Dúvidas) não cresça e remove a margem final */
-    .professor-col .professor-card:last-child {
-        margin-bottom: 0;
-        flex-grow: 0;
+        margin-bottom: 0; 
     }
     
     /* ---------------------------------------------------- */
-    /* 4. ALINHAMENTO DO CARROSSEL (Carrossel Estica para Preencher a Coluna) */
+    /* 4. ALINHAMENTO DO CARROSSEL (Carrossel Estica para Preencher) */
     /* ---------------------------------------------------- */
 
-    /* ESTICAMENTO: Faz o carrossel preencher o espaço vertical restante */
+    /* Faz o carrossel preencher o espaço vertical restante */
     .testimonial-col .t-carousel {
         flex-grow: 1; /* ESSENCIAL: Só este elemento cresce! */
         display: flex; 
@@ -2006,7 +1996,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
         min-height: 0;
     }
     
-    /* ESTICAMENTO FINAL: Força o card de depoimento individual (.bubble) a ter 100% da altura */
+    /* Força o card de depoimento individual (.bubble) a ter 100% da altura */
     .bubble {
         height: 100% !important; 
         min-height: initial !important; 
