@@ -2068,3 +2068,32 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
         grid-template-columns: 1fr; /* 1 coluna em telas menores */
     }
 }
+/* Configurações básicas que garantem que o card estique */
+.professor-col .professor-card {
+    display: flex; 
+    flex-direction: column;
+}
+
+/* Faz a seção de Dicas (com avatar e grid) esticar */
+.professor-col .professor-card .card-dicas-content {
+    flex-grow: 1; 
+}
+
+/* O FAQ vai se posicionar no final, empurrado pelo elemento acima */
+.professor-col .professor-card .card-faq-content {
+    margin-top: auto; 
+}
+
+
+/* Layout de Colunas para as Dicas Essenciais (Grid) */
+.professor-col .professor-card .dicas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 25px; 
+    margin-bottom: 20px; 
+}
+
+/* Esconde as linhas de separação internas que não são necessárias no layout de grid */
+.professor-col .professor-card .dicas-grid hr {
+    display: none;
+}
