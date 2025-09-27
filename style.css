@@ -1966,6 +1966,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     width: calc(50% - 11px); 
     display: block; /* Garante o comportamento padrão de bloco (sem flex) */
     /* flex-direction: column; FOI REMOVIDO */
+  overflow:hidden;
 }
 
 /* 3. Cards internos: Remove qualquer regra de esticamento */
@@ -1973,4 +1974,11 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .testimonial-col .t-carousel {
     /* flex-grow: 1; FOI REMOVIDO */
     /* height: 100%; FOI REMOVIDO */
+}
+/* O elemento 'slides' deve ser tratado para exibir apenas um item por vez */
+.testimonial-col .t-carousel .slides {
+    /* Garante que o slides não tenha uma altura fixa grande. */
+    height: auto; 
+    /* Esta regra depende de como você move os slides (transform: translate) */
+    /* Se você estiver usando transform, a altura é controlada pelo viewport. */
 }
