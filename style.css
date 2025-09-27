@@ -2135,3 +2135,45 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .professor-col .professor-card .card-dicas-content {
     flex-grow: 1; 
 }
+/* ==================================================== */
+/* 1. CONFIGURAÇÃO DA SEÇÃO #DEPOIMENTOS (Nível Pai) */
+/* Garante que o container #depoimentos .two-col-content estique os filhos */
+/* ==================================================== */
+#depoimentos .two-col-content { 
+    display: flex;
+    align-items: stretch; /* ESSENCIAL: Faz as colunas terem a mesma altura */
+    gap: 22px; 
+}
+
+
+/* ==================================================== */
+/* 2. CONFIGURAÇÃO DA COLUNA DO PROFESSOR */
+/* Garante que a coluna se estique para a altura máxima (100%) */
+/* ==================================================== */
+.professor-col {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Força a coluna a ocupar 100% do espaço dado pelo pai */
+}
+
+/* Ajusta o espaçamento do título H3 para não ter margem superior desnecessária */
+.professor-col h3 {
+    margin-top: 0;
+    margin-bottom: 20px; /* Mantém o espaçamento abaixo do título */
+}
+
+/* ==================================================== */
+/* 3. CONFIGURAÇÃO DO CARD DO PROFESSOR (O Elemento que Estica) */
+/* ==================================================== */
+.professor-col .professor-card {
+    flex-grow: 1; /* CRUCIAL: Faz o card ocupar 100% do espaço restante na coluna */
+    display: flex; 
+    flex-direction: column;
+    min-height: 0; /* Boas práticas para evitar problemas de Flexbox */
+    margin-bottom: 0; /* Remove margem que possa estar empurrando o footer */
+}
+
+/* 4. Configuração Interna do Card (Garantia do FAQ) */
+.professor-col .professor-card .card-dicas-content {
+    flex-grow: 1; /* Faz as dicas esticarem e empurra o FAQ para o final do card */
+}
