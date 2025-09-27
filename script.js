@@ -211,35 +211,33 @@
   setTimeout(setHeights, 600);
 })();
 
-// === Match height: Professor = altura do carrossel dos alunos (robusto) ===
 (function () {
   const sec = document.querySelector('#depoimentos');
   if (!sec) return;
 
-  // Alvo do carrossel: o container que realmente dita a altura
-  // (usei o id que já aparece no seu CSS)
-  const left = sec.querySelector('#t-aluno-carousel');
-  const prof = sec.querySelector('.professor-col .professor-card');
-  if (!left || !prof) return;
+  const leftCard = sec.querySelector('#t-aluno-carousel');       // carrossel de alunos
+  const profCard = sec.querySelector('.professor-card');
+  if (!leftCard || !profCard) return;
 
   const setHeights = () => {
-    // libera antes de medir
-    prof.style.setProperty('--prof-max', 'none');
-    // mede a altura visível do carrossel (com padding/borda)
-    const h = Math.round(left.getBoundingClientRect().height);
-    // aplica como limite do professor (se muito pequeno, garante mínimo)
-    prof.style.setProperty('--prof-max', `${Math.max(240, h)}px`);
+    profCard.style.setProperty('--prof-max', 'none');
+    const h = leftCard.getBoundingClientRect().height;
+    profCard.style.setProperty('--prof-max', Math.max(360, Math.round(h)) + 'px');
   };
 
-  // atualiza em mudanças de layout/redimensionamento
-  window.addEventListener('load', setHeights);
-  window.addEventListener('resize', setHeights);
+  // chama no load/resize e quando imagens do carrossel carregarem
+  addEventListener('resize', setHeights, {passive:true});
+  addEventListener('load', setHeights);
 
-  // observa mudanças internas do carrossel (troca de slide, fontes, etc.)
-  const ro = new ResizeObserver(setHeights);
-  ro.observe(left);
+  const imgs = leftCard.querySelectorAll('img');
+  let done = 0;
+  imgs.forEach(img=>{
+    if (img.complete) { if(++done===imgs.length) setHeights(); }
+    else{
+      img.addEventListener('load', ()=>{ if(++done===imgs.length) setHeights(); }, {once:true});
+      img.addEventListener('error', ()=>{ if(++done===imgs.length) setHeights(); }, {once:true});
+    }
+  });
 
-  // dispara uma vez depois (fallback)
-  setTimeout(setHeights, 400);
-  setHeights();
+  setTimeout(setHeights, 500);   // fallback
 })();
