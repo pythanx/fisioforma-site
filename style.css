@@ -1183,49 +1183,62 @@ section .grid > *{align-self:start}
 
 
 /* === Seção de Contato === */
-#contato h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+.contact {
+  padding: 60px 20px;
+  background: #f9fcff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
-#contato p {
-  display: flex;
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  margin: 12px 0;
+  color: var(--ink);
+}
+
+.contact-info i {
+  color: var(--brand);
+  margin-right: 10px;
+}
+
+.contact-info a {
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 10px 0;
-  font-size: 1rem;
-  color: #2c3e50;
-}
-
-#contato a {
-  color: #2b6b8a;    /* azul da identidade */
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: 500;
-}
-#contato a:hover {
-  color: #1f4e63;    /* tom mais escuro */
+  transition: 0.3s ease;
+  margin-top: 20px;
 }
 
+.btn-whatsapp:hover {
+  background: #1ebe57;
+}
 
-/* Botão WhatsApp */
-#contato .cta {
-  background: #2b6b8a;
-  color: #fff !important;
-  border: none;
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: 700;
+.contact-map iframe {
   border-radius: 12px;
-  display: inline-block;
-  margin-top: 12px;
-  text-align: center;
-  transition: background .2s ease;
-}
-#contato .cta:hover {
-  background: #1f4e63;
-}
-
-#contato svg {
-  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 
