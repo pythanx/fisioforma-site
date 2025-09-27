@@ -871,11 +871,15 @@ h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px 0}
 }
 
 
-/* Mobile: Colunas se empilham */
-@media (max-width: 900px) {
-    .testimonial-col, .professor-col {
-        margin-bottom: 20px;
-    }
+@media (min-width: 900px) {
+    .two-col-content {
+        grid-template-columns: 2fr 1.5fr; 
+        /* align-items: start; REMOVIDO para que as colunas tenham altura igual (padrão stretch) */
+    }
+    /* FIX ESSENCIAL: Impede que o carrossel (de Alunos) expanda a coluna */
+    .testimonial-col, .professor-col {
+        min-width: 0; 
+    }
 }
 
 /* MAPA */
