@@ -2098,32 +2098,40 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     display: none;
 }
 /* ==================================================== */
-/* CORREÇÃO DE ALTURA ENTRE COLUNAS (HEIGHT MATCHING) */
+/* 1. CONFIGURAÇÃO DO CONTAINER PAI */
+/* Garante que o container #depoimentos .two-col-content estique os filhos */
 /* ==================================================== */
-
-/* 1. Contêiner Principal: Ativa o Flexbox e o estiramento de altura */
 #depoimentos .two-col-content { 
     display: flex;
     align-items: stretch; /* ESSENCIAL: Faz as colunas terem a mesma altura */
-    gap: 22px; /* Mantém o espaço entre as colunas */
+    gap: 22px; 
 }
 
-/* 2. As Colunas: Definidas como Flex containers verticais */
+/* ==================================================== */
+/* 2. CONFIGURAÇÃO DAS COLUNAS */
+/* Garante que as colunas sejam Flex containers verticais */
+/* ==================================================== */
 .testimonial-col,
 .professor-col {
     display: flex;
     flex-direction: column;
 }
 
-/* 3. Conteúdo Interno: Faz o Card do Professor esticar para a altura da coluna */
+/* ==================================================== */
+/* 3. CONFIGURAÇÃO DO CARD DO PROFESSOR */
+/* Faz o card principal (professor-card) esticar para a altura total da coluna */
+/* ==================================================== */
 .professor-col .professor-card {
-    flex-grow: 1; /* CRUCIAL: Faz o card ocupar 100% da altura da coluna */
-    display: flex; /* Garante que o conteúdo interno (dicas e faq) também use Flex */
+    flex-grow: 1; /* Faz o card do professor ocupar 100% da altura restante */
+    display: flex; /* Transforma o card em um Flex container vertical */
     flex-direction: column;
+    min-height: 0; /* Ajuda a prevenir problemas de altura em Flexbox */
 }
 
-/* 4. Conteúdo Interno do Card do Professor: Mantém o estiramento das Dicas */
-/* Se a regra abaixo já estiver no seu CSS, ignore-a, mas ela é o que garante que o FAQ não suba */
+/* ==================================================== */
+/* 4. CONFIGURAÇÃO INTERNA DO CARD DO PROFESSOR (Para o FAQ) */
+/* Garante que o bloco de dicas (card-dicas-content) estique e empurre o FAQ para baixo */
+/* ==================================================== */
 .professor-col .professor-card .card-dicas-content {
     flex-grow: 1; 
 }
