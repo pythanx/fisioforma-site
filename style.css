@@ -2800,42 +2800,94 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   }
 }
 
-/* ==================================================== */
-/* 1. CONFIGURAÇÃO DA LINHA DA MENSAGEM (O PAI) */
-/* ==================================================== */
-.igdm-body .msg {
-    display: flex;
-    width: 100%; /* Garante que a linha ocupe 100% da largura útil */
-    margin-bottom: 12px; 
-    /* Esta linha é crucial para garantir que o contêiner Flexbox se encolha */
-    min-width: 0; 
+/* ===== Team grid ===== */
+.team-grid{
+  display:grid;
+  gap:20px;
+  /* força 4 colunas no desktop (quando houver espaço) */
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  justify-content:center;          /* centraliza a última linha (3, 2 etc.) */
+  align-items:start;               /* garante alinhamento superior */
+  max-width: 1200px;               /* dá um respiro/limite elegante */
+  margin-inline:auto;
 }
 
-/* 2. ALINHAMENTO DAS MENSAGENS DO PERFIL (Balão Azul) */
-.igdm-body .msg.me {
-    /* Alinhamento que move o conteúdo para a extrema direita */
-    justify-content: flex-end; 
+/* tablet: 3 colunas */
+@media (max-width: 1080px){
+  .team-grid{
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
 }
 
-
-/* 3. CONTROLE DO BALÃO (O ELEMENTO QUE ESTÁ VAZANDO) */
-.igdm-body .msg .bubble {
-    /* Limita o tamanho do balão no máximo a 80% da linha de 100% */
-    max-width: 80%; 
-    
-    /* Faz o balão encolher se necessário */
-    flex-shrink: 1; 
-    
-    /* Garante a quebra de linha em palavras longas */
-    overflow-wrap: break-word; 
-    word-break: break-word;     
+/* mobile: carrossel horizontal com snap */
+@media (max-width: 640px){
+  .team-grid{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding: 2px 4px 10px;
+  }
+  .team-grid::-webkit-scrollbar{ height:6px; }
+  .team-grid::-webkit-scrollbar-thumb{
+    background: rgba(0,0,0,.15);
+    border-radius: 999px;
+  }
 }
 
-/* 4. A REGRA MÁGICA PARA O BALÃO AZUL VAZANDO */
-/* Esta regra garante que o balão azul fique à direita e não vaze, forçando o 
-   navegador a deixar uma margem de 20% no lado esquerdo, no mínimo. */
-.igdm-body .msg.me .bubble {
-    /* Define que a margem esquerda deve ser o máximo possível. 
-       Isso empurra o balão para a direita, respeitando o max-width: 80% */
-    margin-left: auto;
+/* ===== Card ===== */
+.team-card{
+  background:#fff;
+  border-radius:14px;
+  box-shadow: 0 6px 18px rgba(18,38,63,.06);
+  overflow:hidden;
+  max-width: 270px;
+  margin-inline:auto;
+
+  /* truque: grid interno p/ travar alturas (img fixa + legenda elástica) */
+  display:grid;
+  grid-template-rows: 300px 1fr;  /* altura fixa da imagem + legenda ocupa o resto */
 }
+
+/* mobile: deixa o cartão ocupar boa parte da tela */
+@media (max-width: 640px){
+  .team-card{
+    min-width: 80%;
+    max-width: 80%;
+    scroll-snap-align:center;
+    grid-template-rows: 260px 1fr;
+  }
+}
+
+/* Foto nivelada */
+.team-card .photo{
+  width:100%;
+  height:100%;        /* casa com a linha 1 do grid (altura fixa) */
+  object-fit:cover;   /* corta sem distorcer */
+  display:block;
+}
+
+/* Legenda com altura consistente */
+.team-card figcaption{
+  padding:12px 14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;    /* mantém o texto no meio */
+  text-align:center;
+  gap:6px;
+  min-height: 110px;         /* garante “texto expandido” uniforme */
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.team-card .name{ 
+  font-weight:600; 
+  line-height:1.25; 
+}
+
+.team-card .role{
+  color: var(--muted, #607085);
+  line-height:1.35;
+  font-size:.92rem;
+}
+
