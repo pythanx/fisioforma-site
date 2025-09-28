@@ -261,7 +261,7 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
 });
 })();
 
-<script>
+
   (function(){
     const grid = document.querySelector('.team-grid');
     if(!grid) return;
@@ -270,5 +270,5 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
     grid.className = grid.className.replace(/\bteam-\d+\b/g, '').trim();
     grid.classList.add('team-' + Math.min(n, 9)); // até 9 por segurança
   })();
-</script>
+
 
