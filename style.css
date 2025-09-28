@@ -2615,3 +2615,71 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     /* Define como bloco para que a quebra de linha funcione perfeitamente */
     display: block; 
 }
+
+/* ====== TEAM – grid e cards nivelados ====== */
+
+/* 1) Container em flex: linhas quebram e ficam sempre centralizadas */
+.team-grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;     /* centra cada linha, independente da quantidade */
+  align-items:stretch;         /* itens da mesma linha com a mesma altura */
+  gap:22px;
+}
+
+/* 2) Cada card com largura fixa (e altura 100% da célula) */
+.team-card{
+  width: 232px;                /* padroniza a largura => quebras previsíveis: 4/linha desktop */
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(8,34,66,.06);
+  transition:transform .12s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.team-card:hover{
+  transform: translateY(-2px);
+  box-shadow:0 12px 28px rgba(8,34,66,.10);
+  border-color:#cfe3f5;
+}
+
+/* 3) Foto com proporção fixa e recorte consistente */
+.team-card .photo{
+  width:100%;
+  aspect-ratio: 3 / 4;         /* todas as imagens com a mesma altura */
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+
+/* 4) Legenda preenche o restante do card e terá a mesma altura (ver JS) */
+.team-card figcaption{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  gap:6px;
+  padding:12px 12px 14px;
+  min-height: var(--caption-min, 124px); /* fallback se o JS não rodar */
+}
+.team-card .name{ font-weight:800; color:var(--ink); line-height:1.18; }
+.team-card .role{ color:var(--muted); font-weight:600; line-height:1.25; }
+
+/* ajuda nomes grandes a quebrarem sem estourar */
+.team-card .name, .team-card .role{
+  word-break: break-word;
+}
+
+/* 5) Responsivo: cards um pouco mais estreitos */
+@media (max-width: 960px){
+  .team-card{ width:214px; }
+}
+@media (max-width: 680px){
+  .team-grid{ gap:14px; }
+  .team-card{ width: 188px; }
+  .team-card .photo{ aspect-ratio: 4 / 5; }  /* fica mais “retrato” no mobile */
+}
