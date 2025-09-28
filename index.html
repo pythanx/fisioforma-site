@@ -1025,11 +1025,6 @@ Use os botões abaixo ou o formulário ao lado para falar com nossa equipe.</p>
 
 
 
-
-
-
-
-
 <!-- Botão WhatsApp Flutuante com Tooltip -->
 <a href="https://wa.me/5598992223926"
    class="whatsapp-float"
@@ -1043,6 +1038,63 @@ Use os botões abaixo ou o formulário ao lado para falar com nossa equipe.</p>
 </a>
 
 
+<!-- Banner de Cookies -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+  <div class="cookie-inner">
+    <p>Usamos cookies para melhorar sua experiência e medir audiência. Você pode aceitar ou ajustar preferências.</p>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="cta xs">Aceitar todos</button>
+      <a class="cta xs ghost" href="politica-privacidade.html">Saiba mais</a>
+    </div>
+  </div>
+</div>
+  
+<script>
+(function () {
+  const GA_ID = "G-V27RLHGXDY";
+  const CONSENT_KEY = "ff_cookie_ok";
+
+  function loadGA() {
+    if (window.__gaLoaded) return;
+    window.__gaLoaded = true;
+
+    // carrega script do GA
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(s);
+
+    // inicializa gtag
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag("js", new Date());
+    gtag("config", GA_ID, { anonymize_ip: true });
+  }
+
+  // pega elementos do banner (se existirem)
+  const banner = document.getElementById("cookie-banner");
+  const btnAccept = document.getElementById("cookie-accept");
+
+  // se já aceitou, carrega GA
+  if (localStorage.getItem(CONSENT_KEY)) {
+    loadGA();
+  } else {
+    // mostra banner e espera o aceite
+    if (banner) banner.hidden = false;
+    btnAccept?.addEventListener("click", () => {
+      localStorage.setItem(CONSENT_KEY, "1");
+      if (banner) banner.hidden = true;
+      loadGA();
+      // dispara um evento custom pra outras páginas ouvirem se precisarem
+      document.dispatchEvent(new Event("ff:consent-granted"));
+    });
+  }
+})();
+</script>
+  
 <script src="script.js"></script>
+
 </body>
 </html>
