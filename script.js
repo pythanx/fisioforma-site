@@ -260,3 +260,15 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
   location.href = `mailto:${address}?subject=${subject}`;
 });
 })();
+
+<script>
+  (function(){
+    const grid = document.querySelector('.team-grid');
+    if(!grid) return;
+    const n = grid.querySelectorAll('.team-card').length;
+    // remove classes antigas (caso re-render)
+    grid.className = grid.className.replace(/\bteam-\d+\b/g, '').trim();
+    grid.classList.add('team-' + Math.min(n, 9)); // até 9 por segurança
+  })();
+</script>
+
