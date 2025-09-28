@@ -2358,3 +2358,106 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 @supports (text-wrap: balance){
   .team-card .name{ text-wrap: balance; }
 }
+
+/* ====== TIME — acabamento dos figures ====== */
+.team-card{
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(8,34,66,.06);
+  transition:transform .12s ease, box-shadow .18s ease, border-color .18s ease;
+  max-width: 240px;              /* garante largura consistente */
+}
+.team-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(8,34,66,.10);
+  border-color:#cfe3f5;
+}
+
+/* Foto com proporção padronizada */
+.team-card .photo{
+  width:100%;
+  aspect-ratio: 3 / 4;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+
+/* Legenda bem ajustada */
+.team-card figcaption{
+  padding:12px 12px 14px;
+  display:flex; flex-direction:column;
+  gap:4px;
+  text-align:center;
+  min-height: 96px;               /* evita “pulos” entre cards */
+}
+.team-card .name{ font-weight:800; color:var(--ink); line-height:1.25; }
+.team-card .role{ color:var(--muted); font-weight:600; }
+
+/* ====== GRID BASE ====== */
+.team-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap:16px;
+  align-items:start;
+  justify-items:center;            /* centraliza cada card na coluna */
+  margin-top:12px;
+}
+
+/* ====== MOBILE: vira scroller horizontal ====== */
+@media (max-width: 680px){
+  .team-grid{
+    display:flex;
+    gap:12px;
+    overflow:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding:2px 2px 8px;
+  }
+  .team-card{
+    min-width:190px;
+    flex:0 0 auto;
+    scroll-snap-align:start;
+  }
+  .team-card .photo{ aspect-ratio:4 / 5; }
+}
+
+/* ====== DESKTOP: layouts centrados por quantidade ====== */
+@media (min-width: 900px){
+  /* 1,2,3 — simples */
+  .team-grid.team-1{ grid-template-columns: repeat(1, 1fr); }
+  .team-grid.team-2{ grid-template-columns: repeat(2, 1fr); }
+  .team-grid.team-3{ grid-template-columns: repeat(3, 1fr); }
+
+  /* 4 → 2 x 2 */
+  .team-grid.team-4{ grid-template-columns: repeat(2, 1fr); }
+
+  /* 5 → 2 em cima (CENTRALIZADOS) + 3 embaixo
+     usamos 3 colunas; colocamos os dois primeiros nas colunas 1 e 3
+     para “abrir” espaço no centro e parecer centrado. */
+  .team-grid.team-5{ grid-template-columns: repeat(3, 1fr); }
+  .team-grid.team-5 .team-card:nth-child(1){ grid-column:1; }
+  .team-grid.team-5 .team-card:nth-child(2){ grid-column:3; }
+
+  /* 6 → 3 x 3 */
+  .team-grid.team-6{ grid-template-columns: repeat(3, 1fr); }
+
+  /* 7 → 4 em cima + 3 embaixo (CENTRALIZADOS)
+     colocamos os itens 5,6,7 nas colunas 2,3,4 */
+  .team-grid.team-7{ grid-template-columns: repeat(4, 1fr); }
+  .team-grid.team-7 .team-card:nth-child(5){ grid-column:2; }
+  .team-grid.team-7 .team-card:nth-child(6){ grid-column:3; }
+  .team-grid.team-7 .team-card:nth-child(7){ grid-column:4; }
+
+  /* 8 → 4 x 4 */
+  .team-grid.team-8{ grid-template-columns: repeat(4, 1fr); }
+
+  /* 9 → 3 x 3 (fallback se um dia tiver) */
+  .team-grid.team-9{ grid-template-columns: repeat(3, 1fr); }
+
+  /* garante que o grid fique centralizado em telas largas */
+  .team-grid{ justify-content:center; }
+}
