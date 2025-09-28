@@ -2231,3 +2231,21 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     word-wrap: break-word; /* Quebra palavras longas para evitar vazamento */
     overflow-wrap: break-word;
 }
+
+
+/* Trabalhe Conosco – toques finos */
+#vagas .normas-card h3 { margin-top: 0; }
+#vagas .normas-card .values { margin: 8px 0 0; padding-left: 18px; }
+#vagas .normas-card .values li { margin: 6px 0; color: var(--ink); }
+#vagas .cta.xs { padding: 6px 10px; border-radius: 8px; }
+
+#form form input, 
+#form form select, 
+#form form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #fff;
+}
+#form form label { display:block; margin: 0 0 6px; }
