@@ -1181,6 +1181,58 @@ section .grid > *{align-self:start}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
 }
 
+/* ===== FAQ (acordeão acessível) ===== */
+.faq-grid{
+  display:grid; gap:12px;
+}
+@media(min-width:760px){
+  .faq-grid{ grid-template-columns:1fr 1fr; }
+}
+.faq{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 6px 16px rgba(8,34,66,.06);
+  overflow:hidden;
+}
+
+/* Cabeçalho do item */
+.faq > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px 16px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px;
+  font-weight:800; color:#0b2a3a;
+}
+.faq > summary::-webkit-details-marker{ display:none; }
+.faq > summary .q{ flex:1; }
+
+/* Ícone de expandir/fechar (usando pseudo-elemento) */
+.faq > summary::after{
+  content:"＋";
+  font-weight:900;
+  color:var(--brand);
+  transition: transform .2s ease;
+}
+
+/* Corpo do item */
+.faq .a{
+  padding:0 16px 14px 16px;
+  border-top:1px solid var(--line);
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+}
+.faq .a p{ margin:12px 0 0; color:#334155; }
+
+/* Estado aberto */
+.faq[open] > summary::after{
+  content:"–";
+  transform: rotate(0deg);
+}
+
+/* Hover/focus */
+.faq:hover{ border-color:#bcd7ea; box-shadow:0 10px 22px rgba(8,34,66,.08); }
+.faq > summary:focus{ outline:none; }
 
 
 /* === Seção de Contato === */
