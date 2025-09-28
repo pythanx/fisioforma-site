@@ -1195,6 +1195,15 @@ section .grid > *{align-self:start}
   box-shadow:0 6px 16px rgba(8,34,66,.06);
   overflow:hidden;
 }
+/* Links do FAQ sem sublinhado (mantém a cor do tema) */
+.faq .a a{
+  text-decoration: none;
+  color: var(--brand);
+}
+.faq .a a:hover{
+  text-decoration: none; /* se preferir sublinhar no hover, troque por underline */
+}
+
 
 /* Cabeçalho do item */
 .faq > summary{
