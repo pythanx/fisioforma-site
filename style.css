@@ -1181,27 +1181,7 @@ section .grid > *{align-self:start}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
 }
 
-/* ==================================================== */
-/* CORREÇÃO DO BALÃO DE MENSAGEM (IGDM) */
-/* ==================================================== */
 
-/* 1. Garante que o container da mensagem não tente esticar a bolha */
-.igdm-body .msg {
-    display: flex;
-    /* Adiciona margem entre as bolhas para garantir a separação */
-    margin-bottom: 12px; 
-}
-
-/* 2. Garante que o balão (.bubble) se ajuste ao conteúdo, mas quebre a linha */
-.igdm-body .msg .bubble {
-    /* Faz o balão usar apenas a largura necessária para o texto */
-    width: fit-content; 
-    max-width: 80%; /* Limita a largura máxima do balão na tela */
-    
-    /* Regras de quebra de linha CRUCIAIS: */
-    word-wrap: break-word; /* Quebra palavras longas para evitar vazamento */
-    overflow-wrap: break-word;
-}
 
 /* === Seção de Contato === */
 /* Layout */
@@ -2227,4 +2207,27 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   outline:3px solid #93c5fd;
   outline-offset:3px;
   box-shadow:0 0 0 4px rgba(147,197,253,.35);
+}
+
+
+/* ==================================================== */
+/* CORREÇÃO DO BALÃO DE MENSAGEM (IGDM) */
+/* ==================================================== */
+
+/* 1. Garante que o container da mensagem não tente esticar a bolha */
+.igdm-body .msg {
+    display: flex;
+    /* Adiciona margem entre as bolhas para garantir a separação */
+    margin-bottom: 12px; 
+}
+
+/* 2. Garante que o balão (.bubble) se ajuste ao conteúdo, mas quebre a linha */
+.igdm-body .msg .bubble {
+    /* Faz o balão usar apenas a largura necessária para o texto */
+    width: fit-content; 
+    max-width: 80%; /* Limita a largura máxima do balão na tela */
+    
+    /* Regras de quebra de linha CRUCIAIS: */
+    word-wrap: break-word; /* Quebra palavras longas para evitar vazamento */
+    overflow-wrap: break-word;
 }
