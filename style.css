@@ -2151,4 +2151,99 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   display: block;
 }
 
+/* ===========================
+   NORMAS — estilo final
+   (compatível com as classes do seu HTML)
+   =========================== */
+
+#normas-resumo .grid{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  align-items:stretch;                 /* nivela as alturas por linha */
+}
+
+#normas-resumo .actions{
+  margin-top:14px;
+  display:flex;
+  justify-content:center;
+}
+
+/* Card base */
+.normas-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,.05);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+.normas-card .body{
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  height:100%;
+}
+.normas-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 26px rgba(0,0,0,.08);
+  border-color:#cfe3f5;
+}
+
+/* Título + ícone + selo */
+#normas-resumo h3{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0;
+  font-size:16px;
+  color:#0e1c2a;
+}
+
+/* Ícone */
+#normas-resumo .ico{
+  display:inline-grid;
+  place-items:center;
+  width:26px; height:26px;
+  border-radius:999px;
+  background:#eaf4fb;
+  border:1px solid #d7e9f7;
+  font-size:14px;
+  color:var(--brand);
+}
+
+/* Texto */
+#normas-resumo p{
+  margin:0;
+  color:#475569;
+  line-height:1.55;
+  text-align:justify;              /* leitura suave */
+}
+
+/* Mini badges (selos) */
+.mini-badge{
+  margin-left:auto;                /* encosta o selo à direita do h3 */
+  font-size:.75rem;
+  font-weight:700;
+  padding:3px 8px;
+  border-radius:999px;
+  line-height:1;
+  border:1px solid transparent;
+}
+
+/* Paleta dos selos (alinhada ao site) */
+.mini-badge.success{   background:#e6f6ef; border-color:#c5eadb; color:#1e824c; }  /* Essencial / Respeito */
+.mini-badge.note{      background:#fff8e1; border-color:#ffe3a7; color:#b68400; }  /* Orientação */
+.mini-badge.warn{      background:#fff3e0; border-color:#ffd1a1; color:#e65100; }  /* Aviso / Restrição */
+.mini-badge.danger{    background:#ffebee; border-color:#ffcdd2; color:#b71c1c; }  /* Atenção / Crítico / Prioridade */
+.mini-badge.info{      background:#e3f2fd; border-color:#bbdefb; color:#1565c0; }  /* Informativo */
+
+/* Responsivo: um pouco mais de respiro no mobile */
+@media (max-width:640px){
+  .normas-card .body{ padding:14px 16px; }
+  #normas-resumo .ico{ width:24px; height:24px; font-size:13px; }
+}
 
