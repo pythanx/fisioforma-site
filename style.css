@@ -1243,6 +1243,33 @@ section .grid > *{align-self:start}
 .faq:hover{ border-color:#bcd7ea; box-shadow:0 10px 22px rgba(8,34,66,.08); }
 .faq > summary:focus{ outline:none; }
 
+/* FAQ – texto e links alinhados ao visual do site */
+.faq summary {
+  font-weight: 700;
+  color: var(--ink);          /* mantém a cor principal do site */
+  letter-spacing: .2px;
+}
+
+.faq .a {
+  color: var(--muted);        /* tom secundário do site */
+  line-height: 1.55;
+  font-size: 0.98rem;
+}
+
+.faq .a p { margin: .35rem 0; }
+.faq .a strong { color: var(--ink); font-weight: 700; }
+
+/* Links do FAQ sem sublinhado + cor do tema */
+.faq a {
+  text-decoration: none;
+  color: var(--brand);
+}
+.faq a:hover {
+  text-decoration: none;      /* se preferir, use underline */
+  opacity: .9;
+}
+
+
 
 /* === Seção de Contato === */
 /* Layout */
