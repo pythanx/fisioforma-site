@@ -4,97 +4,179 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Política de Privacidade | FisioForma Academia</title>
-  <meta name="description" content="Política de Privacidade da FisioForma Academia em São Luís - MA. Saiba como cuidamos dos seus dados pessoais e garantimos sua segurança." />
+  <meta name="description" content="Saiba como a FisioForma trata seus dados pessoais conforme a LGPD. Transparência sobre coleta, uso, retenção e seus direitos." />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ===== Ajustes locais (pode mover para style.css) ===== */
+    .legal-hero { padding: 56px 0 24px; background: linear-gradient(180deg,#0b1620 0%, #0f2533 100%); color:#fff; }
+    .legal-hero .wrap h1 { margin:0 0 6px; }
+    .legal-hero .wrap p { margin:0; color:#cfe2f0; }
+    .legal-content { padding: 24px 0 56px; }
+    .legal-content h2 { margin: 22px 0 10px; font-size: 1.25rem; color: #0b1620; }
+    .legal-content p, .legal-content li { color:#2a3b47; }
+    .legal-content ul { padding-left: 18px; }
+    .table-like { overflow:auto; border-radius:12px; border:1px solid var(--line); background:#fff; }
+    .table-like table { width:100%; min-width:640px; border-collapse: collapse; }
+    .table-like thead th { background:#f6fbff; color:#0b2a3a; text-align:left; padding:10px 12px; border-bottom:1px solid #e3edf7; }
+    .table-like td { padding:10px 12px; border-bottom:1px solid #eef3f7; }
+    .legal-updated { margin-top:16px; }
+    /* Menu ativo */
+    .main-nav a.active { color: var(--brand); border-bottom: 2px solid var(--brand); }
+    /* Rodapé compacto e consistente */
+    .site-footer .footer-inner { gap: 10px; }
+    .footer-mini { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .footer-mini a { text-decoration:none; }
+    /* Cookie banner (mesmo estilo sugerido) */
+    .cookie-banner { position: fixed; inset: auto 0 16px 0; z-index: 9999; display: grid; place-items: center; padding: 0 12px; }
+    .cookie-inner { max-width: 980px; width: 100%; background: #0b1620; color: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 10px 30px rgba(0,0,0,.25); display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .cookie-inner p { margin: 0; color: #d7e3ec; }
+    .cookie-actions { display: flex; gap: 8px; }
+  </style>
 </head>
 <body>
 
-  <!-- ===== Header ===== -->
-  <header class="site-header" role="banner">
+  <!-- ===== Cabeçalho padrão ===== -->
+  <header class="site-header" role="banner" aria-label="Cabeçalho">
     <div class="header-inner">
-      <a class="logo" href="index.html">
-        <img src="logo-fisioforma-final-transparente.png" alt="FisioForma Academia">
+      <a class="logo" href="index.html#home" aria-label="Voltar ao início">
+        <img src="logo-fisioforma-final-transparente.png" alt="FisioForma Academia" />
       </a>
-      <nav class="main-nav" aria-label="Main navigation">
+      <nav class="main-nav" aria-label="Navegação principal">
         <a href="index.html#home">Início</a>
         <a href="index.html#sobre">Sobre</a>
         <a href="index.html#estrutura">Estrutura</a>
         <a href="index.html#planos">Planos</a>
-        <a href="index.html#depoimentos">Comunidade</a>
-        <a href="index.html#contato">Contato</a>
+        <a href="normas.html">Normas</a>
         <a href="trabalhe-conosco.html">Trabalhe Conosco</a>
-        <a href="politica-privacidade.html" class="active">Política de Privacidade</a>
+        <a href="index.html#contato">Contato</a>
+        <a href="politica-privacidade.html" class="active" aria-current="page">Privacidade</a>
+        <a href="termos-de-uso.html">Termos de Uso</a>
       </nav>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero-visual" style="padding:56px 0">
-    <div class="hero-bg" style="background-image:url('assets/hero-fisioforma.jpg')"></div>
+  <!-- ===== Hero ===== -->
+  <section class="legal-hero">
     <div class="wrap">
       <h1>Política de Privacidade</h1>
-      <p class="muted" style="max-width:70ch">
-        A FisioForma Academia valoriza a sua privacidade e se compromete a proteger os seus dados pessoais
-        de acordo com a Lei Geral de Proteção de Dados (LGPD) e boas práticas do setor.
-      </p>
+      <p>Como cuidamos dos seus dados, em conformidade com a LGPD.</p>
     </div>
   </section>
 
-  <!-- ===== CONTEÚDO ===== -->
-  <section>
-    <div class="wrap">
-      <h2>1. Coleta de Informações</h2>
-      <p class="muted">
-        Coletamos dados pessoais fornecidos voluntariamente pelos usuários, como nome, e-mail, telefone e informações de saúde,
-        quando necessários para inscrição, avaliação física ou participação em programas da academia.
-      </p>
+  <!-- ===== Conteúdo ===== -->
+  <div class="wrap legal-content">
+    <h2>1. Quem somos</h2>
+    <p><strong>FisioForma Academia</strong> — São Luís/MA (“FisioForma”, “nós”). Atuamos com musculação, cardio e aulas coletivas. Esta Política explica como tratamos seus dados pessoais conforme a LGPD (Lei 13.709/2018).</p>
 
-      <h2>2. Uso das Informações</h2>
-      <p class="muted">
-        Os dados são utilizados exclusivamente para fins de atendimento, contato, prestação de serviços e melhoria da experiência
-        na FisioForma. Não compartilhamos informações pessoais com terceiros sem consentimento expresso, salvo obrigações legais.
-      </p>
+    <h2>2. Dados pessoais que tratamos</h2>
+    <ul>
+      <li><strong>Identificação e contato:</strong> nome, e-mail, telefone/WhatsApp, cidade/bairro.</li>
+      <li><strong>Relacionamento com o aluno:</strong> plano, histórico de matrícula/renovação, presença em aulas.</li>
+      <li><strong>Avaliação física/saúde (sensíveis):</strong> medidas corporais, IMC, objetivos, informações fornecidas voluntariamente <em>(tratadas com maiores cuidados, sempre com base legal adequada)</em>.</li>
+      <li><strong>Dados técnicos:</strong> IP aproximado, dispositivo/navegador, páginas acessadas (cookies/analytics).</li>
+      <li><strong>Recrutamento:</strong> dados de currículo e links enviados em <em>Trabalhe Conosco</em>.</li>
+    </ul>
 
-      <h2>3. Armazenamento e Segurança</h2>
-      <p class="muted">
-        As informações são armazenadas de forma segura, com medidas técnicas e administrativas para prevenir acessos não autorizados,
-        perdas ou alterações indevidas.
-      </p>
+    <h2>3. Finalidades e bases legais</h2>
+    <ul>
+      <li><strong>Execução de contrato</strong> (art. 7º, V): matrícula, prestação do serviço, comunicação sobre plano/horários.</li>
+      <li><strong>Legítimo interesse</strong> (art. 7º, IX): melhoria do site/serviços, lembretes úteis, estatísticas internas, segurança.</li>
+      <li><strong>Consentimento</strong> (art. 7º, I): marketing, uso de dados sensíveis em avaliação física, cookies não essenciais.</li>
+      <li><strong>Obrigação legal</strong> (art. 7º, II): fiscais/contábeis, atendimento a autoridades/ANPD.</li>
+      <li><strong>Proteção do crédito</strong> (art. 7º, X), quando aplicável.</li>
+    </ul>
 
-      <h2>4. Direitos do Titular</h2>
-      <p class="muted">
-        O usuário pode solicitar a qualquer momento a atualização, correção ou exclusão dos seus dados pessoais.
-        Para exercer seus direitos, entre em contato com nossa equipe.
-      </p>
+    <h2>4. Compartilhamento</h2>
+    <p>Não vendemos seus dados. Podemos compartilhar com: (i) <strong>operadores</strong> de TI/armazenamento, e-mail/automação e hospedagem; (ii) contabilidade e meios de pagamento; (iii) fornecedores de manutenção/segurança; (iv) cumprimento de ordem legal.</p>
 
-      <h2>5. Contato</h2>
-      <p class="muted">
-        Em caso de dúvidas sobre esta Política de Privacidade, entre em contato pelo WhatsApp 
-        <a href="https://wa.me/5598992223926" target="_blank" rel="noopener">clique aqui</a>
-        ou pelo e-mail: <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a>.
-      </p>
+    <h2>5. Transferências internacionais</h2>
+    <p>Se algum provedor usar servidores fora do Brasil, adotamos salvaguardas contratuais e técnicas compatíveis com a LGPD.</p>
+
+    <h2>6. Retenção (prazo de guarda)</h2>
+    <div class="table-like">
+      <table>
+        <thead><tr><th>Categoria</th><th>Base</th><th>Prazo típico</th></tr></thead>
+        <tbody>
+          <tr><td>Cadastro e contrato</td><td>Execução / Obrigações legais</td><td>Vigência do vínculo + até 5 anos</td></tr>
+          <tr><td>Financeiro/fiscal</td><td>Obrigação legal</td><td>Até 10 anos</td></tr>
+          <tr><td>Avaliação física</td><td>Consentimento</td><td>Até revogação do consentimento ou fim do vínculo</td></tr>
+          <tr><td>Marketing (opt-in)</td><td>Consentimento</td><td>Até revogação (descadastro)</td></tr>
+          <tr><td>Recrutamento</td><td>Legítimo interesse/consentimento</td><td>Até 12 meses após o processo</td></tr>
+          <tr><td>Logs do site</td><td>Legítimo interesse</td><td>6 a 12 meses</td></tr>
+        </tbody>
+      </table>
     </div>
-  </section>
 
-  <!-- ===== Rodapé ===== -->
-  <footer class="site-footer" role="contentinfo" aria-label="Footer">
+    <h2>7. Seus direitos (titular)</h2>
+    <ul>
+      <li>Acessar, corrigir, atualizar e <strong>excluir</strong> dados desnecessários/excessivos;</li>
+      <li>Portabilidade, informação sobre uso e compartilhamentos;</li>
+      <li><strong>Revogar consentimento</strong> e se opor a tratamentos;</li>
+      <li>Solicitar revisão de decisões automatizadas, quando houver.</li>
+    </ul>
+
+    <h2>8. Segurança</h2>
+    <p>Medidas técnicas e administrativas proporcionais: controle de acesso, criptografia em trânsito, registros e treinamento interno. Nenhum sistema é 100% imune; seguimos boas práticas e melhoramos continuamente.</p>
+
+    <h2>9. Cookies e analytics</h2>
+    <p>Usamos cookies para lembrar preferências e medir audiência. Você pode gerenciar no banner/preferências do navegador. Cookies <strong>não essenciais</strong> só serão ativados com o seu consentimento.</p>
+
+    <h2>10. Crianças e adolescentes</h2>
+    <p>Dados de menores são tratados com consentimento específico dos responsáveis e estrita necessidade (ex.: autorização a partir de 14 anos).</p>
+
+    <h2>11. Encarregado (DPO) e contato</h2>
+    <p>E-mail: <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a> · WhatsApp: <a href="https://wa.me/5598992223926" target="_blank" rel="noopener">(+55 98) 99222-3926</a></p>
+
+    <h2>12. Reclamações</h2>
+    <p>Você pode contatar a <strong>ANPD</strong> (Autoridade Nacional de Proteção de Dados) caso entenda que seus direitos não foram atendidos após nosso suporte.</p>
+
+    <h2>13. Atualizações desta Política</h2>
+    <p>Podemos atualizar este documento para refletir mudanças legais ou operacionais. Publicaremos a versão vigente neste site.</p>
+
+    <p class="legal-updated muted">Última atualização: 28/09/2025</p>
+  </div>
+
+  <!-- ===== Rodapé padrão ===== -->
+  <footer class="site-footer" role="contentinfo" aria-label="Rodapé">
     <div class="footer-inner">
-      <nav class="footer-nav" aria-label="Footer navigation">
+      <nav class="footer-nav" aria-label="Navegação do rodapé">
         <a href="index.html#sobre">Sobre</a>
         <a href="index.html#planos">Planos</a>
-        <a href="index.html#estrutura">Estrutura</a>
         <a href="normas.html">Normas</a>
         <a href="trabalhe-conosco.html">Trabalhe Conosco</a>
-        <a href="politica-privacidade.html" class="active">Política de Privacidade</a>
-        <a href="termos-de-uso.html">Termos de Uso</a>
         <a href="index.html#contato">Contato</a>
       </nav>
+
       <div class="footer-bottom">
         <p class="footer-copy">© 2025 FisioForma Academia. Todos os Direitos Reservados.</p>
-        <p class="footer-credit">Feito com 💙 para a comunidade <strong>FisioForma</strong> • Desenvolvido por <strong>Giselle Oliveira</strong></p>
+        <p class="footer-credit">Feito com carinho pela comunidade <strong>FisioForma</strong> 💙 • Desenvolvido por <strong>Giselle Oliveira</strong></p>
+        <div class="footer-mini">
+          <a href="politica-privacidade.html">Política de Privacidade</a> ·
+          <a href="termos-de-uso.html">Termos de Uso</a>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- ===== Banner de Cookies (opcional) ===== -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+    <div class="cookie-inner">
+      <p>Usamos cookies para melhorar sua experiência e medir audiência. Você pode aceitar ou ajustar preferências.</p>
+      <div class="cookie-actions">
+        <button id="cookie-accept" class="cta xs">Aceitar todos</button>
+        <a class="cta xs ghost" href="politica-privacidade.html">Saiba mais</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      const KEY = "ff_cookie_ok";
+      const banner = document.getElementById("cookie-banner");
+      const btn = document.getElementById("cookie-accept");
+      if (!localStorage.getItem(KEY)) banner.hidden = false;
+      btn?.addEventListener("click", ()=>{ localStorage.setItem(KEY, "1"); banner.hidden = true; });
+    })();
+  </script>
 </body>
 </html>
