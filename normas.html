@@ -306,83 +306,90 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
   }
 </script>
 
-<!-- ===== Banner de Cookies + GA condicional ===== -->
-<div id="cookie-banner"
-     class="cookie-banner"
-     role="dialog"
-     aria-live="polite"
-     aria-label="Aviso de cookies"
-     aria-hidden="true">
+<!-- Banner de Cookies -->
+<div id="cookie-banner" class="cookie-banner is-hidden" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
   <div class="cookie-inner">
-    <p>
-      Usamos cookies para melhorar sua experiência e medir audiência.
-      Você pode aceitar ou ajustar preferências.
-    </p>
+    <p>Usamos cookies para melhorar sua experiência e medir audiência. Você pode aceitar ou ajustar preferências.</p>
     <div class="cookie-actions">
       <button id="cookie-accept" class="cta xs">Aceitar todos</button>
       <a class="cta xs ghost" href="politica-privacidade.html">Saiba mais</a>
     </div>
   </div>
 </div>
-
 <script>
-(function () {
-  // === CONFIG ===
+document.addEventListener("DOMContentLoaded", function () {
   const GA_ID = "G-V27RLHGXDY";
   const CONSENT_KEY = "ff_cookie_ok";
+  const banner = document.getElementById("cookie-banner");
+  const btnAccept = document.getElementById("cookie-accept");
 
-  // Exibe/esconde o banner de forma acessível
-  function showBanner(show) {
-    const banner = document.getElementById("cookie-banner");
-    if (!banner) return;
-    banner.setAttribute("aria-hidden", show ? "false" : "true");
+  // util: reset consent via ?consent=reset (para testes)
+  const usp = new URLSearchParams(location.search);
+  if (usp.get("consent") === "reset") {
+    localStorage.removeItem(CONSENT_KEY);
   }
 
-  // Carrega GA4 apenas 1x
-  function loadGAOnce() {
+  function loadGA() {
     if (window.__gaLoaded) return;
     window.__gaLoaded = true;
 
-    // Carrega script gtag.js
+    // carrega o script do GA
     const s = document.createElement("script");
     s.async = true;
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
     document.head.appendChild(s);
 
-    // Inicializa gtag
+    // inicializa gtag
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     window.gtag = gtag;
 
     gtag("js", new Date());
-    // Opção de anonimização de IP
     gtag("config", GA_ID, { anonymize_ip: true });
   }
 
-  // Ao carregar a página:
-  document.addEventListener("DOMContentLoaded", function () {
-    const alreadyAccepted = localStorage.getItem(CONSENT_KEY) === "1";
-    const btnAccept = document.getElementById("cookie-accept");
+  function showBanner() {
+    banner?.classList.remove("is-hidden");
+    banner?.removeAttribute("hidden");
+  }
+  function hideBanner() {
+    banner?.classList.add("is-hidden");
+    banner?.setAttribute("hidden", "");
+    // remove do DOM depois de um tempinho (opcional)
+    setTimeout(() => banner?.remove(), 400);
+  }
 
-    if (alreadyAccepted) {
-      // Se já aceitou em qualquer página
-      loadGAOnce();
-      showBanner(false);
-    } else {
-      // Mostra o banner até aceitar
-      showBanner(true);
-      btnAccept?.addEventListener("click", function() {
+  // Se já consentiu, carrega GA e não mostra banner
+  if (localStorage.getItem(CONSENT_KEY)) {
+    hideBanner();
+    loadGA();
+  } else {
+    // mostra o banner e aguarda o clique
+    showBanner();
+
+    // delegação de evento garante que funcione mesmo que o botão não exista ainda
+    document.addEventListener("click", function (ev) {
+      const el = ev.target;
+      if (el && el.id === "cookie-accept") {
         localStorage.setItem(CONSENT_KEY, "1");
-        showBanner(false);
-        loadGAOnce();
-
-        // Evento custom (caso alguma página queira ouvir)
+        hideBanner();
+        loadGA();
         document.dispatchEvent(new Event("ff:consent-granted"));
-      });
+      }
+    }, { passive: true });
+  }
+
+  // Dica extra: se a pessoa aceitar cookies em outra aba,
+  // podemos sincronizar (opcional)
+  window.addEventListener("storage", (e) => {
+    if (e.key === CONSENT_KEY && e.newValue === "1") {
+      hideBanner();
+      loadGA();
     }
   });
-})();
+});
 </script>
+
 
 
   
