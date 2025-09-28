@@ -2800,3 +2800,42 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   }
 }
 
+/* ==================================================== */
+/* 1. CONFIGURAÇÃO DA LINHA DA MENSAGEM (O PAI) */
+/* ==================================================== */
+.igdm-body .msg {
+    display: flex;
+    width: 100%; /* Garante que a linha ocupe 100% da largura útil */
+    margin-bottom: 12px; 
+    /* Esta linha é crucial para garantir que o contêiner Flexbox se encolha */
+    min-width: 0; 
+}
+
+/* 2. ALINHAMENTO DAS MENSAGENS DO PERFIL (Balão Azul) */
+.igdm-body .msg.me {
+    /* Alinhamento que move o conteúdo para a extrema direita */
+    justify-content: flex-end; 
+}
+
+
+/* 3. CONTROLE DO BALÃO (O ELEMENTO QUE ESTÁ VAZANDO) */
+.igdm-body .msg .bubble {
+    /* Limita o tamanho do balão no máximo a 80% da linha de 100% */
+    max-width: 80%; 
+    
+    /* Faz o balão encolher se necessário */
+    flex-shrink: 1; 
+    
+    /* Garante a quebra de linha em palavras longas */
+    overflow-wrap: break-word; 
+    word-break: break-word;     
+}
+
+/* 4. A REGRA MÁGICA PARA O BALÃO AZUL VAZANDO */
+/* Esta regra garante que o balão azul fique à direita e não vaze, forçando o 
+   navegador a deixar uma margem de 20% no lado esquerdo, no mínimo. */
+.igdm-body .msg.me .bubble {
+    /* Define que a margem esquerda deve ser o máximo possível. 
+       Isso empurra o balão para a direita, respeitando o max-width: 80% */
+    margin-left: auto;
+}
