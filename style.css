@@ -2575,32 +2575,43 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 /* CORREÇÃO DEFINITIVA DO VAZAMENTO DO BALÃO (IGDM) */
 /* ==================================================== */
 
-/* 1. Ajuste do Container da Mensagem */
+/* 1. Garante que o corpo da conversa não tenha margens laterais que atrapalhem o cálculo */
+.igdm-body {
+    padding-left: 0;
+    padding-right: 0;
+    /* Se houver padding lateral em .igdm-body, mova para .igdm-wrap */
+}
+
+/* 2. Força a LINHA DA MENSAGEM a ocupar 100% da largura */
 .igdm-body .msg {
     display: flex;
-    /* Alinha o conteúdo à esquerda (para balões de 'them') */
+    /* ESSENCIAL: Garante que o balão se alinhe à direita E ocupe 100% da largura da tela */
+    width: 100%; 
     justify-content: flex-start;
     margin-bottom: 12px; 
 }
 
-/* 2. Balão de Mensagem do USUÁRIO (Aquele que estava vazando) */
+/* Ajusta as mensagens "suas" (balão azul) para o lado direito */
 .igdm-body .msg.me {
-    /* Alinha o conteúdo à direita (para balões de 'me') */
     justify-content: flex-end; 
 }
 
-/* 3. A REGRA CRÍTICA PARA O BALÃO VAZANDO */
+
+/* 3. A REGRA CRÍTICA DENTRO DO BALÃO */
 .igdm-body .msg .bubble {
-    /* Faz o balão usar apenas a largura necessária para o texto */
+    /* Define que ele deve caber no espaço */
     width: fit-content; 
     
-    /* Limita o tamanho do balão no máximo a 80% da tela */
+    /* Garante que não ultrapasse 80% */
     max-width: 80%; 
     
-    /* CRÍTICO: Permite que o balão se encolha, impedindo o vazamento */
+    /* CRÍTICO: Força o balão a encolher e quebrar a linha */
     flex-shrink: 1; 
     
-    /* Garante quebra de linha em palavras muito longas */
+    /* Garante quebra de linha em palavras longas, mesmo sem espaço */
     word-wrap: break-word; 
     overflow-wrap: break-word;
+    
+    /* Define como bloco para que a quebra de linha funcione perfeitamente */
+    display: block; 
 }
