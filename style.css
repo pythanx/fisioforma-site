@@ -2511,3 +2511,61 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     flex-direction: column;
     min-height: 0;   /* CRÍTICO! */
 }
+
+/* ====== TEAM — nivelamento e acabamento ====== */
+
+/* o grid estica os itens na linha e centraliza cada card */
+.team-grid{
+  align-items: stretch;         /* cada célula da linha tem a mesma altura */
+  justify-items: center;        /* card centralizado dentro da coluna */
+  gap: 22px;                    /* um pouco mais de respiro */
+}
+
+/* o card ocupa 100% da célula do grid */
+.team-card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  max-width: 232px;             /* largura consistente */
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(8,34,66,.06);
+  transition:transform .12s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.team-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(8,34,66,.10);
+  border-color:#cfe3f5;
+}
+
+/* foto com proporção fixa e recorte uniforme */
+.team-card .photo{
+  width:100%;
+  aspect-ratio: 3 / 4;          /* mesmas alturas de imagem */
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+
+/* legenda ocupa o resto e tem altura uniforme */
+.team-card figcaption{
+  flex:1;                        /* preenche a altura restante do card */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;        /* conteúdo centrado verticalmente */
+  text-align:center;
+  gap:6px;
+  padding:12px 12px 14px;
+  min-height: var(--caption-min, 124px);   /* fallback caso o JS não rode */
+}
+.team-card .name{ font-weight:800; color:var(--ink); line-height:1.2; }
+.team-card .role{ color:var(--muted); font-weight:600; line-height:1.25; }
+
+/* mobile continua scroller, com cards um pouco mais estreitos */
+@media (max-width:680px){
+  .team-grid{ gap:14px; }
+  .team-card{ min-width:190px; max-width:200px; }
+  .team-card .photo{ aspect-ratio: 4 / 5; }
+}
