@@ -2249,3 +2249,38 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   background: #fff;
 }
 #form form label { display:block; margin: 0 0 6px; }
+
+/* ===== Time (Trabalhe Conosco) – miniaturas menores ===== */
+.team-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap:14px;
+  margin-top:12px;
+}
+.team-card{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(8,34,66,.06);
+  transition:transform .12s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.team-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(8,34,66,.10);
+  border-color:#cfe3f5;
+}
+.team-card .photo{
+  width:100%;
+  aspect-ratio: 1/1;       /* quadradinho */
+  object-fit: cover;
+  display:block;
+}
+.team-card figcaption{
+  padding:10px 12px;
+  font-size:.9rem;
+  color:var(--ink);
+}
+.team-card figcaption small{
+  display:block; color:var(--muted); font-weight:600; margin-top:2px;
+}
