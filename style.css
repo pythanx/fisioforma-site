@@ -3237,4 +3237,6 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   background: rgba(255,255,255,.08);
 }
 
+.cookie-banner{ display:none; position:fixed; left:16px; right:16px; bottom:16px; z-index:9999; }
+.cookie-banner[aria-hidden="false"]{ display:block; }
 
