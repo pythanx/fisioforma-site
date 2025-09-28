@@ -322,3 +322,14 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
     });
   })();
 
+(function(){
+  const params = new URLSearchParams(location.search);
+  const abrir = params.get('abrir'); // ex: ?abrir=avaliacao
+  if(!abrir) return;
+  const alvo = document.getElementById(abrir);
+  if(alvo && alvo.tagName.toLowerCase()==='details'){
+    alvo.open = true;
+    alvo.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+})();
+
