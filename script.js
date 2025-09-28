@@ -271,4 +271,27 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
     grid.classList.add('team-' + Math.min(n, 9)); // até 9 por segurança
   })();
 
+<script>
+  (function(){
+    const grid = document.querySelector('.team-grid');
+    if(!grid) return;
+
+    // 1) Mantém a classe de quantidade (team-4, team-5, …)
+    const total = grid.querySelectorAll('.team-card').length;
+    grid.className = grid.className.replace(/\bteam-\d+\b/g,'').trim();
+    grid.classList.add('team-' + Math.min(total, 12));
+
+    // 2) Equaliza a altura da legenda (figcaption)
+    const caps = [...grid.querySelectorAll('.team-card figcaption')];
+    if(!caps.length) return;
+
+    // limpa altura forçada para medir
+    caps.forEach(c => c.style.minHeight = '');
+    // pega a maior altura real
+    const maxH = Math.max(...caps.map(c => c.getBoundingClientRect().height));
+    // aplica via CSS var (cai no fallback do CSS se JS não rodar)
+    grid.style.setProperty('--caption-min', Math.ceil(maxH) + 'px');
+  })();
+</script>
+
 
