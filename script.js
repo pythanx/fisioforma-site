@@ -241,3 +241,22 @@
 
   setTimeout(setHeights, 500);   // fallback
 })();
+
+
+// Altere aqui seus dados “ocultos”
+const PHONE = '5598992223926';                 // só números com DDI
+const MAIL  = ['academiafisioformaag','gmail.com']; // dividido para evitar scraping
+
+// WhatsApp com mensagem pré-preenchida
+document.getElementById('btn-wa')?.addEventListener('click', ()=>{
+  const msg = encodeURIComponent('Olá! Vim pelo site e gostaria de saber mais 🙂');
+  window.open(`https://wa.me/${PHONE}?text=${msg}`, '_blank');
+});
+
+// Monta mailto só no clique (para não aparecer no HTML)
+document.getElementById('btn-mail')?.addEventListener('click', ()=>{
+  const address = `${MAIL[0]}@${MAIL[1]}`;
+  const subject = encodeURIComponent('Contato pelo site FisioForma');
+  location.href = `mailto:${address}?subject=${subject}`;
+});
+
