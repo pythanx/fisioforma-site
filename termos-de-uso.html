@@ -141,21 +141,25 @@
 </div>
   
 <script>
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
   const GA_ID = "G-V27RLHGXDY";
   const CONSENT_KEY = "ff_cookie_ok";
+
+  // --- util: reset por URL (ex.: ?consent=reset) para testes ---
+  const usp = new URLSearchParams(location.search);
+  if (usp.get("consent") === "reset") {
+    localStorage.removeItem(CONSENT_KEY);
+  }
 
   function loadGA() {
     if (window.__gaLoaded) return;
     window.__gaLoaded = true;
 
-    // carrega script do GA
     const s = document.createElement("script");
     s.async = true;
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
     document.head.appendChild(s);
 
-    // inicializa gtag
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     window.gtag = gtag;
@@ -164,25 +168,24 @@
     gtag("config", GA_ID, { anonymize_ip: true });
   }
 
-  // pega elementos do banner (se existirem)
   const banner = document.getElementById("cookie-banner");
   const btnAccept = document.getElementById("cookie-accept");
 
-  // se já aceitou, carrega GA
   if (localStorage.getItem(CONSENT_KEY)) {
+    // Já aceitou? carrega GA e não mostra banner
     loadGA();
   } else {
-    // mostra banner e espera o aceite
+    // Ainda não aceitou? mostra banner e espera clique
     if (banner) banner.hidden = false;
     btnAccept?.addEventListener("click", () => {
       localStorage.setItem(CONSENT_KEY, "1");
       if (banner) banner.hidden = true;
       loadGA();
-      // dispara um evento custom pra outras páginas ouvirem se precisarem
       document.dispatchEvent(new Event("ff:consent-granted"));
     });
   }
-})();
+});
 </script>
+
 </body>
 </html>
