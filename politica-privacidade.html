@@ -162,9 +162,13 @@
   </div>
 </footer>
 
-<!-- Banner de Cookies -->
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite"
-     aria-label="Aviso de cookies" aria-hidden="true">
+<!-- Banner de Cookies + GA condicional -->
+<div id="cookie-banner"
+     class="cookie-banner"
+     role="dialog"
+     aria-live="polite"
+     aria-label="Aviso de cookies"
+     aria-hidden="true">
   <div class="cookie-inner">
     <p>Usamos cookies para melhorar sua experiência e medir audiência. Você pode aceitar ou ajustar preferências.</p>
     <div class="cookie-actions">
@@ -202,10 +206,10 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    const alreadyAccepted = localStorage.getItem(CONSENT_KEY) === "1";
+    const ok = localStorage.getItem(CONSENT_KEY) === "1";
     const btnAccept = document.getElementById("cookie-accept");
 
-    if (alreadyAccepted) {
+    if (ok) {
       loadGAOnce();
       showBanner(false);
     } else {
