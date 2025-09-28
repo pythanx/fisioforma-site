@@ -998,27 +998,18 @@ Use os botões abaixo ou o formulário ao lado para falar com nossa equipe.</p>
 
 
 <!-- ===== Rodapé ===== --> 
-<footer class="site-footer" role="contentinfo" aria-label="Footer">
+<footer class="site-footer" role="contentinfo" aria-label="Rodapé">
   <div class="footer-inner">
-    <nav class="footer-nav" aria-label="Footer navigation">
+    <nav class="footer-nav" aria-label="Navegação do rodapé">
       <a href="index.html#sobre">Sobre</a>
       <a href="index.html#planos">Planos</a>
       <a href="index.html#estrutura">Estrutura</a>
       <a href="index.html#contato">Contato</a>
     </nav>
 
-    <nav class="footer-subnav" aria-label="Footer secondary navigation">
-      <a href="normas.html">Normas</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="index.html#depoimentos">Depoimentos</a>
-      <a href="trabalhe-conosco.html">Trabalhe Conosco</a>
-    </nav>
-
     <div class="footer-bottom">
       <p class="footer-copy">© 2025 FisioForma Academia. Todos os Direitos Reservados.</p>
-      <p class="footer-credit">
-        Feito com carinho para a comunidade <strong>FisioForma</strong> 💙 • Desenvolvido por <strong>Giselle Oliveira</strong>
-      </p>
+      <p class="footer-credit">💙 Feito com carinho para a comunidade <strong>FisioForma</strong> • Desenvolvido por <strong>Giselle Oliveira</strong></p>
     </div>
   </div>
 </footer>
@@ -1026,14 +1017,19 @@ Use os botões abaixo ou o formulário ao lado para falar com nossa equipe.</p>
 
 
 
-<!-- Botão flutuante do WhatsApp -->
-<a class="whats-float" href="https://wa.me/5598992223926" target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
-  <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true">
-    <path fill="#fff" d="M16 .7C7.6.7.7 7.4.7 15.7c0 2 .7 3.9 1.7 5.5L1 31l8.3-1.6c2 .9 4.4 1.4 6.7 1.4 8.4 0 15.3-6.7 15.3-15S24.4.7 16 .7Zm0 27.4c-2.2 0-4.3-.6-6.1-1.6l-.4-.3-4.8 1 1-4.7-.3-.4c-1.1-1.8-1.7-3.9-1.7-6.4C3.7 7.6 9.1 2.5 16 2.5s12.3 5.2 12.3 11.7S22.9 28.1 16 28.1Z"/>
-    <path fill="#fff" d="M22.9 18.9c-.2-.1-1.6-.9-1.8-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.1-.4-2.1-1.2-.9-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.7.2-.2.3-.3.4-.5.1-.2.2-.4.2-.6 0-.2-.1-.4-.2-.6-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.6s1.2 3 1.4 3.2c.2.2 2.3 3.5 5.7 4.9.8.3 1.4.5 2 .6.8.1 1.5.1 2.1.1s1.9-.8 2.2-1.5c.3-.7.3-1.3.2-1.5 0-.2-.2-.2-.4-.4Z"/>
+
+<!-- Botão WhatsApp Flutuante com Tooltip -->
+<a href="https://wa.me/5598992223926"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener"
+   aria-label="Fale com a FisioForma no WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="36" height="36" fill="#fff" aria-hidden="true">
+    <path d="M16 .4C7.3.4.2 7.5.2 16.2c0 2.8.7 5.4 2 7.8L0 32l8.3-2.1c2.3 1.2 4.9 1.9 7.7 1.9 8.7 0 15.8-7.1 15.8-15.8C31.8 7.5 24.7.4 16 .4zm0 28.8c-2.5 0-4.9-.7-7-2l-.5-.3-4.9 1.2 1.3-4.8-.3-.5c-1.2-2.1-1.9-4.5-1.9-7 0-7.6 6.2-13.8 13.8-13.8s13.8 6.2 13.8 13.8-6.2 13.8-13.8 13.8zm7.5-10.2c-.4-.2-2.1-1-2.4-1.1s-.6-.2-.9.2c-.3.4-1.1 1.1-1.3 1.3s-.5.3-.9.1c-.4-.2-1.6-.6-3-2-1.1-1.1-1.9-2.4-2.1-2.8s0-.6.2-.8c.2-.2.4-.5.6-.8.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7s-.9-2.2-1.2-3c-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5s-1.5 1.4-1.5 3.5 1.5 4 1.7 4.3c.2.3 3 4.5 7.3 6.1.9.4 1.6.6 2.1.8.9.3 1.7.3 2.3.2.7-.1 2.1-.9 2.4-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/>
   </svg>
-  <span>WhatsApp</span>
+  <span class="whatsapp-tooltip" role="tooltip">Fale com a FisioForma 💬</span>
 </a>
+
 
 <script src="script.js"></script>
 </body>
