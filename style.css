@@ -2934,4 +2934,15 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   font-size: 14px;
   color: #666;
 }
+@media (max-width: 768px) {
+  .team-card {
+    flex: 1 1 calc(50% - 20px); /* 2 por linha */
+  }
+}
+
+@media (max-width: 480px) {
+  .team-card {
+    flex: 1 1 100%; /* 1 por linha */
+  }
+}
 
