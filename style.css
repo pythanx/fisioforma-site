@@ -3188,21 +3188,53 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   }
 }
 
-/* Garantir que esconda SEMPRE quando pedirmos */
-.cookie-banner.is-hidden { display: none !important; }
-
-/* Estilo básico do banner */
-.cookie-banner{
+/* Banner de cookies - estilo compacto e acessível */
+.cookie-banner {
   position: fixed;
-  left: 16px; right: 16px; bottom: 16px; z-index: 9999;
-  background: #0b1620; color: #fff; border-radius: 14px;
-  box-shadow: 0 12px 32px rgba(0,0,0,.25);
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9999;
+  background: #0e1a24;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.28);
+  border: 1px solid rgba(255,255,255,.06);
+  display: none; /* controlado via JS */
 }
-.cookie-inner{
+.cookie-banner[aria-hidden="false"] { display: block; }
+
+.cookie-inner {
   padding: 14px 16px;
-  display: flex; gap: 12px; align-items: center; justify-content: space-between;
+  display: grid;
+  gap: 12px;
+  align-items: center;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 10px;
   flex-wrap: wrap;
 }
-.cookie-actions{ display: flex; gap: 8px; }
+
+.cookie-banner .cta.xs {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: #2f7fad;
+  color: #fff;
+}
+.cookie-banner .cta.xs:hover { filter: brightness(1.05); }
+
+.cookie-banner .cta.xs.ghost {
+  background: transparent;
+  border-color: rgba(255,255,255,.3);
+  color: #fff;
+}
+.cookie-banner .cta.xs.ghost:hover {
+  background: rgba(255,255,255,.08);
+}
 
 
