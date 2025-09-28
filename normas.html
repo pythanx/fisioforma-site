@@ -10,14 +10,18 @@
 <meta name="theme-color" content="#3a80b4">
 
 <!-- Metas sociais e canonical -->
-<link rel="canonical" href="https://fisioforma.netlify.app/normas.html">
+<link rel="canonical" href="https://fisioforma.site.vercel.app/normas.html">
 <meta property="og:title" content="Normas • FisioForma Academia">
 <meta property="og:description" content="Normas de convivência, etiqueta, segurança e uso da FisioForma Academia.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://fisioforma.netlify.app/normas.html">
+<meta property="og:url" content="https://fisioforma.site.vercel.app/normas.html">
 <meta property="og:image" content="logo-fisioforma-icon.png">
 <meta name="twitter:card" content="summary_large_image">
 
+<!-- Estilos globais do site -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Estilos específicos desta página -->
 <style>
 :root{
   --bg:#ffffff; --ink:#222; --muted:#5a5a5a;
@@ -25,36 +29,22 @@
   --brand:#3a80b4; --brand-ink:#2d5e7e; --ok:#0ea5e9; --bad:#e11d48; --warn:#f59e0b;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
-a{color:var(--brand);text-decoration:none}
-a:hover{text-decoration:underline}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+
 .wrap{max-width:1100px;margin:auto;padding:0 16px}
-
-/* Header/Nav */
-<header class="site-header" role="banner">
-  <div class="header-inner">
-    <a class="logo" href="index.html">
-      <img src="logo-fisioforma-final-transparente.png" alt="FisioForma Academia">
-    </a>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="index.html#home">Início</a>
-      <a href="index.html#sobre">Sobre</a>
-      <a href="index.html#estrutura">Estrutura</a>
-      <a href="index.html#planos">Planos</a>
-      <a href="index.html#depoimentos">Comunidade</a>
-      <a href="index.html#contato">Contato</a>
-      <a href="trabalhe-conosco.html">Trabalhe Conosco</a>
-      <a href="normas.html" class="active">Normas</a>
-    </nav>
-  </div>
-</header>
-
 h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0 0 8px}
 h2{font-size:clamp(22px,3vw,30px);margin:0 0 8px}
 h3{margin:18px 0 8px}
 .muted{color:var(--muted)}
 section{padding:42px 0}
 section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+.grid{display:grid;gap:22px}
+@media(min-width:860px){.grid.cols-2{grid-template-columns:1.1fr .9fr}}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.card .body{padding:18px 20px}
+.card h3{margin-top:0}
 
 /* Badges */
 .badge{display:inline-block;margin:10px 0 0;padding:6px 12px;border-radius:6px;font-size:14px;line-height:1.4;font-weight:600}
@@ -64,16 +54,11 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
 .badge.warn{background:#fff4e5;color:#8a4500;border:1px solid #ffb86b}
 .badge.success{background:#e8f5e9;color:#1b5e20;border:1px solid #a5d6a7}
 
-.grid{display:grid;gap:22px}
-@media(min-width:860px){.grid.cols-2{grid-template-columns:1.1fr .9fr}}
-
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
-.card .body{padding:18px 20px}
-.card h3{margin-top:0}
-
+/* Lista de regras */
 .rule-list{margin:10px 0 0 0;padding:0 0 0 18px}
 .rule-list li{margin:8px 0}
 
+/* Key-Value bloco */
 .kv{display:grid;grid-template-columns:140px 1fr;gap:6px 14px}
 .kv div:nth-child(odd){color:var(--muted)}
 
@@ -89,38 +74,36 @@ section.alt{background:var(--card);border-top:1px solid var(--line);border-botto
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .skip-link:focus{position:static;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px}
 
+/* Rodapé local (usa classes globais) */
 .footer-meta{font-size:12px;color:#777;margin-top:14px;text-align:right;font-style:italic}
 .footer-meta span{font-weight:600;color:var(--brand-ink)}
-
-footer{border-top:1px solid var(--line);margin-top:28px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:18px 16px;color:var(--muted);font-size:14px}
-footer .credit{opacity:.9}
-footer .credit a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
-footer .credit a:hover{opacity:1;text-decoration:underline}
 </style>
 </head>
 <body>
 
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<header>
-  <div class="wrap nav">
-    <div class="logo">
-      <img src="logo-fisioforma.png" srcset="logo-fisioforma@2x.png 2x" alt="Logo FisioForma" width="320" height="112">
-    </div>
-    <nav class="links">
+<!-- ===== Cabeçalho (menu principal) ===== -->
+<header class="site-header" role="banner" aria-label="Topo do site">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <img src="logo-fisioforma-final-transparente.png" alt="FisioForma Academia">
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="index.html#home">Início</a>
       <a href="index.html#sobre">Sobre</a>
-      <a href="index.html#planos">Planos</a>
       <a href="index.html#estrutura">Estrutura</a>
+      <a href="index.html#planos">Planos</a>
+      <a href="index.html#depoimentos">Comunidade</a>
       <a href="index.html#faq">FAQ</a>
-      <a href="normas.html" aria-current="page">Normas</a>
       <a href="index.html#contato">Contato</a>
+      <a href="trabalhe-conosco.html">Trabalhe Conosco</a>
+      <a href="normas.html" class="active" aria-current="page">Normas</a>
     </nav>
-    <a class="cta" href="https://wa.me/5598992223926" target="_blank" rel="noopener noreferrer">Fale no WhatsApp</a>
   </div>
 </header>
 
-<main id="conteudo">
+<main id="conteudo" role="main">
   <!-- Hero -->
   <section class="alt">
     <div class="wrap">
@@ -148,7 +131,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
             <h3 style="margin:0 0 6px 0">Informações rápidas</h3>
             <div class="kv">
               <div>Unidade</div><div>Anjo da Guarda — São Luís/MA</div>
-              <div>Horário</div><div>Seg–Sex 06h–22h • Sáb 08h–12h/14h30–17h30 • Dom 08h–12h</div>
+              <div>Horário</div><div>Seg–Sex 06h–22h • Sáb 08h–12h / 14h30–17h30 • Dom 08h–12h</div>
               <div>Contato</div><div><a href="tel:+5598992223926">(98) 99222-3926</a> • <a href="mailto:academiafisioformaag@gmail.com">academiafisioformaag@gmail.com</a></div>
               <div>Redes</div><div><a href="https://instagram.com/fisioforma.acad" target="_blank" rel="noopener noreferrer">@fisioforma.acad</a></div>
             </div>
@@ -211,7 +194,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
       <ul class="rule-list">
         <li><strong>Higiene</strong>: jogue papéis no lixo; avise a recepção em caso de necessidade de limpeza.</li>
         <li><strong>Chuveiros</strong>: uso consciente de água; limite recomendado de até 10 minutos em horários de pico.</li>
-        <li><strong>Uso correto dos sanitários:</strong> não jogar papéis, absorventes ou objetos no vaso sanitário. Utilize os coletores disponíveis para evitar entupimentos e manter a higiene do espaço.</li>
+        <li><strong>Uso correto dos sanitários:</strong> não jogar papéis, absorventes ou objetos no vaso sanitário. Utilize os coletores disponíveis.</li>
         <li><strong>Armários</strong>: uso rotativo. Traga seu cadeado; pertences não devem permanecer após o expediente.</li>
         <li><strong>Objetos esquecidos</strong>: vão para “Achados e Perdidos” por 30 dias.</li>
         <li><strong>Privacidade</strong>: é proibido fotografar/filmar outras pessoas nos vestiários e banheiros.</li>
@@ -242,10 +225,10 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
       <ul class="rule-list">
         <li><strong>Respeito</strong> em primeiro lugar: linguagem e atitudes cordiais com alunos e equipe.</li>
         <li><strong>Respeito aos mais velhos:</strong> tenha paciência e, sempre que possível, dê prioridade a eles no uso dos equipamentos e no atendimento.</li>
-        <li><strong>Empatia com iniciantes:</strong> lembre-se de que todos já foram iniciantes um dia. Cada pessoa aprende no seu tempo — evite críticas, incentive e colabore para que todos se sintam bem-vindos.</li>
-        <li><strong>Ambiente acolhedor:</strong> trate todos com cordialidade, mantendo a harmonia e a motivação coletiva.</li>
+        <li><strong>Empatia com iniciantes:</strong> cada pessoa aprende no seu tempo — evite críticas e incentive.</li>
+        <li><strong>Ambiente acolhedor:</strong> mantenha a harmonia e a motivação coletiva.</li>
         <li><strong>Conteúdo audiovisual</strong>: ao gravar treinos, evite enquadrar terceiros sem autorização.</li>
-        <li><strong>Alimentação</strong>: lanches leves liberados; evite alimentos fortes/odor intenso no salão.</li>
+        <li><strong>Alimentação</strong>: lanches leves liberados; evite alimentos de odor forte no salão.</li>
         <li><strong>Animais</strong>: por segurança e higiene, não são permitidos (exceto cão-guia).</li>
       </ul>
       <p class="badge info">Informação: convivência saudável torna o treino mais agradável para todos.</p>
@@ -259,10 +242,10 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
       <ul class="rule-list">
         <li><strong>A partir de 14 anos</strong>, com autorização do responsável e avaliação prévia.</li>
         <li><strong>Acompanhamento</strong> da equipe é obrigatório nas primeiras semanas e em exercícios complexos.</li>
-        <li><strong>Não é permitida</strong> a permanência de crianças no salão de musculação ou áreas de treino sem autorização formal, para evitar riscos de acidentes.</li>
-        <li><strong>Crianças acompanhantes</strong> devem permanecer em áreas comuns autorizadas (recepção/espera), sempre sob responsabilidade do responsável legal.</li>
+        <li><strong>Não é permitida</strong> a permanência de crianças no salão de musculação ou áreas de treino sem autorização formal.</li>
+        <li><strong>Crianças acompanhantes</strong> devem permanecer em áreas comuns autorizadas (recepção/espera), sob responsabilidade do responsável legal.</li>
       </ul>
-      <p class="badge warn">Aviso: o ambiente de treino contém pesos livres, cabos e máquinas que podem causar acidentes graves.</p>
+      <p class="badge warn">Aviso: o ambiente de treino contém pesos livres, cabos e máquinas que podem causar acidentes.</p>
     </div>
   </section>
 
@@ -272,7 +255,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
       <h2>8. Financeiro, acesso e contratos</h2>
       <ul class="rule-list">
         <li><strong>Acesso</strong> mediante plano ativo e identificação na recepção.</li>
-        <li><strong>Pagamentos</strong> conforme contrato do plano escolhido (cartão/PIX/dinheiro). Atrasos podem suspender o acesso até a regularização.</li>
+        <li><strong>Pagamentos</strong> conforme contrato (cartão/PIX/dinheiro). Atrasos podem suspender o acesso até a regularização.</li>
         <li><strong>Cancelamentos/pausas</strong> seguem as condições do contrato e devem ser solicitados oficialmente na recepção/WhatsApp.</li>
       </ul>
       <p class="badge note">Alguns itens podem variar por campanhas sazonais — confirme na recepção.</p>
@@ -295,7 +278,7 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
           <p class="badge danger">Assédio moral/sexual, discriminação, violência ou dano proposital a pessoas/equipamentos serão tratados com <strong>tolerância zero</strong> e podem gerar medidas legais.</p>
         </div>
       </div>
-      <p class="footer-meta"> Última atualização: <span id="dt"></span> • FisioForma Academia</p>
+      <p class="footer-meta">Última atualização: <span id="dt"></span> • FisioForma Academia</p>
     </div>
   </section>
 
@@ -310,10 +293,10 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   </section>
 </main>
 
-<!-- ===== Rodapé ===== --> 
-<footer class="site-footer" role="contentinfo" aria-label="Footer">
+<!-- ===== Rodapé padronizado ===== -->
+<footer class="site-footer" role="contentinfo" aria-label="Rodapé">
   <div class="footer-inner">
-    <nav class="footer-nav" aria-label="Footer navigation">
+    <nav class="footer-nav" aria-label="Navegação do rodapé">
       <a href="index.html#sobre">Sobre</a>
       <a href="index.html#planos">Planos</a>
       <a href="index.html#estrutura">Estrutura</a>
@@ -330,12 +313,13 @@ footer .credit a:hover{opacity:1;text-decoration:underline}
   </div>
 </footer>
 
-
+<!-- Script local: somente data -->
 <script>
-document.getElementById('y').textContent = new Date().getFullYear();
-const d = new Date();
-document.getElementById('dt').textContent =
-  d.toLocaleDateString('pt-BR', { year:'numeric', month:'long', day:'2-digit' });
+  const d = new Date();
+  const el = document.getElementById('dt');
+  if (el) {
+    el.textContent = d.toLocaleDateString('pt-BR', { year:'numeric', month:'long', day:'2-digit' });
+  }
 </script>
 </body>
 </html>
