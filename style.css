@@ -2710,3 +2710,93 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     /* IMPEDE que o balão estique o contêiner Flexbox */
     flex-shrink: 1; 
 }
+
+/* ====== TEAM / GRID ====== */
+.team-grid{
+  /* desktop/tablet: grid auto-fit, sempre centralizando a última linha */
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:20px;
+  justify-content:center; /* centraliza as colunas quando sobrar espaço */
+}
+
+/* cada card = coluna flex vertical, alturas niveladas */
+.team-card{
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  border-radius:14px;
+  box-shadow: 0 6px 18px rgba(18,38,63,.06);
+  overflow:hidden;
+  max-width:260px;         /* limita a largura pra ficar elegante */
+}
+
+/* foto nivelada */
+.team-card .photo{
+  width:100%;
+  aspect-ratio: 3/4;       /* mantém proporção (sem JS) */
+  object-fit:cover;        /* corta sem distorcer */
+  display:block;
+}
+
+/* legenda consistente e centralizada */
+.team-card figcaption{
+  flex:1;                  /* ocupa o resto, garantindo alturas iguais */
+  padding:12px 14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;  /* texto sempre alinhado no meio */
+  text-align:center;
+  gap:6px;
+  min-height:110px;        /* força altura mínima p/ “textos expandidos” */
+}
+
+.team-card .name{
+  font-weight:600;
+  line-height:1.25;
+}
+
+.team-card .role{
+  color: var(--muted, #607085);
+  line-height:1.35;
+}
+
+/* ====== RESPONSIVO ====== */
+
+/* tablets: 2 ou 3 colunas, conforme espaço */
+@media (max-width: 992px){
+  .team-grid{
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:16px;
+  }
+  .team-card{ max-width:240px; }
+  .team-card .photo{ aspect-ratio: 3/4; }
+}
+
+/* mobile: vira scroller horizontal com snap */
+@media (max-width: 640px){
+  .team-grid{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding: 2px 4px 8px;
+  }
+  .team-grid::-webkit-scrollbar{ height:6px; }
+  .team-grid::-webkit-scrollbar-thumb{
+    background: rgba(0,0,0,.15);
+    border-radius: 999px;
+  }
+
+  .team-card{
+    min-width: 72%;        /* ocupa boa parte da tela */
+    max-width: 72%;
+    scroll-snap-align:center;
+  }
+
+  .team-card .photo{
+    aspect-ratio: 4/5;     /* um pouco mais “alto” no mobile */
+  }
+}
+
