@@ -2284,3 +2284,77 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .team-card figcaption small{
   display:block; color:var(--muted); font-weight:600; margin-top:2px;
 }
+
+/* ===== TIME — correções de imagem e layout ===== */
+.team-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:14px;
+  align-items:stretch;
+  margin-top:12px;
+}
+
+/* cartõezinhos menores e consistentes */
+.team-card{
+  display:flex; flex-direction:column;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(8,34,66,.06);
+  transition:transform .12s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.team-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(8,34,66,.10);
+  border-color:#cfe3f5;
+}
+
+/* fotos “consertadas”: mesma proporção, foco no rosto/peito */
+.team-card .photo{
+  width:100%;
+  aspect-ratio: 3 / 4;       /* mostra mais do corpo que 1/1 e evita corte estranho */
+  object-fit: cover;
+  object-position: center top; /* prioriza rosto/peito no topo */
+  display:block;
+}
+
+/* legendas clean, centralizadas */
+.team-card figcaption{
+  padding:10px 12px;
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+  text-align:center;
+}
+.team-card .name{
+  font-weight:800;
+  color:var(--ink);
+  line-height:1.25;
+  text-wrap:balance;
+}
+.team-card .role{
+  color:var(--muted);
+  font-weight:600;
+}
+
+/* ===== MOBILE VAR: vira um scroller horizontal “snap” ===== */
+@media (max-width: 680px){
+  .team-grid{
+    display:flex;
+    gap:12px;
+    overflow:auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding:2px 2px 8px;  /* espacinho pro dedo não encostar na borda */
+  }
+  .team-card{
+    min-width: 190px;         /* largura confortável pro polegar */
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  .team-card .photo{ aspect-ratio: 4 / 5; } /* um pouco mais vertical no mobile */
+}
+
+/* micro-ajuste para nomes muito longos (evita “uma palavra por linha”) */
+@supports (text-wrap: balance){
+  .team-card .name{ text-wrap: balance; }
+}
