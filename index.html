@@ -1038,27 +1038,13 @@ Use os botões abaixo ou o formulário ao lado para falar com nossa equipe.</p>
 </a>
 
 
-<!-- ===== Banner de Cookies + GA condicional ===== -->
+<!-- Banner de Cookies + GA condicional -->
 <div id="cookie-banner"
      class="cookie-banner"
      role="dialog"
      aria-live="polite"
      aria-label="Aviso de cookies"
      aria-hidden="true">
-  <div class="cookie-inner">
-    <p>
-      Usamos cookies para melhorar sua experiência e medir audiência.
-      Você pode aceitar ou ajustar preferências.
-    </p>
-    <div class="cookie-actions">
-      <button id="cookie-accept" class="cta xs">Aceitar todos</button>
-      <a class="cta xs ghost" href="politica-privacidade.html">Saiba mais</a>
-    </div>
-  </div>
-</div>
-<!-- Banner de Cookies -->
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite"
-     aria-label="Aviso de cookies" aria-hidden="true">
   <div class="cookie-inner">
     <p>Usamos cookies para melhorar sua experiência e medir audiência. Você pode aceitar ou ajustar preferências.</p>
     <div class="cookie-actions">
@@ -1096,10 +1082,10 @@ Use os botões abaixo ou o formulário ao lado para falar com nossa equipe.</p>
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    const alreadyAccepted = localStorage.getItem(CONSENT_KEY) === "1";
+    const ok = localStorage.getItem(CONSENT_KEY) === "1";
     const btnAccept = document.getElementById("cookie-accept");
 
-    if (alreadyAccepted) {
+    if (ok) {
       loadGAOnce();
       showBanner(false);
     } else {
@@ -1114,6 +1100,7 @@ Use os botões abaixo ou o formulário ao lado para falar com nossa equipe.</p>
   });
 })();
 </script>
+
 
   
 <script src="script.js"></script>
