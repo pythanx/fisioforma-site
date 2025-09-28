@@ -2683,3 +2683,30 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   .team-card{ width: 188px; }
   .team-card .photo{ aspect-ratio: 4 / 5; }  /* fica mais “retrato” no mobile */
 }
+
+/* ==================================================== */
+/* CORREÇÃO DEFINITIVA: CONTROLE DE LARGURA DO BALÃO */
+/* ==================================================== */
+
+/* 1. O Contêiner da Mensagem deve ocupar 100% (Você já adicionou isso, mas vamos garantir) */
+.igdm-body .msg {
+    width: 100%;
+    /* Garante que o alinhamento (flex-start ou flex-end) funcione corretamente */
+    display: flex; 
+}
+
+/* 2. Regras do Balão: Onde a correção acontece */
+.igdm-body .msg .bubble {
+    /* Define o tamanho real baseado no conteúdo */
+    width: fit-content; 
+    
+    /* Limita o tamanho do balão no máximo a 80% do .msg (que é 100% da largura útil) */
+    max-width: 80%; 
+    
+    /* CRÍTICO: Se o texto for grande demais para o 80%, ele deve quebrar a linha */
+    overflow-wrap: break-word; /* Solução mais moderna para quebra de texto */
+    word-break: break-word;     /* Solução de fallback para navegadores antigos */
+    
+    /* IMPEDE que o balão estique o contêiner Flexbox */
+    flex-shrink: 1; 
+}
