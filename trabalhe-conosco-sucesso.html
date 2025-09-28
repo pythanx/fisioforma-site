@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Candidatura enviada | FisioForma</title>
+  <meta name="description" content="Recebemos sua candidatura. Em breve a equipe FisioForma entra em contato." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* toques visuais da página de sucesso */
+    .success-hero{
+      position:relative; isolation:isolate; padding:70px 0; color:#0b1620;
+    }
+    .success-hero::before{
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(1200px 600px at 15% 20%,
+        rgba(255,255,255,.95), rgba(255,255,255,.7) 45%,
+        rgba(255,255,255,.35) 70%, rgba(255,255,255,.15) 100%);
+      z-index:0;
+    }
+    .success-card{
+      background:#fff; border:1px solid var(--line); border-radius:18px;
+      box-shadow:0 18px 44px rgba(8,34,66,.08); padding:24px;
+    }
+    .big-check{
+      width:72px;height:72px;border-radius:999px;display:grid;place-items:center;
+      background:linear-gradient(180deg,#2b6b8a,#1f4e63); color:#fff; font-size:36px;
+      box-shadow:0 8px 24px rgba(8,34,66,.20), inset 0 0 0 1px rgba(255,255,255,.22);
+    }
+    .next-steps{display:grid; gap:12px; margin-top:10px}
+    @media(min-width:760px){ .next-steps{ grid-template-columns:1fr 1fr } }
+    .tip{background:#f6fbff; border:1px solid #e3edf7; border-radius:12px; padding:12px 14px}
+    .tip strong{color:#0b2a3a}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html"><img src="assets/logo-fisioforma.png" alt="FisioForma Academia"></a>
+      <nav class="main-nav">
+        <a href="index.html#home">Início</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#planos">Planos</a>
+        <a href="trabalhe-conosco.html" class="active">Trabalhe Conosco</a>
+      </nav>
+      <a class="btn-whatsapp" href="https://wa.me/5598XXXXXXXXX" rel="noopener">Falar no WhatsApp</a>
+    </div>
+  </header>
+
+  <section class="success-hero">
+    <div class="wrap grid cols-2" style="align-items:center">
+      <div class="success-card">
+        <div style="display:flex; gap:14px; align-items:center">
+          <div class="big-check">✓</div>
+          <div>
+            <h1 style="margin:0">Candidatura enviada!</h1>
+            <p class="muted" style="margin:.4rem 0 0">
+              Recebemos seus dados e currículo. Nossa equipe vai analisar e, se o seu perfil
+              se encaixar na vaga, entraremos em contato. Obrigado por querer fazer parte da FisioForma! 💙
+            </p>
+          </div>
+        </div>
+
+        <div class="next-steps">
+          <div class="tip"><strong>1. Confirme seu e-mail</strong><br>Se chegou um e-mail de confirmação, responda para facilitar nosso contato.</div>
+          <div class="tip"><strong>2. WhatsApp liberado</strong><br>Mantenha seu número disponível para mensagens (pode vir um “alô” nosso!).</div>
+        </div>
+
+        <div class="btns" style="margin-top:14px">
+          <a class="cta" href="trabalhe-conosco.html#vagas">Voltar às vagas</a>
+          <a class="cta ghost" href="index.html#home">Ir para a página inicial</a>
+        </div>
+      </div>
+
+      <aside class="card" style="background:#fff;border:1px solid var(--line)">
+        <div class="body">
+          <h3 style="margin:0 0 8px">Enquanto isso…</h3>
+          <p class="muted" style="margin:0">
+            Conheça nossa história, valores e comunidade de alunos:
+          </p>
+          <div class="btns" style="margin-top:12px">
+            <a class="cta xs" href="index.html#sobre">Sobre a FisioForma</a>
+            <a class="cta xs ghost" href="index.html#depoimentos">Depoimentos</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <nav class="footer-nav">
+        <a href="index.html#home">Início</a>
+        <a href="index.html#planos">Planos</a>
+        <a href="trabalhe-conosco.html">Trabalhe Conosco</a>
+      </nav>
+      <p class="footer-copy">© FisioForma Academia — São Luís/MA</p>
+      <p class="footer-credit">Feito com carinho para a comunidade do Anjo da Guarda</p>
+    </div>
+  </footer>
+
+</body>
+</html>
