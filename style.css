@@ -2150,41 +2150,5 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   margin: 0 auto; /* centraliza */
   display: block;
 }
-/* ==== Normas Fisioforma ==== */
 
-/* Define uma altura mínima para todos os cards */
-.norma-card {
-  min-height: 190px; /* ajuste conforme necessário */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Padroniza os ícones */
-.norma-card i {
-  font-size: 1.2rem;
-  color: var(--brand); /* usa a cor principal do site */
-  margin-right: 6px;
-  vertical-align: middle;
-}
-
-/* Mantém destaque claro nos selos */
-.norma-label {
-  font-size: 0.75rem;
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-weight: 600;
-  display: inline-block;
-}
-
-/* Ajuste de cores das labels */
-.norma-label.essencial { background: #e6f9ed; color: #1e824c; }
-.norma-label.orientacao { background: #fff8e1; color: #b68400; }
-.norma-label.aviso      { background: #fff3e0; color: #e65100; }
-.norma-label.atencao    { background: #ffeaea; color: #c62828; }
-.norma-label.prioridade { background: #fce4ec; color: #ad1457; }
-.norma-label.respeito   { background: #e8f5e9; color: #2e7d32; }
-.norma-label.restricao  { background: #fff3e0; color: #ef6c00; }
-.norma-label.informativo{ background: #e3f2fd; color: #1565c0; }
-.norma-label.critico    { background: #ffebee; color: #b71c1c; }
 
