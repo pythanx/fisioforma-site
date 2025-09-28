@@ -2569,3 +2569,38 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   .team-card{ min-width:190px; max-width:200px; }
   .team-card .photo{ aspect-ratio: 4 / 5; }
 }
+
+
+/* ==================================================== */
+/* CORREÇÃO DEFINITIVA DO VAZAMENTO DO BALÃO (IGDM) */
+/* ==================================================== */
+
+/* 1. Ajuste do Container da Mensagem */
+.igdm-body .msg {
+    display: flex;
+    /* Alinha o conteúdo à esquerda (para balões de 'them') */
+    justify-content: flex-start;
+    margin-bottom: 12px; 
+}
+
+/* 2. Balão de Mensagem do USUÁRIO (Aquele que estava vazando) */
+.igdm-body .msg.me {
+    /* Alinha o conteúdo à direita (para balões de 'me') */
+    justify-content: flex-end; 
+}
+
+/* 3. A REGRA CRÍTICA PARA O BALÃO VAZANDO */
+.igdm-body .msg .bubble {
+    /* Faz o balão usar apenas a largura necessária para o texto */
+    width: fit-content; 
+    
+    /* Limita o tamanho do balão no máximo a 80% da tela */
+    max-width: 80%; 
+    
+    /* CRÍTICO: Permite que o balão se encolha, impedindo o vazamento */
+    flex-shrink: 1; 
+    
+    /* Garante quebra de linha em palavras muito longas */
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+}
