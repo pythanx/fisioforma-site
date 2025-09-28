@@ -2891,3 +2891,47 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   font-size:.92rem;
 }
 
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centraliza todas as linhas */
+}
+
+.team-card {
+  flex: 1 1 calc(25% - 20px); /* Até 4 por linha em desktop */
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  overflow: hidden;
+  background: #fff;
+}
+
+.team-card img.photo {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.team-card figcaption {
+  padding: 12px;
+  text-align: center;
+  flex-grow: 1; /* faz o texto expandir igualmente */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.team-card .name {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.team-card .role {
+  font-size: 14px;
+  color: #666;
+}
+
