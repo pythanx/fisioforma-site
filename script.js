@@ -242,7 +242,7 @@
   setTimeout(setHeights, 500);   // fallback
 })();
 
-
+(function(){
 // Altere aqui seus dados “ocultos”
 const PHONE = '5598992223926';                 // só números com DDI
 const MAIL  = ['academiafisioformaag','gmail.com']; // dividido para evitar scraping
@@ -259,4 +259,4 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
   const subject = encodeURIComponent('Contato pelo site FisioForma');
   location.href = `mailto:${address}?subject=${subject}`;
 });
-
+})();
