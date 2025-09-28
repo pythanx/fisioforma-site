@@ -140,77 +140,58 @@
   </div>
 </div>
   
-<!-- ===== Banner de Cookies + GA condicional ===== -->
-<div id="cookie-banner"
-     class="cookie-banner"
-     role="dialog"
-     aria-live="polite"
-     aria-label="Aviso de cookies"
-     aria-hidden="true">
+<!-- Banner de Cookies -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite"
+     aria-label="Aviso de cookies" aria-hidden="true">
   <div class="cookie-inner">
-    <p>
-      Usamos cookies para melhorar sua experiência e medir audiência.
-      Você pode aceitar ou ajustar preferências.
-    </p>
+    <p>Usamos cookies para melhorar sua experiência e medir audiência. Você pode aceitar ou ajustar preferências.</p>
     <div class="cookie-actions">
       <button id="cookie-accept" class="cta xs">Aceitar todos</button>
       <a class="cta xs ghost" href="politica-privacidade.html">Saiba mais</a>
     </div>
   </div>
 </div>
-
 <script>
 (function () {
-  // === CONFIG ===
   const GA_ID = "G-V27RLHGXDY";
   const CONSENT_KEY = "ff_cookie_ok";
 
-  // Exibe/esconde o banner de forma acessível
   function showBanner(show) {
     const banner = document.getElementById("cookie-banner");
     if (!banner) return;
     banner.setAttribute("aria-hidden", show ? "false" : "true");
   }
 
-  // Carrega GA4 apenas 1x
   function loadGAOnce() {
     if (window.__gaLoaded) return;
     window.__gaLoaded = true;
 
-    // Carrega script gtag.js
     const s = document.createElement("script");
     s.async = true;
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
     document.head.appendChild(s);
 
-    // Inicializa gtag
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     window.gtag = gtag;
 
     gtag("js", new Date());
-    // Opção de anonimização de IP
     gtag("config", GA_ID, { anonymize_ip: true });
   }
 
-  // Ao carregar a página:
   document.addEventListener("DOMContentLoaded", function () {
     const alreadyAccepted = localStorage.getItem(CONSENT_KEY) === "1";
     const btnAccept = document.getElementById("cookie-accept");
 
     if (alreadyAccepted) {
-      // Se já aceitou em qualquer página
       loadGAOnce();
       showBanner(false);
     } else {
-      // Mostra o banner até aceitar
       showBanner(true);
-      btnAccept?.addEventListener("click", function() {
+      btnAccept?.addEventListener("click", function () {
         localStorage.setItem(CONSENT_KEY, "1");
         showBanner(false);
         loadGAOnce();
-
-        // Evento custom (caso alguma página queira ouvir)
         document.dispatchEvent(new Event("ff:consent-granted"));
       });
     }
