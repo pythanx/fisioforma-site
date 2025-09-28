@@ -292,5 +292,33 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
     grid.style.setProperty('--caption-min', Math.ceil(maxH) + 'px');
   })();
 
+(function(){
+    const grid = document.querySelector('.team-grid');
+    if(!grid) return;
 
+    const caps = [...grid.querySelectorAll('.team-card figcaption')];
+    if(!caps.length) return;
+
+    // limpa altura para medir corretamente
+    caps.forEach(c => c.style.minHeight = '');
+
+    // pega a maior legenda e aplica para todas (via CSS var e inline fallback)
+    const maxH = Math.max(...caps.map(c => c.getBoundingClientRect().height));
+    const minH = Math.ceil(maxH) + 'px';
+    grid.style.setProperty('--caption-min', minH);
+    caps.forEach(c => c.style.minHeight = minH);
+
+    // recalcula em mudanças de layout
+    let t;
+    window.addEventListener('resize', () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        caps.forEach(c => c.style.minHeight = '');
+        const h = Math.max(...caps.map(c => c.getBoundingClientRect().height));
+        const nh = Math.ceil(h) + 'px';
+        grid.style.setProperty('--caption-min', nh);
+        caps.forEach(c => c.style.minHeight = nh);
+      }, 120);
+    });
+  })();
 
