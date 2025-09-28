@@ -2247,3 +2247,27 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   #normas-resumo .ico{ width:24px; height:24px; font-size:13px; }
 }
 
+/* ===========================
+   Botão CTA de Normas
+   =========================== */
+
+#normas-resumo .actions .cta{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:15px;
+  text-decoration:none;
+  text-align:center;
+  transition:all .2s ease;
+  border:2px solid var(--brand);
+  color:var(--brand);
+  background:#fff;
+  box-shadow:0 3px 10px rgba(0,0,0,.05);
+}
+
+#normas-resumo .actions .cta:hover{
+  background:var(--brand);
+  color:#fff;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+}
