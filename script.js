@@ -271,7 +271,6 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
     grid.classList.add('team-' + Math.min(n, 9)); // até 9 por segurança
   })();
 
-<script>
   (function(){
     const grid = document.querySelector('.team-grid');
     if(!grid) return;
@@ -292,6 +291,6 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
     // aplica via CSS var (cai no fallback do CSS se JS não rodar)
     grid.style.setProperty('--caption-min', Math.ceil(maxH) + 'px');
   })();
-</script>
+
 
 
