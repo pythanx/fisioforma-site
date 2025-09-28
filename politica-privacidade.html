@@ -163,7 +163,8 @@
 </footer>
 
 <!-- Banner de Cookies -->
-<div id="cookie-banner" class="cookie-banner is-hidden" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite"
+     aria-label="Aviso de cookies" aria-hidden="true">
   <div class="cookie-inner">
     <p>Usamos cookies para melhorar sua experiência e medir audiência. Você pode aceitar ou ajustar preferências.</p>
     <div class="cookie-actions">
@@ -173,29 +174,25 @@
   </div>
 </div>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
   const GA_ID = "G-V27RLHGXDY";
   const CONSENT_KEY = "ff_cookie_ok";
-  const banner = document.getElementById("cookie-banner");
-  const btnAccept = document.getElementById("cookie-accept");
 
-  // util: reset consent via ?consent=reset (para testes)
-  const usp = new URLSearchParams(location.search);
-  if (usp.get("consent") === "reset") {
-    localStorage.removeItem(CONSENT_KEY);
+  function showBanner(show) {
+    const banner = document.getElementById("cookie-banner");
+    if (!banner) return;
+    banner.setAttribute("aria-hidden", show ? "false" : "true");
   }
 
-  function loadGA() {
+  function loadGAOnce() {
     if (window.__gaLoaded) return;
     window.__gaLoaded = true;
 
-    // carrega o script do GA
     const s = document.createElement("script");
     s.async = true;
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
     document.head.appendChild(s);
 
-    // inicializa gtag
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     window.gtag = gtag;
@@ -204,46 +201,24 @@ document.addEventListener("DOMContentLoaded", function () {
     gtag("config", GA_ID, { anonymize_ip: true });
   }
 
-  function showBanner() {
-    banner?.classList.remove("is-hidden");
-    banner?.removeAttribute("hidden");
-  }
-  function hideBanner() {
-    banner?.classList.add("is-hidden");
-    banner?.setAttribute("hidden", "");
-    // remove do DOM depois de um tempinho (opcional)
-    setTimeout(() => banner?.remove(), 400);
-  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const alreadyAccepted = localStorage.getItem(CONSENT_KEY) === "1";
+    const btnAccept = document.getElementById("cookie-accept");
 
-  // Se já consentiu, carrega GA e não mostra banner
-  if (localStorage.getItem(CONSENT_KEY)) {
-    hideBanner();
-    loadGA();
-  } else {
-    // mostra o banner e aguarda o clique
-    showBanner();
-
-    // delegação de evento garante que funcione mesmo que o botão não exista ainda
-    document.addEventListener("click", function (ev) {
-      const el = ev.target;
-      if (el && el.id === "cookie-accept") {
+    if (alreadyAccepted) {
+      loadGAOnce();
+      showBanner(false);
+    } else {
+      showBanner(true);
+      btnAccept?.addEventListener("click", function () {
         localStorage.setItem(CONSENT_KEY, "1");
-        hideBanner();
-        loadGA();
+        showBanner(false);
+        loadGAOnce();
         document.dispatchEvent(new Event("ff:consent-granted"));
-      }
-    }, { passive: true });
-  }
-
-  // Dica extra: se a pessoa aceitar cookies em outra aba,
-  // podemos sincronizar (opcional)
-  window.addEventListener("storage", (e) => {
-    if (e.key === CONSENT_KEY && e.newValue === "1") {
-      hideBanner();
-      loadGA();
+      });
     }
   });
-});
+})();
 </script>
 
 
