@@ -3388,3 +3388,59 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 /* Garante que nada sobreponha o clique do banner (ex.: botão WhatsApp) */
 .whatsapp-float{ z-index: 9998; }
 
+
+/* ====== Hero – mídia do Prof. Fisão ====== */
+.hero-media {
+  display: grid;
+  place-items: center;
+}
+
+.hero-anim {
+  width: min(480px, 100%);
+  aspect-ratio: 4 / 5;                 /* formato retrato */
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(8,34,66,.18);
+  background: #0b1e2b;                 /* cor de fundo próxima ao tema */
+  position: relative;
+}
+
+.hero-anim::after {
+  /* brilho suave na borda */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+  border-radius: 22px;
+}
+
+.hero-anim-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                    /* preenche sem distorcer */
+  display: block;
+}
+
+/* acessibilidade: se o usuário prefere menos animação, pausa o vídeo */
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim-video { animation: none; }
+  .hero-anim-video:not([data-allow-motion]) {
+    /* deixa só o poster estático */
+    object-fit: contain;
+  }
+}
+
+/* utilitário para elementos apenas para leitores de tela */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
