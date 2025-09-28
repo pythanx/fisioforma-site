@@ -333,3 +333,20 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
   }
 })();
 
+
+<script>
+  (function () {
+    const vid = document.querySelector('.hero-anim-video');
+    if (!('IntersectionObserver' in window) || !vid) return;
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { vid.play().catch(()=>{}); }
+        else { vid.pause(); }
+      });
+    }, { threshold: 0.25 });
+
+    io.observe(vid);
+  })();
+</script>
+
