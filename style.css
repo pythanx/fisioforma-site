@@ -4067,7 +4067,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 
 /* Avatar redondo com borda “FisioForma” */
 .testimonial-item .avatar{
-  width: 88px; height: 88px;
+  width: 300px; height: 300px;
   border-radius: 999px;
   object-fit: cover;
   display: block;
