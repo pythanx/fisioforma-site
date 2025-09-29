@@ -370,3 +370,30 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
 })();
 
 
+
+(function(){
+  const root = document.getElementById('t-aluno-carousel');
+  if(!root) return;
+
+  // pinta dot ativo sem depender de :has()
+  const radios = Array.from(root.querySelectorAll('input[type="radio"]'));
+  const labels = Array.from(root.querySelectorAll('.dots label'));
+  function paintDots(){
+    labels.forEach(l=>{
+      const r = document.getElementById(l.htmlFor);
+      l.classList.toggle('active', !!(r && r.checked));
+    });
+  }
+  radios.forEach(r=> r.addEventListener('change', paintDots));
+  paintDots();
+
+  // auto-avançar a cada 6s
+  let i = radios.findIndex(r=>r.checked);
+  if(i < 0){ i = 0; radios[0].checked = true; }
+  setInterval(()=>{
+    i = (i + 1) % radios.length;
+    radios[i].checked = true;
+    radios[i].dispatchEvent(new Event('change', {bubbles:true}));
+  }, 6000);
+})();
+
