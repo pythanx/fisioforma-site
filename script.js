@@ -1,129 +1,18 @@
-(function(){
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const box = document.querySelector('#sobre .ff-fade');
-  if(!box) return;
-  const radios = [...box.querySelectorAll('input[name="fff"]')];
-  const imgs = [...box.querySelectorAll('.slides img')];
-  let i = 0, hold = false, loaded = 0;
-  function start(){
-    if (!reduce) {
-      setInterval(()=>{ if(!hold){ i = (i+1) % radios.length; radios[i].checked = true; } }, 4200);
-      box.addEventListener('mouseenter', ()=> hold = true);
-      box.addEventListener('mouseleave', ()=> hold = false);
-    }
-  }
-  imgs.forEach(img=>{
-    if(img.complete){ if(++loaded===imgs.length) start(); }
-    else{
-      img.addEventListener('load', ()=>{ if(++loaded===imgs.length) start(); }, {once:true});
-      img.addEventListener('error', ()=>{ if(++loaded===imgs.length) start(); }, {once:true});
-    }
-  });
-})();
-
-
-//garante que o primeiro esteja marcado
-(function(){ const first = document.querySelector('#depoimentos input[name="t"]'); if (first) first.checked = true; })();
-
-
-// Autoplay e Swipe para o Carrossel de Depoimentos de Alunos
-// ... (Código do Menu Mobile, etc.) ...
-
-// Autoplay e Swipe para o Carrossel de Depoimentos de Alunos
-(function() {
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Seletor que funciona com os radios name="t" (t1, t2, etc.)
-  const box = document.querySelector('#depoimentos .t-carousel'); 
-  if (!box) return;
-
-  const radios = [...box.querySelectorAll('input[name^="t"]')]; 
-  let i = radios.findIndex(r => r.checked); 
-  if (i < 0) { i = 0; radios[0].checked = true; }
-  let hold = false;
-
-  // troca slide
-  const go = n => { i = (n + radios.length) % radios.length; radios[i].checked = true; };
-  
-  // autoplay
-  let timer;
-  // Intervalo de 4.2 segundos
-  const start = () => { if (reduce) return; timer = setInterval(() => { if(!hold) go(i+1); }, 4200); };
-  
-  box.addEventListener('mouseenter', () => hold = true);
-  box.addEventListener('mouseleave', () => hold = false);
-
-  // Swipe logic
-  let x0=null;
-  box.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
-  box.addEventListener('touchend',e=>{
-    if(x0==null) return;
-    const dx=e.changedTouches[0].clientX-x0; x0=null;
-    if(Math.abs(dx)>40) go(i + (dx<0?1:-1));
-  },{passive:true});
-
-  start();
-})();
-
-// ... (Outros códigos, como carrossel da seção Sobre, etc.) ...
-
-
-(function(){
-  const body   = document.querySelector('.igdm-body');
-  const typing = body ? body.querySelector('.typing') : null;
-  if(!body || !typing) return;
-
-  const atBottom = () =>
-    (body.scrollHeight - body.scrollTop - body.clientHeight) < 12;
-
-  function updateTypingVisibility(){
-    typing.style.display = atBottom() ? 'flex' : 'none';
-  }
-
-  // aparece quando chega no fim, e some ao sair do fim
-  body.addEventListener('scroll', updateTypingVisibility, {passive:true});
-  // se você entrar já no fim:
-  requestAnimationFrame(updateTypingVisibility);
-
-  // “pisca” de forma realista: só mantém visível ~3s após chegar no fundo
-  let timer;
-  body.addEventListener('scroll', ()=>{
-    clearTimeout(timer);
-    if(atBottom()){
-      typing.style.display='flex';
-      timer=setTimeout(()=>{ typing.style.display='none'; }, 3200);
-    }
-  }, {passive:true});
-})();
-
-
-
-(function(){
-  const box = document.querySelector('#depoimentos .t-carousel');
-  if(!box) return;
-  const radios = [...box.querySelectorAll('input[name="t"]')];
-  let i = radios.findIndex(r => r.checked); if(i<0){ i=0; radios[0].checked=true; }
-
-  const go = n => { i = (n + radios.length) % radios.length; radios[i].checked = true; };
-  box.querySelector('.nav-arrows .prev')?.addEventListener('click', () => go(i-1));
-  box.querySelector('.nav-arrows .next')?.addEventListener('click', () => go(i+1));
-
-  // teclado: ← → e PgUp/PgDn
-  box.addEventListener('keydown', (e)=>{
-    if(e.key==='ArrowLeft' || e.key==='PageUp'){ e.preventDefault(); go(i-1); }
-    if(e.key==='ArrowRight'|| e.key==='PageDown'){ e.preventDefault(); go(i+1); }
-  });
-})();
-
-
-
+/* ========= Navbar: realça link da seção visível ========= */
 (() => {
   const links = document.querySelectorAll('.main-nav a[href^="#"]');
-  const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const sections = [...links]
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
 
-  const io = new IntersectionObserver((entries) => {
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+
+  const io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        links.forEach(a =>
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id)
+        );
       }
     });
   }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
@@ -131,293 +20,92 @@
   sections.forEach(sec => io.observe(sec));
 })();
 
+/* ========= Hero vídeo (Prof. Fisão): pausa quando sai da viewport ========= */
+(() => {
+  const vid = document.querySelector('.hero-anim-video');
+  if (!vid || !('IntersectionObserver' in window)) return;
 
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => e.isIntersecting ? vid.play().catch(()=>{}) : vid.pause());
+  }, { threshold: 0.25 });
 
-// Autoplay suave da galeria #sobre (respeita prefers-reduced-motion)
-(function(){
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  io.observe(vid);
+})();
+
+/* ========= Carrossel DEPOIMENTOS (#t-aluno-carousel / name="t") ========= */
+(() => {
+  const box = document.getElementById('t-aluno-carousel');
+  if (!box) return;
+
+  const radios = [...box.querySelectorAll('input[type="radio"][name="t"]')];
+  if (!radios.length) return;
+
+  let i = radios.findIndex(r => r.checked);
+  if (i < 0) { i = 0; radios[0].checked = true; }
+
+  // Dots (sem :has)
+  const labels = [...box.querySelectorAll('.dots label')];
+  const paint = () => labels.forEach(l => {
+    const r = document.getElementById(l.htmlFor);
+    l.classList.toggle('active', !!(r && r.checked));
+  });
+  radios.forEach(r => r.addEventListener('change', paint));
+  paint();
+
+  const go = n => { i = (n + radios.length) % radios.length; radios[i].checked = true; paint(); };
+
+  // Autoplay (pausa no hover/toque)
+  let hold = false, timer;
+  const start = () => { stop(); timer = setInterval(() => { if (!hold) go(i + 1); }, 5200); };
+  const stop  = () => { if (timer) clearInterval(timer); };
+  box.addEventListener('mouseenter', () => hold = true);
+  box.addEventListener('mouseleave', () => hold = false);
+  box.addEventListener('touchstart', () => hold = true, {passive:true});
+  box.addEventListener('touchend',   () => hold = false, {passive:true});
+
+  // Teclado
+  box.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp')  { e.preventDefault(); go(i - 1); }
+    if (e.key === 'ArrowRight'|| e.key === 'PageDown'){ e.preventDefault(); go(i + 1); }
+  });
+
+  start();
+})();
+
+/* ========= Carrossel GALERIA (#sobre .gallery / name="ph") ========= */
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const box = document.querySelector('#sobre .gallery');
-  if(!box) return;
-  const radios = [...box.querySelectorAll('input[name="ph"]')];
-  let i = radios.findIndex(r => r.checked); if (i < 0) { i = 0; radios[0].checked = true; }
-  let hold = false;
+  if (!box) return;
 
-  // troca slide
+  const radios = [...box.querySelectorAll('input[type="radio"][name="ph"]')];
+  if (!radios.length) return;
+
+  let i = radios.findIndex(r => r.checked);
+  if (i < 0) { i = 0; radios[0].checked = true; }
+
   const go = n => { i = (n + radios.length) % radios.length; radios[i].checked = true; };
 
-  // autoplay
-  let timer;
-  const start = () => { if (reduce) return; timer = setInterval(() => { if(!hold) go(i+1); }, 4200); };
-  const stop  = () => { clearInterval(timer); };
+  // Autoplay com pausa + swipe
+  let hold = false, timer;
+  const start = () => { if (reduce) return; stop(); timer = setInterval(() => { if (!hold) go(i + 1); }, 4500); };
+  const stop  = () => { if (timer) clearInterval(timer); };
 
   box.addEventListener('mouseenter', () => hold = true);
   box.addEventListener('mouseleave', () => hold = false);
 
-  // swipe mobile
-  let x0=null;
-  box.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
-  box.addEventListener('touchend',e=>{
-    if(x0==null) return;
-    const dx=e.changedTouches[0].clientX-x0; x0=null;
-    if(Math.abs(dx)>40) go(i + (dx<0?1:-1));
-  },{passive:true});
+  let x0 = null;
+  box.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+  box.addEventListener('touchend',   e => {
+    if (x0 == null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+  }, {passive:true});
 
-  // iniciar quando as imagens carregarem (ou depois de um pequeno grace period)
+  // só inicia após imagens carregarem (ou timeout de segurança)
   const imgs = box.querySelectorAll('.slides img');
-  let loaded = 0, done = false;
-  const maybeStart = () => { if(done) return; if(++loaded >= imgs.length) { done = true; start(); setTimeout(start, 150); } };
+  let loaded = 0, booted = false;
+  const maybeStart = () => { if (booted) return; if (++loaded >= imgs.length) { booted = true; start(); } };
   imgs.forEach(img => img.complete ? maybeStart() : img.addEventListener('load', maybeStart, {once:true}));
-  setTimeout(()=>{ if(!done){ done = true; start(); } }, 1500);
+  setTimeout(() => { if (!booted) { booted = true; start(); } }, 1500);
 })();
-
-// === Match height: card do Professor = altura do carrossel ===
-(function () {
-  const sec = document.querySelector('#depoimentos');
-  if (!sec) return;
-
-  // ajuste aqui se seus seletores forem diferentes
-  const leftCard  = sec.querySelector('.testimonial-col .card, .testimonial-col .slider, .testimonial-col'); 
-  const profCard  = sec.querySelector('.professor-col .professor-card');
-
-  if (!leftCard || !profCard) return;
-
-  function setHeights() {
-    // remove limite pra medir a altura natural do card do carrossel
-    profCard.style.setProperty('--prof-max', 'none');
-
-    // mede a altura efetiva do card/esquerda
-    const h = leftCard.getBoundingClientRect().height;
-
-    // aplica como max-height no card do Professor
-    profCard.style.setProperty('--prof-max', `${Math.max(260, Math.round(h))}px`);
-  }
-
-  // chama no load, resize e depois que imagens carregarem
-  window.addEventListener('resize', setHeights);
-  window.addEventListener('load', setHeights);
-
-  // tenta reagir a imagens do carrossel
-  const imgs = leftCard.querySelectorAll('img');
-  let loaded = 0;
-  imgs.forEach(img => {
-    if (img.complete) { if (++loaded === imgs.length) setHeights(); }
-    else {
-      img.addEventListener('load', () => { if (++loaded === imgs.length) setHeights(); }, { once: true });
-      img.addEventListener('error', () => { if (++loaded === imgs.length) setHeights(); }, { once: true });
-    }
-  });
-
-  // fallback: dispara um ajuste após um pequeno delay (caso nada dispare)
-  setTimeout(setHeights, 600);
-})();
-
-(function () {
-  const sec = document.querySelector('#depoimentos');
-  if (!sec) return;
-
-  const leftCard = sec.querySelector('#t-aluno-carousel');       // carrossel de alunos
-  const profCard = sec.querySelector('.professor-card');
-  if (!leftCard || !profCard) return;
-
-  const setHeights = () => {
-    profCard.style.setProperty('--prof-max', 'none');
-    const h = leftCard.getBoundingClientRect().height;
-    profCard.style.setProperty('--prof-max', Math.max(360, Math.round(h)) + 'px');
-  };
-
-  // chama no load/resize e quando imagens do carrossel carregarem
-  addEventListener('resize', setHeights, {passive:true});
-  addEventListener('load', setHeights);
-
-  const imgs = leftCard.querySelectorAll('img');
-  let done = 0;
-  imgs.forEach(img=>{
-    if (img.complete) { if(++done===imgs.length) setHeights(); }
-    else{
-      img.addEventListener('load', ()=>{ if(++done===imgs.length) setHeights(); }, {once:true});
-      img.addEventListener('error', ()=>{ if(++done===imgs.length) setHeights(); }, {once:true});
-    }
-  });
-
-  setTimeout(setHeights, 500);   // fallback
-})();
-
-(function(){
-// Altere aqui seus dados “ocultos”
-const PHONE = '5598992223926';                 // só números com DDI
-const MAIL  = ['academiafisioformaag','gmail.com']; // dividido para evitar scraping
-
-// WhatsApp com mensagem pré-preenchida
-document.getElementById('btn-wa')?.addEventListener('click', ()=>{
-  const msg = encodeURIComponent('Olá! Vim pelo site e gostaria de saber mais 🙂');
-  window.open(`https://wa.me/${PHONE}?text=${msg}`, '_blank');
-});
-
-// Monta mailto só no clique (para não aparecer no HTML)
-document.getElementById('btn-mail')?.addEventListener('click', ()=>{
-  const address = `${MAIL[0]}@${MAIL[1]}`;
-  const subject = encodeURIComponent('Contato pelo site FisioForma');
-  location.href = `mailto:${address}?subject=${subject}`;
-});
-})();
-
-
-  (function(){
-    const grid = document.querySelector('.team-grid');
-    if(!grid) return;
-    const n = grid.querySelectorAll('.team-card').length;
-    // remove classes antigas (caso re-render)
-    grid.className = grid.className.replace(/\bteam-\d+\b/g, '').trim();
-    grid.classList.add('team-' + Math.min(n, 9)); // até 9 por segurança
-  })();
-
-  (function(){
-    const grid = document.querySelector('.team-grid');
-    if(!grid) return;
-
-    // 1) Mantém a classe de quantidade (team-4, team-5, …)
-    const total = grid.querySelectorAll('.team-card').length;
-    grid.className = grid.className.replace(/\bteam-\d+\b/g,'').trim();
-    grid.classList.add('team-' + Math.min(total, 12));
-
-    // 2) Equaliza a altura da legenda (figcaption)
-    const caps = [...grid.querySelectorAll('.team-card figcaption')];
-    if(!caps.length) return;
-
-    // limpa altura forçada para medir
-    caps.forEach(c => c.style.minHeight = '');
-    // pega a maior altura real
-    const maxH = Math.max(...caps.map(c => c.getBoundingClientRect().height));
-    // aplica via CSS var (cai no fallback do CSS se JS não rodar)
-    grid.style.setProperty('--caption-min', Math.ceil(maxH) + 'px');
-  })();
-
-(function(){
-    const grid = document.querySelector('.team-grid');
-    if(!grid) return;
-
-    const caps = [...grid.querySelectorAll('.team-card figcaption')];
-    if(!caps.length) return;
-
-    // limpa altura para medir corretamente
-    caps.forEach(c => c.style.minHeight = '');
-
-    // pega a maior legenda e aplica para todas (via CSS var e inline fallback)
-    const maxH = Math.max(...caps.map(c => c.getBoundingClientRect().height));
-    const minH = Math.ceil(maxH) + 'px';
-    grid.style.setProperty('--caption-min', minH);
-    caps.forEach(c => c.style.minHeight = minH);
-
-    // recalcula em mudanças de layout
-    let t;
-    window.addEventListener('resize', () => {
-      clearTimeout(t);
-      t = setTimeout(() => {
-        caps.forEach(c => c.style.minHeight = '');
-        const h = Math.max(...caps.map(c => c.getBoundingClientRect().height));
-        const nh = Math.ceil(h) + 'px';
-        grid.style.setProperty('--caption-min', nh);
-        caps.forEach(c => c.style.minHeight = nh);
-      }, 120);
-    });
-  })();
-
-(function(){
-  const params = new URLSearchParams(location.search);
-  const abrir = params.get('abrir'); // ex: ?abrir=avaliacao
-  if(!abrir) return;
-  const alvo = document.getElementById(abrir);
-  if(alvo && alvo.tagName.toLowerCase()==='details'){
-    alvo.open = true;
-    alvo.scrollIntoView({behavior:'smooth', block:'start'});
-  }
-})();
-
-
-
-  (function () {
-    const vid = document.querySelector('.hero-anim-video');
-    if (!('IntersectionObserver' in window) || !vid) return;
-
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { vid.play().catch(()=>{}); }
-        else { vid.pause(); }
-      });
-    }, { threshold: 0.25 });
-
-    io.observe(vid);
-  })();
-
-
-
-(function(){
-  // Auto-avança um grupo de radios de mesmo nome
-  function autoAdvance(groupName, intervalMs){
-    const radios = Array.from(document.querySelectorAll(`input[type="radio"][name="${groupName}"]`));
-    if (radios.length <= 1) return;
-    let idx = radios.findIndex(r => r.checked);
-    if (idx < 0) { idx = 0; radios[0].checked = true; }
-    setInterval(() => {
-      idx = (idx + 1) % radios.length;
-      radios[idx].checked = true;
-    }, intervalMs);
-  }
-  // Depoimentos (name="t") a cada 6s
-  autoAdvance("t", 6000);
-  // Galeria de fotos (name="ph") a cada 5s
-  autoAdvance("ph", 5000);
-})();
-
-
-
-(function(){
-  const root = document.getElementById('t-aluno-carousel');
-  if(!root) return;
-
-  // pinta dot ativo sem depender de :has()
-  const radios = Array.from(root.querySelectorAll('input[type="radio"]'));
-  const labels = Array.from(root.querySelectorAll('.dots label'));
-  function paintDots(){
-    labels.forEach(l=>{
-      const r = document.getElementById(l.htmlFor);
-      l.classList.toggle('active', !!(r && r.checked));
-    });
-  }
-  radios.forEach(r=> r.addEventListener('change', paintDots));
-  paintDots();
-
-  // auto-avançar a cada 6s
-  let i = radios.findIndex(r=>r.checked);
-  if(i < 0){ i = 0; radios[0].checked = true; }
-  setInterval(()=>{
-    i = (i + 1) % radios.length;
-    radios[i].checked = true;
-    radios[i].dispatchEvent(new Event('change', {bubbles:true}));
-  }, 6000);
-})();
-
-
-(function(){
-  const radios = [...document.querySelectorAll('#t-aluno-carousel input[type="radio"]')];
-  if (!radios.length) return;
-
-  let i = radios.findIndex(r => r.checked);
-  if (i < 0) i = 0;
-
-  let timer;
-  const play = ()=> timer = setInterval(()=>{
-    i = (i + 1) % radios.length;
-    radios[i].checked = true;
-  }, 6000);
-  const stop = ()=> clearInterval(timer);
-
-  const root = document.getElementById('t-aluno-carousel');
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', play);
-  root.addEventListener('touchstart', stop, {passive:true});
-  root.addEventListener('touchend', play, {passive:true});
-
-  play();
-})();
-
