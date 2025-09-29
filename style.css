@@ -3779,3 +3779,111 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #t2-9:checked ~ .t2-dots label[for="t2-9"]{
   background: var(--brand,#3a80b4); opacity: 1;
 }
+
+/* =========================================================
+   CARROSSEL — DEPOIMENTOS (t-aluno-carousel)
+   Estrutura esperada no HTML:
+   <div id="t-aluno-carousel" class="t-carousel">
+     <input type="radio" id="t1" name="t" checked>
+     ...
+     <input type="radio" id="t9" name="t">
+     <div class="viewport">
+       <div class="slides">
+         <article class="slide"><div class="bubble">...</div></article>
+         ...
+       </div>
+     </div>
+     <div class="dots"><label for="t1"></label> ... <label for="t9"></label></div>
+   </div>
+   ========================================================= */
+
+#t-aluno-carousel { --h: 420px; }         /* altura mínima do conteúdo */
+@media (max-width: 900px){ #t-aluno-carousel { --h: 460px; } }
+
+.t-carousel{
+  position: relative;
+  background: #fff;
+  border: 1px solid #e6edf4;
+  border-radius: 18px;
+  padding: 14px 12px;
+  box-shadow: 0 6px 16px rgba(3,27,45,.06);
+}
+
+.t-carousel input[type="radio"]{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.t-carousel .viewport{
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid #e6edf4;
+  background: #f5f9fc;
+  min-height: var(--h);            /* evita ficar branco enquanto carrega */
+}
+
+.t-carousel .slides{
+  display: flex;
+  align-items: stretch;
+  will-change: transform;
+  transition: transform .55s ease; /* animação da troca */
+}
+
+.t-carousel .slide{
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  min-height: var(--h);            /* garante altura do slide */
+}
+
+.t-carousel .bubble{
+  width: min(700px, 94%);
+  background: #fff;
+  border: 1px solid #e6edf4;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(3,27,45,.06);
+}
+.t-carousel .bubble img{max-width:100%;height:auto;display:block}
+.t-carousel .bubble .bubble-title{margin:8px 0 6px;font-size:1.12rem;color:#1e5a82}
+.t-carousel .bubble .bubble-text{margin:8px 0;color:#2f3c46}
+.t-carousel .bubble .bubble-author{margin-top:10px;color:#2f3c46}
+
+/* ---- mapeamento dos rádios → posição do trilho ---- */
+#t1:checked ~ .viewport .slides{transform:translateX(0)}
+#t2:checked ~ .viewport .slides{transform:translateX(-100%)}
+#t3:checked ~ .viewport .slides{transform:translateX(-200%)}
+#t4:checked ~ .viewport .slides{transform:translateX(-300%)}
+#t5:checked ~ .viewport .slides{transform:translateX(-400%)}
+#t6:checked ~ .viewport .slides{transform:translateX(-500%)}
+#t7:checked ~ .viewport .slides{transform:translateX(-600%)}
+#t8:checked ~ .viewport .slides{transform:translateX(-700%)}
+#t9:checked ~ .viewport .slides{transform:translateX(-800%)}
+
+/* ---- dots ---- */
+.t-carousel .dots{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  margin:12px 0 0;
+}
+.t-carousel .dots label{
+  width:8px;height:8px;border-radius:999px;
+  background:#cfe0ec;cursor:pointer;transition:transform .2s;
+}
+/* dot ativo */
+#t1:checked ~ .dots label[for="t1"],
+#t2:checked ~ .dots label[for="t2"],
+#t3:checked ~ .dots label[for="t3"],
+#t4:checked ~ .dots label[for="t4"],
+#t5:checked ~ .dots label[for="t5"],
+#t6:checked ~ .dots label[for="t6"],
+#t7:checked ~ .dots label[for="t7"],
+#t8:checked ~ .dots label[for="t8"],
+#t9:checked ~ .dots label[for="t9"]{
+  background:#2573a5; transform:scale(1.2);
+}
+
