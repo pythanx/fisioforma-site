@@ -3981,58 +3981,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .testimonial-source{ color:#6f7b86; font-size:.95rem; margin:0 0 6px; }
 .testimonial-author{ color:#0f3d4d; font-weight:600; margin:0; }
 
-/* Dots */
-.testimonial-dots{
-  display:flex; justify-content:center; gap:10px;
-  margin-top: 16px;
-}
-.testimonial-dots button{
-  width:10px; height:10px; border-radius:50%;
-  border:0; background:#c9d6df; cursor:pointer;
-  transition: transform .2s ease, background .2s ease;
-}
-.testimonial-dots button.active{ background:#134a61; transform: scale(1.2); }
-.testimonial-dots button:focus-visible{ outline:2px solid #134a61; outline-offset:2px; }
 
-/* Avatar redondo com borda */
-.testimonial-item img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 3px solid #2e5b6b;
-  object-fit: cover;
-  margin-bottom: 12px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
-  background: #fff;
-}
-
-/* Dots */
-.testimonial-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-  gap: 10px;
-}
-
-.testimonial-dots button {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(46,91,107,0.3);
-  cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
-}
-
-.testimonial-dots button:hover {
-  transform: scale(1.2);
-  background: rgba(46,91,107,0.5);
-}
-
-.testimonial-dots button.active {
-  background: #2e5b6b;
-  box-shadow: 0 0 0 3px rgba(46,91,107,0.2) inset;
-}
 
 /* ===== Depoimentos – Card no mesmo estilo do “Prof. Fisão” ===== */
 .testimonial-carousel{
@@ -4109,66 +4058,6 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   color: var(--ink, #222);
 }
 
-/* Dots aprimorados (iguais aos que desenhamos antes) */
-.testimonial-dots{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 14px 0 0;
-}
-
-.testimonial-dots button{
-  width: 12px; height: 12px;
-  border-radius: 999px;
-  border: 0;
-  background: rgba(58,128,180,.22); /* var(--brand) translúcido */
-  box-shadow: inset 0 0 0 2px rgba(58,128,180,.15);
-  cursor: pointer;
-  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
-}
-
-.testimonial-dots button:hover{ transform: scale(1.08); }
-
-.testimonial-dots button.active{
-  background: var(--brand, #3a80b4);
-  box-shadow:
-    0 1px 2px rgba(0,0,0,.12),
-    0 0 0 3px rgba(58,128,180,.18);
-}
-
-/* Responsivo: aperta o card em telas menores */
-@media (max-width: 520px){
-  .testimonial-item{ padding: 18px 16px; border-radius: 18px; }
-  .testimonial-item .avatar{ width: 72px; height: 72px; }
-}
-/* ===== Depoimentos — dots pequenos e redondos ===== */
-.testimonial-dots{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:18px;
-}
-
-.testimonial-dots button{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  border:1px solid #9fbdd0;
-  background:#d9e9f2;
-  opacity:.9;
-  transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
-}
-.testimonial-dots button:hover{ transform:scale(1.1); }
-.testimonial-dots button:focus-visible{
-  outline:none;
-  box-shadow:0 0 0 3px rgba(47,109,132,.25);
-}
-.testimonial-dots button.active{
-  background:#1e5f76;
-  border-color:#1e5f76;
-  box-shadow:0 0 0 3px rgba(30,95,118,.15);
-  opacity:1;
-}
 
 /* avatar do depoimento (redondo com borda estilo Prof.) */
 .testimonial-item .avatar{
@@ -4180,4 +4069,47 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   object-fit:cover;
   margin:8px auto 14px;
   display:block;
+}
+
+/* Avatar redondo do depoimento (igual borda do professor, porém pequeno) */
+.testimonial-item .avatar{
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  border: 3px solid var(--brand, #3a80b4);
+  object-fit: cover;
+  display: block;
+  margin: 6px auto 12px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,.08);
+}
+
+/* Card do depoimento no mesmo estilo do Professor */
+.testimonial-item{
+  background: #fff;
+  border: 1px solid var(--line, #d9d9d9);
+  border-radius: 22px;
+  padding: 22px 26px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.03),
+    0 12px 24px -10px rgba(0,0,0,.12);
+}
+
+/* Dots — pequenos e redondinhos */
+.testimonial-dots{
+  display:flex; justify-content:center; gap:8px;
+  margin-top: 12px;
+}
+.testimonial-dots button{
+  width:8px; height:8px; border-radius:50%;
+  border:0; background:#c9d6df; cursor:pointer;
+  transition: transform .18s ease, background .18s ease;
+}
+.testimonial-dots button.active{
+  background:#134a61;
+  transform: scale(1.25);
+}
+.testimonial-dots button:focus-visible{
+  outline:2px solid #134a61; outline-offset:2px;
 }
