@@ -3580,3 +3580,53 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 
 
 
+/* ===== FIX CARROSSEIS (override final) ===== */
+
+/* Depoimentos: faixa horizontal por translateX */
+#depoimentos .t-carousel { max-width: 980px; margin: 0 auto; }
+#depoimentos .t-carousel .viewport{
+  position: relative; overflow: hidden; border-radius: 18px;
+  background: var(--card, #f6f9fc); border: 1px solid var(--line, #e1e8f0);
+  box-shadow: 0 10px 28px rgba(8,34,66,.06); min-height: 320px;
+}
+#depoimentos .t-carousel .slides{
+  display: flex; width: calc(100% * 9);
+  transform: translateX(0); transition: transform .55s ease;
+}
+#depoimentos .t-carousel .slide{
+  flex: 0 0 100%; padding: 22px;
+  display: flex; align-items: center; justify-content: center;
+  box-sizing: border-box;
+}
+#t1:checked ~ .viewport .slides{ transform: translateX(0%); }
+#t2:checked ~ .viewport .slides{ transform: translateX(-100%); }
+#t3:checked ~ .viewport .slides{ transform: translateX(-200%); }
+#t4:checked ~ .viewport .slides{ transform: translateX(-300%); }
+#t5:checked ~ .viewport .slides{ transform: translateX(-400%); }
+#t6:checked ~ .viewport .slides{ transform: translateX(-500%); }
+#t7:checked ~ .viewport .slides{ transform: translateX(-600%); }
+#t8:checked ~ .viewport .slides{ transform: translateX(-700%); }
+#t9:checked ~ .viewport .slides{ transform: translateX(-800%); }
+
+/* Dots depoimentos */
+#depoimentos .dots{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
+#depoimentos .dots label{
+  width:8px; height:8px; border-radius:50%; background:#c8d7e6; opacity:.55; cursor:pointer;
+}
+#depoimentos .dots label.active{ opacity:1; background:#0f5175; }
+
+/* Galeria: fade entre fotos (um slide visível) */
+#sobre .gallery .viewport{ position:relative; overflow:hidden; border-radius:16px; }
+#sobre .gallery .slides{ list-style:none; margin:0; padding:0; }
+#sobre .gallery .slides li{
+  position:absolute; inset:0; opacity:0; transition:opacity .45s ease;
+}
+#ph1:checked ~ .viewport .slides li:nth-child(1),
+#ph2:checked ~ .viewport .slides li:nth-child(2),
+#ph3:checked ~ .viewport .slides li:nth-child(3),
+#ph4:checked ~ .viewport .slides li:nth-child(4),
+#ph5:checked ~ .viewport .slides li:nth-child(5),
+#ph6:checked ~ .viewport .slides li:nth-child(6){ opacity:1; }
+/* fallback: se nenhum rádio estiver marcado */
+#sobre .gallery .slides li:first-child{ opacity:1; }
+#sobre .gallery .slides img{ width:100%; height:auto; display:block; }
