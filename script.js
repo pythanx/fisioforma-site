@@ -204,3 +204,98 @@
   measure();
   start();
 })();
+
+
+(function initDepoCarousel() {
+  const root = document.querySelector('#depo-carousel');
+  if (!root) return;
+
+  const track = root.querySelector('.testimonial-track');
+  const slides = Array.from(track.querySelectorAll('.testimonial-item'));
+  const dots   = Array.from(root.querySelectorAll('.testimonial-dots button'));
+
+  // estilos mínimos para suavidade (caso não estejam no CSS)
+  track.style.willChange = 'transform';
+  track.style.transition  = 'transform .55s ease';
+
+  let index = 0;
+  let slideW = 0;
+  let timer  = null;
+  const INTERVAL = 5500;
+
+  // dimensiona cada slide para 100% da largura do carrossel
+  function measure() {
+    // usa o conteúdo visível do root
+    slideW = Math.round(root.getBoundingClientRect().width);
+    slides.forEach(s => { s.style.minWidth = slideW + 'px'; });
+    // reposiciona no slide atual
+    goTo(index, true);
+  }
+
+  function updateDots() {
+    dots.forEach((d,i) => {
+      const active = (i === index);
+      d.classList.toggle('active', active);
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  function goTo(i, noAnim) {
+    // wrap-around
+    index = (i + slides.length) % slides.length;
+    if (noAnim) {
+      const old = track.style.transition;
+      track.style.transition = 'none';
+      requestAnimationFrame(() => {
+        track.style.transform = `translateX(${-index * slideW}px)`;
+        // força reflow e restaura
+        track.getBoundingClientRect();
+        track.style.transition = old || 'transform .55s ease';
+      });
+    } else {
+      track.style.transform = `translateX(${-index * slideW}px)`;
+    }
+    updateDots();
+  }
+
+  function start() {
+    stop();
+    timer = setInterval(() => goTo(index + 1), INTERVAL);
+  }
+  function stop() {
+    if (timer) clearInterval(timer), (timer = null);
+  }
+
+  // Dots
+  dots.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      goTo(i);
+      start(); // reinicia autoplay após clique
+    });
+  });
+
+  // Teclado (setas) quando o carrossel está focado
+  root.setAttribute('tabindex', '0');
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); start(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); start(); }
+  });
+
+  // Pausar ao passar mouse/tocar
+  root.addEventListener('pointerenter', stop);
+  root.addEventListener('pointerleave', start);
+
+  // Pausar quando aba não está visível
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start();
+  });
+
+  // Redimensionamento responsivo
+  const ro = 'ResizeObserver' in window ? new ResizeObserver(measure) : null;
+  ro ? ro.observe(root) : window.addEventListener('resize', measure);
+
+  // Inicializa
+  measure();
+  start();
+})();
+
