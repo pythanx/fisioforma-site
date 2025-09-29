@@ -299,63 +299,7 @@
   start();
 })();
 
-// ===== Carrossel de Depoimentos =====
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".testimonial-track");
-  const items = Array.from(track.children);
-  const dotsNav = document.querySelector(".testimonial-dots");
-  const dots = Array.from(dotsNav.children);
 
-  let currentIndex = 0;
-  const intervalTime = 6000; // tempo de troca automática (6s)
-  let autoSlide;
-
-  // Função para atualizar slides
-  function updateSlide(index) {
-    // garantir que não saia do range
-    if (index < 0) index = items.length - 1;
-    if (index >= items.length) index = 0;
-
-    // mover track
-    const slideWidth = items[0].getBoundingClientRect().width;
-    track.style.transform = `translateX(-${index * slideWidth}px)`;
-
-    // atualizar dots
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[index].classList.add("active");
-
-    currentIndex = index;
-  }
-
-  // Clique nos dots
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      updateSlide(index);
-      resetAutoSlide();
-    });
-  });
-
-  // Função auto slide
-  function startAutoSlide() {
-    autoSlide = setInterval(() => {
-      updateSlide(currentIndex + 1);
-    }, intervalTime);
-  }
-
-  function resetAutoSlide() {
-    clearInterval(autoSlide);
-    startAutoSlide();
-  }
-
-  // Resize: recalcular posição
-  window.addEventListener("resize", () => {
-    updateSlide(currentIndex);
-  });
-
-  // Inicializar
-  updateSlide(currentIndex);
-  startAutoSlide();
-});
 // ===== Carrossel de Depoimentos (robusto) =====
 (function () {
   const carousel = document.querySelector(".testimonial-carousel");
