@@ -3470,3 +3470,73 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   background: transparent; color: #cfe4f5; border-color: rgba(255,255,255,.22);
 }
 .cookie-banner .cta.xs.ghost:hover { background: rgba(255,255,255,.06); }
+
+
+/* Container básico */
+.t-carousel { position: relative; display:block; }
+.t-carousel .viewport { overflow: hidden; width: 100%; border-radius: 14px; }
+.t-carousel .slides { display: flex; width: 100%; transition: transform .5s ease; }
+
+/* Cada slide ocupa 100% da largura da viewport */
+.t-carousel .slide { width: 100%; flex: 0 0 100%; }
+
+/* Esconde os inputs */
+.t-carousel > input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+
+/* Dots */
+.t-carousel .dots { display:flex; gap:8px; justify-content:center; margin:10px 0 0; }
+.t-carousel .dots label { width:10px; height:10px; border-radius:50%; background:#cbd5e1; cursor:pointer; }
+.t-carousel .dots label:hover { background:#94a3b8; }
+
+/* Mapas de posição — 9 slides (ajuste se tiver menos) */
+#t1:checked ~ .viewport .slides { transform: translateX(0%); }
+#t2:checked ~ .viewport .slides { transform: translateX(-100%); }
+#t3:checked ~ .viewport .slides { transform: translateX(-200%); }
+#t4:checked ~ .viewport .slides { transform: translateX(-300%); }
+#t5:checked ~ .viewport .slides { transform: translateX(-400%); }
+#t6:checked ~ .viewport .slides { transform: translateX(-500%); }
+#t7:checked ~ .viewport .slides { transform: translateX(-600%); }
+#t8:checked ~ .viewport .slides { transform: translateX(-700%); }
+#t9:checked ~ .viewport .slides { transform: translateX(-800%); }
+
+/* Dot ativo (usa :has — ótimo quando disponível) */
+.t-carousel:has(#t1:checked) .dots label[for="t1"],
+.t-carousel:has(#t2:checked) .dots label[for="t2"],
+.t-carousel:has(#t3:checked) .dots label[for="t3"],
+.t-carousel:has(#t4:checked) .dots label[for="t4"],
+.t-carousel:has(#t5:checked) .dots label[for="t5"],
+.t-carousel:has(#t6:checked) .dots label[for="t6"],
+.t-carousel:has(#t7:checked) .dots label[for="t7"],
+.t-carousel:has(#t8:checked) .dots label[for="t8"],
+.t-carousel:has(#t9:checked) .dots label[for="t9"] { background: var(--brand, #3a80b4); }
+
+.gallery { position: relative; display:block; }
+.gallery .viewport { overflow: hidden; border-radius: 14px; }
+.gallery .slides { display:flex; width:100%; transition: transform .5s ease; }
+.gallery .slides > li { list-style:none; width:100%; flex:0 0 100%; }
+.gallery img { display:block; width:100%; height:auto; }
+
+/* Esconde os inputs */
+.gallery > input[type="radio"] { position:absolute; opacity:0; pointer-events:none; }
+
+/* Pontinhos */
+.gallery .dots { display:flex; gap:8px; justify-content:center; margin:10px 0 0; }
+.gallery .dots label { width:10px; height:10px; border-radius:50%; background:#cbd5e1; cursor:pointer; }
+.gallery .dots label:hover { background:#94a3b8; }
+
+/* Mapas — 6 fotos (ajuste se mudar a quantidade) */
+#ph1:checked ~ .viewport .slides { transform: translateX(0%); }
+#ph2:checked ~ .viewport .slides { transform: translateX(-100%); }
+#ph3:checked ~ .viewport .slides { transform: translateX(-200%); }
+#ph4:checked ~ .viewport .slides { transform: translateX(-300%); }
+#ph5:checked ~ .viewport .slides { transform: translateX(-400%); }
+#ph6:checked ~ .viewport .slides { transform: translateX(-500%); }
+
+/* Dot ativo com :has() */
+.gallery:has(#ph1:checked) .dots label[for="ph1"],
+.gallery:has(#ph2:checked) .dots label[for="ph2"],
+.gallery:has(#ph3:checked) .dots label[for="ph3"],
+.gallery:has(#ph4:checked) .dots label[for="ph4"],
+.gallery:has(#ph5:checked) .dots label[for="ph5"],
+.gallery:has(#ph6:checked) .dots label[for="ph6"] { background: var(--brand, #3a80b4); }
+
