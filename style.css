@@ -3515,4 +3515,74 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   #t-aluno-carousel .viewport > .slides{ transition:none; }
 }
 
+/* Carrossel de Depoimentos */
+#t-aluno-carousel {
+  position: relative;
+  max-width: 700px;  /* ajuste conforme seu layout */
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+#t-aluno-carousel .viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+#t-aluno-carousel .slides {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+#t-aluno-carousel .slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Imagens dentro do depoimento */
+#t-aluno-carousel .bubble-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain; /* garante que não distorce nem corta */
+  border-radius: 12px;
+}
+
+/* Bolhas de depoimento */
+#t-aluno-carousel .bubble {
+  background: var(--card, #fff);
+  color: var(--ink, #222);
+  border-radius: 16px;
+  padding: 1rem;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Dots do carrossel */
+#t-aluno-carousel .dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+#t-aluno-carousel .dots label {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#t-aluno-carousel input[type="radio"]:checked + .viewport + .dots label {
+  background: var(--primary, #3a80b4);
+}
+
+
 
