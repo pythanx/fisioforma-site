@@ -334,7 +334,7 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
 })();
 
 
-<script>
+
   (function () {
     const vid = document.querySelector('.hero-anim-video');
     if (!('IntersectionObserver' in window) || !vid) return;
@@ -348,5 +348,25 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
 
     io.observe(vid);
   })();
-</script>
+
+
+
+(function(){
+  // Auto-avança um grupo de radios de mesmo nome
+  function autoAdvance(groupName, intervalMs){
+    const radios = Array.from(document.querySelectorAll(`input[type="radio"][name="${groupName}"]`));
+    if (radios.length <= 1) return;
+    let idx = radios.findIndex(r => r.checked);
+    if (idx < 0) { idx = 0; radios[0].checked = true; }
+    setInterval(() => {
+      idx = (idx + 1) % radios.length;
+      radios[idx].checked = true;
+    }, intervalMs);
+  }
+  // Depoimentos (name="t") a cada 6s
+  autoAdvance("t", 6000);
+  // Galeria de fotos (name="ph") a cada 5s
+  autoAdvance("ph", 5000);
+})();
+
 
