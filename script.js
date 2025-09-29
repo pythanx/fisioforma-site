@@ -397,3 +397,27 @@ document.getElementById('btn-mail')?.addEventListener('click', ()=>{
   }, 6000);
 })();
 
+
+(function(){
+  const radios = [...document.querySelectorAll('#t-aluno-carousel input[type="radio"]')];
+  if (!radios.length) return;
+
+  let i = radios.findIndex(r => r.checked);
+  if (i < 0) i = 0;
+
+  let timer;
+  const play = ()=> timer = setInterval(()=>{
+    i = (i + 1) % radios.length;
+    radios[i].checked = true;
+  }, 6000);
+  const stop = ()=> clearInterval(timer);
+
+  const root = document.getElementById('t-aluno-carousel');
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', play);
+  root.addEventListener('touchstart', stop, {passive:true});
+  root.addEventListener('touchend', play, {passive:true});
+
+  play();
+})();
+
