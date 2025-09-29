@@ -3444,3 +3444,29 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   border: 0 !important;
 }
 
+/* Cookie Banner (tema FisioForma) */
+.cookie-banner {
+  position: fixed; inset: auto 16px 16px 16px; z-index: 9999;
+  border-radius: 14px; border: 1px solid var(--line);
+  background: linear-gradient(180deg, #102233 0%, #0b1620 100%);
+  color: #e6f1f8;
+  box-shadow: 0 18px 44px rgba(8,34,66,.25);
+  transform: translateY(12px); opacity: 0; pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.cookie-banner[aria-hidden="false"] { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.cookie-inner { display: grid; gap: 10px; padding: 14px 16px; }
+.cookie-inner p { margin: 0; color: #cfe4f5; font-size: .95rem; }
+.cookie-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.cookie-banner .cta.xs {
+  background: #3a80b4; color: #fff; border: 1px solid rgba(255,255,255,.12);
+  padding: 8px 12px; border-radius: 10px; font-weight: 600;
+  box-shadow: 0 6px 16px rgba(13,63,98,.35);
+}
+.cookie-banner .cta.xs:hover { filter: brightness(1.07); }
+
+.cookie-banner .cta.xs.ghost {
+  background: transparent; color: #cfe4f5; border-color: rgba(255,255,255,.22);
+}
+.cookie-banner .cta.xs.ghost:hover { background: rgba(255,255,255,.06); }
