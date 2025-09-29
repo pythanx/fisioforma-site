@@ -4141,3 +4141,43 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   .testimonial-item{ padding: 18px 16px; border-radius: 18px; }
   .testimonial-item .avatar{ width: 72px; height: 72px; }
 }
+/* ===== Depoimentos — dots pequenos e redondos ===== */
+.testimonial-dots{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:18px;
+}
+
+.testimonial-dots button{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  border:1px solid #9fbdd0;
+  background:#d9e9f2;
+  opacity:.9;
+  transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
+}
+.testimonial-dots button:hover{ transform:scale(1.1); }
+.testimonial-dots button:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(47,109,132,.25);
+}
+.testimonial-dots button.active{
+  background:#1e5f76;
+  border-color:#1e5f76;
+  box-shadow:0 0 0 3px rgba(30,95,118,.15);
+  opacity:1;
+}
+
+/* avatar do depoimento (redondo com borda estilo Prof.) */
+.testimonial-item .avatar{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  border:4px solid #2f6d84;
+  box-shadow:0 8px 22px rgba(0,0,0,.08), inset 0 0 0 4px #fff;
+  object-fit:cover;
+  margin:8px auto 14px;
+  display:block;
+}
