@@ -3472,247 +3472,95 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .cookie-banner .cta.xs.ghost:hover { background: rgba(255,255,255,.06); }
 
 
-/* === Carrossel de Depoimentos (escopo por ID) === */
-#t-aluno-carousel { position:relative; display:block; }
-#t-aluno-carousel .viewport{ overflow:hidden; width:100%; border-radius:14px; }
-#t-aluno-carousel .viewport > .slides{
-  display:flex; flex-wrap:nowrap;
-  transition: transform .5s ease;
-  will-change: transform; backface-visibility:hidden;
-}
-/* Evita "sumir" quando imagem ainda carrega (escolha um ratio que combine com suas artes) */
-#t-aluno-carousel .viewport{ aspect-ratio: 16 / 9; }
+/* ====== CARROSSEL DEPOIMENTOS (reset confiável) ====== */
+#t-aluno-carousel{max-width:820px;margin:0 auto}
 
-#t-aluno-carousel .slide{ flex:0 0 100%; width:100%; }
-#t-aluno-carousel .slide .bubble-img{
-  width:100%; height:100%; object-fit:cover; display:block;
-}
-
-/* esconder radios */
-#t-aluno-carousel > input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
-
-/* Dots */
-#t-aluno-carousel .dots{ display:flex; gap:8px; justify-content:center; margin:10px 0 0; }
-#t-aluno-carousel .dots label{
-  width:10px; height:10px; border-radius:50%;
-  background:#cbd5e1; cursor:pointer; transition:background .2s ease;
-}
-#t-aluno-carousel .dots label:hover{ background:#94a3b8; }
-#t-aluno-carousel .dots label.active{ background: var(--brand, #3a80b4); }
-
-/* Mapas (9 slides) */
-#t1:checked ~ .viewport .slides { transform: translateX(0%); }
-#t2:checked ~ .viewport .slides { transform: translateX(-100%); }
-#t3:checked ~ .viewport .slides { transform: translateX(-200%); }
-#t4:checked ~ .viewport .slides { transform: translateX(-300%); }
-#t5:checked ~ .viewport .slides { transform: translateX(-400%); }
-#t6:checked ~ .viewport .slides { transform: translateX(-500%); }
-#t7:checked ~ .viewport .slides { transform: translateX(-600%); }
-#t8:checked ~ .viewport .slides { transform: translateX(-700%); }
-#t9:checked ~ .viewport .slides { transform: translateX(-800%); }
-
-@media (prefers-reduced-motion: reduce){
-  #t-aluno-carousel .viewport > .slides{ transition:none; }
-}
-
-/* Carrossel de Depoimentos */
-#t-aluno-carousel {
-  position: relative;
-  max-width: 700px;  /* ajuste conforme seu layout */
-  margin: 2rem auto;
-  overflow: hidden;
-}
-
-#t-aluno-carousel .viewport {
-  width: 100%;
-  overflow: hidden;
-}
-
-#t-aluno-carousel .slides {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 100%;
-}
-
-#t-aluno-carousel .slide {
-  flex: 0 0 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-/* Imagens dentro do depoimento */
-#t-aluno-carousel .bubble-img {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  object-fit: contain; /* garante que não distorce nem corta */
-  border-radius: 12px;
-}
-
-/* Bolhas de depoimento */
-#t-aluno-carousel .bubble {
-  background: var(--card, #fff);
-  color: var(--ink, #222);
-  border-radius: 16px;
-  padding: 1rem;
-  max-width: 500px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-/* Dots do carrossel */
-#t-aluno-carousel .dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-#t-aluno-carousel .dots label {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ccc;
-  margin: 0 4px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#t-aluno-carousel input[type="radio"]:checked + .viewport + .dots label {
-  background: var(--primary, #3a80b4);
-}
-
-
-/* Slide de depoimento */
-#t-aluno-carousel .slide {
-  flex: 0 0 100%;
-  display: flex;
-  justify-content: center;
-  align-items: stretch; /* ocupa toda a altura */
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-#t-aluno-carousel .bubble {
-  background: var(--card, #fff);
-  color: var(--ink, #222);
-  border-radius: 16px;
-  padding: 1.5rem;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Imagem do aluno */
-#t-aluno-carousel .bubble-img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-/* ========= CARROSSEL DEPOIMENTOS – layout do slide ========= */
-#t-aluno-carousel {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-/* área visível */
+/* janela visível */
 #t-aluno-carousel .viewport{
-  overflow: hidden;
-  border-radius: 18px;
-  background: var(--card,#fff);
-  box-shadow: 0 10px 28px rgba(8,34,66,.06);
+  position:relative;
+  overflow:hidden;
+  border-radius:18px;
+  background:var(--card,#f6f9fc);
+  border:1px solid var(--line,#d9d9d9);
+  box-shadow:0 10px 28px rgba(8,34,66,.06);
+  min-height:320px;                 /* evita “sumir” */
 }
 
 /* trilho de slides */
 #t-aluno-carousel .slides{
-  display: flex;
-  width: 900%;               /* 9 slides */
-  transition: transform .6s ease;
+  display:flex !important;
+  width:calc(100% * 9);             /* 9 slides */
+  transform:translateX(0);
+  transition:transform .55s ease;
 }
 
-/* cada slide ocupa 100% */
+/* cada slide ocupa toda a viewport */
 #t-aluno-carousel .slide{
-  flex: 0 0 100%;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  padding: 22px;
-  box-sizing: border-box;
+  flex:0 0 100%;
+  padding:22px;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
 }
 
-/* balão com conteúdo do depoimento */
+/* balão com conteúdo */
 #t-aluno-carousel .bubble{
-  background: #fff;
-  border: 1px solid var(--line,#d9d9d9);
-  border-radius: 16px;
-  padding: 22px;
-  max-width: 640px;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background:#fff;
+  border:1px solid var(--line,#dde3ea);
+  border-radius:16px;
+  padding:22px;
+  max-width:640px;
+  width:100%;
+  text-align:center;
+  display:flex !important;
+  flex-direction:column;
+  align-items:center;
 }
 
-/* avatar do aluno */
+/* avatar */
 #t-aluno-carousel .bubble-img{
-  width: 140px;
-  height: 140px;
-  object-fit: contain;
-  border-radius: 50%;
-  margin-bottom: 12px;
+  width:140px;height:140px;
+  object-fit:contain;
+  border-radius:50%;
+  display:block;
+  margin:0 0 10px;
 }
 
-/* textos do depoimento */
+/* textos */
 #t-aluno-carousel .bubble-title{
-  margin: 4px 0 6px;
-  font-size: 1.12rem;
-  color: var(--brand-ink,#2d5e7e);
+  margin:4px 0 6px;
+  font-size:1.12rem;
+  color:var(--brand-ink,#2d5e7e);
 }
 #t-aluno-carousel .bubble-text{
-  margin: 0 0 10px;
-  color: var(--muted,#5a5a5a);
-  line-height: 1.55;
+  margin:0 0 10px;
+  color:var(--muted,#5a5a5a);
+  line-height:1.55;
 }
-#t-aluno-carousel .bubble-author{
-  margin: 0;
-  font-weight: 700;
-}
+#t-aluno-carousel .bubble-author{margin:0;font-weight:700}
+#t-aluno-carousel .real-review{margin-top:6px;font-size:.88rem;color:#6b7e8f}
 
-/* fonte do review (opcional) */
-#t-aluno-carousel .real-review{
-  margin-top: 6px;
-  font-size: .88rem;
-  color: var(--muted,#667);
-}
-
-/* ========= navegação por dots ========= */
-#t-aluno-carousel .dots{
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin: 12px 0 0;
-}
+/* dots */
+#t-aluno-carousel .dots{display:flex;justify-content:center;gap:8px;margin:12px 0 0}
 #t-aluno-carousel .dots label{
-  width: 8px; height: 8px;
-  border-radius: 999px;
-  background: #c6d6e3;
-  opacity: .55;
-  cursor: pointer;
-  transition: transform .15s ease, opacity .15s ease, background .15s ease;
+  width:8px;height:8px;border-radius:999px;background:#c6d6e3;
+  opacity:.55;cursor:pointer;transition:transform .15s,opacity .15s,background .15s
 }
-#t-aluno-carousel .dots label:hover{ opacity: .85; transform: scale(1.1); }
+#t-aluno-carousel .dots label:hover{opacity:.85;transform:scale(1.1)}
 
-/* estado ativo do dot */
+/* posição do trilho por rádio */
+#t1:checked ~ .viewport .slides{transform:translateX(  0%)}
+#t2:checked ~ .viewport .slides{transform:translateX(-100%)}
+#t3:checked ~ .viewport .slides{transform:translateX(-200%)}
+#t4:checked ~ .viewport .slides{transform:translateX(-300%)}
+#t5:checked ~ .viewport .slides{transform:translateX(-400%)}
+#t6:checked ~ .viewport .slides{transform:translateX(-500%)}
+#t7:checked ~ .viewport .slides{transform:translateX(-600%)}
+#t8:checked ~ .viewport .slides{transform:translateX(-700%)}
+#t9:checked ~ .viewport .slides{transform:translateX(-800%)}
+
+/* dot ativo */
 #t1:checked ~ .dots label[for="t1"],
 #t2:checked ~ .dots label[for="t2"],
 #t3:checked ~ .dots label[for="t3"],
@@ -3722,22 +3570,13 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #t7:checked ~ .dots label[for="t7"],
 #t8:checked ~ .dots label[for="t8"],
 #t9:checked ~ .dots label[for="t9"]{
-  background: var(--brand,#3a80b4);
-  opacity: 1;
+  background:var(--brand,#3a80b4);opacity:1
 }
 
-/* ========= posição dos slides (rádios) ========= */
-#t1:checked ~ .viewport .slides{ transform: translateX(  0%); }
-#t2:checked ~ .viewport .slides{ transform: translateX(-100%); }
-#t3:checked ~ .viewport .slides{ transform: translateX(-200%); }
-#t4:checked ~ .viewport .slides{ transform: translateX(-300%); }
-#t5:checked ~ .viewport .slides{ transform: translateX(-400%); }
-#t6:checked ~ .viewport .slides{ transform: translateX(-500%); }
-#t7:checked ~ .viewport .slides{ transform: translateX(-600%); }
-#t8:checked ~ .viewport .slides{ transform: translateX(-700%); }
-#t9:checked ~ .viewport .slides{ transform: translateX(-800%); }
-
-@media (min-width: 900px){
-  #t-aluno-carousel .bubble-img{ width: 120px; height: 120px; }
+/* responsivo */
+@media (min-width:900px){
+  #t-aluno-carousel .bubble-img{width:120px;height:120px}
 }
+
+
 
