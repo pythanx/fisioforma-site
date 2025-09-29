@@ -3618,3 +3618,122 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   margin-bottom: 1rem;
 }
 
+/* ========= CARROSSEL DEPOIMENTOS – layout do slide ========= */
+#t-aluno-carousel {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* área visível */
+#t-aluno-carousel .viewport{
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--card,#fff);
+  box-shadow: 0 10px 28px rgba(8,34,66,.06);
+}
+
+/* trilho de slides */
+#t-aluno-carousel .slides{
+  display: flex;
+  width: 900%;               /* 9 slides */
+  transition: transform .6s ease;
+}
+
+/* cada slide ocupa 100% */
+#t-aluno-carousel .slide{
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 22px;
+  box-sizing: border-box;
+}
+
+/* balão com conteúdo do depoimento */
+#t-aluno-carousel .bubble{
+  background: #fff;
+  border: 1px solid var(--line,#d9d9d9);
+  border-radius: 16px;
+  padding: 22px;
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* avatar do aluno */
+#t-aluno-carousel .bubble-img{
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+/* textos do depoimento */
+#t-aluno-carousel .bubble-title{
+  margin: 4px 0 6px;
+  font-size: 1.12rem;
+  color: var(--brand-ink,#2d5e7e);
+}
+#t-aluno-carousel .bubble-text{
+  margin: 0 0 10px;
+  color: var(--muted,#5a5a5a);
+  line-height: 1.55;
+}
+#t-aluno-carousel .bubble-author{
+  margin: 0;
+  font-weight: 700;
+}
+
+/* fonte do review (opcional) */
+#t-aluno-carousel .real-review{
+  margin-top: 6px;
+  font-size: .88rem;
+  color: var(--muted,#667);
+}
+
+/* ========= navegação por dots ========= */
+#t-aluno-carousel .dots{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 0 0;
+}
+#t-aluno-carousel .dots label{
+  width: 8px; height: 8px;
+  border-radius: 999px;
+  background: #c6d6e3;
+  opacity: .55;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease, background .15s ease;
+}
+#t-aluno-carousel .dots label:hover{ opacity: .85; transform: scale(1.1); }
+
+/* estado ativo do dot */
+#t1:checked ~ .dots label[for="t1"],
+#t2:checked ~ .dots label[for="t2"],
+#t3:checked ~ .dots label[for="t3"],
+#t4:checked ~ .dots label[for="t4"],
+#t5:checked ~ .dots label[for="t5"],
+#t6:checked ~ .dots label[for="t6"],
+#t7:checked ~ .dots label[for="t7"],
+#t8:checked ~ .dots label[for="t8"],
+#t9:checked ~ .dots label[for="t9"]{
+  background: var(--brand,#3a80b4);
+  opacity: 1;
+}
+
+/* ========= posição dos slides (rádios) ========= */
+#t1:checked ~ .viewport .slides{ transform: translateX(  0%); }
+#t2:checked ~ .viewport .slides{ transform: translateX(-100%); }
+#t3:checked ~ .viewport .slides{ transform: translateX(-200%); }
+#t4:checked ~ .viewport .slides{ transform: translateX(-300%); }
+#t5:checked ~ .viewport .slides{ transform: translateX(-400%); }
+#t6:checked ~ .viewport .slides{ transform: translateX(-500%); }
+#t7:checked ~ .viewport .slides{ transform: translateX(-600%); }
+#t8:checked ~ .viewport .slides{ transform: translateX(-700%); }
+#t9:checked ~ .viewport .slides{ transform: translateX(-800%); }
+
