@@ -116,88 +116,91 @@
   const root = document.getElementById('depo-carousel');
   if (!root) return;
 
-  const track = root.querySelector('.testimonial-track');
+  const track  = root.querySelector('.testimonial-track');
   const slides = Array.from(root.querySelectorAll('.testimonial-item'));
-  const dots = Array.from(root.querySelectorAll('.testimonial-dots button'));
+  const dots   = Array.from(root.querySelectorAll('.testimonial-dots button'));
 
   let idx = 0;
   let width = 0;
-  let autoplayTimer = null;
+  let timer = null;
   const AUTOPLAY_MS = 6000;
 
   function measure() {
-    // largura do container para cada slide = 100%
-    width = root.clientWidth;
+    // mede a largura visível do carrossel
+    width = root.getBoundingClientRect().width || root.clientWidth || 0;
+    if (!width) return;
     slides.forEach(s => { s.style.width = width + 'px'; });
     go(idx, false);
   }
 
   function go(n, animate = true) {
     idx = (n + slides.length) % slides.length;
+    if (!width) measure();
     if (!animate) track.style.transition = 'none';
+
     const x = -idx * width;
     track.style.transform = `translate3d(${x}px,0,0)`;
+
     if (!animate) {
-      // forçar reflow e reativar transição
+      // força reflow e reativa transição para próximos movimentos
       // eslint-disable-next-line no-unused-expressions
-      track.offsetHeight; 
+      track.offsetHeight;
       track.style.transition = '';
     }
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    dots.forEach((d,i)=>d.classList.toggle('active', i===idx));
   }
 
   // dots
-  dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+  dots.forEach((d,i)=> d.addEventListener('click', ()=> go(i)));
 
   // autoplay
-  function start() {
-    stop();
-    autoplayTimer = setInterval(() => go(idx + 1), AUTOPLAY_MS);
-  }
-  function stop() {
-    if (autoplayTimer) clearInterval(autoplayTimer);
-    autoplayTimer = null;
-  }
-
+  function start(){ stop(); timer = setInterval(()=>go(idx+1), AUTOPLAY_MS); }
+  function stop(){ if (timer) clearInterval(timer); timer = null; }
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', start);
 
-  // drag / touch
-  let startX = 0, currentX = 0, dragging = false;
-
-  function onDown(e) {
+  // drag / swipe
+  let downX = 0, dragging = false;
+  function onDown(e){
     dragging = true;
     track.style.transition = 'none';
-    startX = (e.touches ? e.touches[0].clientX : e.clientX);
-    currentX = startX;
+    downX = (e.touches ? e.touches[0].clientX : e.clientX);
   }
-  function onMove(e) {
-    if (!dragging) return;
+  function onMove(e){
+    if(!dragging) return;
     const x = (e.touches ? e.touches[0].clientX : e.clientX);
-    const dx = x - startX;
-    track.style.transform = `translate3d(${(-idx * width) + dx}px,0,0)`;
+    const dx = x - downX;
+    track.style.transform = `translate3d(${(-idx*width)+dx}px,0,0)`;
   }
-  function onUp(e) {
-    if (!dragging) return;
+  function onUp(e){
+    if(!dragging) return;
     dragging = false;
-    const endX = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX);
-    const dx = endX - startX;
     track.style.transition = '';
-    const threshold = Math.max(40, width * 0.15);
-    if (dx > threshold) go(idx - 1);
-    else if (dx < -threshold) go(idx + 1);
-    else go(idx); // volta
+    const x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX);
+    const dx = x - downX;
+    const threshold = Math.max(40, width*0.15);
+    if (dx > threshold) go(idx-1);
+    else if (dx < -threshold) go(idx+1);
+    else go(idx);
   }
-
   track.addEventListener('mousedown', onDown);
   window.addEventListener('mousemove', onMove);
   window.addEventListener('mouseup', onUp);
-  track.addEventListener('touchstart', onDown, { passive: true });
-  track.addEventListener('touchmove', onMove, { passive: true });
+  track.addEventListener('touchstart', onDown, {passive:true});
+  track.addEventListener('touchmove', onMove, {passive:true});
   track.addEventListener('touchend', onUp);
+
+  // medir quando realmente pintou
+  window.addEventListener('load', measure);
+  // re-medir ao redimensionar
+  window.addEventListener('resize', measure);
+
+  // observer — se o container mudar de tamanho (fontes, banners, etc.)
+  if ('ResizeObserver' in window){
+    new ResizeObserver(measure).observe(root);
+  }
 
   // init
   measure();
-  window.addEventListener('resize', measure);
   start();
 })();
