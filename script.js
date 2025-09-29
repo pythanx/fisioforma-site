@@ -299,6 +299,69 @@
   start();
 })();
 
+// ===== Carrossel de Depoimentos (único) =====
+(() => {
+  const root = document.querySelector('#depo-carousel');
+  if (!root) return;
+
+  const track  = root.querySelector('.testimonial-track');
+  const slides = Array.from(track.querySelectorAll('.testimonial-item'));
+  const dots   = Array.from(root.querySelectorAll('.testimonial-dots button'));
+
+  let i = 0, w = 0, timer = null;
+  const INTERVAL = 5500;
+
+  function measure() {
+    w = Math.round(root.clientWidth || root.getBoundingClientRect().width);
+    slides.forEach(s => s.style.minWidth = w + 'px');
+    go(i, false);
+  }
+
+  function paintDots() {
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  }
+
+  function go(n, animate = true) {
+    i = (n + slides.length) % slides.length;
+    if (!animate) {
+      const old = track.style.transition;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${-i * w}px)`;
+      // força reflow e reativa transition
+      track.getBoundingClientRect();
+      track.style.transition = old || 'transform .45s ease';
+    } else {
+      track.style.transform = `translateX(${-i * w}px)`;
+    }
+    paintDots();
+  }
+
+  function start(){ stop(); timer = setInterval(() => go(i + 1), INTERVAL); }
+  function stop(){ if (timer) clearInterval(timer), (timer = null); }
+
+  // Dots
+  dots.forEach((btn, idx) => btn.addEventListener('click', () => { go(idx); start(); }));
+
+  // Acessibilidade/controle
+  root.setAttribute('tabindex', '0');
+  root.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); start(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(i - 1); start(); }
+  });
+
+  // Pausas
+  root.addEventListener('pointerenter', stop);
+  root.addEventListener('pointerleave', start);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+
+  // Responsivo
+  ('ResizeObserver' in window ? new ResizeObserver(measure) : window).addEventListener?.('resize', measure);
+  window.addEventListener('load', measure);
+
+  // boot
+  measure();
+  start();
+})();
 
 
 
