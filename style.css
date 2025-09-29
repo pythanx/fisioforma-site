@@ -3782,7 +3782,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 
 /* =========================================================
    CARROSSEL — DEPOIMENTOS (t-aluno-carousel)
-   Estrutura esperada no HTML:
+   HTML esperado:
    <div id="t-aluno-carousel" class="t-carousel">
      <input type="radio" id="t1" name="t" checked>
      ...
@@ -3797,7 +3797,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
    </div>
    ========================================================= */
 
-#t-aluno-carousel { --h: 420px; }         /* altura mínima do conteúdo */
+#t-aluno-carousel { --h: 420px; } /* altura base do bloco */
 @media (max-width: 900px){ #t-aluno-carousel { --h: 460px; } }
 
 .t-carousel{
@@ -3820,14 +3820,14 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   border-radius: 14px;
   border: 1px solid #e6edf4;
   background: #f5f9fc;
-  min-height: var(--h);            /* evita ficar branco enquanto carrega */
+  min-height: var(--h);               /* evita “tela branca” */
 }
 
 .t-carousel .slides{
-  display: flex;
+  display: flex;                      /* IMPORTANTE: trilho horizontal */
   align-items: stretch;
+  transition: transform .55s ease;    /* animação */
   will-change: transform;
-  transition: transform .55s ease; /* animação da troca */
 }
 
 .t-carousel .slide{
@@ -3836,7 +3836,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   align-items: center;
   justify-content: center;
   padding: 14px;
-  min-height: var(--h);            /* garante altura do slide */
+  min-height: var(--h);               /* garante altura do slide */
 }
 
 .t-carousel .bubble{
@@ -3852,7 +3852,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .t-carousel .bubble .bubble-text{margin:8px 0;color:#2f3c46}
 .t-carousel .bubble .bubble-author{margin-top:10px;color:#2f3c46}
 
-/* ---- mapeamento dos rádios → posição do trilho ---- */
+/* --- posição do trilho conforme o rádio selecionado --- */
 #t1:checked ~ .viewport .slides{transform:translateX(0)}
 #t2:checked ~ .viewport .slides{transform:translateX(-100%)}
 #t3:checked ~ .viewport .slides{transform:translateX(-200%)}
@@ -3863,18 +3863,14 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #t8:checked ~ .viewport .slides{transform:translateX(-700%)}
 #t9:checked ~ .viewport .slides{transform:translateX(-800%)}
 
-/* ---- dots ---- */
+/* --- dots --- */
 .t-carousel .dots{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  margin:12px 0 0;
+  display:flex;gap:8px;justify-content:center;margin:12px 0 0;
 }
 .t-carousel .dots label{
   width:8px;height:8px;border-radius:999px;
-  background:#cfe0ec;cursor:pointer;transition:transform .2s;
+  background:#cfe0ec;cursor:pointer;transition:transform .2s, background .2s;
 }
-/* dot ativo */
 #t1:checked ~ .dots label[for="t1"],
 #t2:checked ~ .dots label[for="t2"],
 #t3:checked ~ .dots label[for="t3"],
