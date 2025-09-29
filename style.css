@@ -3585,4 +3585,36 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 }
 
 
+/* Slide de depoimento */
+#t-aluno-carousel .slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* ocupa toda a altura */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+#t-aluno-carousel .bubble {
+  background: var(--card, #fff);
+  color: var(--ink, #222);
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Imagem do aluno */
+#t-aluno-carousel .bubble-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
 
