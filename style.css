@@ -3701,35 +3701,41 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #t8:checked ~ .viewport .slides { transform: translateX(calc(7 * -100%)); }
 #t9:checked ~ .viewport .slides { transform: translateX(calc(8 * -100%)); }
 
-/* === Carrossel Depoimentos (isolado) === */
+/* === Carrossel Depoimentos (versão overlay/opacity) === */
 .t2-carousel{max-width: 840px; margin: 0 auto;}
 .t2-carousel input[type="radio"]{position:absolute; inset:-9999px;}
 
-/* Janela */
+/* Janela com altura garantida */
 .t2-viewport{
-  position: relative; overflow: hidden;
+  position: relative;
+  overflow: hidden;
   background: var(--card,#f6f9fc);
   border:1px solid var(--line,#e1e8f0);
   border-radius:18px;
   box-shadow:0 10px 28px rgba(8,34,66,.06);
-  min-height: 380px;
+  min-height: 420px;      /* aumenta um pouco p/ evitar “salto” */
 }
 
-/* Trilho */
+/* Container lógico */
 .t2-track{
-  display:flex; width: calc(100% * 9);
-  transform: translateX(0);
-  transition: transform .55s ease;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-/* Slide */
+/* Slide empilhado (um por cima do outro) */
 .t2-slide{
-  flex: 0 0 100%;
+  position: absolute;
+  inset: 0;
   padding: 22px;
   display:flex; align-items:center; justify-content:center;
   box-sizing:border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .45s ease;
 }
 
+/* conteúdo do slide */
 .t2-bubble{
   background:#fff; border:1px solid var(--line,#dde3ea);
   border-radius:16px; padding:22px; max-width:640px; width:100%;
@@ -3750,16 +3756,16 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 }
 .t2-dots label:hover{opacity:.9; transform:scale(1.1);}
 
-/* Movimento por rádio */
-#t2-1:checked ~ .t2-viewport .t2-track{transform: translateX(0);}
-#t2-2:checked ~ .t2-viewport .t2-track{transform: translateX(-100%);}
-#t2-3:checked ~ .t2-viewport .t2-track{transform: translateX(-200%);}
-#t2-4:checked ~ .t2-viewport .t2-track{transform: translateX(-300%);}
-#t2-5:checked ~ .t2-viewport .t2-track{transform: translateX(-400%);}
-#t2-6:checked ~ .t2-viewport .t2-track{transform: translateX(-500%);}
-#t2-7:checked ~ .t2-viewport .t2-track{transform: translateX(-600%);}
-#t2-8:checked ~ .t2-viewport .t2-track{transform: translateX(-700%);}
-#t2-9:checked ~ .t2-viewport .t2-track{transform: translateX(-800%);}
+/* Mostrar o slide ativo (por posição) */
+#t2-1:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(1){opacity:1; pointer-events:auto;}
+#t2-2:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(2){opacity:1; pointer-events:auto;}
+#t2-3:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(3){opacity:1; pointer-events:auto;}
+#t2-4:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(4){opacity:1; pointer-events:auto;}
+#t2-5:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(5){opacity:1; pointer-events:auto;}
+#t2-6:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(6){opacity:1; pointer-events:auto;}
+#t2-7:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(7){opacity:1; pointer-events:auto;}
+#t2-8:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(8){opacity:1; pointer-events:auto;}
+#t2-9:checked ~ .t2-viewport .t2-track .t2-slide:nth-child(9){opacity:1; pointer-events:auto;}
 
 /* Dot ativo */
 #t2-1:checked ~ .t2-dots label[for="t2-1"],
@@ -3773,3 +3779,4 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #t2-9:checked ~ .t2-dots label[for="t2-9"]{
   background: var(--brand,#3a80b4); opacity: 1;
 }
+
