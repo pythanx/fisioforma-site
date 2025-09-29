@@ -3737,3 +3737,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #t8:checked ~ .viewport .slides{ transform: translateX(-700%); }
 #t9:checked ~ .viewport .slides{ transform: translateX(-800%); }
 
+@media (min-width: 900px){
+  #t-aluno-carousel .bubble-img{ width: 120px; height: 120px; }
+}
+
