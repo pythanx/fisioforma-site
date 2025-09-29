@@ -3701,3 +3701,75 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 #t8:checked ~ .viewport .slides { transform: translateX(calc(7 * -100%)); }
 #t9:checked ~ .viewport .slides { transform: translateX(calc(8 * -100%)); }
 
+/* === Carrossel Depoimentos (isolado) === */
+.t2-carousel{max-width: 840px; margin: 0 auto;}
+.t2-carousel input[type="radio"]{position:absolute; inset:-9999px;}
+
+/* Janela */
+.t2-viewport{
+  position: relative; overflow: hidden;
+  background: var(--card,#f6f9fc);
+  border:1px solid var(--line,#e1e8f0);
+  border-radius:18px;
+  box-shadow:0 10px 28px rgba(8,34,66,.06);
+  min-height: 380px;
+}
+
+/* Trilho */
+.t2-track{
+  display:flex; width: calc(100% * 9);
+  transform: translateX(0);
+  transition: transform .55s ease;
+}
+
+/* Slide */
+.t2-slide{
+  flex: 0 0 100%;
+  padding: 22px;
+  display:flex; align-items:center; justify-content:center;
+  box-sizing:border-box;
+}
+
+.t2-bubble{
+  background:#fff; border:1px solid var(--line,#dde3ea);
+  border-radius:16px; padding:22px; max-width:640px; width:100%;
+  text-align:center; box-sizing:border-box;
+}
+.t2-bubble img{max-width:100%; height:auto; border-radius:12px; margin-bottom:10px;}
+.t2-bubble h4{margin:6px 0 6px; font-size:1.2rem; color:var(--brand-ink,#2d5e7e);}
+.t2-bubble p{margin:0 0 6px; color:var(--ink,#0b1620);}
+.t2-bubble .t2-src{font-size:.9rem; color:#6b7c8f;}
+.t2-bubble .t2-author{margin-top:4px; color:#2a3e52;}
+
+/* Dots */
+.t2-dots{display:flex; justify-content:center; gap:8px; margin-top:12px;}
+.t2-dots label{
+  width:8px;height:8px;border-radius:50%;
+  background:#c6d6e3; opacity:.55; cursor:pointer;
+  transition:transform .15s,opacity .15s,background .15s;
+}
+.t2-dots label:hover{opacity:.9; transform:scale(1.1);}
+
+/* Movimento por rádio */
+#t2-1:checked ~ .t2-viewport .t2-track{transform: translateX(0);}
+#t2-2:checked ~ .t2-viewport .t2-track{transform: translateX(-100%);}
+#t2-3:checked ~ .t2-viewport .t2-track{transform: translateX(-200%);}
+#t2-4:checked ~ .t2-viewport .t2-track{transform: translateX(-300%);}
+#t2-5:checked ~ .t2-viewport .t2-track{transform: translateX(-400%);}
+#t2-6:checked ~ .t2-viewport .t2-track{transform: translateX(-500%);}
+#t2-7:checked ~ .t2-viewport .t2-track{transform: translateX(-600%);}
+#t2-8:checked ~ .t2-viewport .t2-track{transform: translateX(-700%);}
+#t2-9:checked ~ .t2-viewport .t2-track{transform: translateX(-800%);}
+
+/* Dot ativo */
+#t2-1:checked ~ .t2-dots label[for="t2-1"],
+#t2-2:checked ~ .t2-dots label[for="t2-2"],
+#t2-3:checked ~ .t2-dots label[for="t2-3"],
+#t2-4:checked ~ .t2-dots label[for="t2-4"],
+#t2-5:checked ~ .t2-dots label[for="t2-5"],
+#t2-6:checked ~ .t2-dots label[for="t2-6"],
+#t2-7:checked ~ .t2-dots label[for="t2-7"],
+#t2-8:checked ~ .t2-dots label[for="t2-8"],
+#t2-9:checked ~ .t2-dots label[for="t2-9"]{
+  background: var(--brand,#3a80b4); opacity: 1;
+}
