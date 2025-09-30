@@ -5180,3 +5180,7 @@ html.js .ff2-dots { margin-top: 8px; }
   border-radius: 50%; border: 5px solid #3a80b4;
   display: block; margin: 0 auto 12px auto;
 }
+
+html:not(.js) .ff2-slide { display: none; }
+html:not(.js) .ff2-slide:first-of-type { display:block; }
+html:not(.js) .ff2-slide:target { display:block; }
