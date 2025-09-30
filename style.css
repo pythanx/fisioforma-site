@@ -4059,3 +4059,83 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   max-height: 520px;
   overflow: auto;
 }
+
+/* ====== GRID da seção (alunos x professor) ====== */
+.depo-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:28px;
+  align-items:start;
+}
+@media(max-width: 900px){
+  .depo-grid{ grid-template-columns: 1fr; }
+}
+
+/* ====== CARROSSEL DE DEPOIMENTOS (isolado da galeria) ====== */
+.t-carousel{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  max-width: 520px;        /* deixa próximo do professor */
+  margin: 0 auto;
+}
+.t-track{
+  display:flex;
+  transition: transform .5s ease-in-out;
+}
+.t-card{
+  flex:0 0 100%;
+  box-sizing:border-box;
+  text-align:center;
+  background:#fff;
+  border-radius:18px;
+  padding:22px 20px 26px;
+  box-shadow:0 8px 28px rgba(10,61,98,.10);
+  border:1px solid rgba(10,61,98,.08);
+}
+.t-avatar{
+  width:300px;   /* pedido: 300x300 */
+  height:300px;
+  object-fit:contain;
+  border-radius:50%;
+  border:5px solid #0a3d62; /* azul-marinho tema */
+  margin: 4px auto 14px;
+  display:block;
+}
+@media(max-width:520px){
+  .t-avatar{ width:200px; height:200px; }
+}
+
+.t-title{
+  font-size:1.05rem;
+  color:#0a3d62;
+  margin: 2px 0 8px;
+  line-height:1.35;
+  font-weight:700;
+}
+.t-text{ margin:0 0 8px; color:#37474f; }
+.t-source{
+  margin:0;
+  font-size:.85rem;
+  color:#6b7b86;
+}
+.t-author{
+  margin:6px 0 0;
+  font-weight:600;
+  color:#0a3d62;
+}
+
+/* Dots pequenos e redondinhos */
+.t-dots{ text-align:center; margin-top:12px; }
+.t-dots button{
+  width:9px; height:9px;
+  border-radius:50%;
+  border:none;
+  margin:0 5px;
+  background:#cfd8dc;
+  box-shadow:0 2px 6px rgba(0,0,0,.10);
+  cursor:pointer;
+}
+.t-dots button.active{ background:#0a3d62; }
+.t-dots button:focus-visible{ outline:2px solid #0a3d62; outline-offset:2px; }
+
