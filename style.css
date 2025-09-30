@@ -4751,3 +4751,90 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .ff2-scroll-content::-webkit-scrollbar-track { background: #eef4fa; border-radius: 10px; }
 .ff2-scroll-content::-webkit-scrollbar-thumb { background: #b9cbe0; border-radius: 10px; }
 .ff2-scroll-content::-webkit-scrollbar-thumb:hover { background: #98b3d1; }
+
+/* ===== Ajustes finais FisioForma ===== */
+
+/* CTA */
+.ff2-btn,
+.ff2-btn:link,
+.ff2-btn:visited,
+.ff2-btn:hover,
+.ff2-btn:focus,
+.ff2-btn:active {
+  text-decoration: none !important;
+}
+.ff2-btn {
+  background: #3a80b4;      /* azul principal */
+  color: #fff;
+  border: 2px solid #3a80b4;
+  box-shadow: 0 6px 18px rgba(58,128,180,.25);
+}
+.ff2-btn:hover,
+.ff2-btn:focus {
+  background: #2f6b96;      /* azul mais escuro no hover */
+  border-color: #2f6b96;
+}
+.ff2-btn:active { transform: translateY(1px); }
+
+/* Avatares redondos com borda azul */
+.ff2-avatar,
+.ff2-prof-avatar {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;              /* totalmente redondo */
+  border: 5px solid #3a80b4;       /* azul da fisioforma */
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  display: block;
+  margin: 0 auto 12px auto;
+}
+/* === CTA no padrão dos demais botões do site === */
+.ff2-btn,
+.ff2-btn:link,
+.ff2-btn:visited,
+.ff2-btn:hover,
+.ff2-btn:focus,
+.ff2-btn:active {
+  text-decoration: none !important;   /* nunca sublinhar */
+}
+
+.ff2-btn {
+  --ff2-blue: #2f6b96;               /* azul usado nos outros botões */
+  --ff2-blue-dk: #244f6b;            /* mais escuro (borda/active) */
+  --ff2-blue-hv: #285c85;            /* hover */
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 9999px;              /* pill */
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  background: var(--ff2-blue);
+  border: 1px solid var(--ff2-blue-dk);
+  box-shadow: 0 8px 24px rgba(36, 64, 90, .25);
+  transition: background .2s ease, border-color .2s ease, transform .08s ease, box-shadow .2s ease;
+}
+
+.ff2-btn:hover,
+.ff2-btn:focus {
+  background: var(--ff2-blue-hv);
+  border-color: var(--ff2-blue-dk);
+  box-shadow: 0 10px 28px rgba(36, 64, 90, .28), 0 0 0 3px rgba(58,128,180,.15); /* focus ring suave */
+}
+
+.ff2-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 16px rgba(36, 64, 90, .22);
+}
+
+/* Pulse sutil no hover — mesmo padrão visual */
+@keyframes ff2-cta-pulse {
+  0%   { box-shadow: 0 10px 28px rgba(36,64,90,.28), 0 0 0 0 rgba(58,128,180,.22); }
+  70%  { box-shadow: 0 10px 28px rgba(36,64,90,.28), 0 0 0 14px rgba(58,128,180,0); }
+  100% { box-shadow: 0 10px 28px rgba(36,64,90,.28), 0 0 0 0 rgba(58,128,180,0); }
+}
+.ff2-btn:hover { animation: ff2-cta-pulse 1.6s ease-out; }
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .ff2-btn, .ff2-btn:hover { animation: none !important; transition: none !important; }
+}
