@@ -4075,3 +4075,116 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .testimonial-dots button.active {
   background: var(--primary, #3a80b4);
 }
+
+/* ====== GRID dos dois cards (depoimentos + professor) ====== */
+.depo-grid{
+  display:grid;
+  gap:22px;
+}
+@media (min-width: 980px){
+  .depo-grid{
+    grid-template-columns: 1.1fr .9fr;
+    align-items: stretch;
+  }
+}
+
+/* ====== CARD base de depoimentos ====== */
+.depo-card{
+  background: radial-gradient(1100px 360px at 50% -90px,#fff 0%,#f6fbff 65%,#f1f7fd 100%);
+  border:1px solid #e3edf7;
+  border-radius:20px;
+  box-shadow:0 24px 60px rgba(8,34,66,.10);
+  padding:16px;
+}
+
+/* ====== Carrossel ====== */
+.testimonial-carousel{
+  position:relative;
+  overflow:hidden;
+}
+.testimonial-track{
+  display:flex;
+  gap:16px;
+  transition: transform .45s ease;
+  will-change: transform;
+}
+.testimonial-item{
+  flex: 0 0 100%;
+  display:grid;
+  grid-template-columns: minmax(0,1fr);
+  align-items:center;
+  justify-items:center;
+  gap:16px;
+  padding:14px;
+}
+@media (min-width:700px){
+  .testimonial-item{
+    grid-template-columns: 320px 1fr; /* avatar (grande) + texto */
+    justify-items: start;
+  }
+}
+
+/* Avatar 300×300 redondo com borda */
+.testimonial-item .avatar{
+  width:300px; height:300px;
+  object-fit:cover;
+  border-radius:999px;
+  border:6px solid #e6eef7;
+  box-shadow:0 10px 28px rgba(8,34,66,.10);
+  background:#fff;
+}
+
+/* Cartão interno do depoimento */
+.testimonial-card{
+  width:100%;
+  background:#fff;
+  border:1px solid #e6eef7;
+  border-radius:16px;
+  padding:18px 16px;
+  box-shadow:0 12px 28px rgba(8,34,66,.06);
+}
+.testimonial-card h4{
+  margin:0 0 8px;
+  font-size:clamp(18px,2.2vw,22px);
+  color:#0e1c2a;
+}
+.testimonial-card p{
+  margin:6px 0;
+  color:#334155;
+}
+.testimonial-card .testimonial-source{
+  font-size:13px;
+  color:#64748b;
+}
+.testimonial-card .testimonial-author{
+  font-weight:800;
+  color:#1f4e63;
+}
+
+/* ====== Dots pequenos e redondos ====== */
+.testimonial-dots{
+  display:flex; justify-content:center; gap:8px;
+  padding:8px 0 0;
+}
+.testimonial-dots button{
+  width:8px; height:8px; border-radius:999px;
+  border:none; background:#cfd8e3;
+  cursor:pointer;
+  transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+}
+.testimonial-dots button.active{
+  background:#2b6b8a;
+  transform:scale(1.25);
+  box-shadow:0 0 0 8px rgba(43,107,138,.12);
+}
+.testimonial-dots button:focus-visible{
+  outline:2px solid #3a80b4;
+  outline-offset:2px;
+}
+
+/* Segurança para imagens grandes em telas pequenas */
+@media (max-width:700px){
+  .testimonial-item .avatar{
+    width:220px; height:220px;
+  }
+}
