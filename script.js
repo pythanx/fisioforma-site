@@ -249,4 +249,66 @@
   markDots(); update(); start();
 })();
 
+// ===== Carrossel de Depoimentos (final) =====
+(function initDepoCarousel(){
+  const root = document.getElementById('depo-carousel');
+  if(!root) return;
+
+  const track = root.querySelector('.testimonial-track');
+  const slides = Array.from(root.querySelectorAll('.testimonial-item'));
+  const dotsWrap = root.querySelector('.testimonial-dots');
+
+  let index = 0;
+  let timer = null;
+  const INTERVAL = 5500; // ritmo um pouco mais suave
+
+  // cria dots
+  dotsWrap.innerHTML = '';
+  slides.forEach((_,i)=>{
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
+    b.addEventListener('click', ()=>goTo(i,true));
+    dotsWrap.appendChild(b);
+  });
+
+  function slideWidth(){
+    // mede a largura REAL do slide (desconsidera paddings do container)
+    return slides[0].getBoundingClientRect().width;
+  }
+
+  function markDots(){
+    dotsWrap.querySelectorAll('button').forEach((d,i)=>{
+      d.classList.toggle('active', i===index);
+    });
+  }
+
+  function update(){
+    const w = slideWidth();
+    track.style.transform = `translateX(${-index * w}px)`;
+    markDots();
+  }
+
+  function goTo(i, stopAuto){
+    index = (i + slides.length) % slides.length;
+    update();
+    if(stopAuto) restart();
+  }
+
+  // Auto-play com pausa
+  function start(){ timer = setInterval(()=>goTo(index+1,false), INTERVAL); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  function restart(){ stop(); start(); }
+
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  document.addEventListener('visibilitychange', ()=> (document.hidden ? stop() : start()));
+  window.addEventListener('resize', update);
+
+  // observa mudanças sutis de largura do slide
+  const ro = new ResizeObserver(update);
+  ro.observe(slides[0]);
+
+  // inicia
+  update(); start();
+})();
 
