@@ -4380,4 +4380,47 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   .depo-grid{ grid-template-columns:1fr; }
   .cta-row{ margin-top:.5rem; }
 }
+/* títulos harmonizados */
+.depo-col h3,
+.professor-col h3{
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--azul-800,#0e4251);
+  margin: 0 0 .75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  padding-bottom: .25rem;
+}
+
+/* carrossel: elimina 'peek' e deixa dots menores */
+.testimonial-carousel{ padding: 1rem 1rem 1.4rem; }
+.testimonial-track{ gap: 0; }
+.testimonial-item{ width: 100%; box-sizing: border-box; }
+
+.testimonial-dots{
+  display:flex; justify-content:center; gap:.4rem;
+  margin-top:.85rem;
+}
+.testimonial-dots button{
+  width: 9px; height: 9px; border-radius: 50%;
+  border: 0; background: #cfe0e7; opacity:.9;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08) inset;
+  cursor: pointer; transition: transform .18s, background .18s, opacity .18s;
+}
+.testimonial-dots button:hover{ transform: scale(1.1); opacity:1; }
+.testimonial-dots button.active{
+  background: var(--azul-700,#0b5569);
+  box-shadow: 0 0 0 2px rgba(11,85,105,.16);
+}
+
+/* avatar continua redondo, mas dá um respiro melhor */
+.avatar{
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  border: 6px solid var(--azul-300,#3a7b8b);
+  background: #f6f9fb; object-fit: cover;
+}
+
+/* equaliza visual dos cards e posiciona CTA */
+.depo-grid{ align-items: start; }
+.cta-row{ margin-top: 1.25rem; }
 
