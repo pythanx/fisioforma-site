@@ -260,6 +260,80 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicializar
   resetAutoplay();
 });
+// ===== Carrossel de Depoimentos (robusto, com autoplay) =====
+(function(){
+  const root = document.getElementById('depo-carousel');
+  if(!root) return;
+
+  const track = root.querySelector('.testimonial-track');
+  const slides = Array.from(track.children);
+  const dotsWrap = root.querySelector('.testimonial-dots');
+
+  let idx = 0;
+  const total = slides.length;
+
+  // cria dots conforme nº de slides
+  dotsWrap.innerHTML = '';
+  slides.forEach((_s, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
+    b.addEventListener('click', () => goTo(i, true));
+    dotsWrap.appendChild(b);
+  });
+
+  const dots = Array.from(dotsWrap.children);
+
+  function updateUI(){
+    // largura do container (cada slide = 100% do container)
+    const offset = -idx * root.clientWidth;
+    track.style.transform = `translateX(${offset}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  function goTo(i, user=false){
+    idx = (i + total) % total;
+    updateUI();
+    if (user) restartAutoplay();
+  }
+
+  // Redimensionamento (evita “desalinho” ao virar landscape/mobile)
+  window.addEventListener('resize', () => updateUI());
+
+  // ===== Autoplay com pausa no hover e quando não visível =====
+  let timer = null;
+  const INTERVAL = 4500;
+
+  function startAutoplay(){
+    stopAutoplay();
+    timer = setInterval(() => goTo(idx+1, false), INTERVAL);
+  }
+  function stopAutoplay(){
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+  function restartAutoplay(){
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  // pausa no hover (apenas no card do carrossel)
+  root.addEventListener('mouseenter', stopAutoplay);
+  root.addEventListener('mouseleave', startAutoplay);
+
+  // pausa quando sai da tela (IntersectionObserver)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) startAutoplay();
+      else stopAutoplay();
+    });
+  }, { threshold: 0.25 });
+  io.observe(root);
+
+  // inicializa
+  goTo(0);
+  startAutoplay();
+})();
 
 
 
