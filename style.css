@@ -3931,3 +3931,49 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   background:#0f5169; border-color:#0f5169; opacity:1;
 }
 
+/* === FIX HARD: Carrossel de Depoimentos ==================== */
+#depoimentos .wrap{
+  display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;
+}
+@media (max-width: 980px){
+  #depoimentos .wrap{ grid-template-columns:1fr; }
+}
+
+#depo-carousel.testimonial-carousel{
+  position:relative; overflow:hidden !important;
+  background:#fff; border-radius:20px; box-shadow:0 8px 22px rgba(6,32,51,.06);
+  padding:22px 22px 38px;
+}
+
+#depo-carousel > .testimonial-track{
+  display:flex !important; flex-wrap:nowrap !important;
+  width:100%; transition:transform .6s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+#depo-carousel .testimonial-item{
+  flex:0 0 100% !important;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+}
+
+#depo-carousel .avatar{
+  width:300px; height:300px; object-fit:contain; display:block;
+  border-radius:50%; border:6px solid #0f5169; margin:6px auto 12px;
+  background:#f4f7fa;
+}
+#depo-carousel .testimonial-card h4{ color:#0f5169; margin:.35rem 0; }
+#depo-carousel .testimonial-source{ font-size:.85rem; color:#6e8796; }
+#depo-carousel .testimonial-author{ font-weight:600; color:#113a4a; }
+
+/* Dots pequenos e redondos */
+#depo-carousel .testimonial-dots{
+  position:absolute; left:0; right:0; bottom:10px;
+  display:flex; justify-content:center; gap:8px;
+}
+#depo-carousel .testimonial-dots button{
+  width:9px; height:9px; border-radius:50%;
+  border:2px solid #bcd2df; background:#e7f0f6; opacity:.95;
+  box-shadow:0 2px 6px rgba(16,53,72,.12);
+}
+#depo-carousel .testimonial-dots button.active{
+  background:#0f5169; border-color:#0f5169; opacity:1;
+}
