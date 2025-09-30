@@ -114,118 +114,170 @@
 
 
 
-(function () {
-  const root = document.getElementById('depo-carousel');
-  if (!root) return;
+/* ================================================== */
+/* ====== DEPOIMENTOS: LAYOUT GRID + CARROSSEL PURE-CSS ====== */
+/* ================================================== */
 
-  const track = root.querySelector('.testimonial-track');
-  const slides = Array.from(track.children);
-
-  // Dots
-  let dotsWrap = root.querySelector('.testimonial-dots') || document.createElement('div');
-  dotsWrap.className = 'testimonial-dots';
-  if (!dotsWrap.parentNode) root.appendChild(dotsWrap);
-  dotsWrap.innerHTML = '';
-  const dots = slides.map((_, i) => {
-    const b = document.createElement('button');
-    b.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
-    dotsWrap.appendChild(b);
-    return b;
-  });
-
-  let index = 0, timer = null;
-  const INTERVAL = 7200;
-
-  function goTo(i){
-    index = (i + slides.length) % slides.length;
-    track.style.transform = `translate3d(-${index * 100}%,0,0)`;
-    dots.forEach((d,k)=>d.classList.toggle('active', k===index));
+/* Layout Grid para as duas colunas */
+#depoimentos .depo-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Padrão Mobile: 1 coluna */
+  gap: 32px;
+  align-items: flex-start;
+}
+@media (min-width: 800px) {
+  #depoimentos .depo-grid {
+    grid-template-columns: 1.2fr 1fr; /* Desktop: Carrossel ligeiramente maior que a coluna do Prof. */
   }
-  function play(){ stop(); timer = setInterval(()=>goTo(index+1), INTERVAL); }
-  function stop(){ if (timer) { clearInterval(timer); timer=null; } }
+}
 
-  dots.forEach((btn,i)=>btn.addEventListener('click', ()=>{ goTo(i); play(); }, { passive:true }));
+/* Coluna 1: Carrossel */
+#depoimentos .depo-col h3 {
+  margin-top: 0;
+  text-align: center;
+}
+#depoimentos .testimonial-carousel-wrap {
+  /* O carrossel agora herda o estilo da caixa .gallery */
+  box-shadow: 0 16px 32px rgba(8, 34, 66, .08);
+  border-radius: 18px;
+  background: #fff;
+  padding: 0;
+  margin: 0 auto; /* Centraliza a coluna */
+}
 
-  // Hover pausa
-  root.addEventListener('mouseenter', stop, { passive:true });
-  root.addEventListener('mouseleave', play, { passive:true });
+/* Tamanho do viewport do depoimento (altura necessária para o conteúdo) */
+#depoimentos .viewport { 
+  min-height: 520px;
+} 
+#depoimentos .slides li {
+  /* Altera para o item de depoimento ficar no centro superior, não no meio vertical */
+  align-items: flex-start;
+  padding: 32px 20px 20px;
+}
 
-  // Swipe
-  let startX=0, dragging=false, pid=null;
-  root.addEventListener('pointerdown',(e)=>{ dragging=true; startX=e.clientX; pid=e.pointerId; root.setPointerCapture(pid); stop(); });
-  root.addEventListener('pointerup',(e)=>{ if(!dragging) return; dragging=false; const dx=e.clientX-startX; if(Math.abs(dx)>40){ goTo(index+(dx<0?1:-1)); } play(); });
-  root.addEventListener('pointercancel',()=>{ dragging=false; play(); });
+/* Estilos do Conteúdo do Depoimento */
+.testimonial-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+}
+.testimonial-item .avatar {
+  width: 140px; 
+  height: 140px;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 4px solid var(--brand);
+  box-shadow: 0 8px 16px rgba(8, 34, 66, .10);
+  margin-bottom: 20px;
+}
+.testimonial-card h4 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--brand-ink);
+}
+.testimonial-card p {
+  margin: 0 0 4px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.testimonial-card .testimonial-source {
+  font-size: 13px;
+  color: var(--muted);
+  opacity: .9;
+  margin-top: 12px;
+}
+.testimonial-card .testimonial-author {
+  font-weight: bold;
+}
 
-  // Proteção de imagens
-  slides.forEach(slide=>{
-    const img = slide.querySelector('img'); if (!img) return;
-    img.loading='lazy'; img.decoding='async';
-    img.addEventListener('error', ()=>{ img.style.visibility='hidden'; }, { once:true });
-  });
+/* Coluna 2: Professor */
+.professor-col h3 {
+  margin-top: 0;
+  text-align: center;
+}
+.professor-card {
+  /* Garante que o card do professor tenha a mesma aparência de card da coluna do carrossel */
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 16px 32px rgba(8, 34, 66, .08);
+  padding: 24px;
+}
+.professor-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--brand);
+}
+.mini-heading {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--brand-ink);
+  margin: 10px 0;
+}
+.tip-type {
+  font-weight: 700;
+  color: var(--brand);
+  display: block;
+  margin-bottom: 2px;
+}
+.resposta-professor {
+  font-size: 15px;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.section-div {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 20px 0;
+}
 
-  goTo(0); play();
-})();
 
-<script>
-(() => {
-  const root = document.getElementById('depo-carousel');
-  if (!root || root.__inited) return;        // evita 2 inits
-  root.__inited = true;
+/* ====== ATIVAÇÃO DOS 9 SLIDES (PURE CSS) ====== */
 
-  const track  = root.querySelector('.testimonial-track');
-  const slides = Array.from(track.children);
+/* Ativação dos slides de depoimentos (9 itens - Reusa o efeito Fade da Galeria de Fotos) */
+#t1:checked ~ .viewport .slides li:nth-child(1),
+#t2:checked ~ .viewport .slides li:nth-child(2),
+#t3:checked ~ .viewport .slides li:nth-child(3),
+#t4:checked ~ .viewport .slides li:nth-child(4),
+#t5:checked ~ .viewport .slides li:nth-child(5),
+#t6:checked ~ .viewport .slides li:nth-child(6),
+#t7:checked ~ .viewport .slides li:nth-child(7),
+#t8:checked ~ .viewport .slides li:nth-child(8),
+#t9:checked ~ .viewport .slides li:nth-child(9) {
+  opacity: 1;
+  transform: none;
+}
 
-  // Cria dots
-  let dotsWrap = root.querySelector('.testimonial-dots');
-  if (!dotsWrap){ dotsWrap = document.createElement('div'); dotsWrap.className='testimonial-dots'; root.appendChild(dotsWrap); }
-  dotsWrap.innerHTML = '';
-  const dots = slides.map((_,i)=> {
-    const b = document.createElement('button');
-    b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
-    dotsWrap.appendChild(b);
-    return b;
-  });
+/* Ativação dos dots de depoimentos (9 itens) */
+#t1:checked ~ .dots label[for="t1"],
+#t2:checked ~ .dots label[for="t2"],
+#t3:checked ~ .dots label[for="t3"],
+#t4:checked ~ .dots label[for="t4"],
+#t5:checked ~ .dots label[for="t5"],
+#t6:checked ~ .dots label[for="t6"],
+#t7:checked ~ .dots label[for="t7"],
+#t8:checked ~ .dots label[for="t8"],
+#t9:checked ~ .dots label[for="t9"] {
+  background: var(--brand);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 8px rgba(43, 107, 138, .12);
+}
 
-  let idx = 0, timer = null;
-  const INTERVAL = 5600; // ritmo mais suave
+/* Responsivo para depoimentos (ajusta altura em telas menores) */
+@media (max-width: 640px) {
+  #depoimentos .viewport {
+    min-height: 480px;
+  }
+}
 
-  const goTo = (i) => {
-    idx = (i + slides.length) % slides.length;
-    track.style.transform = `translate3d(-${idx*100}%,0,0)`;
-    dots.forEach((d,k)=>d.classList.toggle('active', k===idx));
-  };
-  const play = () => { stop(); timer = setInterval(()=>goTo(idx+1), INTERVAL); };
-  const stop = () => { if (timer){ clearInterval(timer); timer=null; } };
-
-  dots.forEach((btn,i)=>btn.addEventListener('click', ()=>{ goTo(i); play(); }, {passive:true}));
-
-  // Pausa ao passar o mouse / volta ao sair
-  root.addEventListener('mouseenter', stop, {passive:true});
-  root.addEventListener('mouseleave', play, {passive:true});
-
-  // Swipe (pointer)
-  let startX=0, drag=false, pid=null;
-  root.addEventListener('pointerdown', e => {
-    drag=true; startX=e.clientX; pid=e.pointerId; root.setPointerCapture(pid); stop();
-  });
-  root.addEventListener('pointerup', e => {
-    if(!drag) return; drag=false;
-    const dx=e.clientX-startX;
-    if (Math.abs(dx)>40) goTo(idx + (dx<0 ? 1 : -1));
-    play();
-  });
-  root.addEventListener('pointercancel', ()=>{ drag=false; play(); });
-
-  // Protege imagens (carrega assíncrono e esconde se falhar)
-  slides.forEach(slide=>{
-    const img = slide.querySelector('img'); if (!img) return;
-    img.loading='lazy'; img.decoding='async';
-    img.addEventListener('error', ()=>{ img.style.visibility='hidden'; }, {once:true});
-  });
-
-  goTo(0); play();
-})();
-</script>
 
 
 
