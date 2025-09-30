@@ -112,6 +112,7 @@
 
 
 
+
 (function(){
   const root   = document.getElementById('depo-carousel');
   if(!root) return;
@@ -160,6 +161,8 @@
   goTo(0);
   play();
 })();
+
+
 
 
 
