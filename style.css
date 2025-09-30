@@ -5050,3 +5050,55 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   .ff2-carousel{ --ff2-h: 520px; height: var(--ff2-h); }
   .ff2-scroll-content{ max-height: var(--ff2-h); }
 }
+/* ===== Nivelar os cards (altura externa igual) ===== */
+
+/* a linha dos cards usa 1fr, ambos ficam com a mesma altura */
+.ff2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  grid-template-rows: auto auto; /* 1ª linha = cards, 2ª = CTA */
+}
+
+/* força cada card a ocupar 100% da altura da linha */
+.ff2-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* garante que o card 2 tenha o mesmo tamanho externo do card 1 */
+.ff2-card--scroll {
+  overflow: hidden; /* impede barra externa */
+}
+
+/* conteúdo rolável interno do card 2 */
+.ff2-scroll-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* mantém altura baseada na variável do carrossel */
+.ff2-carousel { --ff2-h: 560px; height: var(--ff2-h); }
+.ff2-scroll-content { max-height: var(--ff2-h); }
+
+/* CTA ocupa toda a linha abaixo dos cards */
+.ff2-cta-row { grid-column: 1 / -1; text-align: center; }
+
+/* ================= Estética extra ================= */
+
+/* barra de rolagem mais discreta */
+.ff2-scroll-content::-webkit-scrollbar { width: 8px; }
+.ff2-scroll-content::-webkit-scrollbar-track {
+  background: #eef4fa;
+  border-radius: 10px;
+}
+.ff2-scroll-content::-webkit-scrollbar-thumb {
+  background: #9fbbd8;
+  border-radius: 10px;
+}
+.ff2-scroll-content::-webkit-scrollbar-thumb:hover {
+  background: #3a80b4;
+}
