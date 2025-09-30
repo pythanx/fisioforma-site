@@ -147,16 +147,17 @@
 
 </div>
 </section>
-    
-<!-- ===== DEPOIMENTOS (carrossel) ===== -->
+
 <section id="depoimentos" class="alt" aria-label="Depoimentos e Comunidade">
   <div class="wrap">
     <h3>Histórias de Sucesso dos Nossos Alunos</h3>
 
-   <div class="depo-grid">
-      <!-- CARD: Carrossel de Depoimentos (ESQUERDA) -->
-      <div class="depo-card">
-        <div class="testimonial-carousel" id="depo-carousel" aria-label="Carrossel de depoimentos">
+    <!-- NOVO WRAPPER EM 2 COLUNAS -->
+    <div class="depo-row">
+      <!-- ESQUERDA: seu card/carrossel de depoimentos -->
+      <div class="card depo-card">
+        <!-- cole aqui TODO o seu HTML atual do carrossel de depoimentos -->
+                <div class="testimonial-carousel" id="depo-carousel" aria-label="Carrossel de depoimentos">
           <div class="testimonial-track" role="list">
             <!-- 1 -->
             <article class="testimonial-item" role="listitem">
@@ -263,80 +264,91 @@
         </div>
       </div>
 
-                
-      <div class="professor-col">
-  <h3>Dúvidas e Dicas do Professor</h3>
-
-  <div class="professor-card">
-    <!-- Cabeçalho do card (avatar) -->
-    <div style="text-align:center; margin-bottom:16px;">
-      <img class="professor-avatar" src="professor-fisio.png"
-           alt="Foto do Professor de Educação Física">
-    </div>
-
-    <!-- 3 Dicas Essenciais -->
-    <div class="card-dicas-content">
-      <h4 class="mini-heading" style="text-align:center;">Dicas Essenciais do Professor</h4>
-
-      <p class="tip-text">
-        <strong class="tip-type">1. HIDRATAÇÃO</strong>
-        Beba água antes, durante e após o treino. É <strong>crucial</strong> para o desempenho e a recuperação muscular.
-      </p>
-      <hr>
-
-      <p class="tip-text">
-        <strong class="tip-type">2. DESCANSO</strong>
-        Seu corpo constrói músculos e se recupera enquanto você dorme. Priorize o sono de qualidade.
-      </p>
-    </div>
-
-    <hr class="section-div">
-
-    <!-- 3 Dúvidas Comuns -->
-    <div class="card-faq-content">
-      <h4 class="mini-heading" style="text-align:center;">Dúvidas Comuns (FAQ)</h4>
-
-      <p class="tip-text" style="margin-bottom:0;">
-        <strong class="tip-type">DÚVIDA 1 (SUPLEMENTOS)</strong>
-        “Preciso tomar suplemento se estou começando agora, ou só dieta basta?”
-      </p>
-      <p class="resposta-professor">
-        <strong>RESPOSTA:</strong> Para iniciantes, uma <strong>dieta bem ajustada</strong> é o foco principal.
-        Suplementos devem ser adicionados <strong>somente</strong> se a dieta não cobrir as suas necessidades
-        ou sob orientação profissional.
-      </p>
-      <hr>
-
-      <p class="tip-text" style="margin-bottom:0;">
-        <strong class="tip-type">DÚVIDA 2 (FREQUÊNCIA)</strong>
-        “Quantos dias na semana devo treinar para ter resultados consistentes e rápidos?”
-      </p>
-      <p class="resposta-professor">
-        <strong>RESPOSTA:</strong> O ideal é treinar <strong>3 a 5 vezes por semana</strong>.
-        <strong>Consistência</strong> é mais importante que intensidade no início.
-      </p>
-      <hr>
-
-      <p class="tip-text" style="margin-bottom:0;">
-        <strong class="tip-type">DÚVIDA 3 (GORDURA LOCALIZADA)</strong>
-        “É possível perder gordura localizada na barriga apenas fazendo abdominais?”
-      </p>
-      <p class="resposta-professor">
-        <strong>RESPOSTA:</strong> <strong>Não é possível.</strong> A perda de gordura é geral, alcançada com
-        <strong>déficit calórico</strong> (dieta) e exercícios cardiovasculares.
-      </p>
+      <!-- DIREITA: seu card do professor (sem alterar conteúdo) -->
+      <div class="card prof-card">
+        <!-- cole aqui TODO o seu HTML atual do card do professor -->
+          <div class="professor-col">
+            <h3>Dúvidas e Dicas do Professor</h3>
+          
+            <div class="professor-card">
+              <!-- Cabeçalho do card (avatar) -->
+              <div style="text-align:center; margin-bottom:16px;">
+                <img class="professor-avatar" src="professor-fisio.png"
+                     alt="Foto do Professor de Educação Física">
+              </div>
+          
+              <!-- 3 Dicas Essenciais -->
+              <div class="card-dicas-content">
+                <h4 class="mini-heading" style="text-align:center;">Dicas Essenciais do Professor</h4>
+          
+                <p class="tip-text">
+                  <strong class="tip-type">1. HIDRATAÇÃO</strong>
+                  Beba água antes, durante e após o treino. É <strong>crucial</strong> para o desempenho e a recuperação muscular.
+                </p>
+                <hr>
+          
+                <p class="tip-text">
+                  <strong class="tip-type">2. DESCANSO</strong>
+                  Seu corpo constrói músculos e se recupera enquanto você dorme. Priorize o sono de qualidade.
+                </p>
+              </div>
+          
+              <hr class="section-div">
+          
+              <!-- 3 Dúvidas Comuns -->
+              <div class="card-faq-content">
+                <h4 class="mini-heading" style="text-align:center;">Dúvidas Comuns (FAQ)</h4>
+          
+                <p class="tip-text" style="margin-bottom:0;">
+                  <strong class="tip-type">DÚVIDA 1 (SUPLEMENTOS)</strong>
+                  “Preciso tomar suplemento se estou começando agora, ou só dieta basta?”
+                </p>
+                <p class="resposta-professor">
+                  <strong>RESPOSTA:</strong> Para iniciantes, uma <strong>dieta bem ajustada</strong> é o foco principal.
+                  Suplementos devem ser adicionados <strong>somente</strong> se a dieta não cobrir as suas necessidades
+                  ou sob orientação profissional.
+                </p>
+                <hr>
+          
+                <p class="tip-text" style="margin-bottom:0;">
+                  <strong class="tip-type">DÚVIDA 2 (FREQUÊNCIA)</strong>
+                  “Quantos dias na semana devo treinar para ter resultados consistentes e rápidos?”
+                </p>
+                <p class="resposta-professor">
+                  <strong>RESPOSTA:</strong> O ideal é treinar <strong>3 a 5 vezes por semana</strong>.
+                  <strong>Consistência</strong> é mais importante que intensidade no início.
+                </p>
+                <hr>
+          
+                <p class="tip-text" style="margin-bottom:0;">
+                  <strong class="tip-type">DÚVIDA 3 (GORDURA LOCALIZADA)</strong>
+                  “É possível perder gordura localizada na barriga apenas fazendo abdominais?”
+                </p>
+                <p class="resposta-professor">
+                  <strong>RESPOSTA:</strong> <strong>Não é possível.</strong> A perda de gordura é geral, alcançada com
+                  <strong>déficit calórico</strong> (dieta) e exercícios cardiovasculares.
+                </p>
+              </div>
+            </div>
+          </div>
+    
+          
+          <div style="text-align: center; margin-top: 50px;"> 
+                <a href="https://wa.me/5598992223926" target="_blank" rel="noopener" class="cta btn"> 
+                    Comece a Sua História de Sucesso Agora! 
+                </a> 
+            </div> 
+        </div>
+        
+      </div>
     </div>
   </div>
-</div>
-
-      
-      <div style="text-align: center; margin-top: 50px;"> 
-            <a href="https://wa.me/5598992223926" target="_blank" rel="noopener" class="cta btn"> 
-                Comece a Sua História de Sucesso Agora! 
-            </a> 
-        </div> 
-    </div>
 </section>
+
+
+
+                
+    
 
   <!-- NOVIDADES (full width, sem embed) -->
 <section id="novidades">
