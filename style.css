@@ -3887,166 +3887,47 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 
 
 
-/* ================================================== */
-/* ====== DEPOIMENTOS: LAYOUT GRID + CARROSSEL PURE-CSS ====== */
-/* ================================================== */
+/* ===== Depoimentos: layout do carrossel ===== */
+#depoimentos .depo-grid{
+  display:grid; gap:28px; align-items:start;
+  grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+}
+@media (max-width: 980px){ #depoimentos .depo-grid{ grid-template-columns: 1fr; } }
 
-/* Layout Grid para as duas colunas */
-#depoimentos .depo-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* Padrão Mobile: 1 coluna */
-  gap: 32px;
-  align-items: flex-start;
+.testimonial-carousel{
+  position:relative; overflow:hidden;
+  background:#fff; border-radius:20px; box-shadow:0 8px 22px rgba(6,32,51,.06);
+  padding:22px 22px 36px; /* espaço para os dots */
 }
-@media (min-width: 800px) {
-  #depoimentos .depo-grid {
-    grid-template-columns: 1.2fr 1fr; /* Desktop: Carrossel ligeiramente maior que a coluna do Prof. */
-  }
+.testimonial-track{
+  display:flex; width:100%; will-change:transform;
+  transition:transform .6s cubic-bezier(.22,.61,.36,1);
 }
+.testimonial-item{
+  flex:0 0 100%; /* 1 slide por vez */
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding:8px 6px 4px;
+}
+.testimonial-item .avatar{
+  width:300px; height:300px; object-fit:contain; display:block;
+  border-radius:50%; border:6px solid #0f5169; margin:6px auto 12px;
+  background:#f4f7fa;
+}
+.testimonial-card h4{ font-size:1.1rem; margin:.4rem 0 .35rem; color:#0f5169; }
+.testimonial-card p{ margin:.25rem 0; }
+.testimonial-source{ font-size:.83rem; color:#6e8796; }
+.testimonial-author{ font-weight:600; color:#113a4a; }
 
-/* Coluna 1: Carrossel */
-#depoimentos .depo-col h3 {
-  margin-top: 0;
-  text-align: center;
+/* Dots compactos e redondinhos */
+.testimonial-dots{
+  position:absolute; inset:auto 0 10px; display:flex; justify-content:center; gap:8px;
 }
-#depoimentos .testimonial-carousel-wrap {
-  /* O carrossel agora herda o estilo da caixa .gallery */
-  box-shadow: 0 16px 32px rgba(8, 34, 66, .08);
-  border-radius: 18px;
-  background: #fff;
-  padding: 0;
-  margin: 0 auto; /* Centraliza a coluna */
+.testimonial-dots button{
+  width:9px; height:9px; border-radius:50%;
+  border:2px solid #bcd2df; background:#e7f0f6; opacity:.9;
+  box-shadow:0 2px 6px rgba(16,53,72,.12);
 }
-
-/* Tamanho do viewport do depoimento (altura necessária para o conteúdo) */
-#depoimentos .viewport { 
-  min-height: 520px;
-} 
-#depoimentos .slides li {
-  /* Altera para o item de depoimento ficar no centro superior, não no meio vertical */
-  align-items: flex-start;
-  padding: 32px 20px 20px;
-}
-
-/* Estilos do Conteúdo do Depoimento */
-.testimonial-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  max-width: 450px;
-  margin: 0 auto;
-}
-.testimonial-item .avatar {
-  width: 140px; 
-  height: 140px;
-  object-fit: cover;
-  border-radius: 999px;
-  border: 4px solid var(--brand);
-  box-shadow: 0 8px 16px rgba(8, 34, 66, .10);
-  margin-bottom: 20px;
-}
-.testimonial-card h4 {
-  margin: 0 0 8px;
-  font-size: 20px;
-  line-height: 1.3;
-  color: var(--brand-ink);
-}
-.testimonial-card p {
-  margin: 0 0 4px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-.testimonial-card .testimonial-source {
-  font-size: 13px;
-  color: var(--muted);
-  opacity: .9;
-  margin-top: 12px;
-}
-.testimonial-card .testimonial-author {
-  font-weight: bold;
+.testimonial-dots button.active{
+  background:#0f5169; border-color:#0f5169; opacity:1;
 }
 
-/* Coluna 2: Professor */
-.professor-col h3 {
-  margin-top: 0;
-  text-align: center;
-}
-.professor-card {
-  /* Garante que o card do professor tenha a mesma aparência de card da coluna do carrossel */
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 16px 32px rgba(8, 34, 66, .08);
-  padding: 24px;
-}
-.professor-avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--brand);
-}
-.mini-heading {
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--brand-ink);
-  margin: 10px 0;
-}
-.tip-type {
-  font-weight: 700;
-  color: var(--brand);
-  display: block;
-  margin-bottom: 2px;
-}
-.resposta-professor {
-  font-size: 15px;
-  margin-top: 6px;
-  line-height: 1.5;
-}
-.section-div {
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: 20px 0;
-}
-
-
-/* ====== ATIVAÇÃO DOS 9 SLIDES (PURE CSS) ====== */
-
-/* Ativação dos slides de depoimentos (9 itens - Reusa o efeito Fade da Galeria de Fotos) */
-#t1:checked ~ .viewport .slides li:nth-child(1),
-#t2:checked ~ .viewport .slides li:nth-child(2),
-#t3:checked ~ .viewport .slides li:nth-child(3),
-#t4:checked ~ .viewport .slides li:nth-child(4),
-#t5:checked ~ .viewport .slides li:nth-child(5),
-#t6:checked ~ .viewport .slides li:nth-child(6),
-#t7:checked ~ .viewport .slides li:nth-child(7),
-#t8:checked ~ .viewport .slides li:nth-child(8),
-#t9:checked ~ .viewport .slides li:nth-child(9) {
-  opacity: 1;
-  transform: none;
-}
-
-/* Ativação dos dots de depoimentos (9 itens) */
-#t1:checked ~ .dots label[for="t1"],
-#t2:checked ~ .dots label[for="t2"],
-#t3:checked ~ .dots label[for="t3"],
-#t4:checked ~ .dots label[for="t4"],
-#t5:checked ~ .dots label[for="t5"],
-#t6:checked ~ .dots label[for="t6"],
-#t7:checked ~ .dots label[for="t7"],
-#t8:checked ~ .dots label[for="t8"],
-#t9:checked ~ .dots label[for="t9"] {
-  background: var(--brand);
-  transform: scale(1.2);
-  box-shadow: 0 0 0 8px rgba(43, 107, 138, .12);
-}
-
-/* Responsivo para depoimentos (ajusta altura em telas menores) */
-@media (max-width: 640px) {
-  #depoimentos .viewport {
-    min-height: 480px;
-  }
-}
