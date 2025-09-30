@@ -218,6 +218,48 @@
 })();
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".testimonial-track");
+  const items = document.querySelectorAll(".testimonial-item");
+  const dotsContainer = document.querySelector(".testimonial-dots");
+
+  let current = 0;
+  const total = items.length;
+  let interval;
+
+  // Criar dots dinamicamente
+  items.forEach((_, i) => {
+    const dot = document.createElement("button");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      goToSlide(i);
+      resetAutoplay();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll("button");
+
+  function goToSlide(index) {
+    current = index;
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  }
+
+  function nextSlide() {
+    current = (current + 1) % total;
+    goToSlide(current);
+  }
+
+  function resetAutoplay() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 5000);
+  }
+
+  // Inicializar
+  resetAutoplay();
+});
 
 
 
