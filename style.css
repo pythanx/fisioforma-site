@@ -4194,3 +4194,79 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   text-align: center;
   margin-top: 24px;
 }
+
+/* ====== Título igual ao da coluna do professor ====== */
+#depoimentos h3{
+  color: var(--azul-escuro, #194B5B);
+  font-weight: 800;
+  font-size: clamp(20px, 2.3vw, 26px);
+  line-height: 1.25;
+  text-align: center;
+  margin: 0 0 14px;
+  letter-spacing: .2px;
+}
+
+/* ====== Grid com 2 colunas e cards nivelados ====== */
+#depoimentos .depo-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(420px, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 980px){
+  #depoimentos .depo-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* estica os cards para alturas coerentes */
+#depoimentos .testimonial-carousel,
+#depoimentos .professor-col,
+#depoimentos .professor-card{
+  height: 100%;
+}
+#depoimentos .professor-col{ align-self: stretch; }
+
+/* avatar grande mas responsivo */
+#depoimentos .avatar,
+#depoimentos .t-avatar{
+  width: clamp(200px, 28vw, 300px);
+  height: clamp(200px, 28vw, 300px);
+  border-radius: 50%;
+  border: 6px solid var(--azul-escuro, #194B5B);
+  object-fit: contain;
+}
+
+/* ====== Dots pequenos e redondos ====== */
+.testimonial-dots{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.testimonial-dots button{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid rgba(25,75,91,.25);
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  opacity: .9;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.testimonial-dots button:hover{ transform: scale(1.15); }
+.testimonial-dots button.active{
+  background: var(--azul-escuro, #194B5B);
+  border-color: var(--azul-escuro, #194B5B);
+}
+
+/* ====== CTA centralizado abaixo das duas colunas ====== */
+#depoimentos .cta-row{
+  grid-column: 1 / -1;           /* ocupa as duas colunas */
+  text-align: center;
+}
+#depoimentos .cta-row .btn{
+  display: inline-block;
+  margin-top: 6px;
+}
+
