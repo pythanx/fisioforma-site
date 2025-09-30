@@ -158,3 +158,83 @@
   sizeSlides(); markDots(); start();
 })();
 
+// ===== Inicialização do Carrossel de Depoimentos (versão JavaScript) =====
+(function initDepoimentosCarousel() {
+  const root   = document.getElementById('depo-carousel');
+  if (!root) return;  // sai se a seção não existe na página
+
+  const track  = root.querySelector('.testimonial-track');
+  const slides = Array.from(root.querySelectorAll('.testimonial-item'));
+  const dotsContainer = root.querySelector('.testimonial-dots');
+  
+  let index = 0;
+  let timer = null;
+  const INTERVAL = 5500; // intervalo de auto-play (ms)
+
+  // Cria os botões de navegação (dots) dinamicamente
+  dotsContainer.innerHTML = "";  // garante que está vazio
+  slides.forEach((_, i) => {
+    const dotButton = document.createElement('button');
+    dotButton.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
+    dotButton.addEventListener('click', () => goToSlide(i, true));
+    dotsContainer.appendChild(dotButton);
+  });
+
+  // Marca o dot ativo de acordo com o índice atual
+  function updateDots() {
+    const allDots = dotsContainer.querySelectorAll('button');
+    allDots.forEach((btn, i) => {
+      btn.classList.toggle('active', i === index);
+    });
+  }
+
+  // Ajusta a largura de cada slide conforme a largura atual do contêiner
+  function sizeSlides() {
+    const width = root.clientWidth;                // largura visível do carrossel
+    slides.forEach(slide => {
+      slide.style.flexBasis = width + "px";        // define largura exata de cada slide
+      slide.style.width = width + "px";
+    });
+    track.style.transform = `translateX(${-index * width}px)`;  // reposiciona o slide visível
+  }
+
+  // Função de navegação para um slide específico
+  function goToSlide(i, stopAuto) {
+    index = (i + slides.length) % slides.length;   // calcula índice (com loop infinito)
+    const width = root.clientWidth;
+    track.style.transform = `translateX(${-index * width}px)`;  // move o trilho
+    updateDots();
+    if (stopAuto) restartAuto();                   // reinicia auto-play se navegação manual
+  }
+
+  // Controle de auto-play
+  function startAuto() {
+    timer = setInterval(() => goToSlide(index + 1, false), INTERVAL);
+  }
+  function stopAuto() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+  function restartAuto() {
+    stopAuto();
+    startAuto();
+  }
+
+  // Pausa o auto-play ao passar o mouse sobre o carrossel
+  root.addEventListener('mouseenter', stopAuto);
+  root.addEventListener('mouseleave', startAuto);
+  // Pausa quando a aba do navegador está oculta, retoma quando visível novamente
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? stopAuto() : startAuto();
+  });
+  // Recalcula tamanhos ao redimensionar a janela
+  window.addEventListener('resize', sizeSlides);
+
+  // Inicialização do carrossel
+  sizeSlides();   // define larguras iniciais corretas dos slides
+  updateDots();   // destaca o primeiro dot
+  startAuto();    // inicia o auto-play
+})();
+
