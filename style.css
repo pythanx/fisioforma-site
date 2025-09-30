@@ -5136,3 +5136,47 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .ff2-scroll-content::-webkit-scrollbar-thumb:hover {
   background: #3a80b4;
 }
+/* ===== Habilitar modo JS (quando <html> tiver class="js") ===== */
+html.js .ff2-viewport { position: relative; display: flex; flex-direction: column; }
+html.js .ff2-carousel { height: 100%; display: flex; flex-direction: column; }
+html.js .ff2-viewport-inner { flex: 1; position: relative; overflow: hidden; }
+
+/* Slides controlados por JS */
+html.js .ff2-slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  opacity: 0;
+  padding: 16px 16px 56px; /* 56px = respiro para os dots não cortarem */
+  transition: opacity .28s ease;
+}
+html.js .ff2-slide.is-active { display: block; opacity: 1; }
+
+/* Dots sempre visíveis dentro do carrossel (fora da área "inset") */
+html.js .ff2-dots { margin-top: 8px; }
+
+/* Dot ativo por classe (não usa mais :has) */
+.ff2-dots a {
+  width: 10px; height: 10px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid transparent; background: #cfe0f1;
+  text-decoration: none; font-size: 0;
+  transition: all .2s ease;
+}
+.ff2-dots a:hover { background: #9fbbd8; }
+.ff2-dots a.active {
+  background: #3a80b4; border-color: #3a80b4;
+  box-shadow: 0 0 0 4px rgba(58,128,180,.15);
+}
+
+/* ===== Altura fixa e nivelamento dos cards ===== */
+.ff2-card { height: 600px; overflow: hidden; display: flex; flex-direction: column; }
+.ff2-card--carousel .ff2-carousel { height: 100%; }
+.ff2-card--scroll .ff2-scroll-content { flex: 1; overflow-y: auto; padding-right: 6px; }
+
+/* Avatar 300x300 redondo com borda azul (não corta) */
+.ff2-avatar, .ff2-prof-avatar {
+  width: 300px; height: 300px; object-fit: cover;
+  border-radius: 50%; border: 5px solid #3a80b4;
+  display: block; margin: 0 auto 12px auto;
+}
