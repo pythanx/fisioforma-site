@@ -5284,4 +5284,21 @@ html.js .ff2-slide {
 }
 
 
+/* Dots “mudos” (o link vira o próprio ponto) */
+.ff2-dots { display:flex; justify-content:center; gap:8px; }
+.ff2-dots a{
+  width:10px; height:10px;
+  display:inline-block;
+  border-radius:50%;
+  background:#cbd5e1;
+  border:1px solid transparent;
+  /* mata qualquer texto dentro, mesmo se esquecer o • no HTML */
+  font-size:0 !important; line-height:0; text-indent:-9999px; overflow:hidden;
+  transition:transform .18s ease, background .2s ease, box-shadow .2s ease;
+}
+.ff2-dots a.active{
+  background:#3a80b4;
+  box-shadow:0 0 0 8px rgba(58,128,180,.12);
+  transform:scale(1.18);
+}
 
