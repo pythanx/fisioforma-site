@@ -5184,3 +5184,65 @@ html.js .ff2-dots { margin-top: 8px; }
 html:not(.js) .ff2-slide { display: none; }
 html:not(.js) .ff2-slide:first-of-type { display:block; }
 html:not(.js) .ff2-slide:target { display:block; }
+
+/* ===== Altura fixa (desktop) ===== */
+.ff2-card {
+  height: 640px;                 /* antes 600px */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.ff2-card--carousel .ff2-carousel { height: 100%; }
+.ff2-card--scroll .ff2-scroll-content { flex: 1; overflow-y: auto; }
+
+/* ===== Carrossel (card 1) — centralizado e com respiro p/ dots ===== */
+html.js .ff2-slide {
+  padding: 18px 18px 64px;       /* +respiro embaixo para não cortar os dots */
+}
+.ff2-slide-card{
+  max-width: 680px;              /* limita largura do texto para leitura */
+  margin: 8px auto 0;            /* centraliza bloco do texto */
+  text-align: center;            /* centraliza todo o texto do depoimento */
+}
+.ff2-slide-card h4{
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 800;
+  color: #133b57;
+  margin: 10px 0 6px;
+  letter-spacing: .2px;
+}
+.ff2-slide-card p{
+  margin: 4px 0;
+  color: #2c3e50;
+  line-height: 1.45;
+}
+.ff2-source{
+  font-size: .9rem;
+  color: #6a7e93;
+}
+.ff2-author{
+  font-weight: 700;
+  color: #102a41;
+}
+
+/* Avatar 300×300 redondo com borda azul (mantém centralizado) */
+.ff2-avatar, .ff2-prof-avatar{
+  width: 300px; height: 300px; object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #3a80b4;
+  display: block;
+  margin: 0 auto 12px auto;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* Dots: centralizados e com hit-area melhor */
+.ff2-dots{ display:flex; justify-content:center; gap:8px; margin-top:10px; }
+.ff2-dots a{ width:10px; height:10px; border-radius:50%; font-size:0; }
+
+/* ===== Responsivo: altura automática no mobile ===== */
+@media (max-width: 860px){
+  .ff2-card{ height:auto; }
+  .ff2-card--carousel .ff2-carousel{ height:auto; }
+  .ff2-card--scroll .ff2-scroll-content{ max-height:none; }
+  .ff2-avatar, .ff2-prof-avatar{ width:240px; height:240px; }
+}
