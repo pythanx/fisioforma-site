@@ -4188,3 +4188,45 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
     width:220px; height:220px;
   }
 }
+
+/* grid de 2 colunas para a seção de depoimentos */
+.depo-row{
+  display:grid;
+  gap:22px;
+}
+
+/* duas colunas a partir de 960px */
+@media (min-width:960px){
+  .depo-row{
+    grid-template-columns: 1.05fr .95fr; /* leve assimetria p/ equilibrar */
+    align-items: stretch; /* deixa a mesma altura visual */
+  }
+}
+
+/* garante que os dois cartões preencham a altura */
+.depo-row > .card{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* se o seu carrossel for um bloco interno, ele expande junto */
+.depo-card .testimonial-carousel{
+  flex:1;
+  min-height: 0; /* previne overflow em alguns navegadores */
+}
+
+/* segurança para imagens/avatares dentro do card de depoimentos */
+.depo-card img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+/* evita que algum estilo antigo force largura errada */
+.prof-card,
+.depo-card{ width:100%; }
+
+/* remove margens inferiores exageradas (se houver) */
+#depoimentos .card:last-child{ margin-bottom:0; }
+
