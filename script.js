@@ -114,37 +114,63 @@
 
 
 
-(function(){
+/* ===== Carrossel de Depoimentos ===== */
+(function () {
   const root = document.getElementById('depo-carousel');
-  if(!root) return;
+  if (!root) return;
 
-  const track  = root.querySelector('.testimonial-track');
-  const slides = Array.from(root.querySelectorAll('.testimonial-item'));
-  const dots   = Array.from(root.querySelectorAll('.testimonial-dots button'));
+  const track = root.querySelector('.testimonial-track');
+  const items = Array.from(track.children);
 
-  let idx = 0;
+  // Cria dots (se quiser mostrar — adicione um <div class="testimonial-dots"></div> abaixo do track no HTML)
+  let dotsWrap = root.querySelector('.testimonial-dots');
+  if (!dotsWrap) {
+    dotsWrap = document.createElement('div');
+    dotsWrap.className = 'testimonial-dots';
+    root.appendChild(dotsWrap);
+  }
+  dotsWrap.innerHTML = '';
+  const dots = items.map((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  let index = 0;
   let timer = null;
-  const INTERVAL_MS = 6000; // mais lento
+  const INTERVAL = 6500;
 
   function goTo(i){
-    if(!slides.length) return;
-    idx = (i + slides.length) % slides.length;
-    track.style.transform = `translateX(${-idx * 100}%)`;
-    dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
+    index = (i + items.length) % items.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d, k)=> d.classList.toggle('active', k===index));
   }
-  function play(){ stop(); timer = setInterval(()=> goTo(idx+1), INTERVAL_MS); }
-  function stop(){ if(timer) clearInterval(timer), timer=null; }
+  function play(){ stop(); timer = setInterval(()=> goTo(index+1), INTERVAL); }
+  function stop(){ if (timer){ clearInterval(timer); timer=null; } }
 
-  dots.forEach((d,k)=> d.addEventListener('click', ()=> goTo(k)));
+  // Navegação por dots
+  dots.forEach((btn, i)=> btn.addEventListener('click', ()=>{ goTo(i); play(); }, {passive:true}));
 
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', play);
-  root.addEventListener('touchstart', stop, {passive:true});
-  root.addEventListener('touchend',   play, {passive:true});
+  // Pausar no hover
+  root.addEventListener('mouseenter', stop, {passive:true});
+  root.addEventListener('mouseleave', play, {passive:true});
 
-  document.addEventListener('visibilitychange', ()=> document.hidden ? stop() : play());
+  // Swipe (touch/desktop)
+  let startX = 0, dragging = false, pid = null;
+  root.addEventListener('pointerdown', (e)=>{
+    dragging = true; startX = e.clientX; pid = e.pointerId; root.setPointerCapture(pid); stop();
+  });
+  root.addEventListener('pointerup', (e)=>{
+    if(!dragging) return; dragging = false;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+    play();
+  });
+  root.addEventListener('pointercancel', ()=>{ dragging=false; play(); });
 
-  goTo(0);
-  play();
+  // start
+  goTo(0); play();
 })();
+
 
