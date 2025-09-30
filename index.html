@@ -1051,7 +1051,70 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-  
+ <script>
+document.documentElement.classList.add('js');
+
+document.addEventListener("DOMContentLoaded", () => {
+  const viewport = document.querySelector(".ff2-viewport");
+  if (!viewport) return;
+
+  // cria um wrapper interno para isolar slides da área dos dots
+  if (!viewport.querySelector(".ff2-viewport-inner")) {
+    const inner = document.createElement("div");
+    inner.className = "ff2-viewport-inner";
+    // move apenas os slides para dentro do inner
+    const slides = Array.from(viewport.querySelectorAll(".ff2-slide"));
+    slides.forEach(s => inner.appendChild(s));
+    viewport.insertBefore(inner, viewport.firstChild);
+  }
+
+  const slides = viewport.querySelectorAll(".ff2-slide");
+  const dots   = document.querySelectorAll(".ff2-dots a");
+
+  let index = 0;
+  let timer = null;
+  const INTERVAL = 4000; // 4s
+
+  function syncDots(i){
+    dots.forEach(d => d.classList.remove("active"));
+    if (dots[i]) dots[i].classList.add("active");
+  }
+
+  function show(i){
+    slides.forEach(s => s.classList.remove("is-active"));
+    slides[i].classList.add("is-active");
+    syncDots(i);
+    index = i;
+  }
+
+  function next(){ show((index + 1) % slides.length); }
+
+  function start(){ stop(); timer = setInterval(next, INTERVAL); }
+  function stop(){ if (timer) clearInterval(timer); }
+
+  // init
+  show(index);
+  start();
+
+  // clique nos dots → mostra e reinicia autoplay
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", e => {
+      e.preventDefault();
+      stop();
+      show(i);
+      start();
+    });
+  });
+
+  // pausa o autoplay ao passar o mouse no card 1
+  const card1 = document.querySelector(".ff2-card--carousel");
+  if (card1) {
+    card1.addEventListener("mouseenter", stop);
+    card1.addEventListener("mouseleave", start);
+  }
+});
+</script>
+ 
 <script src="script.js"></script>
 
 </body>
