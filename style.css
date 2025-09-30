@@ -5283,3 +5283,23 @@ html.js .ff2-slide {
   .ff2-slide-card h4::after{ font-size: 28px; top: -4px; }
 }
 
+/* Fallback só quando não houver JS (sem autoplay/classe active) */
+html:not(.js) .ff2-slide { display: none; opacity: 1; }
+html:not(.js) .ff2-slide:first-of-type { display: block; }
+html:not(.js) .ff2-slide:target { display: block; }
+
+/* Dots “ativos” no fallback (mantém seu bloco antigo com :has) */
+html:not(.js) .ff2-viewport:has(#ff2-t1:target) ~ .ff2-dots a[href="#ff2-t1"],
+html:not(.js) .ff2-viewport:has(#ff2-t2:target) ~ .ff2-dots a[href="#ff2-t2"],
+html:not(.js) .ff2-viewport:has(#ff2-t3:target) ~ .ff2-dots a[href="#ff2-t3"],
+html:not(.js) .ff2-viewport:has(#ff2-t4:target) ~ .ff2-dots a[href="#ff2-t4"],
+html:not(.js) .ff2-viewport:has(#ff2-t5:target) ~ .ff2-dots a[href="#ff2-t5"],
+html:not(.js) .ff2-viewport:has(#ff2-t6:target) ~ .ff2-dots a[href="#ff2-t6"],
+html:not(.js) .ff2-viewport:has(#ff2-t7:target) ~ .ff2-dots a[href="#ff2-t7"],
+html:not(.js) .ff2-viewport:has(#ff2-t8:target) ~ .ff2-dots a[href="#ff2-t8"],
+html:not(.js) .ff2-viewport:has(#ff2-t9:target) ~ .ff2-dots a[href="#ff2-t9"],
+html:not(.js) .ff2-viewport:not(:has(.ff2-slide:target)) ~ .ff2-dots a[href="#ff2-t1"]{
+  background: #3a80b4; color:#fff; border-color:#3a80b4;
+  box-shadow: 0 0 0 4px rgba(58,128,180,.15);
+}
+
