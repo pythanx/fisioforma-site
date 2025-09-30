@@ -4214,4 +4214,48 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   border-radius:999px; border:4px solid var(--brand,#256680);
 }
 
+/* Grid 2 colunas na seção */
+#depoimentos .depo-grid{ display:grid; gap:22px; }
+@media (min-width:980px){ #depoimentos .depo-grid{ grid-template-columns:1fr 1fr; align-items:start; } }
+#depoimentos .depo-col, #depoimentos .professor-col{ min-width:0; }
+
+/* Títulos iguais */
+#depoimentos .depo-col > h3,
+#depoimentos .professor-col > h3{
+  font-size: clamp(20px,2.2vw,28px);
+  font-weight:800; color:#0f3444;
+  border-bottom:1px solid #e9eef3;
+  margin:0 0 10px; padding-bottom:10px; line-height:1.2;
+}
+
+/* Carrossel */
+.testimonial-carousel{
+  position:relative; overflow:hidden; background:#fff;
+  border:1px solid #e9eef3; border-radius:18px;
+  box-shadow:0 10px 30px rgba(8,34,66,.06); padding:16px;
+}
+.testimonial-track{ display:flex; transition:transform .6s ease; will-change:transform; }
+.testimonial-item{ min-width:100%; flex:0 0 100%; box-sizing:border-box; padding:8px 10px 12px; text-align:center; display:flex; flex-direction:column; align-items:center; }
+.testimonial-item .avatar{
+  width:300px; height:300px; max-width:100%; object-fit:contain;
+  border-radius:999px; border:6px solid var(--brand,#256680);
+  box-shadow:0 8px 24px rgba(8,34,66,.10); margin:0 auto 12px; background:#fff;
+}
+.testimonial-card h4{ margin:0 0 6px; font-size:18px; }
+.testimonial-card p{ margin:0 0 6px; }
+.testimonial-card .testimonial-source{ font-size:12px; color:#3b5568; opacity:.85; }
+.testimonial-card .testimonial-author{ font-weight:700; }
+
+.testimonial-dots{ display:flex; justify-content:center; gap:8px; padding-top:6px; }
+.testimonial-dots button{
+  width:8px; height:8px; border-radius:999px; border:none; padding:0;
+  background:#cfd8e3; cursor:pointer; transition:all .2s ease; box-shadow:0 1px 0 rgba(0,0,0,.05);
+}
+.testimonial-dots button.active{ width:16px; height:8px; background:var(--brand,#256680); }
+
+/* Professor (volta ao original com scroll) */
+.professor-card{ background:#fff; border:1px solid #e9eef3; border-radius:18px; box-shadow:0 10px 30px rgba(8,34,66,.06); padding:16px; max-height:520px; overflow:auto; }
+.professor-avatar{ width:120px; height:120px; object-fit:cover; border-radius:999px; border:4px solid var(--brand,#256680); }
+
+
 
