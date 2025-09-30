@@ -111,78 +111,82 @@
 })();
 
 
+// ===== Motor de carrossel baseado em <input type="radio"> =====
+// Reutiliza para a galeria (name="g" por ex.) e para depoimentos (name="t")
+(function(){
+  const INTERVAL = 5000; // 5s
+  const containers = [
+    document.querySelector('#depo-carousel') // só controlamos o de depoimentos aqui
+  ].filter(Boolean);
 
+  containers.forEach(initRadioCarousel);
 
+  function initRadioCarousel(container){
+    // radios deste carrossel
+    const radios = Array.from(container.querySelectorAll('input[type="radio"]'));
+    if(radios.length === 0) return;
 
+    // dots (labels) correspondentes
+    const dots = Array.from(container.querySelectorAll('.dots label'));
 
-// === Carrossel de Depoimentos (isolado do carrossel da galeria)
-(function initDepoCarousel(){
-  const root = document.getElementById('depo-carousel');
-  if (!root || root.__inited) return;
-  root.__inited = true;
+    // estado
+    let idx = radios.findIndex(r => r.checked) || 0;
+    let timer = null;
+    let hovering = false;
 
-  const track  = root.querySelector('.testimonial-track');
-  const slides = track ? Array.from(track.children) : [];
-  if (!track || !slides.length) return;
+    // Atualiza UI (radio + dot ativo)
+    function setIndex(next){
+      idx = (next + radios.length) % radios.length;
+      radios[idx].checked = true;
+      updateDots();
+    }
 
-  // Cria dots se não houver
-  let dotsWrap = root.querySelector('.testimonial-dots');
-  if (!dotsWrap){
-    dotsWrap = document.createElement('div');
-    dotsWrap.className = 'testimonial-dots';
-    root.appendChild(dotsWrap);
+    function updateDots(){
+      dots.forEach((d,i)=> d.classList.toggle('active', i === idx));
+    }
+    updateDots();
+
+    // Clique nos dots
+    dots.forEach((d, i) => {
+      d.addEventListener('click', () => {
+        setIndex(i);
+        resetTimer();
+      });
+    });
+
+    // Troca automática
+    function tick(){
+      if(hovering) return;
+      setIndex(idx + 1);
+    }
+
+    function startTimer(){
+      if(timer) return;
+      timer = setInterval(tick, INTERVAL);
+    }
+    function stopTimer(){
+      if(timer){ clearInterval(timer); timer=null; }
+    }
+    function resetTimer(){
+      stopTimer(); startTimer();
+    }
+
+    // Pausa no hover
+    container.addEventListener('mouseenter', ()=>{ hovering=true; });
+    container.addEventListener('mouseleave', ()=>{ hovering=false; });
+
+    // Só roda autoplay quando visível na tela
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){ startTimer(); }
+        else{ stopTimer(); }
+      });
+    }, {threshold: .3});
+    io.observe(container);
+
+    // Segurança: se o usuário trocar manualmente via teclado
+    radios.forEach((r,i)=> r.addEventListener('change', ()=>{
+      if(r.checked){ idx = i; updateDots(); resetTimer(); }
+    }));
   }
-  dotsWrap.innerHTML = '';
-  const dots = slides.map((_,i)=>{
-    const b = document.createElement('button');
-    b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
-    dotsWrap.appendChild(b);
-    return b;
-  });
-
-  let idx = 0, timer = null;
-  const INTERVAL = 5600;
-
-  function goTo(i){
-    idx = (i + slides.length) % slides.length;
-    track.style.transform = `translate3d(-${idx*100}%,0,0)`;
-    dots.forEach((d,k)=>d.classList.toggle('active', k===idx));
-  }
-  function play(){ stop(); timer = setInterval(()=>goTo(idx+1), INTERVAL); }
-  function stop(){ if (timer){ clearInterval(timer); timer=null; } }
-
-  dots.forEach((btn,i)=>btn.addEventListener('click', ()=>{ goTo(i); play(); }));
-
-  // Pausar ao passar mouse
-  root.addEventListener('mouseenter', stop, {passive:true});
-  root.addEventListener('mouseleave', play, {passive:true});
-
-  // Swipe básico
-  let startX=0, dragging=false, pid=null;
-  root.addEventListener('pointerdown', e=>{
-    dragging=true; startX=e.clientX; pid=e.pointerId; root.setPointerCapture(pid); stop();
-  });
-  root.addEventListener('pointerup', e=>{
-    if (!dragging) return; dragging=false;
-    const dx = e.clientX - startX;
-    if (Math.abs(dx) > 40) goTo(idx + (dx < 0 ? 1 : -1));
-    play();
-  });
-  root.addEventListener('pointercancel', ()=>{ dragging=false; play(); });
-
-  // Segurança das imagens
-  slides.forEach(slide=>{
-    const img = slide.querySelector('img'); if (!img) return;
-    img.loading='lazy'; img.decoding='async';
-    img.addEventListener('error', ()=>{ img.style.visibility='hidden'; }, {once:true});
-  });
-
-  goTo(0); play();
 })();
-
-
-
-
-
-
-
