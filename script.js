@@ -249,6 +249,7 @@
   markDots(); update(); start();
 })();
 
+
 // ===== Carrossel de Depoimentos (final) =====
 (function initDepoCarousel(){
   const root = document.getElementById('depo-carousel');
