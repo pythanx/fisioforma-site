@@ -4680,3 +4680,74 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 
 /* Melhora da experiência ao usar :target (evita "pulo" agressivo) */
 :target { scroll-margin-top: 80px; }
+
+/* ===== Ajustes solicitados ===== */
+
+/* CTA: sem sublinhado em qualquer estado + paleta do site */
+.ff2-btn,
+.ff2-btn:link,
+.ff2-btn:visited,
+.ff2-btn:hover,
+.ff2-btn:focus,
+.ff2-btn:active {
+  text-decoration: none !important;
+}
+.ff2-btn {
+  background: #3a80b4;          /* azul FisioForma */
+  color: #ffffff;
+  border: 1px solid #2f6b96;     /* borda azul mais escura */
+  box-shadow: 0 6px 18px rgba(58,128,180,.18);
+}
+.ff2-btn:hover,
+.ff2-btn:focus {
+  background: #2f6b96;           /* hover mais escuro */
+  border-color: #285c85;
+}
+.ff2-btn:active { transform: translateY(1px); }
+
+/* Avatares: borda redonda (estilo “anel”) */
+.ff2-avatar {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;                    /* cantos arredondados */
+  border: 4px solid #e0ecf7;              /* anel claro */
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* Avatar do professor: mantém circular, com anel */
+.ff2-prof-avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #e0ecf7;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* Bolinhas de navegação do carrossel: sem sublinhado e na paleta */
+.ff2-dots a,
+.ff2-dots a:link,
+.ff2-dots a:visited {
+  text-decoration: none;
+  color: #8aa6c9;
+  border-color: transparent;
+}
+.ff2-dots a:hover,
+.ff2-dots a:focus {
+  color: #3a80b4;
+  border-color: #c7d6ea;
+}
+
+/* Opcional: deixa as bordas dos cards mais “vivas” dentro da identidade */
+.ff2-card {
+  background: #f7fafc;
+  border: 1px solid #e3edf7;
+  box-shadow: 0 10px 30px rgba(19, 35, 54, 0.06);
+}
+
+/* Opcional: estiliza a barra de rolagem do card 2 (WebKit) */
+.ff2-scroll-content::-webkit-scrollbar { width: 10px; }
+.ff2-scroll-content::-webkit-scrollbar-track { background: #eef4fa; border-radius: 10px; }
+.ff2-scroll-content::-webkit-scrollbar-thumb { background: #b9cbe0; border-radius: 10px; }
+.ff2-scroll-content::-webkit-scrollbar-thumb:hover { background: #98b3d1; }
