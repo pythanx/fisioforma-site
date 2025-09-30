@@ -4710,3 +4710,73 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 /* CTA centralizada abaixo da seção */
 .cta-wrap { grid-column: 1/-1; text-align:center; margin-top: 14px; }
 
+/* ===== grid: depoimentos + professor lado a lado ===== */
+.depo-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:clamp(16px,3vw,28px);
+  align-items:start;
+}
+
+/* títulos nivelados */
+.depo-col > h3,
+.professor-col > h3{
+  margin:0 0 10px;
+  font-size:clamp(22px,2.2vw,26px);
+  line-height:1.2;
+  color:#0f3f51;
+}
+
+/* ===== carrossel de depoimentos ===== */
+.testimonial-carousel{
+  position:relative;
+  overflow:hidden;                 /* sem “vazar” o próximo slide */
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(10,55,80,.08);
+}
+.testimonial-track{
+  display:flex;
+  gap:0;
+  transition:transform .6s ease;
+  will-change:transform;
+}
+.testimonial-item{
+  flex:0 0 100%;                   /* 1 por vez */
+  display:grid;
+  place-items:center;
+  padding:18px 18px 24px;
+  text-align:center;
+}
+.testimonial-item .avatar{
+  width:300px; height:300px;       /* pedido: 300x */
+  object-fit:contain;
+  border-radius:50%;
+  border:4px solid #1f5c6f;
+  box-shadow:0 6px 14px rgba(10,55,80,.08) inset;
+  margin:8px auto 14px;
+}
+.testimonial-card h4{margin:0 0 8px; color:#0b3a4a;}
+.testimonial-card p{margin:6px 0;}
+.testimonial-source{font-size:12px; color:#7c8c95;}
+.testimonial-author{font-weight:600; color:#163f52;}
+
+/* dots: pequenos e redondos */
+.testimonial-dots{
+  display:flex; justify-content:center; gap:8px;
+  padding:10px 0 14px;
+}
+.testimonial-dots button{
+  width:8px; height:8px; border-radius:50%;
+  border:0; background:#cfe0e8; opacity:.9;
+  box-shadow:0 1px 2px rgba(10,55,80,.15);
+  transition:transform .15s ease, background .15s ease, opacity .15s;
+}
+.testimonial-dots button.active{
+  background:#0f546d; opacity:1; transform:scale(1.25);
+}
+
+/* CTA central embaixo das duas colunas */
+.cta-row{ grid-column:1 / -1; text-align:center; margin-top:14px; }
+
+
