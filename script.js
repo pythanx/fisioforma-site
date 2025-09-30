@@ -191,68 +191,62 @@
   }
 })();
 
-/* ====== Carrossel de Depoimentos (independente da galeria) ====== */
-(function(){
+// ===== Carrossel de Depoimentos (independente, estilo da galeria) =====
+(function initDepoCarousel(){
   const root = document.getElementById('depo-carousel');
   if(!root) return;
 
-  const track = root.querySelector('.t-track');
-  const items = Array.from(track.children);
-  const dotsWrap = root.querySelector('#depo-dots');
+  const track = root.querySelector('.testimonial-track');
+  const slides = Array.from(root.querySelectorAll('.testimonial-item'));
+  const dotsWrap = root.querySelector('.testimonial-dots');
 
   let index = 0;
+  let width = root.clientWidth;
   let timer = null;
-  const AUTOPLAY_MS = 5000; // mais suave
+  const INTERVAL = 5000;
 
-  // monta dots
-  items.forEach((_, i)=>{
+  // cria dots
+  slides.forEach((_,i)=>{
     const b = document.createElement('button');
     b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
-    if(i===0) b.classList.add('active');
-    b.addEventListener('click', ()=>go(i,true));
+    b.addEventListener('click', ()=>goTo(i,true));
     dotsWrap.appendChild(b);
   });
-  const dots = dotsWrap.querySelectorAll('button');
 
-  function go(i, user){
-    index = (i + items.length) % items.length;
-    track.style.transform = `translateX(-${index*100}%)`;
-    dots.forEach(d=>d.classList.remove('active'));
-    dots[index].classList.add('active');
-    if(user) restart();
+  function markDots(){
+    dotsWrap.querySelectorAll('button').forEach((d,i)=>{
+      d.classList.toggle('active', i===index);
+    });
   }
 
-  function next(){ go(index+1); }
+  function update(){
+    width = root.clientWidth; // garante cálculo correto quando a coluna muda de largura
+    track.style.transform = `translateX(${-index * width}px)`;
+    markDots();
+  }
 
-  function start(){
-    stop();
-    timer = setInterval(next, AUTOPLAY_MS);
+  function goTo(i, stopAuto){
+    index = (i + slides.length) % slides.length;
+    update();
+    if(stopAuto) restart();
   }
-  function stop(){
-    if(timer){ clearInterval(timer); timer=null; }
-  }
+
+  // Auto-play com pausa no hover e quando a aba perde o foco
+  function start(){ timer = setInterval(()=>goTo(index+1,false), INTERVAL); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
   function restart(){ stop(); start(); }
 
-  // pausa ao passar o mouse/tocar
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', start);
-  root.addEventListener('touchstart', stop, {passive:true});
-  root.addEventListener('touchend', start);
+  document.addEventListener('visibilitychange', ()=> (document.hidden ? stop() : start()));
+  window.addEventListener('resize', update);
 
-  // swipe simples (opcional)
-  let x0 = null;
-  root.addEventListener('touchstart', e=>{ x0 = e.touches[0].clientX; }, {passive:true});
-  root.addEventListener('touchmove', e=>{
-    if(x0==null) return;
-    const dx = e.touches[0].clientX - x0;
-    if(Math.abs(dx)>50){
-      dx>0 ? go(index-1,true) : go(index+1,true);
-      x0=null;
-    }
-  }, {passive:true});
-  root.addEventListener('touchend', ()=>{ x0=null; }, {passive:true});
+  // largura fixa por slide (para o translate em px)
+  const ro = new ResizeObserver(update);
+  ro.observe(root);
 
   // inicia
-  start();
+  markDots(); update(); start();
 })();
+
 
