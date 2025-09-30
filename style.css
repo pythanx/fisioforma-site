@@ -4189,3 +4189,8 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   width: fit-content;
   margin: 24px auto 0;        /* centraliza */
 }
+#depoimentos .cta-bar{
+  grid-column: 1 / -1;       /* ocupa as duas colunas quando houver grid */
+  text-align: center;
+  margin-top: 24px;
+}
