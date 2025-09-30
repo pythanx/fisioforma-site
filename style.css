@@ -4139,3 +4139,53 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .t-dots button.active{ background:#0a3d62; }
 .t-dots button:focus-visible{ outline:2px solid #0a3d62; outline-offset:2px; }
 
+/* ====== Ajustes da seção de Depoimentos x Professor ====== */
+#depoimentos .wrap{
+  max-width: 1120px;              /* largura confortável p/ dois cards */
+}
+
+/* Duas colunas largas e estáveis */
+.depo-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(440px, 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+/* Em telas menores vira 1 coluna (sem apertar cards) */
+@media (max-width: 980px){
+  .depo-grid{ grid-template-columns: 1fr; }
+}
+
+/* Carrossel ocupa toda a coluna (sem limitar demais) */
+.t-carousel{ max-width: none; }
+
+/* Card do depoimento não deve cortar nada */
+.t-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: auto;           /* garante altura automática */
+  padding: 22px 22px 26px;    /* um pouco mais de respiro */
+}
+
+/* Avatar grande, mas responsivo p/ colunas menores */
+.t-avatar{
+  width: clamp(200px, 28vw, 300px);
+  height: clamp(200px, 28vw, 300px);
+}
+
+/* Título/textos com espaçamento suave quando a coluna é estreita */
+.t-title{ margin-top: 6px; }
+.t-text{  margin-bottom: 8px; }
+
+/* Dots menores e centralizados (já estavam ok, só garantindo margem) */
+.t-dots{ margin-top: 12px; }
+
+/* CTA centralizado abaixo das duas colunas */
+#depoimentos .wrap > a.cta.btn{
+  display: block;
+  width: fit-content;
+  margin: 24px auto 0;        /* centraliza */
+}
