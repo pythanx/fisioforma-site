@@ -115,19 +115,25 @@
 
 
 
-(() => {
+// === Carrossel de Depoimentos (isolado do carrossel da galeria)
+(function initDepoCarousel(){
   const root = document.getElementById('depo-carousel');
-  if (!root || root.__inited) return;        // evita 2 inits
+  if (!root || root.__inited) return;
   root.__inited = true;
 
   const track  = root.querySelector('.testimonial-track');
-  const slides = Array.from(track.children);
+  const slides = track ? Array.from(track.children) : [];
+  if (!track || !slides.length) return;
 
-  // Cria dots
+  // Cria dots se não houver
   let dotsWrap = root.querySelector('.testimonial-dots');
-  if (!dotsWrap){ dotsWrap = document.createElement('div'); dotsWrap.className='testimonial-dots'; root.appendChild(dotsWrap); }
+  if (!dotsWrap){
+    dotsWrap = document.createElement('div');
+    dotsWrap.className = 'testimonial-dots';
+    root.appendChild(dotsWrap);
+  }
   dotsWrap.innerHTML = '';
-  const dots = slides.map((_,i)=> {
+  const dots = slides.map((_,i)=>{
     const b = document.createElement('button');
     b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
     dotsWrap.appendChild(b);
@@ -135,36 +141,36 @@
   });
 
   let idx = 0, timer = null;
-  const INTERVAL = 5600; // ritmo mais suave
+  const INTERVAL = 5600;
 
-  const goTo = (i) => {
+  function goTo(i){
     idx = (i + slides.length) % slides.length;
     track.style.transform = `translate3d(-${idx*100}%,0,0)`;
     dots.forEach((d,k)=>d.classList.toggle('active', k===idx));
-  };
-  const play = () => { stop(); timer = setInterval(()=>goTo(idx+1), INTERVAL); };
-  const stop = () => { if (timer){ clearInterval(timer); timer=null; } };
+  }
+  function play(){ stop(); timer = setInterval(()=>goTo(idx+1), INTERVAL); }
+  function stop(){ if (timer){ clearInterval(timer); timer=null; } }
 
-  dots.forEach((btn,i)=>btn.addEventListener('click', ()=>{ goTo(i); play(); }, {passive:true}));
+  dots.forEach((btn,i)=>btn.addEventListener('click', ()=>{ goTo(i); play(); }));
 
-  // Pausa ao passar o mouse / volta ao sair
+  // Pausar ao passar mouse
   root.addEventListener('mouseenter', stop, {passive:true});
   root.addEventListener('mouseleave', play, {passive:true});
 
-  // Swipe (pointer)
-  let startX=0, drag=false, pid=null;
-  root.addEventListener('pointerdown', e => {
-    drag=true; startX=e.clientX; pid=e.pointerId; root.setPointerCapture(pid); stop();
+  // Swipe básico
+  let startX=0, dragging=false, pid=null;
+  root.addEventListener('pointerdown', e=>{
+    dragging=true; startX=e.clientX; pid=e.pointerId; root.setPointerCapture(pid); stop();
   });
-  root.addEventListener('pointerup', e => {
-    if(!drag) return; drag=false;
-    const dx=e.clientX-startX;
-    if (Math.abs(dx)>40) goTo(idx + (dx<0 ? 1 : -1));
+  root.addEventListener('pointerup', e=>{
+    if (!dragging) return; dragging=false;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 40) goTo(idx + (dx < 0 ? 1 : -1));
     play();
   });
-  root.addEventListener('pointercancel', ()=>{ drag=false; play(); });
+  root.addEventListener('pointercancel', ()=>{ dragging=false; play(); });
 
-  // Protege imagens (carrega assíncrono e esconde se falhar)
+  // Segurança das imagens
   slides.forEach(slide=>{
     const img = slide.querySelector('img'); if (!img) return;
     img.loading='lazy'; img.decoding='async';
@@ -173,6 +179,7 @@
 
   goTo(0); play();
 })();
+
 
 
 
