@@ -4843,10 +4843,12 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .ff2-slide { display: none; }
 .ff2-slide:first-of-type { display: block; }
 
+
 /* Quando houver um :target, esconda todos... */
-.ff2-viewport:has(.ff2-slide:target) .ff2-slide { display: none; }
+/*.ff2-viewport:has(.ff2-slide:target) .ff2-slide { display: none; }/*
 /* ...e mostre só o alvo. */
-.ff2-viewport:has(.ff2-slide:target) .ff2-slide:target { display: block; }
+/*.ff2-viewport:has(.ff2-slide:target) .ff2-slide:target { display: block; }/*
+
 
 /* ======= Qualidade de layout do slide ======= */
 .ff2-slide {
@@ -4900,28 +4902,28 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 }
 
 /* Dot ativo: detecta o slide visível via :target */
-.ff2-viewport:has(#ff2-t1:target) ~ .ff2-dots a[href="#ff2-t1"],
-.ff2-viewport:has(#ff2-t2:target) ~ .ff2-dots a[href="#ff2-t2"],
-.ff2-viewport:has(#ff2-t3:target) ~ .ff2-dots a[href="#ff2-t3"],
-.ff2-viewport:has(#ff2-t4:target) ~ .ff2-dots a[href="#ff2-t4"],
-.ff2-viewport:has(#ff2-t5:target) ~ .ff2-dots a[href="#ff2-t5"],
-.ff2-viewport:has(#ff2-t6:target) ~ .ff2-dots a[href="#ff2-t6"],
-.ff2-viewport:has(#ff2-t7:target) ~ .ff2-dots a[href="#ff2-t7"],
-.ff2-viewport:has(#ff2-t8:target) ~ .ff2-dots a[href="#ff2-t8"],
-.ff2-viewport:has(#ff2-t9:target) ~ .ff2-dots a[href="#ff2-t9"] {
-  background: #3a80b4;
-  color: #fff;
-  border-color: #3a80b4;
-  box-shadow: 0 0 6px rgba(58,128,180,.6);
-}
+/*.ff2-viewport:has(#ff2-t1:target) ~ .ff2-dots a[href="#ff2-t1"],*/
+/*.ff2-viewport:has(#ff2-t2:target) ~ .ff2-dots a[href="#ff2-t2"],*/
+/*.ff2-viewport:has(#ff2-t3:target) ~ .ff2-dots a[href="#ff2-t3"],*/
+/*.ff2-viewport:has(#ff2-t4:target) ~ .ff2-dots a[href="#ff2-t4"],*/
+/*.ff2-viewport:has(#ff2-t5:target) ~ .ff2-dots a[href="#ff2-t5"],*/
+/*.ff2-viewport:has(#ff2-t6:target) ~ .ff2-dots a[href="#ff2-t6"],*/
+/*.ff2-viewport:has(#ff2-t7:target) ~ .ff2-dots a[href="#ff2-t7"],*/
+/*.ff2-viewport:has(#ff2-t8:target) ~ .ff2-dots a[href="#ff2-t8"],*/
+/*.ff2-viewport:has(#ff2-t9:target) ~ .ff2-dots a[href="#ff2-t9"] {*/
+/*  background: #3a80b4;
+/*  color: #fff;
+/*  border-color: #3a80b4;
+/*  box-shadow: 0 0 6px rgba(58,128,180,.6);
+}*/
 
 /* Caso nenhum target (primeira carga), marcar o primeiro */
-.ff2-viewport:not(:has(.ff2-slide:target)) ~ .ff2-dots a[href="#ff2-t1"] {
+/*.ff2-viewport:not(:has(.ff2-slide:target)) ~ .ff2-dots a[href="#ff2-t1"] {
   background: #3a80b4;
   color: #fff;
   border-color: #3a80b4;
   box-shadow: 0 0 6px rgba(58,128,180,.6);
-}
+}*/
 /* ================= Nivelação dos cards pela base ================= */
 /* Usa 1fr na linha dos cards e força os itens a ocuparem 100% da altura da linha */
 .ff2-grid {
@@ -5028,7 +5030,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .ff2-dots a:hover { background: #9fbbd8; }
 
 /* ativo (segue seu seletor :has de antes) */
-.ff2-viewport:has(#ff2-t1:target) ~ .ff2-dots a[href="#ff2-t1"],
+/*.ff2-viewport:has(#ff2-t1:target) ~ .ff2-dots a[href="#ff2-t1"],
 .ff2-viewport:has(#ff2-t2:target) ~ .ff2-dots a[href="#ff2-t2"],
 .ff2-viewport:has(#ff2-t3:target) ~ .ff2-dots a[href="#ff2-t3"],
 .ff2-viewport:has(#ff2-t4:target) ~ .ff2-dots a[href="#ff2-t4"],
@@ -5041,7 +5043,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   background: #3a80b4;
   border-color: #3a80b4;
   box-shadow: 0 0 0 4px rgba(58,128,180,.15);
-}
+}*/
 
 /* ================= Responsivo ================= */
 @media (max-width: 860px){
@@ -5181,9 +5183,7 @@ html.js .ff2-dots { margin-top: 8px; }
   display: block; margin: 0 auto 12px auto;
 }
 
-html:not(.js) .ff2-slide { display: none; }
-html:not(.js) .ff2-slide:first-of-type { display:block; }
-html:not(.js) .ff2-slide:target { display:block; }
+
 
 /* ===== Altura fixa (desktop) ===== */
 .ff2-card {
