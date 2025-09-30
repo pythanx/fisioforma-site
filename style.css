@@ -5170,7 +5170,7 @@ html.js .ff2-dots { margin-top: 8px; }
 }
 
 /* ===== Altura fixa e nivelamento dos cards ===== */
-.ff2-card { height: 600px; overflow: hidden; display: flex; flex-direction: column; }
+.ff2-card { height: 610px; overflow: hidden; display: flex; flex-direction: column; }
 .ff2-card--carousel .ff2-carousel { height: 100%; }
 .ff2-card--scroll .ff2-scroll-content { flex: 1; overflow-y: auto; padding-right: 6px; }
 
