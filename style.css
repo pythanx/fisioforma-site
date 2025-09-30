@@ -5102,3 +5102,37 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .ff2-scroll-content::-webkit-scrollbar-thumb:hover {
   background: #3a80b4;
 }
+/* ===== Cards com altura fixa ===== */
+.ff2-card {
+  display: flex;
+  flex-direction: column;
+  height: 600px;              /* altura fixa */
+  overflow: hidden;           /* evita barra externa */
+}
+
+/* Carrossel ocupa toda a altura definida */
+.ff2-carousel { height: 100%; }
+
+/* Card do professor: conteúdo interno rolável */
+.ff2-scroll-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* CTA continua abaixo dos dois cards */
+.ff2-cta-row { grid-column: 1 / -1; text-align: center; }
+
+/* Barra de rolagem personalizada */
+.ff2-scroll-content::-webkit-scrollbar { width: 8px; }
+.ff2-scroll-content::-webkit-scrollbar-track {
+  background: #eef4fa;
+  border-radius: 10px;
+}
+.ff2-scroll-content::-webkit-scrollbar-thumb {
+  background: #9fbbd8;
+  border-radius: 10px;
+}
+.ff2-scroll-content::-webkit-scrollbar-thumb:hover {
+  background: #3a80b4;
+}
