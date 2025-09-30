@@ -4838,3 +4838,87 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 @media (prefers-reduced-motion: reduce) {
   .ff2-btn, .ff2-btn:hover { animation: none !important; transition: none !important; }
 }
+/* ======= FIX: mostrar 1 slide por vez (sem sobrepor) ======= */
+.ff2-viewport { position: relative; }
+.ff2-slide { display: none; }
+.ff2-slide:first-of-type { display: block; }
+
+/* Quando houver um :target, esconda todos... */
+.ff2-viewport:has(.ff2-slide:target) .ff2-slide { display: none; }
+/* ...e mostre só o alvo. */
+.ff2-viewport:has(.ff2-slide:target) .ff2-slide:target { display: block; }
+
+/* ======= Qualidade de layout do slide ======= */
+.ff2-slide {
+  padding: 12px 12px 20px;      /* respiro para não encostar nos dots */
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+/* avatar 300×300 redondo com borda azul já pedido antes */
+.ff2-avatar,
+.ff2-prof-avatar {
+  width: 300px;
+  height: 300px;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #3a80b4;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  display: block;
+  margin: 0 auto 12px auto;
+}
+
+/* Mantém o card 2 organizado: a imagem grande fica fora da área rolável */
+.ff2-prof-head { text-align: center; margin: 6px 0 10px; }
+.ff2-scroll-content { max-height: 560px; overflow: auto; }
+
+/* Dots – evitam sublinhado e melhor hit-area */
+.ff2-dots a { text-decoration: none; padding: 2px 8px; }
+
+/* Responsivo: se estreitar muito, reduz o avatar para caber */
+@media (max-width: 860px) {
+  .ff2-avatar, .ff2-prof-avatar { width: 240px; height: 240px; }
+}
+/* ===== Dots com estado ativo ===== */
+.ff2-dots a {
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  color: #8aa6c9;
+  transition: all .2s ease;
+}
+
+/* Hover/focus */
+.ff2-dots a:hover,
+.ff2-dots a:focus {
+  color: #3a80b4;
+  border-color: #c7d6ea;
+}
+
+/* Dot ativo: detecta o slide visível via :target */
+.ff2-viewport:has(#ff2-t1:target) ~ .ff2-dots a[href="#ff2-t1"],
+.ff2-viewport:has(#ff2-t2:target) ~ .ff2-dots a[href="#ff2-t2"],
+.ff2-viewport:has(#ff2-t3:target) ~ .ff2-dots a[href="#ff2-t3"],
+.ff2-viewport:has(#ff2-t4:target) ~ .ff2-dots a[href="#ff2-t4"],
+.ff2-viewport:has(#ff2-t5:target) ~ .ff2-dots a[href="#ff2-t5"],
+.ff2-viewport:has(#ff2-t6:target) ~ .ff2-dots a[href="#ff2-t6"],
+.ff2-viewport:has(#ff2-t7:target) ~ .ff2-dots a[href="#ff2-t7"],
+.ff2-viewport:has(#ff2-t8:target) ~ .ff2-dots a[href="#ff2-t8"],
+.ff2-viewport:has(#ff2-t9:target) ~ .ff2-dots a[href="#ff2-t9"] {
+  background: #3a80b4;
+  color: #fff;
+  border-color: #3a80b4;
+  box-shadow: 0 0 6px rgba(58,128,180,.6);
+}
+
+/* Caso nenhum target (primeira carga), marcar o primeiro */
+.ff2-viewport:not(:has(.ff2-slide:target)) ~ .ff2-dots a[href="#ff2-t1"] {
+  background: #3a80b4;
+  color: #fff;
+  border-color: #3a80b4;
+  box-shadow: 0 0 6px rgba(58,128,180,.6);
+}
