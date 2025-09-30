@@ -4054,361 +4054,66 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   object-fit: cover;
 }
 
-/* Dots */
-.testimonial-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 1rem;
-}
-
-.testimonial-dots button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: #ccc;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.testimonial-dots button.active {
-  background: var(--primary, #3a80b4);
-}
-
-/* ====== GRID dos dois cards (depoimentos + professor) ====== */
-.depo-grid{
-  display:grid;
-  gap:22px;
-}
-@media (min-width: 980px){
-  .depo-grid{
-    grid-template-columns: 1.1fr .9fr;
-    align-items: stretch;
-  }
-}
-
-/* ====== CARD base de depoimentos ====== */
-.depo-card{
-  background: radial-gradient(1100px 360px at 50% -90px,#fff 0%,#f6fbff 65%,#f1f7fd 100%);
-  border:1px solid #e3edf7;
-  border-radius:20px;
-  box-shadow:0 24px 60px rgba(8,34,66,.10);
-  padding:16px;
-}
-
-/* ====== Carrossel ====== */
-.testimonial-carousel{
-  position:relative;
-  overflow:hidden;
-}
-.testimonial-track{
-  display:flex;
-  gap:16px;
-  transition: transform .45s ease;
-  will-change: transform;
-}
-.testimonial-item{
-  flex: 0 0 100%;
-  display:grid;
-  grid-template-columns: minmax(0,1fr);
-  align-items:center;
-  justify-items:center;
-  gap:16px;
-  padding:14px;
-}
-@media (min-width:700px){
-  .testimonial-item{
-    grid-template-columns: 320px 1fr; /* avatar (grande) + texto */
-    justify-items: start;
-  }
-}
-
-/* Avatar 300×300 redondo com borda */
-.testimonial-item .avatar{
-  width:300px; height:300px;
-  object-fit:cover;
-  border-radius:999px;
-  border:6px solid #e6eef7;
-  box-shadow:0 10px 28px rgba(8,34,66,.10);
-  background:#fff;
-}
-
-/* Cartão interno do depoimento */
-.testimonial-card{
-  width:100%;
-  background:#fff;
-  border:1px solid #e6eef7;
-  border-radius:16px;
-  padding:18px 16px;
-  box-shadow:0 12px 28px rgba(8,34,66,.06);
-}
-.testimonial-card h4{
-  margin:0 0 8px;
-  font-size:clamp(18px,2.2vw,22px);
-  color:#0e1c2a;
-}
-.testimonial-card p{
-  margin:6px 0;
-  color:#334155;
-}
-.testimonial-card .testimonial-source{
-  font-size:13px;
-  color:#64748b;
-}
-.testimonial-card .testimonial-author{
-  font-weight:800;
-  color:#1f4e63;
-}
-
-/* ====== Dots pequenos e redondos ====== */
-.testimonial-dots{
-  display:flex; justify-content:center; gap:8px;
-  padding:8px 0 0;
-}
-.testimonial-dots button{
-  width:8px; height:8px; border-radius:999px;
-  border:none; background:#cfd8e3;
-  cursor:pointer;
-  transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
-}
-.testimonial-dots button.active{
-  background:#2b6b8a;
-  transform:scale(1.25);
-  box-shadow:0 0 0 8px rgba(43,107,138,.12);
-}
-.testimonial-dots button:focus-visible{
-  outline:2px solid #3a80b4;
-  outline-offset:2px;
-}
-
-/* Segurança para imagens grandes em telas pequenas */
-@media (max-width:700px){
-  .testimonial-item .avatar{
-    width:220px; height:220px;
-  }
-}
-
-/* grid de 2 colunas para a seção de depoimentos */
-.depo-row{
-  display:grid;
-  gap:22px;
-}
-
-/* duas colunas a partir de 960px */
-@media (min-width:960px){
-  .depo-row{
-    grid-template-columns: 1.05fr .95fr; /* leve assimetria p/ equilibrar */
-    align-items: stretch; /* deixa a mesma altura visual */
-  }
-}
-
-/* garante que os dois cartões preencham a altura */
-.depo-row > .card{
-  height:100%;
-  display:flex;
-  flex-direction:column;
-}
-
-/* se o seu carrossel for um bloco interno, ele expande junto */
-.depo-card .testimonial-carousel{
-  flex:1;
-  min-height: 0; /* previne overflow em alguns navegadores */
-}
-
-/* segurança para imagens/avatares dentro do card de depoimentos */
-.depo-card img{
-  max-width:100%;
-  height:auto;
-  display:block;
-}
-
-/* evita que algum estilo antigo force largura errada */
-.prof-card,
-.depo-card{ width:100%; }
-
-/* remove margens inferiores exageradas (se houver) */
-#depoimentos .card:last-child{ margin-bottom:0; }
-
-/* --- Carrossel de Depoimentos: layout e avatar --- */
-.testimonial-carousel{ overflow:hidden; }
-
-.testimonial-track{
-  display:flex;
-  will-change: transform;
-  transition: transform .6s ease; /* suavidade */
-}
-
-.testimonial-item{
-  flex: 0 0 100%;           /* 1 slide por tela */
-  display:flex;
-  flex-direction: column;   /* avatar em cima, textos embaixo */
-  align-items:center;
-  text-align:center;
-  gap:10px;
-  padding:16px;
-}
-
-/* Avatar redondo com borda (300x) */
-.testimonial-item .avatar{
-  width:300px; height:300px;
-  border-radius:50%;
-  object-fit:cover; object-position:center;
-  border:4px solid var(--brand, #3a80b4);
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  display:block;
-}
-
-/* Títulos/textos menores para caber sob um avatar grande */
-.testimonial-title{ margin:6px 0 4px; font-size:clamp(16px,2.6vw,20px); line-height:1.3; }
-.testimonial-text{  margin:0; font-size:clamp(14px,2.4vw,16px); color:var(--muted,#5a5a5a); }
-.testimonial-source{ margin:2px 0 0; font-size:12px; color:var(--muted,#6b7280); }
-.testimonial-author{ margin:0; font-weight:600; }
-
-/* Dots menores e redondinhos */
-.testimonial-dots{
-  display:flex; justify-content:center; gap:8px; margin-top:12px;
-}
-.testimonial-dots button{
-  width:8px; height:8px; border-radius:999px;
-  background:#bcd6e7; border:none; padding:0; cursor:pointer;
-  transition:transform .2s ease, background-color .2s ease;
-}
-.testimonial-dots button:hover{ transform:scale(1.2); }
-.testimonial-dots button.active{ background:#3a80b4; }
-
-/* Responsivo: se quiser avatar menor no mobile */
-@media (max-width:520px){
-  .testimonial-item .avatar{ width:200px; height:200px; }
-}
-
-/* --- Carrossel de Depoimentos: layout e avatar --- */
-.testimonial-carousel{ overflow:hidden; }
-
-.testimonial-track{
-  display:flex;
-  will-change: transform;
-  transition: transform .6s ease; /* suavidade */
-}
-
-.testimonial-item{
-  flex: 0 0 100%;           /* 1 slide por tela */
-  display:flex;
-  flex-direction: column;   /* avatar em cima, textos embaixo */
-  align-items:center;
-  text-align:center;
-  gap:10px;
-  padding:16px;
-}
-
-/* Avatar redondo com borda (300x) */
-.testimonial-item .avatar{
-  width:300px; height:300px;
-  border-radius:50%;
-  object-fit:cover; object-position:center;
-  border:4px solid var(--brand, #3a80b4);
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  display:block;
-}
-
-/* Títulos/textos menores para caber sob um avatar grande */
-.testimonial-title{ margin:6px 0 4px; font-size:clamp(16px,2.6vw,20px); line-height:1.3; }
-.testimonial-text{  margin:0; font-size:clamp(14px,2.4vw,16px); color:var(--muted,#5a5a5a); }
-.testimonial-source{ margin:2px 0 0; font-size:12px; color:var(--muted,#6b7280); }
-.testimonial-author{ margin:0; font-weight:600; }
-
-/* Dots menores e redondinhos */
-.testimonial-dots{
-  display:flex; justify-content:center; gap:8px; margin-top:12px;
-}
-.testimonial-dots button{
-  width:8px; height:8px; border-radius:999px;
-  background:#bcd6e7; border:none; padding:0; cursor:pointer;
-  transition:transform .2s ease, background-color .2s ease;
-}
-.testimonial-dots button:hover{ transform:scale(1.2); }
-.testimonial-dots button.active{ background:#3a80b4; }
-
-/* Responsivo: se quiser avatar menor no mobile */
-@media (max-width:520px){
-  .testimonial-item .avatar{ width:200px; height:200px; }
-}
-
-/* Layout 2 colunas para a seção comunidade */
-.two-col{
+/* ====== Depoimentos: layout 2 colunas e card ====== */
+#depoimentos .wrap{
   display:grid; gap:22px;
 }
-@media (min-width: 960px){
-  .two-col{ grid-template-columns: 1fr 1fr; align-items: start; }
+#depoimentos .wrap > h3{
+  grid-column:1 / -1; margin:0 0 6px;
 }
-.two-col .col .card{ height: 100%; }
-
-/* Título acima dos cards (mesmo look nos dois lados) */
-.home-subtitle{
-  margin: 0 0 10px 0;
-  font-size: clamp(18px,2.6vw,22px);
-  color: var(--brand-ink,#2d5e7e);
+@media (min-width: 980px){
+  #depoimentos .wrap{ grid-template-columns: 1fr 1fr; align-items:start; }
 }
 
-/* Professor card – sem nested card */
-.professor-card{ padding:18px; }
-.professor-card__head{
-  display:flex; align-items:center; gap:12px;
+/* Carrossel (card) */
+.testimonial-carousel{
+  background:#fff; border:1px solid var(--line); border-radius:18px;
+  box-shadow:0 10px 30px rgba(8,34,66,.06);
+  padding:12px; overflow:hidden;
 }
-.professor-avatar{
-  width:72px; height:72px; border-radius:50%;
-  object-fit:cover; border:3px solid var(--brand,#3a80b4);
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-.professor-meta .name{ font-weight:700; }
-.professor-meta .handle{ font-size:13px; }
-
-/* Divider simples */
-.mini-divider{
-  height:1px; background:var(--line,#d9d9d9);
-  margin:12px 0;
-}
-
-/* ===== Carrossel de Depoimentos ===== */
-.testimonial-card{ padding:0; } /* o carrossel já tem espaçamento interno próprio */
-
-.testimonial-carousel{ overflow:hidden; padding:16px; }
 .testimonial-track{
-  display:flex; will-change: transform;
-  transition: transform .6s ease;
+  display:flex; transition:transform .6s ease; will-change:transform;
 }
 .testimonial-item{
-  flex: 0 0 100%;
-  display:flex; flex-direction:column; align-items:center; text-align:center;
-  gap:10px; padding:8px;
+  flex:0 0 100%; padding:14px; text-align:center;
+  display:flex; flex-direction:column; align-items:center;
 }
 
-/* Avatar dos depoimentos */
+/* Avatar 300x, circular com borda */
 .testimonial-item .avatar{
-  width:300px; height:300px; border-radius:50%;
-  border:4px solid var(--brand,#3a80b4);
-  object-fit:cover; object-position:center;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  display:block;
-}
-@media (max-width:520px){
-  .testimonial-item .avatar{ width:220px; height:220px; }
+  width:300px; height:300px; max-width:100%;
+  object-fit:cover; border-radius:999px;
+  border:6px solid var(--brand, #3a80b4);
+  box-shadow:0 8px 24px rgba(8,34,66,.10);
+  display:block; margin:0 auto 12px;
 }
 
-.testimonial-title{ margin:6px 0 4px; font-size:clamp(16px,2.6vw,20px); line-height:1.3; }
-.testimonial-text{  margin:0; font-size:clamp(14px,2.4vw,16px); color:var(--muted,#5a5a5a); }
-.testimonial-source{ margin:2px 0 0; font-size:12px; color:var(--muted,#6b7280); }
-.testimonial-author{ margin:0; font-weight:600; }
+/* Cartão interno do texto do depoimento (mantém seu conteúdo) */
+.testimonial-card h4{ margin:0 0 6px; font-size:18px; line-height:1.3; }
+.testimonial-card p{ margin:0 0 6px; }
+.testimonial-card .testimonial-source{ font-size:12px; color:var(--brand-ink); opacity:.85; }
+.testimonial-card .testimonial-author{ font-weight:600; }
 
-/* Dots pequenos e redondinhos */
-.testimonial-dots{
-  display:flex; justify-content:center; gap:8px; margin:10px 0 4px;
-}
+/* Dots pequenos e redondinhos (opcional: se quiser mostrar) */
+.testimonial-dots{ display:flex; justify-content:center; gap:8px; padding:8px 0 0; }
 .testimonial-dots button{
-  width:8px; height:8px; border-radius:999px;
-  background:#bcd6e7; border:none; padding:0; cursor:pointer;
-  transition:transform .2s ease, background-color .2s ease;
+  width:10px; height:10px; border-radius:999px; border:none; padding:0;
+  background:#cfd8e3; cursor:pointer; transition:all .2s ease;
 }
-.testimonial-dots button:hover{ transform:scale(1.2); }
-.testimonial-dots button.active{ background:#3a80b4; }
+.testimonial-dots button.active{ width:18px; height:10px; background:var(--brand,#3a80b4); }
+.testimonial-dots button:focus-visible{ outline:2px solid var(--brand,#3a80b4); outline-offset:2px; }
+
+/* Card do professor — volta ao original, só garantindo visual consistente */
+.professor-card{
+  background:#fff; border:1px solid var(--line); border-radius:18px;
+  box-shadow:0 10px 30px rgba(8,34,66,.06);
+  padding:16px; max-height:520px; overflow:auto; /* rolagem como antes */
+}
+.professor-avatar{
+  width:120px; height:120px; object-fit:cover;
+  border-radius:999px; border:4px solid var(--brand,#3a80b4);
+}
+
+
+
 
