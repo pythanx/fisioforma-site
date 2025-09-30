@@ -4015,3 +4015,63 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .testimonial-dots button:focus-visible{
   outline:2px solid #134a61; outline-offset:2px;
 }
+
+/* Card */
+.testimonial-item {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  max-width: 500px;
+  text-align: center;
+}
+
+.testimonial-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--primary, #3a80b4);
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+/* Dots */
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.testimonial-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.testimonial-dots button.active {
+  background: var(--primary, #3a80b4);
+}
