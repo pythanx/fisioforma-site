@@ -113,8 +113,9 @@
 
 
 
+
 (function(){
-  const root   = document.getElementById('depo-carousel');
+  const root = document.getElementById('depo-carousel');
   if(!root) return;
 
   const track  = root.querySelector('.testimonial-track');
@@ -128,42 +129,22 @@
   function goTo(i){
     if(!slides.length) return;
     idx = (i + slides.length) % slides.length;
-    const offset = -idx * 100; // 100% por slide
-    track.style.transform = `translateX(${offset}%)`;
-
-    // dots
+    track.style.transform = `translateX(${-idx * 100}%)`;
     dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
   }
+  function play(){ stop(); timer = setInterval(()=> goTo(idx+1), INTERVAL_MS); }
+  function stop(){ if(timer) clearInterval(timer), timer=null; }
 
-  function play(){
-    stop();
-    timer = setInterval(()=> goTo(idx+1), INTERVAL_MS);
-  }
-  function stop(){
-    if(timer) clearInterval(timer), timer=null;
-  }
-
-  // Dots clique
   dots.forEach((d,k)=> d.addEventListener('click', ()=> goTo(k)));
 
-  // Pausar ao passar mouse/tocar
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', play);
   root.addEventListener('touchstart', stop, {passive:true});
   root.addEventListener('touchend',   play, {passive:true});
 
-  // Evitar “pular” ao trocar de aba
-  document.addEventListener('visibilitychange', ()=>{
-    if(document.hidden) stop(); else play();
-  });
+  document.addEventListener('visibilitychange', ()=> document.hidden ? stop() : play());
 
-  // Garantir que o primeiro render já ajuste
   goTo(0);
   play();
 })();
-
-
-
-
-
 
