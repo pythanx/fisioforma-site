@@ -114,52 +114,57 @@
 
 
 
-/* ===== Carrossel de Depoimentos (estável) ===== */
-(function(){
+(function () {
   const root = document.getElementById('depo-carousel');
-  if (!root || root.__depoInit) return;  // evita duplicar
-  root.__depoInit = true;
+  if (!root) return;
 
   const track = root.querySelector('.testimonial-track');
   const slides = Array.from(track.children);
 
   // Dots
-  let dotsWrap = root.querySelector('.testimonial-dots');
-  if (!dotsWrap){ dotsWrap = document.createElement('div'); dotsWrap.className='testimonial-dots'; root.appendChild(dotsWrap); }
+  let dotsWrap = root.querySelector('.testimonial-dots') || document.createElement('div');
+  dotsWrap.className = 'testimonial-dots';
+  if (!dotsWrap.parentNode) root.appendChild(dotsWrap);
   dotsWrap.innerHTML = '';
-  const dots = slides.map((_,i)=>{ const b=document.createElement('button'); b.setAttribute('aria-label',`Ir para o slide ${i+1}`); dotsWrap.appendChild(b); return b; });
+  const dots = slides.map((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
+    dotsWrap.appendChild(b);
+    return b;
+  });
 
-  let index = 0, tmr = null;
+  let index = 0, timer = null;
   const INTERVAL = 7200;
 
   function goTo(i){
     index = (i + slides.length) % slides.length;
-    track.style.transform = `translate3d(-${index*100}%,0,0)`;
-    dots.forEach((d,k)=>d.classList.toggle('active',k===index));
+    track.style.transform = `translate3d(-${index * 100}%,0,0)`;
+    dots.forEach((d,k)=>d.classList.toggle('active', k===index));
   }
-  function play(){ stop(); tmr = setInterval(()=>goTo(index+1), INTERVAL); }
-  function stop(){ if (tmr){ clearInterval(tmr); tmr=null; } }
+  function play(){ stop(); timer = setInterval(()=>goTo(index+1), INTERVAL); }
+  function stop(){ if (timer) { clearInterval(timer); timer=null; } }
 
-  dots.forEach((btn,i)=>btn.addEventListener('click',()=>{ goTo(i); play(); },{passive:true}));
+  dots.forEach((btn,i)=>btn.addEventListener('click', ()=>{ goTo(i); play(); }, { passive:true }));
 
   // Hover pausa
-  root.addEventListener('mouseenter', stop, {passive:true});
-  root.addEventListener('mouseleave', play, {passive:true});
+  root.addEventListener('mouseenter', stop, { passive:true });
+  root.addEventListener('mouseleave', play, { passive:true });
 
   // Swipe
-  let startX=0, pid=null, down=false;
-  root.addEventListener('pointerdown', e=>{ down=true; startX=e.clientX; pid=e.pointerId; root.setPointerCapture(pid); stop(); });
-  root.addEventListener('pointerup', e=>{ if(!down)return; down=false; const dx=e.clientX-startX; if(Math.abs(dx)>40) goTo(index + (dx<0?1:-1)); play(); });
-  root.addEventListener('pointercancel', ()=>{ down=false; play(); });
+  let startX=0, dragging=false, pid=null;
+  root.addEventListener('pointerdown',(e)=>{ dragging=true; startX=e.clientX; pid=e.pointerId; root.setPointerCapture(pid); stop(); });
+  root.addEventListener('pointerup',(e)=>{ if(!dragging) return; dragging=false; const dx=e.clientX-startX; if(Math.abs(dx)>40){ goTo(index+(dx<0?1:-1)); } play(); });
+  root.addEventListener('pointercancel',()=>{ dragging=false; play(); });
 
-  // Segurança nas imagens
-  slides.forEach(s=>{
-    const img=s.querySelector('img'); if(!img) return;
+  // Proteção de imagens
+  slides.forEach(slide=>{
+    const img = slide.querySelector('img'); if (!img) return;
     img.loading='lazy'; img.decoding='async';
-    img.addEventListener('error', ()=>{ img.style.visibility='hidden'; }, {once:true});
+    img.addEventListener('error', ()=>{ img.style.visibility='hidden'; }, { once:true });
   });
 
   goTo(0); play();
 })();
+
 
 
