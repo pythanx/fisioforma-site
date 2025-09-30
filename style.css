@@ -4607,7 +4607,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 .ff2-slide-card p { margin: 4px 0; }
 .ff2-source { color: #5f6b7a; font-size: .9rem; }
 .ff2-author { font-weight: 600; }
-
+/*
 .ff2-dots {
   display: flex;
   justify-content: center;
@@ -4626,7 +4626,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 }
 
 .ff2-dots a:hover { border-color: #c7d6ea; color: #3a80b4; }
-
+*/
 /* --------- CARD 2 (scroll interno) --------- */
 .ff2-card--scroll {
   /* mesma altura do carrossel (sem título) = carrossel alto - título (~48px) */
