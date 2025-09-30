@@ -4538,3 +4538,145 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
 
 /* CTA central embaixo das duas colunas */
 .cta-row{ grid-column:1 / -1; text-align:center; margin-top:14px; }
+
+
+/* ====== BLOCO NOVO (v2) – evita conflito com estilos antigos ====== */
+.ff2-section { padding: 64px 0; background: #fff; }
+.ff2-wrap { width: min(1100px, 92vw); margin: 0 auto; }
+
+.ff2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.ff2-card {
+  background: #f7f9fb;
+  border: 1px solid #e3e8ef;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* para overflow funcionar bem */
+}
+
+.ff2-title {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+/* --------- CARROSSEL --------- */
+.ff2-carousel {
+  /* define a altura-base do conjunto; o card 2 usa essa medida para scroll */
+  --ff2-h: 560px;
+  height: var(--ff2-h);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ff2-viewport {
+  position: relative;
+  flex: 1;
+}
+
+.ff2-slide {
+  position: absolute;
+  inset: 0;
+  padding: 12px;
+  display: none;
+  overflow: hidden;
+}
+
+.ff2-slide:first-of-type { display: block; }
+.ff2-slide:target { display: block; }
+
+.ff2-avatar {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.06);
+  display: block;
+  margin: 0 auto 12px auto;
+}
+
+.ff2-slide-card h4 { margin: 0 0 6px 0; font-size: 1.1rem; }
+.ff2-slide-card p { margin: 4px 0; }
+.ff2-source { color: #5f6b7a; font-size: .9rem; }
+.ff2-author { font-weight: 600; }
+
+.ff2-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.ff2-dots a {
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  color: #8aa6c9;
+}
+
+.ff2-dots a:hover { border-color: #c7d6ea; color: #3a80b4; }
+
+/* --------- CARD 2 (scroll interno) --------- */
+.ff2-card--scroll {
+  /* mesma altura do carrossel (sem título) = carrossel alto - título (~48px) */
+  max-height: calc(560px + 48px);
+}
+
+.ff2-prof-head { text-align: center; margin: 6px 0 10px 0; }
+.ff2-prof-avatar {
+  width: 120px; height: 120px; object-fit: cover; border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}
+
+.ff2-scroll-content {
+  overflow: auto;
+  padding-right: 6px;
+  /* altura: pega a altura do carrossel para manter os cartões alinhados */
+  max-height: 560px;
+}
+
+.ff2-mini { text-align: center; margin: 10px 0 8px; font-size: 1.05rem; }
+.ff2-tip { margin: 8px 0; }
+.ff2-tip-kind { color: #3a80b4; }
+.ff2-answer { margin: 6px 0 12px 0; }
+
+.ff2-sep, .ff2-section-div {
+  border: none;
+  border-top: 1px dashed #d7e1ee;
+  margin: 10px 0;
+}
+
+/* --------- CTA --------- */
+.ff2-cta-row { grid-column: 1 / -1; text-align: center; margin-top: 4px; }
+.ff2-btn {
+  display: inline-block;
+  background: #3a80b4;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #2f6b96;
+}
+.ff2-btn:hover { background: #2f6b96; }
+
+/* --------- RESPONSIVO --------- */
+@media (max-width: 860px) {
+  .ff2-grid { grid-template-columns: 1fr; }
+  .ff2-card--scroll, .ff2-scroll-content { max-height: none; }
+  .ff2-carousel { --ff2-h: 520px; height: var(--ff2-h); }
+}
+
+/* Melhora da experiência ao usar :target (evita "pulo" agressivo) */
+:target { scroll-margin-top: 80px; }
