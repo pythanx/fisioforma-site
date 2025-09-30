@@ -114,132 +114,52 @@
 
 
 
-/* ===== Carrossel de Depoimentos ===== */
-(function () {
+/* ===== Carrossel de Depoimentos (estável) ===== */
+(function(){
   const root = document.getElementById('depo-carousel');
-  if (!root) return;
-
-  const track = root.querySelector('.testimonial-track');
-  const items = Array.from(track.children);
-
-  // Cria dots (se quiser mostrar — adicione um <div class="testimonial-dots"></div> abaixo do track no HTML)
-  let dotsWrap = root.querySelector('.testimonial-dots');
-  if (!dotsWrap) {
-    dotsWrap = document.createElement('div');
-    dotsWrap.className = 'testimonial-dots';
-    root.appendChild(dotsWrap);
-  }
-  dotsWrap.innerHTML = '';
-  const dots = items.map((_, i) => {
-    const b = document.createElement('button');
-    b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
-    dotsWrap.appendChild(b);
-    return b;
-  });
-
-  let index = 0;
-  let timer = null;
-  const INTERVAL = 6500;
-
-  function goTo(i){
-    index = (i + items.length) % items.length;
-    track.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach((d, k)=> d.classList.toggle('active', k===index));
-  }
-  function play(){ stop(); timer = setInterval(()=> goTo(index+1), INTERVAL); }
-  function stop(){ if (timer){ clearInterval(timer); timer=null; } }
-
-  // Navegação por dots
-  dots.forEach((btn, i)=> btn.addEventListener('click', ()=>{ goTo(i); play(); }, {passive:true}));
-
-  // Pausar no hover
-  root.addEventListener('mouseenter', stop, {passive:true});
-  root.addEventListener('mouseleave', play, {passive:true});
-
-  // Swipe (touch/desktop)
-  let startX = 0, dragging = false, pid = null;
-  root.addEventListener('pointerdown', (e)=>{
-    dragging = true; startX = e.clientX; pid = e.pointerId; root.setPointerCapture(pid); stop();
-  });
-  root.addEventListener('pointerup', (e)=>{
-    if(!dragging) return; dragging = false;
-    const dx = e.clientX - startX;
-    if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
-    play();
-  });
-  root.addEventListener('pointercancel', ()=>{ dragging=false; play(); });
-
-  // start
-  goTo(0); play();
-})();
-
-/* ===== Carrossel de Depoimentos — estável ===== */
-(function () {
-  const root = document.getElementById('depo-carousel');
-  if (!root) return;
+  if (!root || root.__depoInit) return;  // evita duplicar
+  root.__depoInit = true;
 
   const track = root.querySelector('.testimonial-track');
   const slides = Array.from(track.children);
 
-  // Cria/garante dots
+  // Dots
   let dotsWrap = root.querySelector('.testimonial-dots');
-  if (!dotsWrap) {
-    dotsWrap = document.createElement('div');
-    dotsWrap.className = 'testimonial-dots';
-    root.appendChild(dotsWrap);
-  }
+  if (!dotsWrap){ dotsWrap = document.createElement('div'); dotsWrap.className='testimonial-dots'; root.appendChild(dotsWrap); }
   dotsWrap.innerHTML = '';
-  const dots = slides.map((_, i) => {
-    const b = document.createElement('button');
-    b.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
-    dotsWrap.appendChild(b);
-    return b;
-  });
+  const dots = slides.map((_,i)=>{ const b=document.createElement('button'); b.setAttribute('aria-label',`Ir para o slide ${i+1}`); dotsWrap.appendChild(b); return b; });
 
-  // Estado
-  let index = 0;
-  let timer = null;
-  const INTERVAL = 7200; // 7.2s mais confortável
+  let index = 0, tmr = null;
+  const INTERVAL = 7200;
 
-  function goTo(i) {
+  function goTo(i){
     index = (i + slides.length) % slides.length;
-    track.style.transform = `translate3d(-${index * 100}%,0,0)`;
-    dots.forEach((d, k) => d.classList.toggle('active', k === index));
+    track.style.transform = `translate3d(-${index*100}%,0,0)`;
+    dots.forEach((d,k)=>d.classList.toggle('active',k===index));
   }
-  function play() { stop(); timer = setInterval(() => goTo(index + 1), INTERVAL); }
-  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function play(){ stop(); tmr = setInterval(()=>goTo(index+1), INTERVAL); }
+  function stop(){ if (tmr){ clearInterval(tmr); tmr=null; } }
 
-  // Dots navegam e reiniciam autoplay
-  dots.forEach((btn, i) => btn.addEventListener('click', () => { goTo(i); play(); }, { passive: true }));
+  dots.forEach((btn,i)=>btn.addEventListener('click',()=>{ goTo(i); play(); },{passive:true}));
 
-  // Pausa no hover
-  root.addEventListener('mouseenter', stop, { passive: true });
-  root.addEventListener('mouseleave', play, { passive: true });
+  // Hover pausa
+  root.addEventListener('mouseenter', stop, {passive:true});
+  root.addEventListener('mouseleave', play, {passive:true});
 
-  // Swipe/drag universal (desktop + mobile)
-  let startX = 0, dragging = false, pid = null;
-  root.addEventListener('pointerdown', (e) => {
-    dragging = true; startX = e.clientX; pid = e.pointerId; root.setPointerCapture(pid); stop();
-  });
-  root.addEventListener('pointerup', (e) => {
-    if (!dragging) return; dragging = false;
-    const dx = e.clientX - startX;
-    if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
-    play();
-  });
-  root.addEventListener('pointercancel', () => { dragging = false; play(); });
+  // Swipe
+  let startX=0, pid=null, down=false;
+  root.addEventListener('pointerdown', e=>{ down=true; startX=e.clientX; pid=e.pointerId; root.setPointerCapture(pid); stop(); });
+  root.addEventListener('pointerup', e=>{ if(!down)return; down=false; const dx=e.clientX-startX; if(Math.abs(dx)>40) goTo(index + (dx<0?1:-1)); play(); });
+  root.addEventListener('pointercancel', ()=>{ down=false; play(); });
 
-  // Segurança: se alguma imagem demorar, não quebra layout
-  slides.forEach(slide => {
-    const img = slide.querySelector('img');
-    if (img) {
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.addEventListener('error', () => { img.style.visibility = 'hidden'; }, { once: true });
-    }
+  // Segurança nas imagens
+  slides.forEach(s=>{
+    const img=s.querySelector('img'); if(!img) return;
+    img.loading='lazy'; img.decoding='async';
+    img.addEventListener('error', ()=>{ img.style.visibility='hidden'; }, {once:true});
   });
 
-  // Start
   goTo(0); play();
 })();
+
 
