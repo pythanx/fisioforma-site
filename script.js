@@ -112,193 +112,6 @@
 
 
 
-(function () {
-  const root = document.getElementById('depo-carousel');
-  if (!root) return;
-
-  const track  = root.querySelector('.testimonial-track');
-  const slides = Array.from(root.querySelectorAll('.testimonial-item'));
-  const dots   = Array.from(root.querySelectorAll('.testimonial-dots button'));
-
-  let idx = 0;
-  let width = 0;
-  let timer = null;
-  const AUTOPLAY_MS = 6000;
-
-  function measure() {
-    // mede a largura visível do carrossel
-    width = root.getBoundingClientRect().width || root.clientWidth || 0;
-    if (!width) return;
-    slides.forEach(s => { s.style.width = width + 'px'; });
-    go(idx, false);
-  }
-
-  function go(n, animate = true) {
-    idx = (n + slides.length) % slides.length;
-    if (!width) measure();
-    if (!animate) track.style.transition = 'none';
-
-    const x = -idx * width;
-    track.style.transform = `translate3d(${x}px,0,0)`;
-
-    if (!animate) {
-      // força reflow e reativa transição para próximos movimentos
-      // eslint-disable-next-line no-unused-expressions
-      track.offsetHeight;
-      track.style.transition = '';
-    }
-    dots.forEach((d,i)=>d.classList.toggle('active', i===idx));
-  }
-
-  // dots
-  dots.forEach((d,i)=> d.addEventListener('click', ()=> go(i)));
-
-  // autoplay
-  function start(){ stop(); timer = setInterval(()=>go(idx+1), AUTOPLAY_MS); }
-  function stop(){ if (timer) clearInterval(timer); timer = null; }
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', start);
-
-  // drag / swipe
-  let downX = 0, dragging = false;
-  function onDown(e){
-    dragging = true;
-    track.style.transition = 'none';
-    downX = (e.touches ? e.touches[0].clientX : e.clientX);
-  }
-  function onMove(e){
-    if(!dragging) return;
-    const x = (e.touches ? e.touches[0].clientX : e.clientX);
-    const dx = x - downX;
-    track.style.transform = `translate3d(${(-idx*width)+dx}px,0,0)`;
-  }
-  function onUp(e){
-    if(!dragging) return;
-    dragging = false;
-    track.style.transition = '';
-    const x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX);
-    const dx = x - downX;
-    const threshold = Math.max(40, width*0.15);
-    if (dx > threshold) go(idx-1);
-    else if (dx < -threshold) go(idx+1);
-    else go(idx);
-  }
-  track.addEventListener('mousedown', onDown);
-  window.addEventListener('mousemove', onMove);
-  window.addEventListener('mouseup', onUp);
-  track.addEventListener('touchstart', onDown, {passive:true});
-  track.addEventListener('touchmove', onMove, {passive:true});
-  track.addEventListener('touchend', onUp);
-
-  // medir quando realmente pintou
-  window.addEventListener('load', measure);
-  // re-medir ao redimensionar
-  window.addEventListener('resize', measure);
-
-  // observer — se o container mudar de tamanho (fontes, banners, etc.)
-  if ('ResizeObserver' in window){
-    new ResizeObserver(measure).observe(root);
-  }
-
-  // init
-  measure();
-  start();
-})();
-
-
-(function initDepoCarousel() {
-  const root = document.querySelector('#depo-carousel');
-  if (!root) return;
-
-  const track = root.querySelector('.testimonial-track');
-  const slides = Array.from(track.querySelectorAll('.testimonial-item'));
-  const dots   = Array.from(root.querySelectorAll('.testimonial-dots button'));
-
-  // estilos mínimos para suavidade (caso não estejam no CSS)
-  track.style.willChange = 'transform';
-  track.style.transition  = 'transform .55s ease';
-
-  let index = 0;
-  let slideW = 0;
-  let timer  = null;
-  const INTERVAL = 5500;
-
-  // dimensiona cada slide para 100% da largura do carrossel
-  function measure() {
-    // usa o conteúdo visível do root
-    slideW = Math.round(root.getBoundingClientRect().width);
-    slides.forEach(s => { s.style.minWidth = slideW + 'px'; });
-    // reposiciona no slide atual
-    goTo(index, true);
-  }
-
-  function updateDots() {
-    dots.forEach((d,i) => {
-      const active = (i === index);
-      d.classList.toggle('active', active);
-      d.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-  }
-
-  function goTo(i, noAnim) {
-    // wrap-around
-    index = (i + slides.length) % slides.length;
-    if (noAnim) {
-      const old = track.style.transition;
-      track.style.transition = 'none';
-      requestAnimationFrame(() => {
-        track.style.transform = `translateX(${-index * slideW}px)`;
-        // força reflow e restaura
-        track.getBoundingClientRect();
-        track.style.transition = old || 'transform .55s ease';
-      });
-    } else {
-      track.style.transform = `translateX(${-index * slideW}px)`;
-    }
-    updateDots();
-  }
-
-  function start() {
-    stop();
-    timer = setInterval(() => goTo(index + 1), INTERVAL);
-  }
-  function stop() {
-    if (timer) clearInterval(timer), (timer = null);
-  }
-
-  // Dots
-  dots.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      goTo(i);
-      start(); // reinicia autoplay após clique
-    });
-  });
-
-  // Teclado (setas) quando o carrossel está focado
-  root.setAttribute('tabindex', '0');
-  root.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); start(); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); start(); }
-  });
-
-  // Pausar ao passar mouse/tocar
-  root.addEventListener('pointerenter', stop);
-  root.addEventListener('pointerleave', start);
-
-  // Pausar quando aba não está visível
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stop(); else start();
-  });
-
-  // Redimensionamento responsivo
-  const ro = 'ResizeObserver' in window ? new ResizeObserver(measure) : null;
-  ro ? ro.observe(root) : window.addEventListener('resize', measure);
-
-  // Inicializa
-  measure();
-  start();
-})();
-
 // ===== Carrossel de Depoimentos (único) =====
 (() => {
   const root = document.querySelector('#depo-carousel');
@@ -312,56 +125,99 @@
   const INTERVAL = 5500;
 
   function measure() {
-    w = Math.round(root.clientWidth || root.getBoundingClientRect().width);
-    slides.forEach(s => s.style.minWidth = w + 'px');
-    go(i, false);
+    // largura visível do container
+    const rect = root.getBoundingClientRect();
+    w = Math.max(1, Math.round(rect.width));
+    slides.forEach(s => { s.style.minWidth = w + 'px'; s.style.width = w + 'px'; });
+    go(i, /*noAnim*/ true);
   }
 
   function paintDots() {
-    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+    dots.forEach((d,idx) => {
+      const active = idx === i;
+      d.classList.toggle('active', active);
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
   }
 
-  function go(n, animate = true) {
+  function go(n, noAnim = false) {
     i = (n + slides.length) % slides.length;
-    if (!animate) {
-      const old = track.style.transition;
+    if (noAnim) {
+      const t = track.style.transition;
       track.style.transition = 'none';
-      track.style.transform = `translateX(${-i * w}px)`;
-      // força reflow e reativa transition
+      track.style.transform = `translate3d(${-i * w}px,0,0)`;
+      // força reflow e devolve a transição
       track.getBoundingClientRect();
-      track.style.transition = old || 'transform .45s ease';
+      track.style.transition = t || 'transform .55s ease';
     } else {
-      track.style.transform = `translateX(${-i * w}px)`;
+      track.style.transform = `translate3d(${-i * w}px,0,0)`;
     }
     paintDots();
   }
 
-  function start(){ stop(); timer = setInterval(() => go(i + 1), INTERVAL); }
-  function stop(){ if (timer) clearInterval(timer), (timer = null); }
-
   // Dots
-  dots.forEach((btn, idx) => btn.addEventListener('click', () => { go(idx); start(); }));
-
-  // Acessibilidade/controle
-  root.setAttribute('tabindex', '0');
-  root.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); start(); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(i - 1); start(); }
+  dots.forEach((btn, idx) => {
+    btn.addEventListener('click', () => { go(idx); restart(); });
   });
 
-  // Pausas
+  // Autoplay (pausa no hover/aba oculta)
+  function start() { stop(); timer = setInterval(() => go(i + 1), INTERVAL); }
+  function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+  function restart(){ stop(); start(); }
+
   root.addEventListener('pointerenter', stop);
   root.addEventListener('pointerleave', start);
   document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
 
-  // Responsivo
-  ('ResizeObserver' in window ? new ResizeObserver(measure) : window).addEventListener?.('resize', measure);
-  window.addEventListener('load', measure);
+  // Swipe / drag
+  let downX = 0, dragging = false;
+  function onDown(e){
+    dragging = true;
+    track.style.transition = 'none';
+    downX = (e.touches ? e.touches[0].clientX : e.clientX);
+  }
+  function onMove(e){
+    if (!dragging) return;
+    const x = (e.touches ? e.touches[0].clientX : e.clientX);
+    const dx = x - downX;
+    track.style.transform = `translate3d(${(-i * w) + dx}px,0,0)`;
+  }
+  function onUp(e){
+    if (!dragging) return;
+    dragging = false;
+    track.style.transition = 'transform .55s ease';
+    const x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX);
+    const dx = x - downX;
+    const threshold = Math.max(40, w * 0.15);
+    if (dx >  threshold) go(i - 1);
+    else if (dx < -threshold) go(i + 1);
+    else go(i);
+    restart();
+  }
+  track.addEventListener('mousedown', onDown);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+  track.addEventListener('touchstart', onDown, {passive:true});
+  track.addEventListener('touchmove', onMove,  {passive:true});
+  track.addEventListener('touchend',  onUp);
 
-  // boot
+  // Acessível via teclado
+  root.setAttribute('tabindex','0');
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); restart(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(i - 1); restart(); }
+  });
+
+  // Medidas confiáveis e responsivas
+  window.addEventListener('load', measure);
+  window.addEventListener('resize', measure);
+  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(root);
+
   measure();
   start();
 })();
+
+
 
 
 
