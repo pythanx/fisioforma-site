@@ -110,57 +110,51 @@
   setTimeout(() => { if (!booted) { booted = true; start(); } }, 1500);
 })();
 
-// ===== Carrossel de Depoimentos (único, sem "peek") =====
+// ===== Carrossel de Depoimentos (único) =====
 (function initDepoCarousel(){
   const root = document.getElementById('depo-carousel');
-  if(!root) return;
+  if (!root) return;
 
   const track  = root.querySelector('.testimonial-track');
   const slides = Array.from(root.querySelectorAll('.testimonial-item'));
-  const dots   = root.querySelector('.testimonial-dots');
+  const dotsEl = root.querySelector('.testimonial-dots');
 
-  let index = 0;
-  let timer = null;
+  let index = 0, timer = null;
   const INTERVAL = 5500;
 
-  // cria dots
-  dots.innerHTML = '';
+  // dots
+  dotsEl.innerHTML = '';
   slides.forEach((_, i) => {
     const b = document.createElement('button');
     b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
     b.addEventListener('click', () => goTo(i, true));
-    dots.appendChild(b);
+    dotsEl.appendChild(b);
   });
 
   function sizeSlides(){
-    const w = root.clientWidth; // largura exata do container visível
-    slides.forEach(s => { s.style.flexBasis = w + 'px'; s.style.width = w + 'px'; });
-    track.style.transform = `translateX(${-index * w}px)`;
+    const w = root.clientWidth;            // largura exata do viewport do carrossel
+    slides.forEach(s => { s.style.flexBasis = w+'px'; s.style.width = w+'px'; });
+    track.style.transform = `translateX(${-index*w}px)`;
   }
   function markDots(){
-    dots.querySelectorAll('button').forEach((d,i)=>
-      d.classList.toggle('active', i===index)
-    );
+    dotsEl.querySelectorAll('button').forEach((d,i)=>d.classList.toggle('active', i===index));
   }
   function goTo(i, stopAuto){
     index = (i + slides.length) % slides.length;
     const w = root.clientWidth;
-    track.style.transform = `translateX(${-index * w}px)`;
+    track.style.transform = `translateX(${-index*w}px)`;
     markDots();
-    if(stopAuto) restart();
+    if (stopAuto) restart();
   }
-
   function start(){ timer = setInterval(() => goTo(index+1,false), INTERVAL); }
-  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  function stop(){ if (timer){ clearInterval(timer); timer=null; } }
   function restart(){ stop(); start(); }
 
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', start);
-  document.addEventListener('visibilitychange', ()=> (document.hidden ? stop() : start()));
+  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
   window.addEventListener('resize', sizeSlides);
 
-  sizeSlides();
-  markDots();
-  start();
+  sizeSlides(); markDots(); start();
 })();
 
