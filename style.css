@@ -4922,3 +4922,131 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   border-color: #3a80b4;
   box-shadow: 0 0 6px rgba(58,128,180,.6);
 }
+/* ================= Nivelação dos cards pela base ================= */
+/* Usa 1fr na linha dos cards e força os itens a ocuparem 100% da altura da linha */
+.ff2-grid {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;  /* 1ª linha = cards (mesma altura), 2ª = CTA */
+  align-items: stretch;
+}
+
+.ff2-card { 
+  height: 100%;                 /* estica até o fim da linha */
+  display: flex; 
+  flex-direction: column; 
+}
+
+/* mantém o alinhamento entre os dois cards:
+   o carrossel define a altura útil; o card 2 rola dentro do mesmo range */
+.ff2-carousel { --ff2-h: 560px; height: var(--ff2-h); }
+.ff2-scroll-content { max-height: var(--ff2-h); }
+
+/* CTA ocupa a 2ª linha inteira */
+.ff2-cta-row { grid-column: 1 / -1; }
+
+/* ================= Tipografia & polimento visual ================= */
+/* Títulos dos cards */
+.ff2-title{
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: #0e2a3f;
+  letter-spacing: .2px;
+  margin-bottom: 14px;
+}
+
+/* Slide do carrossel */
+.ff2-slide{
+  padding: 16px 16px 22px;
+  line-height: 1.45;
+}
+
+.ff2-slide-card h4{
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: #133b57;
+  margin: 10px 0 6px;
+}
+
+.ff2-slide-card p{
+  margin: 4px 0;
+  color: #2c3e50;
+}
+
+/* Fonte e autor do depoimento */
+.ff2-source{
+  font-size: .86rem;
+  color: #6a7e93;
+  letter-spacing: .15px;
+}
+.ff2-author{
+  font-weight: 700;
+  color: #102a41;
+  margin-top: 2px;
+}
+
+/* Dicas/FAQ do professor */
+.ff2-mini{
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: .4px;
+  color: #143a57;
+  margin: 6px 0 12px;
+}
+
+.ff2-tip{
+  margin: 8px 0;
+  color: #2e4257;
+}
+.ff2-tip-kind{
+  color: #3a80b4;          /* azul FisioForma */
+  font-weight: 800;
+}
+
+.ff2-answer{
+  margin: 6px 0 12px;
+  color: #2b3f54;
+}
+
+/* separadores mais discretos */
+.ff2-sep, .ff2-section-div{
+  border: 0;
+  border-top: 1px dashed #d7e4f3;
+  margin: 10px 0;
+}
+
+/* Dots do carrossel: alinhamento e contraste */
+.ff2-dots{ gap: 8px; margin-top: 8px; }
+.ff2-dots a{
+  width: 10px; height: 10px; 
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  font-size: 0;                            /* esconde o "•" visual, mantém acessível */
+  background: #cfe0f1;
+  border: 1px solid transparent;
+  transition: all .2s ease;
+}
+.ff2-dots a:hover { background: #9fbbd8; }
+
+/* ativo (segue seu seletor :has de antes) */
+.ff2-viewport:has(#ff2-t1:target) ~ .ff2-dots a[href="#ff2-t1"],
+.ff2-viewport:has(#ff2-t2:target) ~ .ff2-dots a[href="#ff2-t2"],
+.ff2-viewport:has(#ff2-t3:target) ~ .ff2-dots a[href="#ff2-t3"],
+.ff2-viewport:has(#ff2-t4:target) ~ .ff2-dots a[href="#ff2-t4"],
+.ff2-viewport:has(#ff2-t5:target) ~ .ff2-dots a[href="#ff2-t5"],
+.ff2-viewport:has(#ff2-t6:target) ~ .ff2-dots a[href="#ff2-t6"],
+.ff2-viewport:has(#ff2-t7:target) ~ .ff2-dots a[href="#ff2-t7"],
+.ff2-viewport:has(#ff2-t8:target) ~ .ff2-dots a[href="#ff2-t8"],
+.ff2-viewport:has(#ff2-t9:target) ~ .ff2-dots a[href="#ff2-t9"],
+.ff2-viewport:not(:has(.ff2-slide:target)) ~ .ff2-dots a[href="#ff2-t1"]{
+  background: #3a80b4;
+  border-color: #3a80b4;
+  box-shadow: 0 0 0 4px rgba(58,128,180,.15);
+}
+
+/* ================= Responsivo ================= */
+@media (max-width: 860px){
+  .ff2-grid{ grid-template-rows: auto auto; }
+  .ff2-avatar, .ff2-prof-avatar{ width: 240px; height: 240px; }
+  .ff2-carousel{ --ff2-h: 520px; height: var(--ff2-h); }
+  .ff2-scroll-content{ max-height: var(--ff2-h); }
+}
