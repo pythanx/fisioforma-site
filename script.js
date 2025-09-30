@@ -190,3 +190,69 @@
     }));
   }
 })();
+
+/* ====== Carrossel de Depoimentos (independente da galeria) ====== */
+(function(){
+  const root = document.getElementById('depo-carousel');
+  if(!root) return;
+
+  const track = root.querySelector('.t-track');
+  const items = Array.from(track.children);
+  const dotsWrap = root.querySelector('#depo-dots');
+
+  let index = 0;
+  let timer = null;
+  const AUTOPLAY_MS = 5000; // mais suave
+
+  // monta dots
+  items.forEach((_, i)=>{
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Ir para o slide ${i+1}`);
+    if(i===0) b.classList.add('active');
+    b.addEventListener('click', ()=>go(i,true));
+    dotsWrap.appendChild(b);
+  });
+  const dots = dotsWrap.querySelectorAll('button');
+
+  function go(i, user){
+    index = (i + items.length) % items.length;
+    track.style.transform = `translateX(-${index*100}%)`;
+    dots.forEach(d=>d.classList.remove('active'));
+    dots[index].classList.add('active');
+    if(user) restart();
+  }
+
+  function next(){ go(index+1); }
+
+  function start(){
+    stop();
+    timer = setInterval(next, AUTOPLAY_MS);
+  }
+  function stop(){
+    if(timer){ clearInterval(timer); timer=null; }
+  }
+  function restart(){ stop(); start(); }
+
+  // pausa ao passar o mouse/tocar
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('touchstart', stop, {passive:true});
+  root.addEventListener('touchend', start);
+
+  // swipe simples (opcional)
+  let x0 = null;
+  root.addEventListener('touchstart', e=>{ x0 = e.touches[0].clientX; }, {passive:true});
+  root.addEventListener('touchmove', e=>{
+    if(x0==null) return;
+    const dx = e.touches[0].clientX - x0;
+    if(Math.abs(dx)>50){
+      dx>0 ? go(index-1,true) : go(index+1,true);
+      x0=null;
+    }
+  }, {passive:true});
+  root.addEventListener('touchend', ()=>{ x0=null; }, {passive:true});
+
+  // inicia
+  start();
+})();
+
