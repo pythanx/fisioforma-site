@@ -4369,7 +4369,7 @@ table.compare td.ok, table.compare td.no, table.compare td.opt {
   overflow:auto;     /* barra de rolagem interna */
 }
 .professor-avatar{
-  width:220px; height:220px; object-fit:contain;
+  width:300px; height:300px; object-fit:contain;
   border-radius:50%;
   border:6px solid var(--azul-300,#3a7b8b);
   background:#f6f9fb;
