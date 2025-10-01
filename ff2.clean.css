@@ -1,0 +1,63 @@
+/* FisioForma — ff2.clean.css (apêndice consolidado)
+   Sobrescreve e elimina conflitos dos blocos .ff2-* antigos.
+   Mantém funcionalidade, altura fixa 680px e fallback sem JS.
+*/
+:root{
+  --ff2-blue: #3a80b4;
+  --ff2-blue-dark: #2f6b96;
+  --ff2-shadow: 0 8px 30px rgba(10,32,50,.06);
+}
+
+/* ===== Layout/Nivelamento ===== */
+.ff2-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch; grid-template-rows:auto auto; }
+.ff2-card{ height:680px; display:flex; flex-direction:column; box-shadow:var(--ff2-shadow); border-radius:16px; background:#fff; }
+.ff2-title{ font-size:1.28rem; font-weight:800; color:#0e2a3f; letter-spacing:.2px; margin:18px 20px 10px; }
+
+/* Card 1 – carrossel */
+.ff2-carousel{ height:100%; display:flex; flex-direction:column; margin:0 20px 14px; }
+.ff2-viewport{ position:relative; overflow:hidden; flex:1; border-radius:12px; background:linear-gradient(#f7fbff,#fff); }
+.ff2-viewport .testimonial-track,
+.ff2-viewport .ff2-viewport-inner{ display:flex; height:100%; transition:transform .5s ease; }
+.ff2-slide, .testimonial-item{ flex:0 0 100%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center; padding:16px 16px 22px; line-height:1.45; }
+.ff2-slide-card h4, .testimonial-card h4{ font-size:1.12rem; font-weight:800; color:#133b57; margin:10px 0 6px; text-align:center; padding:0 20px; position:relative; }
+.ff2-slide-card p, .testimonial-card p{ margin:4px 0; color:#2c3e50; text-align:center; }
+.ff2-source{ font-size:.86rem; color:#6a7e93; letter-spacing:.15px; }
+.ff2-author{ font-weight:700; color:#102a41; margin-top:2px; }
+
+/* Avatares */
+.ff2-avatar, .professor-avatar, .ff2-prof-avatar{
+  width:300px; height:300px; object-fit:cover; display:block; margin:6px auto 10px;
+  border-radius:50%; border:6px solid var(--ff2-blue); box-shadow:0 0 0 6px rgba(58,128,180,.15);
+}
+
+/* Dots */
+.ff2-dots, .testimonial-dots{ display:flex; justify-content:center; gap:8px; margin:10px 0 2px; }
+.ff2-dots a, .testimonial-dots button{ width:10px; height:10px; border-radius:50%; background:#cfe0f1; border:1px solid transparent; font-size:0; }
+.ff2-dots a:hover, .testimonial-dots button:hover{ background:#9fbbd8; }
+.ff2-dots a.active, .testimonial-dots button.active{ background:var(--ff2-blue); border-color:var(--ff2-blue); box-shadow:0 0 0 4px rgba(58,128,180,.15); }
+
+/* Card 2 – conteúdo rolável */
+.ff2-card--scroll{ overflow:hidden; }
+.ff2-scroll-content{ flex:1; overflow:auto; padding:12px 18px 18px; }
+.ff2-mini{ text-transform:uppercase; font-weight:800; letter-spacing:.4px; color:#143a57; margin:6px 0 12px; }
+.ff2-tip{ margin:8px 0; color:#2e4257; }
+.ff2-tip-kind{ color:var(--ff2-blue); font-weight:800; }
+.ff2-answer{ margin:6px 0 12px; color:#2b3f54; }
+.ff2-sep, .ff2-section-div{ border:0; border-top:1px dashed #d7e4f3; margin:10px 0; }
+
+/* CTA */
+.ff2-cta-row{ grid-column:1 / -1; text-align:center; margin-top:4px; }
+.ff2-btn{ display:inline-block; background:var(--ff2-blue); color:#fff; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:600; border:1px solid var(--ff2-blue-dark); }
+.ff2-btn:hover{ background:var(--ff2-blue-dark); }
+
+/* Fallback sem JS (mantém apenas quando não há .js no <html>) */
+html:not(.js) .ff2-slide{ display:none; opacity:1; }
+html:not(.js) .ff2-slide:first-of-type{ display:block; }
+html:not(.js) .ff2-slide:target{ display:block; }
+
+/* Responsivo */
+@media (max-width: 860px){
+  .ff2-card{ height:auto; }
+  .ff2-scroll-content{ max-height:none; }
+  .ff2-avatar, .professor-avatar, .ff2-prof-avatar{ width:240px; height:240px; }
+}
