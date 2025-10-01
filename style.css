@@ -5482,3 +5482,42 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
   }
 }
 
+/* Legenda do Professor Fisão (hero) */
+.hero-prof-caption{
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  position: relative;   /* garante que fique acima de overlays do hero */
+  z-index: 2;
+}
+
+.hero-prof-caption::before{
+  content:"";
+  display:block;
+  width:72px; height:2px;
+  margin: 0 auto 10px;
+  background:#3a80b4;      /* azul FisioForma */
+  border-radius:999px;
+  opacity:.35;
+}
+
+.hero-prof-caption figcaption{
+  display:block;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.25;
+  color: #133b57;
+  max-width: 85ch;         /* evita linha muito larga */
+  margin-inline: auto;
+}
+
+/* Se o contêiner do hero for flex em linha, garante empilhamento vertical */
+.hero-anim-video + .hero-prof-caption{
+  align-self: center;
+}
+
+/* Se o contêiner do hero tiver overflow escondendo a legenda, libere só no eixo vertical */
+.hero-anim-wrap,
+.hero,
+header .hero { overflow: visible; }
+
