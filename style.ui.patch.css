@@ -1,105 +1,99 @@
-/* ===== UI Patch (não altera textos/HTML) ===== */
-:root{
-  --brand-600:#3a80b4;
-  --brand-700:#2f6b96;
-  --ink-900:#0e2a3f;
-  --ink-700:#2c3e50;
-  --line:#e6eef6;
-  --surface:#ffffff;
-  --radius:16px;
-  --shadow-lg:0 10px 30px rgba(10,32,50,.08);
-}
+/* ===== UI Patch v2 (neutro) =====
+   - Não altera CORES do menu nem do CTA
+   - Pode ser usado em TODAS as páginas
+   - Apenas melhora UX/A11y e acabamento visual
+*/
 
-/* Header/Navegação sticky com blur */
-header.site-header, .main-nav{
-  position: sticky; top: 0; z-index: 60;
+/* Header/nav: sticky + blur (sem mexer em cores) */
+header.site-header, .main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
-  background: rgba(255,255,255,.86);
-  border-bottom: 1px solid var(--line);
 }
 
-/* Links do menu em pílula + estado ativo */
-.main-nav a{
-  display:inline-block;
-  padding:10px 12px;
-  border-radius:9999px;
-  text-decoration:none;
-  color:var(--ink-900);
-  transition:background .2s ease, color .2s ease, transform .08s ease;
+/* Navegação: suaviza interação sem mudar cor */
+.main-nav a {
+  text-decoration: none;
+  transition: transform .08s ease, opacity .2s ease;
 }
-.main-nav a:hover{ background:rgba(58,128,180,.10); color:var(--brand-700); }
-.main-nav a.active{ background:rgba(58,128,180,.18); color:var(--brand-700); }
-
-/* Botões unificados (inclui .btn-escolher e WhatsApp) */
-a.btn, .btn, .cta .btn, a.btn-escolher, a[href^="https://wa.me/"]{
-  display:inline-block;
-  padding:12px 18px;
-  border-radius:9999px;
-  background:var(--brand-600);
-  color:#fff !important;
-  border:1px solid var(--brand-700);
-  text-decoration:none !important;
-  font-weight:700;
-  box-shadow:var(--shadow-lg);
-  transition:transform .12s ease, background .2s ease, box-shadow .2s ease;
-}
-a.btn:hover, .btn:hover, .cta .btn:hover, a.btn-escolher:hover, a[href^="https://wa.me/"]:hover{
-  background:var(--brand-700);
-  transform:translateY(-1px);
-  box-shadow:0 12px 34px rgba(10,32,50,.12);
-}
-a.btn:focus-visible, .btn:focus-visible, .cta .btn:focus-visible, a.btn-escolher:focus-visible, a[href^="https://wa.me/"]:focus-visible{
-  outline:none;
-  box-shadow:0 0 0 4px rgba(58,128,180,.25), var(--shadow-lg);
+.main-nav a:hover { transform: translateY(-1px); }
+.main-nav a:focus-visible {
+  outline: 2px solid currentColor;   /* usa a cor atual do site */
+  outline-offset: 2px;
 }
 
-/* Cards/coerência visual básica */
-.contact-card, .normas-card{
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow-lg);
-  overflow:hidden;
+/* Botões/CTAs: mantém cores atuais; só acabamento e acessibilidade */
+a.btn, .btn, .cta .btn, a.btn-escolher, a[href^="https://wa.me/"] {
+  text-decoration: none !important;
+  border-radius: 9999px;             /* pill */
+  transition: transform .1s ease, box-shadow .2s ease;
+}
+a.btn:hover, .btn:hover, .cta .btn:hover, a.btn-escolher:hover, a[href^="https://wa.me/"]:hover {
+  transform: translateY(-1px);
+}
+a.btn:focus-visible, .btn:focus-visible, .cta .btn:focus-visible, a.btn-escolher:focus-visible, a[href^="https://wa.me/"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0,0,0,.12); /* anel neutro que não altera cor do botão */
 }
 
-/* Tipografia base */
-h1,h2,h3{ color:var(--ink-900); letter-spacing:.2px; }
-p{ color:var(--ink-700); line-height:1.55; }
+/* Cards/coerência (neutro, não mexe em cores de texto/link) */
+.contact-card, .normas-card, .card, .block-card {
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(10,32,50,.08);
+  overflow: hidden;
+}
 
-/* Formulário de contato */
+/* Tipografia base (neutro) */
+p { line-height: 1.55; }
+
+/* Formulário de contato: foco visível (sem trocar paleta) */
 .contact-form input,
 .contact-form select,
-.contact-form textarea{
-  border:1px solid #d8e3ef;
-  border-radius:12px;
-  padding:10px 12px;
-  width:100%;
-  transition:border-color .2s ease, box-shadow .2s ease;
+.contact-form textarea {
+  border-radius: 12px;
+  transition: box-shadow .2s ease, border-color .2s ease;
 }
 .contact-form input:focus-visible,
 .contact-form select:focus-visible,
-.contact-form textarea:focus-visible{
-  outline:none;
-  border-color:var(--brand-700);
-  box-shadow:0 0 0 4px rgba(58,128,180,.25);
+.contact-form textarea:focus-visible {
+  outline: none;
+  border-color: currentColor;          /* reaproveita a cor do tema atual */
+  box-shadow: 0 0 0 4px rgba(0,0,0,.10);
 }
 
-/* Tabela de planos — rolagem horizontal no mobile */
-#planos .compare table{
-  border-collapse:collapse;
-  width:100%;
+/* Tabela de planos — rolagem no mobile (neutro) */
+#planos .compare table {
+  border-collapse: collapse;
+  width: 100%;
 }
-@media (max-width: 680px){
-  #planos .compare table{
-    display:block;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
+@media (max-width: 680px) {
+  #planos .compare table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   #planos .compare th,
-  #planos .compare td{ white-space:nowrap; }
+  #planos .compare td { white-space: nowrap; }
 }
 
-/* Respeita quem prefere menos movimento */
-@media (prefers-reduced-motion: reduce){
-  *{ animation:none !important; transition:none !important; }
+/* Respeita “reduzir movimento” */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* === Links globais: sem sublinhado, estilo suave (não altera cores de menu/CTAs) === */
+a { text-decoration: none; }
+a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a) {
+  transition: transform .08s ease, box-shadow .2s ease, opacity .2s ease;
+}
+a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):hover {
+  transform: translateY(-1px);
+  opacity: .92; /* leve destaque sem mexer em cor */
+}
+a:focus-visible {
+  outline: 2px solid currentColor;   /* usa a cor já definida no site */
+  outline-offset: 2px;
+  text-decoration: none;
 }
