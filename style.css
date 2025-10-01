@@ -5302,3 +5302,94 @@ html.js .ff2-slide {
   transform:scale(1.18);
 }
 
+/* ===== Hero: legenda do Professor Fisão ===== */
+.hero-prof-caption{
+  margin-top: 12px;
+  text-align: center;
+}
+.hero-prof-caption::before{
+  content:"";
+  display:block;
+  width:72px; height:2px;
+  margin: 0 auto 10px;
+  background:#3a80b4;          /* azul da FisioForma */
+  border-radius:999px;
+  opacity:.35;                  /* discreto */
+}
+.hero-prof-caption figcaption{
+  font-weight: 800;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.25;
+  color: #133b57;               /* título legível */
+}
+
+/* ===== Tabela de Planos (Comparativo) =====
+   - arredonda cantos
+   - zebra rows
+   - cabeçalho fixo ao rolar (em telas pequenas)
+   - rolagem horizontal suave no mobile
+   - sem alterar a paleta do site/CTA
+*/
+#planos .compare {               /* wrapper da tabela */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#planos .compare table{
+  width: 100%;
+  min-width: 680px;             /* evita quebrar colunas */
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid #e6eef6;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(10,32,50,.06);
+}
+#planos .compare thead th{
+  position: sticky;             /* cabeçalho “gruda” ao rolar dentro do wrapper */
+  top: 0;
+  z-index: 1;
+  background: #2f6b96;          /* cabeçalho azul (mesma família da marca) */
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: .2px;
+  padding: 14px 16px;
+  text-align: center;
+}
+#planos .compare thead th:first-child{
+  background: #ffffff;          /* célula do rótulo (1ª coluna) branca */
+  color: #0e2a3f;
+  text-align: left;
+  border-top-left-radius: 12px;
+}
+#planos .compare thead th:last-child{ border-top-right-radius: 12px; }
+
+#planos .compare tbody td,
+#planos .compare tbody th{
+  padding: 14px 16px;
+  text-align: center;
+  border-top: 1px solid #eef4fa;
+}
+#planos .compare tbody th:first-child,
+#planos .compare tbody td:first-child{
+  text-align: left;
+  font-weight: 700;             /* rótulos das linhas */
+  color: #0e2a3f;
+}
+#planos .compare tbody tr:nth-child(odd){ background: #f9fbfe; } /* zebra */
+#planos .compare tbody tr:hover{ background: #f1f6fb; }          /* hover leve */
+
+#planos .compare tbody tr:last-child td:first-child{ border-bottom-left-radius: 12px; }
+#planos .compare tbody tr:last-child td:last-child{ border-bottom-right-radius: 12px; }
+
+/* Ícones/Marcas (opcional): se envolver ✔/✖ com <span class="ok"> ou <span class="no"> */
+#planos .compare td .ok { color:#3a80b4; font-weight: 800; }
+#planos .compare td .no { color:#c64545; font-weight: 800; opacity:.9; }
+
+/* Legenda/nota abaixo da tabela (se houver) */
+#planos .compare .note,
+#planos .compare + .note{
+  text-align: center;
+  font-size: .95rem;
+  color: #2c3e50;
+  margin-top: 10px;
+}
