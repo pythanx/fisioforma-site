@@ -5437,3 +5437,48 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
   }
 }
 
+/* ===== Tabela de Planos — 1ª coluna “sticky” (desktop) ===== */
+@media (min-width: 860px){
+  /* garante layout consistente para o sticky */
+  #planos .compare table{
+    table-layout: fixed;       /* evita “pulos” ao rolar */
+    min-width: 820px;          /* ajuste conforme suas colunas */
+  }
+
+  /* 1ª coluna (rótulos das linhas) fica grudada à esquerda */
+  #planos .compare thead th:first-child,
+  #planos .compare tbody th:first-child,
+  #planos .compare tbody td:first-child{
+    position: sticky;
+    left: 0;
+    z-index: 2;                /* sobrepõe as outras células */
+    background: #fff;          /* base para linhas pares */
+    box-shadow: 6px 0 12px -8px rgba(10,32,50,.12); /* borda/sombra de separação */
+  }
+
+  /* respeita o zebra-strip nas linhas ímpares */
+  #planos .compare tbody tr:nth-child(odd) td:first-child,
+  #planos .compare tbody tr:nth-child(odd) th:first-child{
+    background: #f9fbfe;
+  }
+
+  /* hover da linha mantém a 1ª coluna uniforme */
+  #planos .compare tbody tr:hover td:first-child,
+  #planos .compare tbody tr:hover th:first-child{
+    background: #f1f6fb;
+  }
+
+  /* interseção: cabeçalho da 1ª coluna (topo-esquerda) acima de tudo */
+  #planos .compare thead th:first-child{
+    z-index: 4;
+    background: #fff;
+    border-top-left-radius: 12px;    /* coincide com o raio da tabela */
+    box-shadow: 6px 0 12px -8px rgba(10,32,50,.12);
+  }
+
+  /* cantos inferiores arredondados na 1ª coluna */
+  #planos .compare tbody tr:last-child td:first-child{
+    border-bottom-left-radius: 12px;
+  }
+}
+
