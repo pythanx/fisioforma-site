@@ -5622,7 +5622,7 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
   font-size: clamp(1rem, 1.4vw, 1.15rem);  /* tamanho confortável */
   line-height: 1.32;
   font-weight: 700;                        /* pode ajustar se quiser mais leve */
-  color: inherit;                          /* herda a cor padrão do texto */
+  color: #fff;                          /* herda a cor padrão do texto */
   max-width: 85ch;
   margin-inline: auto;
 }
