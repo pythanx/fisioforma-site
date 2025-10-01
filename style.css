@@ -5513,7 +5513,7 @@ figure.hero-anim > figcaption{
   font-weight: 700 !important;
   font-size: clamp(1rem, 1.4vw, 1.15rem) !important;
   line-height: 1.32 !important;
-  color: #0e2a3f !important;     /* texto escuro e legível */
+  color: #fff !important;     /* texto escuro e legível */
   text-align: center !important;
   max-width: 85ch;
 }
