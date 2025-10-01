@@ -5481,72 +5481,7 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
     border-bottom-left-radius: 12px;
   }
 }
-/* ===== Hero: Legenda do Professor Fisão — limpa e legível ===== */
-.hero-anim{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: visible;
-}
-.hero-anim-video{
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
 
-/* remove QUALQUER overlay anterior no figcaption */
-.hero-anim > .hero-prof-caption{
-  position: static !important;       /* tira posição absoluta/overlay */
-  inset: auto !important;            /* zera top/right/bottom/left se houver */
-  transform: none !important;        /* remove translate */
-  background: transparent !important;
-  color: #0e2a3f !important;         /* texto escuro, super legível */
-  text-shadow: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  margin-top: 12px;
-  text-align: center;
-  font-weight: 800;
-  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
-  line-height: 1.32;
-  max-width: 85ch;
-  margin-inline: auto;
-}
-
-/* detalhe sutil acima do texto */
-.hero-anim > .hero-prof-caption::before{
-  content:"";
-  display:block;
-  width:72px; height:2px;
-  margin: 0 auto 10px;
-  background:#3a80b4;               /* azul FisioForma */
-  border-radius:999px;
-  opacity:.35;
-}
-
-/* caso algum container do hero esconda a legenda */
-.hero, .hero-wrap, .hero-media, .hero-anim { overflow: visible !important; }
-
-@media (max-width: 768px){
-  .hero-anim > .hero-prof-caption{
-    font-size: 1rem;
-    line-height: 1.28;
-  }
-}
-
-/* ===== Hero: Legenda do Professor Fisão — limpa e legível ===== */
-.hero-anim{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: visible;
-}
-.hero-anim-video{
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
 
 /* remove QUALQUER overlay anterior no figcaption */
 .hero-anim > .hero-prof-caption{
@@ -5590,60 +5525,6 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
 }
 
 
-/* ===== Hero: legenda abaixo da imagem, mesma fonte do site ===== */
-.hero-anim{
-  display: flex;
-  flex-direction: column;   /* empilha vídeo e legenda */
-  align-items: center;
-  overflow: visible;
-}
-
-.hero-anim-video{
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* legenda limpa, sem overlay e com tipografia herdada */
-.hero-prof-caption{
-  position: static !important;        /* remove qualquer absoluto antigo */
-  inset: auto !important;
-  transform: none !important;
-  background: transparent !important; /* sem barra/caixa */
-  text-shadow: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-
-  margin-top: 12px;
-  text-align: center;
-
-  /* usa a mesma fonte do site */
-  font-family: inherit;
-  font-size: clamp(1rem, 1.4vw, 1.15rem);  /* tamanho confortável */
-  line-height: 1.32;
-  font-weight: 700;                        /* pode ajustar se quiser mais leve */
-  color: #fff;                          /* herda a cor padrão do texto */
-  max-width: 85ch;
-  margin-inline: auto;
-}
-
-/* linha decorativa opcional (remova se não quiser) */
-.hero-prof-caption:before{
-  content:"";
-  display:block;
-  width:72px; height:2px;
-  margin: 0 auto 10px;
-  background:#3a80b0;            /* azul FisioForma */
-  border-radius:999px;
-  opacity:.35;
-}
-
-/* garante que nenhum container do hero esconda a legenda */
-.hero, .hero-wrap, .hero-media, .hero-anim { overflow: visible !important; }
-
-@media (max-width: 768px){
-  .hero-prof-caption{ font-size: 1rem; line-height: 1.28; }
-}
 /* ========= HERO: legenda do Professor Fisão ABAIXO da imagem ========= */
 
 /* garante que vídeo e legenda fiquem empilhados, sem corte */
