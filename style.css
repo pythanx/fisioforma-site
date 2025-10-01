@@ -5587,4 +5587,59 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
     font-size: 1rem;
   }
 }
+/* ===== Hero: legenda abaixo da imagem, mesma fonte do site ===== */
+.hero-anim{
+  display: flex;
+  flex-direction: column;   /* empilha vídeo e legenda */
+  align-items: center;
+  overflow: visible;
+}
+
+.hero-anim-video{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* legenda limpa, sem overlay e com tipografia herdada */
+.hero-prof-caption{
+  position: static !important;        /* remove qualquer absoluto antigo */
+  inset: auto !important;
+  transform: none !important;
+  background: transparent !important; /* sem barra/caixa */
+  text-shadow: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+
+  margin-top: 12px;
+  text-align: center;
+
+  /* usa a mesma fonte do site */
+  font-family: inherit;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);  /* tamanho confortável */
+  line-height: 1.32;
+  font-weight: 700;                        /* pode ajustar se quiser mais leve */
+  color: inherit;                          /* herda a cor padrão do texto */
+  max-width: 85ch;
+  margin-inline: auto;
+}
+
+/* linha decorativa opcional (remova se não quiser) */
+.hero-prof-caption::before{
+  content:"";
+  display:block;
+  width:72px; height:2px;
+  margin: 0 auto 10px;
+  background:#3a80b4;            /* azul FisioForma */
+  border-radius:999px;
+  opacity:.35;
+}
+
+/* garante que nenhum container do hero esconda a legenda */
+.hero, .hero-wrap, .hero-media, .hero-anim { overflow: visible !important; }
+
+@media (max-width: 768px){
+  .hero-prof-caption{ font-size: 1rem; line-height: 1.28; }
+}
+
 
