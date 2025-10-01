@@ -5633,7 +5633,7 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
   display:block;
   width:72px; height:2px;
   margin: 0 auto 10px;
-  background:#3a80b4;            /* azul FisioForma */
+  background:#3a80b0;            /* azul FisioForma */
   border-radius:999px;
   opacity:.35;
 }
