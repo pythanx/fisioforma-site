@@ -5484,53 +5484,6 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
 
 
 
-/* ===== HERO: legenda do Professor Fisão ABAIXO da imagem (override forte) ===== */
 
-/* Empilha vídeo + legenda e impede cortes */
-figure.hero-anim{
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  overflow: visible !important;
-}
-
-/* “desliga” QUALQUER overlay herdado no figcaption dentro do hero */
-figure.hero-anim > figcaption{
-  position: static !important;
-  top: auto !important; right: auto !important; bottom: auto !important; left: auto !important;
-  transform: none !important;
-
-  display: block !important;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  padding: 0 !important;
-  margin: 12px auto 0 !important;
-
-  /* tipografia: usa exatamente a mesma do site */
-  font-family: inherit !important;
-  font-weight: 700 !important;
-  font-size: clamp(1rem, 1.4vw, 1.15rem) !important;
-  line-height: 1.32 !important;
-  color: #0e2a3f !important;     /* texto escuro e legível */
-  text-align: center !important;
-  max-width: 85ch;
-}
-
-/* remove qualquer pseudo-elemento decorativo pré-existente */
-figure.hero-anim > figcaption::before,
-figure.hero-anim > figcaption::after{
-  content: none !important;
-}
-
-/* vídeo responsivo */
-.hero-anim-video{ display:block; max-width:100%; height:auto; }
-
-/* mobile: um tiquinho menor */
-@media (max-width: 768px){
-  figure.hero-anim > figcaption{ font-size: 1rem !important; line-height: 1.28 !important; }
-}
 
 
