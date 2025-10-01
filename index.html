@@ -125,31 +125,28 @@
       </div>
 
 
-<!-- Coluna DIREITA (animação Prof. Fisão) -->
-<aside class="hero-media">
-  <figure class="hero-anim" aria-label="Professor Fisão acenando">
-    <video class="hero-anim-video"
-           autoplay
-           muted
-           playsinline
-           loop
-           poster="professor-fisio.png">
-      <!-- use primeiro WebM para navegadores que suportam (menor tamanho) -->
-      <source src="assets/prof-fisio-anim.webm" type="video/webm">
-      <!-- fallback em MP4 para compatibilidade ampla -->
-      <source src="assets/prof-fisio-anim.mp4" type="video/mp4">
-      <!-- fallback final em imagem caso vídeo não carregue -->
-      <img src="assets/professor-fisio.png" alt="Ilustração do Professor Fisão acenando">
-    </video>
-    <!-- Legenda do Professor Fisão -->
-<figure class="hero-prof-caption" aria-label="Legenda do Professor Fisão">
-  <figcaption>
-    Professor Fisão — profissional de Educação Física da FisioForma, seu guia para treinar com segurança e alcançar resultados reais.
-  </figcaption>
-</figure>
-    <figcaption class="sr-only">Animação do Prof. Fisão acenando para dar boas-vindas.</figcaption>
-  </figure>
-</aside>
+      <!-- Coluna DIREITA (animação Prof. Fisão) -->
+      <aside class="hero-media">
+        <figure class="hero-anim" aria-labelledby="prof-fisao-caption" role="group">
+          <video class="hero-anim-video"
+                 autoplay
+                 muted
+                 playsinline
+                 loop
+                 poster="professor-fisio.png">
+            <source src="assets/prof-fisio-anim.webm" type="video/webm">
+            <source src="assets/prof-fisio-anim.mp4" type="video/mp4">
+            <img src="assets/professor-fisio.png" alt="Ilustração do Professor Fisão acenando">
+          </video>
+      
+          <!-- Legenda visível (um único figcaption) -->
+          <figcaption id="prof-fisao-caption" class="hero-prof-caption">
+            Professor Fisão — profissional de Educação Física da FisioForma,
+            seu guia para treinar com segurança e alcançar resultados reais.
+          </figcaption>
+        </figure>
+      </aside>
+
 
 
 </div>
