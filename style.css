@@ -5628,7 +5628,7 @@ a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
 }
 
 /* linha decorativa opcional (remova se não quiser) */
-.hero-prof-caption::before{
+.hero-prof-caption:before{
   content:"";
   display:block;
   width:72px; height:2px;
