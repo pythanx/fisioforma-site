@@ -5393,3 +5393,47 @@ html.js .ff2-slide {
   color: #2c3e50;
   margin-top: 10px;
 }
+
+/* ===== Global Links — sem sublinhado + hover/focus suave (neutro) ===== */
+
+/* tira o sublinhado de vez em todos os estados */
+a, a:link, a:visited, a:hover, a:focus, a:active {
+  text-decoration: none !important;
+}
+
+/* estilo só para links de texto comuns
+   (NÃO afeta botões/CTAs/menus) */
+a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a) {
+  position: relative;
+  color: inherit; /* mantém a cor atual do tema */
+  background-image: linear-gradient(transparent 70%, rgba(58,128,180,.15) 70%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  transition: background-size .2s ease, transform .06s ease, box-shadow .2s ease;
+}
+a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):hover {
+  background-size: 100% 100%;
+  transform: translateY(-1px);
+}
+a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a):focus-visible {
+  outline: none;
+  background-size: 100% 100%;
+  box-shadow: 0 0 0 4px rgba(58,128,180,.18); /* anel de foco discreto */
+  border-radius: 6px;
+}
+
+/* garante sem sublinhado dentro de blocos comuns do site */
+.contact-card a,
+.contact-info a,
+.contact-wrap a,
+.card a {
+  text-decoration: none !important;
+}
+
+/* respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  a:not(.btn):not(.cta .btn):not(.btn-escolher):not(.main-nav a) {
+    transition: none;
+  }
+}
+
